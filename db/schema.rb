@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_11_140348) do
+ActiveRecord::Schema.define(version: 2019_03_11_163531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,13 @@ ActiveRecord::Schema.define(version: 2019_03_11_140348) do
     t.index ["user_id"], name: "index_participations_on_user_id"
   end
 
+  create_table "proofs", force: :cascade do |t|
+    t.bigint "participation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["participation_id"], name: "index_proofs_on_participation_id"
+  end
+
   create_table "user_send_dares", force: :cascade do |t|
     t.bigint "dare_id"
     t.bigint "sender_id"
@@ -79,4 +86,5 @@ ActiveRecord::Schema.define(version: 2019_03_11_140348) do
   add_foreign_key "dares", "categories"
   add_foreign_key "difficulty_ratings", "dares"
   add_foreign_key "participations", "users"
+  add_foreign_key "proofs", "participations"
 end
