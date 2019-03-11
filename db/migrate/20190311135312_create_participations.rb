@@ -5,7 +5,6 @@ class CreateParticipations < ActiveRecord::Migration[5.2]
       t.belongs_to :dare
       t.datetime :deadline
       t.boolean :is_achieved, default: false
-
       t.timestamps
     end
   end

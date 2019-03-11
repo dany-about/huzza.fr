@@ -16,3 +16,4 @@ dare2 = Dare.create!({title: "second dare", description: "test2", creator: admin
 participation1 = Participation.create!({user: admin, dare: dare1})
 sent_dare1 = UserSendDare.create!({dare: dare1, sender: admin, recipient:admin2})
 sent_dare2 = UserSendDare.create!({dare: dare2, sender: admin2, recipient:admin})
+
