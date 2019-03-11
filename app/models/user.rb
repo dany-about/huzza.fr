@@ -7,17 +7,17 @@ class User < ApplicationRecord
 
   has_many :created_dares, class_name: "Dare"
   has_many :participations
-  has_many :participated_dares, through: :participations, class_name: "Dare"
+  has_many :participated_dares, through: :participations, source: :dare
   
   has_many :user_sent_dares, class_name: "UserSendDare", foreign_key: "sender_id"
-  has_many :sent_dares, through: :user_sent_dares, class_name: "Dare", source: :dare
+  has_many :sent_dares, through: :user_sent_dares, source: :dare
 
   has_many :user_received_dares, class_name: "UserSendDare", foreign_key: "recipient_id"
-  has_many :received_dares, through: :user_received_dares, class_name: "Dare", source: :dare
+  has_many :received_dares, through: :user_received_dares, source: :dare
   
 
   def achieved_dares
-    self.participated_dares.where(is_achieved: true)
+    self.participated_dares.joins(:participations).where({ participations: {is_achieved: true} }).reverse
   end
 
 

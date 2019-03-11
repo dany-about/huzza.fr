@@ -6,8 +6,11 @@ class Dare < ApplicationRecord
   has_many :participants, through: :participations, class_name: "User"
 
   has_many :user_send_dares
-  has_many :senders, through: :user_send_dares, class_name: "User", foreign_key: "sender_id"
-  has_many :recipients, through: :user_send_dares, class_name: "User", foreign_key: "recipient_id"
+  has_many :senders, through: :user_send_dares, source: :user, foreign_key: "sender_id"
+  has_many :recipients, through: :user_send_dares, source: :user, foreign_key: "recipient_id"
+
+  validates :description, presence: true, length: { in: 100..1000}
+  validates :title, presence: true, length: { minimum: 5, maximum: 140}
 
 
   def difficulty
@@ -19,7 +22,7 @@ class Dare < ApplicationRecord
   def achievers
     achievers = []
     self.participations.where(is_achieved: true).each { |participation| achievers << participation.user }
-    return achievers
+    return achievers.reverse
   end
 
   def reward
