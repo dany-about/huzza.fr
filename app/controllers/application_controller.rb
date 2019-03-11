@@ -1,10 +1,13 @@
 class ApplicationController < ActionController::Base
   before_action :set_locale
+  #before_action :browser_locale(current_user)
+  browser = Browser.new("Some User Agent", accept_language: "en-us")
 
   def set_locale
     I18n.locale = extract_locale_from_tld || I18n.default_locale
   end
 
+  browser.
 # Get locale from top-level domain or return +nil+ if such locale is not available
 # You have to put something like:
 #   127.0.0.1 application.com

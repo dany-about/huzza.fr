@@ -11,16 +11,8 @@
 
   <body>
 
-
-  <%= content_tag :li do %>
-    <%= link_to 'Switch to English', locale :en %>
-  <% end unless current_page?(locale: :en) %>
-
-  <%= link_to 'Switch to English', locale :fr %>
-  <% end unless current_page?(locale: :fr) %>
-
-  <h1><%= :greetings %></h1>
-
+  <%= render 'shared/change_locale' %>
+  <h1><%=t :greetings %></h1>
 
 
   <%= yield %>
