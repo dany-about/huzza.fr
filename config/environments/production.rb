@@ -91,4 +91,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # A DECOMMENTER POUR PASSER EN PROD ET MODIF NOM DE L APP
+  # config.action_mailer.default_url_options = { :host => 'YOURAPPNAME.herokuapp.com' }
 end
