@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Naboo</title>
+    <title>Bucket</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,10 +11,9 @@
 
   <body>
 
-  <%= render 'shared/change_locale' %>
-  <h1><%=t :greetings %></h1>
+    <%= yield %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
 
-
-  <%= yield %>
   </body>
 </html>

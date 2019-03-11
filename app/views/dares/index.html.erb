@@ -1,0 +1,30 @@
+<!-- ICI COMMENCE LE FEED -->
+
+<!-- Section << Profil de mes amis >> -->
+
+<% @friends_list.each do |friend| %>
+
+<% end %>
+
+
+
+<!-- Section << Achievements de mes amis >> -->
+
+<table>
+  <tbody>
+    <% @network_news.each do |news| %>
+      <!-- Si l'évènement est une participation; disclaimenr_type peut prendre les valeurs: "participation_created" ou "participation achieved" -->
+      <!-- Il faudra voir comment on gère les participations qui sont "un-achieved", quand la preuve est rejetée -->
+      <% if news[:event].is_a(Participation) %>
+        <%= render "shared/participation", participation: news[:event], disclaimer: "yes", disclaimer_type: news[:occasion] %>
+      <% end %>
+      <!-- Si l'évènement est un défi (i.e. défi créé, défi lancé ou défi relevé; disclaimer_type peut prendre les valeurs: "dare_created", "dare_sent" ou "dare_accepted") -->
+      <% if news[:event].is_a(Dare) %>
+        <%= render "shared/dare", dare: news[:event], disclaimer: "yes", disclaimer_type: news[:occasion] %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
