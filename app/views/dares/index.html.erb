@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Dares</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>User</th>
+      <th>Category</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dares.each do |dare| %>
+      <tr>
+        <td><%= dare.title %></td>
+        <td><%= dare.description %></td>
+        <td><%= dare.user %></td>
+        <td><%= dare.category %></td>
+        <td><%= link_to 'Show', dare %></td>
+        <td><%= link_to 'Edit', edit_dare_path(dare) %></td>
+        <td><%= link_to 'Destroy', dare, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dare', new_dare_path %>
