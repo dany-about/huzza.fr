@@ -30,6 +30,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  your_email: "Your address email is : "
   greetings: "Not translated EN"
   errors:
     # The default format to use in full error messages.

@@ -30,7 +30,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 fr:
-  greetings: "It's translated FR"
+  your_email: "Votre adresse email est : "
+  greetings: "Bonjour, Sir"
   errors:
     # The default format to use in full error messages.
     format: "%{attribute} %{message}"

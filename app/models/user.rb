@@ -20,6 +20,14 @@ class User < ApplicationRecord
     self.participated_dares.joins(:participations).where({ participations: {is_achieved: true} }).reverse
   end
 
+  # User Mailer
+  after_create :welcome_send
+
+
+  # Welcome Email
+  def welcome_send
+    UserMailer.welcome_email(self).deliver_now
+  end
 
 
 end
