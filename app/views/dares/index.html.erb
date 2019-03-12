@@ -3,7 +3,7 @@
 <!-- Section << Profil de mes amis >> -->
 
 <% @friends_list.each do |friend| %>
-
+  <%= render "shared/feedfriend", user: friend %>
 <% end %>
 
 
