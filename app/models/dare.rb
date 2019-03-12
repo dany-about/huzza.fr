@@ -10,7 +10,7 @@ class Dare < ApplicationRecord
   has_many :recipients, through: :user_send_dares, source: :user, foreign_key: "recipient_id"
   
   # Polymorphic association 
-  has_many :notifications, as :event
+  has_many :notifications, as: :event
 
   validates :description, presence: true, length: { in: 100..1000}
   validates :title, presence: true, length: { minimum: 5, maximum: 140}

@@ -4,7 +4,7 @@ class Participation < ApplicationRecord
   has_many :proofs
 
   # Polymorphic association 
-  has_many :notifications, as :event
+  has_many :notifications, as: :event
 
   validate :deadline_in_futur
 

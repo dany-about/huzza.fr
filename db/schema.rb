@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_11_163531) do
+ActiveRecord::Schema.define(version: 2019_03_12_094058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,20 @@ ActiveRecord::Schema.define(version: 2019_03_11_163531) do
     t.datetime "updated_at", null: false
     t.index ["dare_id"], name: "index_difficulty_ratings_on_dare_id"
     t.index ["difficulty_rater_id"], name: "index_difficulty_ratings_on_difficulty_rater_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "friend_id"
+    t.string "event_type"
+    t.bigint "event_id"
+    t.string "occasion"
+    t.boolean "read", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_type", "event_id"], name: "index_notifications_on_event_type_and_event_id"
+    t.index ["friend_id"], name: "index_notifications_on_friend_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "participations", force: :cascade do |t|
@@ -85,6 +99,7 @@ ActiveRecord::Schema.define(version: 2019_03_11_163531) do
 
   add_foreign_key "dares", "categories"
   add_foreign_key "difficulty_ratings", "dares"
+  add_foreign_key "notifications", "users"
   add_foreign_key "participations", "users"
   add_foreign_key "proofs", "participations"
 end
