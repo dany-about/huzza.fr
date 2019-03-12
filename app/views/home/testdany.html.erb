@@ -6,7 +6,7 @@
   <body>
     <div container>
       <div><br><br><br><br><br>
-        <%= render 'shared/testdany' %>
+        <%= render 'shared/testdany', dare: News.find(1).event, disclaimer_type: News.find(1).occasion, status: News.find(1).read %> 
       </div>
     </div>
   </body>

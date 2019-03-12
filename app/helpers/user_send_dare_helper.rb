@@ -1,0 +1,2 @@
+module UserSendDareHelper
+end
