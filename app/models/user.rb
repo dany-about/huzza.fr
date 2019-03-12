@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :user_received_dares, class_name: "UserSendDare", foreign_key: "recipient_id"
   has_many :received_dares, through: :user_received_dares, source: :dare
 
-  has_many :notifications, foreign_key: "user_id"
+  has_many :news, foreign_key: "user_id"
   
 
   def achieved_dares
@@ -44,13 +44,13 @@ class User < ApplicationRecord
 
   def friends_list
     friends_list = []
-    self.notifications. each { |notif| friends_list << notif.friend }.uniq!
+    self.news.each { |notif| friends_list << notif.friend }.uniq!
     return friends_list
   end
 
   def notify_friends(event, occasion)
     self.friends.each { |friend| 
-      Notification.create!(user: friend, friend: self, event: event, occasion: occasion)
+      New.create!(user: friend, friend: self, event: event, occasion: occasion)
     }
   end
 

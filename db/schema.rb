@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_03_12_094058) do
     t.index ["difficulty_rater_id"], name: "index_difficulty_ratings_on_difficulty_rater_id"
   end
 
-  create_table "notifications", force: :cascade do |t|
+  create_table "news", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "friend_id"
     t.string "event_type"
@@ -51,9 +51,9 @@ ActiveRecord::Schema.define(version: 2019_03_12_094058) do
     t.boolean "read", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["event_type", "event_id"], name: "index_notifications_on_event_type_and_event_id"
-    t.index ["friend_id"], name: "index_notifications_on_friend_id"
-    t.index ["user_id"], name: "index_notifications_on_user_id"
+    t.index ["event_type", "event_id"], name: "index_news_on_event_type_and_event_id"
+    t.index ["friend_id"], name: "index_news_on_friend_id"
+    t.index ["user_id"], name: "index_news_on_user_id"
   end
 
   create_table "participations", force: :cascade do |t|
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 2019_03_12_094058) do
 
   add_foreign_key "dares", "categories"
   add_foreign_key "difficulty_ratings", "dares"
-  add_foreign_key "notifications", "users"
+  add_foreign_key "news", "users"
   add_foreign_key "participations", "users"
   add_foreign_key "proofs", "participations"
 end

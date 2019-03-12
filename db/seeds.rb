@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Notification.destroy_all
+News.destroy_all
 Participation.destroy_all
 UserSendDare.destroy_all
 Dare.destroy_all
@@ -22,4 +22,4 @@ participation1 = Participation.create!({user: admin, dare: dare1})
 sent_dare1 = UserSendDare.create!({dare: dare1, sender: admin, recipient:admin2})
 sent_dare2 = UserSendDare.create!({dare: dare2, sender: admin2, recipient:admin})
 
-notif2 = Notification.create!(user: admin, friend: admin2, event: dare2, occasion: "dare_created")
+notif2 = News.create!(user: admin, friend: admin2, event: dare2, occasion: "dare_created")
