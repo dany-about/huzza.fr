@@ -4,6 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.1'
 # Langage selector
 gem 'browser'
+# VideoJS - Add social share
+gem 'videojs-ng-socialshare'
 # DotEnv
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'sendgrid-ruby'
