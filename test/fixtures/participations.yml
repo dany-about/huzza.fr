@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  participant: one
+  deadline: 2019-03-11 14:53:12
+  is_achieved: false
+
+two:
+  participant: two
+  deadline: 2019-03-11 14:53:12
+  is_achieved: false
