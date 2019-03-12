@@ -29,8 +29,8 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  greetings: "Not translated EN"
+fr:
+  greetings: "It's translated FR"
   errors:
     # The default format to use in full error messages.
     format: "%{attribute} %{message}"
@@ -69,6 +69,6 @@ en:
 
   pages:
     index:
-      title: 'Welcome!'
+      title: 'Powitanie!'
     about:
-      title: 'About us'
+      title: 'O nas'
