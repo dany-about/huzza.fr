@@ -1,4 +1,4 @@
-class Notification < ApplicationRecord
+class News < ApplicationRecord
   belongs_to :user
   belongs_to :friend, class_name: "User"
   belongs_to :event, polymorphic: true

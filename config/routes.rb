@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'home/index'
+  get 'home/test_card'
 
   resources :dares
   devise_for :users
