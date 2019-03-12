@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_12_094058) do
+ActiveRecord::Schema.define(version: 2019_03_12_164414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,11 +67,14 @@ ActiveRecord::Schema.define(version: 2019_03_12_094058) do
     t.index ["user_id"], name: "index_participations_on_user_id"
   end
 
-  create_table "proofs", force: :cascade do |t|
+  create_table "reactions", force: :cascade do |t|
     t.bigint "participation_id"
+    t.bigint "user_id"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["participation_id"], name: "index_proofs_on_participation_id"
+    t.index ["participation_id"], name: "index_reactions_on_participation_id"
+    t.index ["user_id"], name: "index_reactions_on_user_id"
   end
 
   create_table "user_send_dares", force: :cascade do |t|
@@ -101,5 +104,6 @@ ActiveRecord::Schema.define(version: 2019_03_12_094058) do
   add_foreign_key "difficulty_ratings", "dares"
   add_foreign_key "news", "users"
   add_foreign_key "participations", "users"
-  add_foreign_key "proofs", "participations"
+  add_foreign_key "reactions", "participations"
+  add_foreign_key "reactions", "users"
 end
