@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
+  scope "(:locale)", locale: /en|fr/ do  # Devise route
 
   # Need to be deleted
   get 'home/index'
 
   # Home page
   root "home#index"
+  end
 
-  # Devise route
   devise_for :users
 
   # Dares route
@@ -16,4 +17,5 @@ Rails.application.routes.draw do
   resources :users do
     resources :avatars, only: [:create]
   end
+
 end
