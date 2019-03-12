@@ -20,9 +20,11 @@ class User < ApplicationRecord
     self.participated_dares.joins(:participations).where({ participations: {is_achieved: true} }).reverse
   end
 
+  # Active Storage Avatar Image
+  has_one_attached :avatar
+
   # User Mailer
   after_create :welcome_send
-
 
   # Welcome Email
   def welcome_send
