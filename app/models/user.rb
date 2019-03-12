@@ -50,7 +50,7 @@ class User < ApplicationRecord
 
   def notify_friends(event, occasion)
     self.friends.each { |friend| 
-      Notification.create!(user: friend, friend: self, event_type: event.class.name.to_s, event_id: event.id, occasion: occasion)
+      Notification.create!(user: friend, friend: self, event: event, occasion: occasion)
     }
   end
 
