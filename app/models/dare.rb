@@ -4,6 +4,7 @@ class Dare < ApplicationRecord
   has_many :difficulty_ratings
   has_many :participations
   has_many :participants, through: :participations, class_name: "User"
+  has_many :reactions, through: :participations
 
   has_many :user_send_dares
   has_many :senders, through: :user_send_dares, source: :user, foreign_key: "sender_id"

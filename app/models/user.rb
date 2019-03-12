@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :received_dares, through: :user_received_dares, source: :dare
 
   has_many :news, foreign_key: "user_id"
+  has_many :reactions
 
   def achieved_dares
     self.participated_dares.joins(:participations).where({ participations: {is_achieved: true} }).reverse

@@ -2,6 +2,10 @@
 
 one:
   participation: one
+  user: one
+  name: MyString
 
 two:
   participation: two
+  user: two
+  name: MyString

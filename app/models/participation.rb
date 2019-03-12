@@ -1,12 +1,14 @@
 class Participation < ApplicationRecord
   belongs_to :user
   belongs_to :dare
-  has_many :proofs
+  has_many :reactions
+
 
   # Polymorphic association 
   has_many :news, as: :event
 
   validate :deadline_in_futur
+  validate :cant_participate_twice
 
   def deadline_in_futur
     if self.deadline != nil && self.deadline < DateTime.now
