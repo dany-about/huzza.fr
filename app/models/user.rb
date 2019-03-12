@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  extend FriendlyId
+  friendly_id :email, use: :slugged
+
   has_many :created_dares, class_name: "Dare"
   has_many :participations
   has_many :participated_dares, through: :participations, source: :dare
