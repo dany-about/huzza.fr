@@ -15,6 +15,8 @@
 //= require turbolinks
 //= require_tree .
 
+//= require event_creation
+
 //= require assets/js/purpose.core.js
 //= require assets/libs/swiper/dist/js/swiper.min.js
 //= require assets/js/purpose.js
