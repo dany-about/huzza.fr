@@ -15,15 +15,15 @@ class DaresControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create dare" do
+  test "should create dares" do
     assert_difference('Dare.count') do
-      post dares_url, params: { dare: { category_id: @dare.category_id, description: @dare.description, title: @dare.title, user_id: @dare.user_id } }
+      post dares_url, params: {dares: {category_id: @dare.category_id, description: @dare.description, title: @dare.title, user_id: @dare.user_id } }
     end
 
     assert_redirected_to dare_url(Dare.last)
   end
 
-  test "should show dare" do
+  test "should show dares" do
     get dare_url(@dare)
     assert_response :success
   end
@@ -33,12 +33,12 @@ class DaresControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should update dare" do
-    patch dare_url(@dare), params: { dare: { category_id: @dare.category_id, description: @dare.description, title: @dare.title, user_id: @dare.user_id } }
+  test "should update dares" do
+    patch dare_url(@dare), params: {dares: {category_id: @dare.category_id, description: @dare.description, title: @dare.title, user_id: @dare.user_id } }
     assert_redirected_to dare_url(@dare)
   end
 
-  test "should destroy dare" do
+  test "should destroy dares" do
     assert_difference('Dare.count', -1) do
       delete dare_url(@dare)
     end

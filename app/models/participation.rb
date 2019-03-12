@@ -15,7 +15,7 @@ class Participation < ApplicationRecord
 
   def cant_participate_twice
     if Participation.where({user: self.user, dare: self.dare}).count > 0
-      errors.add(:dare, "déjà inscrit !")
+      errors.add(:dares, "déjà inscrit !")
     end
   end
 
