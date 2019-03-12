@@ -1,6 +1,6 @@
 class DaresController < ApplicationController
   before_action :set_dare, only: [:show, :update, :destroy]
-  after_create :notify_friends
+  after_action :notify_friends
 
   # GET /dares
   # GET /dares.json
