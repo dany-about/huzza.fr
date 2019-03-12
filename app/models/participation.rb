@@ -3,9 +3,10 @@ class Participation < ApplicationRecord
   belongs_to :dare
   has_many :proofs
 
+  # Polymorphic association 
+  has_many :notifications, as :event
+
   validate :deadline_in_futur
-
-
 
   def deadline_in_futur
     if self.deadline != nil && self.deadline < DateTime.now

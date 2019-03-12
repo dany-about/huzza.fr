@@ -1,12 +1,13 @@
 class DaresController < ApplicationController
-  before_action :set_dare, only: [:show, :edit, :update, :destroy]
+  before_action :set_dare, only: [:show, :update, :destroy]
+  after_create :notify_friends
 
   # GET /dares
   # GET /dares.json
  # participation controller
 
   def index  #feed
-    @network_news = current_user.network_news
+    @network_news = current_user.notifications
     @friends_list = current_user.friends_list
   end
 
@@ -25,10 +26,6 @@ class DaresController < ApplicationController
     @dare = Dare.new
   end
 
-  # GET /dares/1/edit
-  def edit
-  end
-
   # POST /dares
   # POST /dares.json
   def create
@@ -45,8 +42,6 @@ class DaresController < ApplicationController
     end
   end
 
-  # PATCH/PUT /dares/1
-  # PATCH/PUT /dares/1.json
   def update
     respond_to do |format|
       if @dare.update(dare_params)
@@ -59,14 +54,16 @@ class DaresController < ApplicationController
     end
   end
 
-  # DELETE /dares/1
-  # DELETE /dares/1.json
   def destroy
     @dare.destroy
     respond_to do |format|
       format.html { redirect_to dares_url, notice: 'Dare was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def notify_friends
+    current_user.notify_friends(event: @dare, occasion: "dare_created")
   end
 
   private
