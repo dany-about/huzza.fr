@@ -45,26 +45,27 @@ class User < ApplicationRecord
 
   def badge
     case self.rank
-    when 1 then return  end
-    when 2 then return  end
-    when 3 then return  end
-    when 4 then return  end
-    when 5 then return  end
-    when 6 then return  end
-    when 7 then return  end
-    when 8 then return  end
-    when 9 then return  end
-    when 10 then return  end
-    when 11 then return  end
-    when 12 then return  end
-    when 13 then return  end
-    when 14 then return  end
-    when 15 then return  end
-    when 16 then return  end
-    when 17 then return  end
-    when 18 then return  end
-    when 19 then return  end
-    when 20 then return  end
+    when 1 then return "" 
+    when 2 then return "" 
+    when 3 then return "" 
+    when 4 then return "" 
+    when 5 then return "" 
+    when 6 then return "" 
+    when 7 then return "" 
+    when 8 then return "" 
+    when 9 then return "" 
+    when 10 then return ""
+    when 11 then return ""
+    when 12 then return ""
+    when 13 then return ""
+    when 14 then return ""
+    when 15 then return ""
+    when 16 then return ""
+    when 17 then return ""
+    when 18 then return ""
+    when 19 then return ""
+    when 20 then return ""
+    end
   end
 
   def friends
