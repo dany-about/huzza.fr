@@ -10,6 +10,7 @@ News.destroy_all
 Participation.destroy_all
 UserSendDare.destroy_all
 Dare.destroy_all
+Follow.destroy_all
 User.destroy_all
 
 admin = User.create!({email: 'nabooadmin@yopmail.com', password: '123456', password_confirmation: '123456'})
@@ -23,3 +24,6 @@ sent_dare1 = UserSendDare.create!({dare: dare1, sender: admin, recipient:admin2}
 sent_dare2 = UserSendDare.create!({dare: dare2, sender: admin2, recipient:admin})
 
 notif2 = News.create!(user: admin, friend: admin2, event: dare2, occasion: "dare_created")
+
+Follow.create!(user: admin, follower: admin2)
+Follow.create!(user: admin2, follower: admin)

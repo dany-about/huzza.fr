@@ -1,7 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  participation: one
+  user: one
+  follower: one
 
 two:
-  participation: two
+  user: two
+  follower: two
