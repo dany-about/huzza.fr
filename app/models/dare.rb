@@ -5,7 +5,7 @@ class Dare < ApplicationRecord
 
   # Participations and Reactions
   has_many :participations
-  has_many :participants, through: :participations, class_name: "User"
+  has_many :participants, through: :participations, source: :user
   has_many :reactions, through: :participations
 
   # Sending and receiving Dares
@@ -25,6 +25,7 @@ class Dare < ApplicationRecord
   validates :description, presence: true, length: { in: 100..1000}
   validates :title, presence: true, length: { minimum: 5, maximum: 140}
 
+  
   # Assuming difficulty ranges from 0 to 100
   def difficulty
     diffs = [] 

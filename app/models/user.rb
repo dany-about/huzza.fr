@@ -8,7 +8,7 @@ class User < ApplicationRecord
   friendly_id :email, use: :slugged
 
   # Dares & Participations
-  has_many :created_dares, class_name: "Dare"
+  has_many :created_dares, class_name: "Dare", foreign_key: "creator_id"
   has_many :participations
   has_many :participated_dares, through: :participations, source: :dare
   
@@ -29,10 +29,15 @@ class User < ApplicationRecord
   # Starring Dares
   has_many :star_dares
   has_many :starred_dares, through: :star_dares, source: :dare
+
+  # Rankings
+  # Need to create a Rank table (user 1-N rank)
   
   # Miscellaneous
-  has_many :news, foreign_key: "user_id"
+  has_many :news
   has_many :reactions
+  has_many :difficulty_ratings, foreign_key: "difficulty_rater_id"
+
 
   def achieved_dares
     self.participated_dares.joins(:participations).where({ participations: {is_achieved: true} }).reverse
