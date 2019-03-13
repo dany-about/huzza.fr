@@ -1,54 +1,59 @@
+<!DOCTYPE html>
+<html>
+
 <head>
-	<style>
-		
-		html,body,.flex-grid {
-	    height: 100%;
-	    overflow: hidden;
-	    position: relative;
-		}
+  <style>
 
-		p {
-		  position: absolute;
-		  top: 50%;
-		  left:50%;
-		  transform: translate(-50%,-50%);
-		}
+  html,body,.flex-grid {
+   height: 100%;
+   overflow: hidden;
+   position: relative;
+ }
 
-		#header {
-			height: 35%;
-		}
+ p {
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
 
-		#content {
-			height: 65%;
-		}
+#header {
+ height: 35%;
+}
 
-	</style>
+#content {
+ height: 65%;
+}
+
+</style>
 </head>
 
-<div class="flex-grid">
+<body>
+  <div class="flex-grid">
 
-	<div class="row" id="header">
-	
-		  <div class="col-3">
-        <%= render 'users/badges' %>
-      </div>
-		  <div class="col-6">
-        <%= render 'users/profile' %>
-      </div>
-		  <div class="col-3">
-        <%= render 'users/information' %>
-      </div>
-	
-	</div>
+   <div class="row" id="header">
 
-		<div class="row" id="content">
-	
-		  <div class="col-3" style="background-color: olive;"><p>col-3</p></div>
-		  <div class="col-6"><p>col-6</p></div>
-		  <div class="col-3" style="background-color: blue;"><p>col-3</p></div>
-	
-	</div>
+    <div class="col-3">
+      <%= render 'users/badges' %>
+    </div>
+    <div class="col-6">
+      <%= render 'users/profile' %>
+    </div>
+    <div class="col-3">
+      <%= render 'users/information' %>
+    </div>
+  </div>
+
+  <div class="row" id="content">
+
+    <div class="col-3" style="background-color: olive;"><p>col-3</p></div>
+    <div class="col-6"><p>col-6</p></div>
+    <div class="col-3" style="background-color: blue;"><p>col-3</p></div>
+
+  </div>
 
 
 </div>
 
+</body>
+</html>
