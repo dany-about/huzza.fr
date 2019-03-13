@@ -106,6 +106,15 @@ ActiveRecord::Schema.define(version: 2019_03_13_010557) do
     t.index ["user_id"], name: "index_reactions_on_user_id"
   end
 
+  create_table "star_dares", force: :cascade do |t|
+    t.bigint "dare_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dare_id"], name: "index_star_dares_on_dare_id"
+    t.index ["user_id"], name: "index_star_dares_on_user_id"
+  end
+
   create_table "user_send_dares", force: :cascade do |t|
     t.bigint "dare_id"
     t.bigint "sender_id"
@@ -141,4 +150,6 @@ ActiveRecord::Schema.define(version: 2019_03_13_010557) do
   add_foreign_key "participations", "users"
   add_foreign_key "reactions", "participations"
   add_foreign_key "reactions", "users"
+  add_foreign_key "star_dares", "dares"
+  add_foreign_key "star_dares", "users"
 end
