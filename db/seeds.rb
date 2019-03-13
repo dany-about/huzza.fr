@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 News.destroy_all
+StarDare.destroy_all
 Participation.destroy_all
 UserSendDare.destroy_all
 Dare.destroy_all
@@ -27,3 +28,5 @@ notif2 = News.create!(user: admin, friend: admin2, event: dare2, occasion: "dare
 
 Follow.create!(user: admin, follower: admin2)
 Follow.create!(user: admin2, follower: admin)
+
+StarDare.create!(user: admin, dare: dare1)
