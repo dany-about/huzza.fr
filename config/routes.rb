@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   root "home#index"
   end
 
-  devise_for :users
+  devise_for :users, controllers: {
+      omniauth_callbacks: 'users/omniauth_callbacks'
+  }
+
+  post '/sign_up_validation', to: 'users/omniauth_callbacks#sign_up_validation'
 
   # Dares route
   resources :dares

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_12_072621) do
+ActiveRecord::Schema.define(version: 2019_03_13_092830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,20 @@ ActiveRecord::Schema.define(version: 2019_03_12_072621) do
     t.index ["difficulty_rater_id"], name: "index_difficulty_ratings_on_difficulty_rater_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "friend_id"
+    t.string "event_type"
+    t.bigint "event_id"
+    t.string "occasion"
+    t.boolean "read", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_type", "event_id"], name: "index_notifications_on_event_type_and_event_id"
+    t.index ["friend_id"], name: "index_notifications_on_friend_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "participations", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "dare_id"
@@ -79,6 +93,19 @@ ActiveRecord::Schema.define(version: 2019_03_12_072621) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["participation_id"], name: "index_proofs_on_participation_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "provider"
+    t.string "uid"
+    t.string "access_token_secret"
+    t.string "refresh_token"
+    t.datetime "expires_at"
+    t.text "auth"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_services_on_user_id"
   end
 
   create_table "user_send_dares", force: :cascade do |t|
@@ -100,13 +127,26 @@ ActiveRecord::Schema.define(version: 2019_03_12_072621) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uid"
+    t.string "provider"
+    t.string "name"
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "dares", "categories"
   add_foreign_key "difficulty_ratings", "dares"
+  add_foreign_key "notifications", "users"
   add_foreign_key "participations", "users"
   add_foreign_key "proofs", "participations"
+  add_foreign_key "services", "users"
 end

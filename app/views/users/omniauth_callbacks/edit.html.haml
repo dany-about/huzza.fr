@@ -1,0 +1,10 @@
+%h2.title.is-3 Perfil
+%hr
+
+= form_tag '/sign_up_validation', method: :post do
+  %ul
+     - @users.errors.full_messages.each do |error|
+       %li= error
+
+         .field
+           %label{ for: "user_username", class: "label" } Nombre de usuario

@@ -2,8 +2,17 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
+  def self.from_omniauth(auth)
+
+    where(provider: auth['provider'], uid: auth['uid']).first_or_create do |user|
+      user.email = auth['info']['email']
+      user.password = (0...20).map { (65 + rand(26)).chr }.join
+        # user.name = auth['info']['name']
+     # user.image = auth['info']['image']
+    end
+  end
 
   has_many :created_dares, class_name: "Dare"
   has_many :participations
@@ -24,12 +33,12 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   # User Mailer
-  after_create :welcome_send
+ # after_create :welcome_send
 
   # Welcome Email
-  def welcome_send
-    UserMailer.welcome_email(self).deliver_now
-  end
+ # def welcome_send
+ #   UserMailer.welcome_email(self).deliver_now
+ # end
 
 
 end
