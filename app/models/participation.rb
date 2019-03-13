@@ -7,6 +7,7 @@ class Participation < ApplicationRecord
   # Polymorphic association 
   has_many :news, as: :event
 
+  # Validations
   validate :deadline_in_futur
   validate :cant_participate_twice
 
