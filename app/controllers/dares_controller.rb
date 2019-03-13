@@ -1,6 +1,6 @@
 class DaresController < ApplicationController
   before_action :set_dare, only: [:show, :update, :destroy]
-  after_create :notify_friends
+  after_create :notify_followers
   before_action :set_user_in_js
 
   # GET /dares
@@ -63,8 +63,8 @@ class DaresController < ApplicationController
     end
   end
 
-  def notify_friends
-    current_user.notify_friends(event: @dare, occasion: "dare_created")
+  def notify_followers
+    current_user.notify_followers(event: @dare, occasion: "dare_created")
   end
 
   private
