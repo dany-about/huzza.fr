@@ -1,52 +1,8 @@
-<header>
-  <nav class="navbar navbar-horizontal navbar-expand-lg navbar-light bg-white">
-    <div class="container">
-      <div class="collapse navbar-collapse" id="navbar-primary">
-        <a href="/products">
-        <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/10/3/1551881449-screenshot-2019-03-06-at-15-10-38.png" width="8%" height="8%" class="img-fluid">
-        <ul class="navbar-nav ml-lg-auto">
-          <li class="nav-item">
-            <a class="nav-link nav-link-icon" href="https://www.instagram.com/cats_of_instagram/">
-              <i class="fab fa-instagram"></i>
-              <span class="nav-link-inner--text">Instagram</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <% if user_signed_in? %>
-              <%= link_to  cart_path(current_user.cart), class:"nav-link nav-link-icon" do %>
-                <i class="fas fa-shopping-cart"></i>
-                <span class="nav-link-inner--text d-lg-primary">Panier
-                  <%= if current_user.cart != nil then "(#{current_user.cart.products.count})" end %>
-                  </span>
-              <% end %>
-              </li>
-              <li class="nav-item">
-              <%= link_to edit_user_registration_path, method: "GET" do %>
-                <button type="button" class="btn btn-soft-primary btn-icon btn-sm"> Profil </button>
-              <% end %>
-              </li>
-              <li class="nav-item">
-              <% if current_user.is_admin %>
-                <%= link_to admin_path, method: "GET" do %>
-                  <button type="button" class="btn btn-soft-warning btn-icon btn-sm"> Dashboard </button>
-                <% end %>
-              <% end %>
-              </li>
-              <li class="nav-item">
-              <%= link_to destroy_user_session_path, method: "DELETE" do %>
-                <button type="button" class="btn btn-soft-danger btn-icon btn-sm"> Déconnexion </button>
-              <% end %>
-            <% else %>
-              <%= link_to new_user_session_path do %>
-                <button type="button" class="btn btn-soft-primary btn-icon btn-sm"> Connexion </button>
-              <% end %>
-              <%= link_to new_user_registration_path, method: "GET" do %>
-                <button type="button" class="btn btn-soft-success btn-icon btn-sm"> Inscription </button>
-              <% end %>
-            <% end %>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</header>
+<%= content_tag :li do %>
+<%= link_to 'Switch to English', locale :en %>
+<% end unless current_page?(locale: :en) %>
+
+<%= link_to 'Switch to English', locale :fr %>
+<% end unless current_page?(locale: :fr) %>
+
+<h1><%= :greetings %></h1>
