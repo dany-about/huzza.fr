@@ -1,6 +1,6 @@
 <div class="container">
   <div class="col-md-9 mx-auto">
-    <div class="card" style="margin-bottom: -0.2px;border-width: 3px;border-color: #27ae60">
+    <div class="card" style="margin-bottom: -0px;border-width: 3px;border-color: #27ae60">
         <div class="row row-grid" style="margin-top: -1rem">
           <a href="#" class="ml-0">
             <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/11/1/1552315427-noe-pp.jpg" class="avatar rounded-circle avatar-lg shadow hover-shadow-lg" style="margin-left:-0.5rem;margin-top:-1rem">
@@ -58,16 +58,14 @@
       <div class="card-body">
         <div class="row row-grid mx-auto my-auto">
           <div class="col-lg-12">
-            <div class="row">
-              <div class="col-6">
-                <a href="https://image.noelshack.com/fichiers/2019/11/3/1552477353-unadjustednonraw-thumb-96dc.jpg" data-fancybox="group" data-caption="My caption">
-                  <img src="https://image.noelshack.com/fichiers/2019/11/3/1552477353-unadjustednonraw-thumb-96dc.jpg" class="img-fluid rounded">
-                </a>
-              </div>
-              <div class="col-6">
-                <a href="https://lemag.nikonclub.fr/wp-content/uploads/2017/07/08.jpg" data-fancybox="group" data-caption="My caption">
-                  <img src="https://lemag.nikonclub.fr/wp-content/uploads/2017/07/08.jpg" class="img-fluid rounded">
-                </a>
+            <div class="row" style="display: grid; grid-template-columns: 1fr 1fr;">
+              <div>0</div>
+              <div style="text-align: right">100</div>
+            </div>
+            <div class="row" style="display: grid; grid-template-columns: 1fr;">
+              <div style="text-align: right">
+                <input type="range" class="custom-range" min="0" max="100" step="1" id="customRange3">
+                <button class="btn btn-sm btn-soft-success" type="submit">Submit</button>
               </div>
             </div>
           </div>
