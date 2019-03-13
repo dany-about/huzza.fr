@@ -26,6 +26,10 @@ class User < ApplicationRecord
   has_many :user_received_dares, class_name: "UserSendDare", foreign_key: "recipient_id"
   has_many :received_dares, through: :user_received_dares, source: :dare
 
+  # Starring Dares
+  has_many :star_dares
+  has_many :starred_dares, through: :star_dares, source: :dare
+  
   # Miscellaneous
   has_many :news, foreign_key: "user_id"
   has_many :reactions
