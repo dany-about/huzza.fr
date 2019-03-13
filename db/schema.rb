@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_12_164414) do
+ActiveRecord::Schema.define(version: 2019_03_13_010557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,24 @@ ActiveRecord::Schema.define(version: 2019_03_12_164414) do
     t.datetime "updated_at", null: false
     t.index ["dare_id"], name: "index_difficulty_ratings_on_dare_id"
     t.index ["difficulty_rater_id"], name: "index_difficulty_ratings_on_difficulty_rater_id"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "follower_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
+    t.index ["user_id"], name: "index_follows_on_user_id"
+  end
+
+  create_table "friend_requests", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "follower_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follower_id"], name: "index_friend_requests_on_follower_id"
+    t.index ["user_id"], name: "index_friend_requests_on_user_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -117,6 +135,8 @@ ActiveRecord::Schema.define(version: 2019_03_12_164414) do
 
   add_foreign_key "dares", "categories"
   add_foreign_key "difficulty_ratings", "dares"
+  add_foreign_key "follows", "users"
+  add_foreign_key "friend_requests", "users"
   add_foreign_key "news", "users"
   add_foreign_key "participations", "users"
   add_foreign_key "reactions", "participations"
