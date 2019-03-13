@@ -2,11 +2,12 @@
 <html>
   <head>
   </head>
-
   <body>
+  <br><br><br><br><br>
+
     <div container>
-      <div><br><br><br><br><br>
-        <%= render 'shared/testdany', dare: News.find(1).event, disclaimer_type: News.find(1).occasion, status: News.find(1).read %> 
+      <div id="ok">
+        <%= render 'shared/testdany', dare: News.all[0].event, disclaimer_type: News.all[0].occasion, status: News.all[0].read %> 
       </div>
     </div>
   </body>

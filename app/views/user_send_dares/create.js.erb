@@ -1,3 +1,1 @@
-<% UserSendDare.create!(dare: Dare.find(params[:dare]), sender: current_user, recipient: User.find(params[:recipient])) %>
-<% current_user.notify_followers(Dare.find(params[:dare]), "dare_sent") %>
-<% User.find(params[:recipient]).notify_followers(Dare.find(dareId), "dare_received") %>
+$("#ok").html("<%= j (render 'shared/testdany', dare: News.all[0].event, disclaimer_type: News.all[0].occasion, status: News.all[0].read) %>")
