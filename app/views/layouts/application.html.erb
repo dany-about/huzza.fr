@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Dare U</title>
-    
+    <title>TADA</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,10 +10,10 @@
   </head>
 
   <body>
-
     <%= yield %>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
+    <%= render 'layouts/footer'%>
 
   </body>
 </html>

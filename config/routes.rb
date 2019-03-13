@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/test_card'
   get 'home/testdany'
+  get 'users/showtest'
 
   resources :dares
   resources :participations, only: [:create, :update]

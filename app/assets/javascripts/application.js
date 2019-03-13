@@ -21,6 +21,8 @@
 
 //= require assets/js/purpose.core.js
 //= require assets/libs/swiper/dist/js/swiper.min.js
+//= require assets/libs/highlightjs/highlight.pack.min.js
+//= require assets/libs/clipboard/dist/clipboard.min.js
 //= require assets/js/purpose.js
 //= require assets/js/demo.js
 //= require assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js

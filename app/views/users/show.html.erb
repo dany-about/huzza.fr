@@ -1,22 +1,8 @@
-<!--
-<div class="container" style="display: grid; grid-template-columns:3fr 4fr 3fr; grid-template-rows: 2fr 8fr; grid-template-areas: 'header header header' 'body body body'; grid-column-gap: 10px; grid-row-gap: 10px">
-  <div class="head" style="grid-area: header">
-    <div>1</div>
-    <div>2</div>
-    <div>3</div>
-  </div>
-  <div class="bod" style="grid-area: body">
-    <div>4</div>
-    <div>5</div>
-    <div>6</div>
-  </div>
-</div>
--->
 <head>
 	<style>
 		
 		html,body,.flex-grid {
-	    height:100%;
+	    height: 100%;
 	    overflow: hidden;
 	    position: relative;
 		}
@@ -29,11 +15,11 @@
 		}
 
 		#header {
-			height: 30%;
+			height: 35%;
 		}
 
 		#content {
-			height: 70%;
+			height: 65%;
 		}
 
 	</style>
@@ -43,9 +29,15 @@
 
 	<div class="row" id="header">
 	
-		  <div class="col-3" style="background-color: red;"><p>col-3</p></div>
-		  <div class="col-6" style="background-color: tomato;"><p>col-6</p></div>
-		  <div class="col-3" style="background-color: teal;"><p>col-3</p></div>
+		  <div class="col-3">
+        <%= render 'users/badges' %>
+      </div>
+		  <div class="col-6">
+        <%= render 'users/profile' %>
+      </div>
+		  <div class="col-3">
+        <%= render 'users/information' %>
+      </div>
 	
 	</div>
 
