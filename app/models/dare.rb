@@ -5,7 +5,7 @@ class Dare < ApplicationRecord
 
   # Participations and Reactions
   has_many :participations
-  has_many :participants, through: :participations, class_name: "User"
+  has_many :participants, through: :participations, source: :user
   has_many :reactions, through: :participations
 
   # Sending and receiving Dares
@@ -13,6 +13,11 @@ class Dare < ApplicationRecord
   has_many :senders, through: :user_send_dares, source: :user, foreign_key: "sender_id"
   has_many :recipients, through: :user_send_dares, source: :user, foreign_key: "recipient_id"
   
+  # Starring Dares
+  has_many :star_dares
+  has_many :starrers, through: :star_dares, source: :user
+
+
   # Polymorphic association for News
   has_many :news, as: :event
 
@@ -20,6 +25,7 @@ class Dare < ApplicationRecord
   validates :description, presence: true, length: { in: 100..1000}
   validates :title, presence: true, length: { minimum: 5, maximum: 140}
 
+  
   # Assuming difficulty ranges from 0 to 100
   def difficulty
     diffs = [] 

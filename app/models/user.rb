@@ -8,7 +8,7 @@ class User < ApplicationRecord
   friendly_id :email, use: :slugged
 
   # Dares & Participations
-  has_many :created_dares, class_name: "Dare"
+  has_many :created_dares, class_name: "Dare", foreign_key: "creator_id"
   has_many :participations
   has_many :participated_dares, through: :participations, source: :dare
   
@@ -26,12 +26,45 @@ class User < ApplicationRecord
   has_many :user_received_dares, class_name: "UserSendDare", foreign_key: "recipient_id"
   has_many :received_dares, through: :user_received_dares, source: :dare
 
+  # Starring Dares
+  has_many :star_dares
+  has_many :starred_dares, through: :star_dares, source: :dare
+
+  
   # Miscellaneous
-  has_many :news, foreign_key: "user_id"
+  has_many :news
   has_many :reactions
+  has_many :difficulty_ratings, foreign_key: "difficulty_rater_id"
 
   def achieved_dares
     self.participated_dares.joins(:participations).where({ participations: {is_achieved: true} }).reverse
+  end
+
+  def rank
+  end
+
+  def badge
+    case self.rank
+    when 1 then return  end
+    when 2 then return  end
+    when 3 then return  end
+    when 4 then return  end
+    when 5 then return  end
+    when 6 then return  end
+    when 7 then return  end
+    when 8 then return  end
+    when 9 then return  end
+    when 10 then return  end
+    when 11 then return  end
+    when 12 then return  end
+    when 13 then return  end
+    when 14 then return  end
+    when 15 then return  end
+    when 16 then return  end
+    when 17 then return  end
+    when 18 then return  end
+    when 19 then return  end
+    when 20 then return  end
   end
 
   def friends
