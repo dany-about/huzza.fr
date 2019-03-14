@@ -6,7 +6,7 @@
 <% end %>
 
 <!-- Section << Achievements de mes amis >> -->
-<div class="container" style="margin-top: 60px">
+<div class="container">
   <table>
     <tbody>
       <% @network_news.each do |news| %>
@@ -14,11 +14,15 @@
         <!-- Il faudra voir comment on gère les participations qui sont "un-achieved", quand la preuve est rejetée -->
         <!-- status prend les valeurs true ou false selon que la notification a été lue -->
         <% if news.event.is_a?(Participation) %>
-          <%= render "shared/participation_card", participation: news.event, disclaimer: "yes", occasion: news.occasion, read: news.read %>
+          <div style="margin-top: 80px">
+            <%= render "shared/participation_card", participation: news.event, disclaimer: "yes", occasion: news.occasion, read: news.read %>
+          </div>
         <% end %>
         <!-- Si l'évènement est un défi (i.e. défi créé, défi lancé ou défi relevé; disclaimer_type peut prendre les valeurs: "dare_created", "dare_sent" ou "dare_accepted") -->
         <% if news.event.is_a?(Dare) %>
-          <%= render "shared/dare", dare: news.event, disclaimer: "yes", occasion: news.occasion, read: news.read %>
+          <div style="margin-top: 80px">
+            <%= render "shared/dare", dare: news.event, disclaimer: "yes", occasion: news.occasion, read: news.read %>
+          </div>
         <% end %>
       <% end %>
     </tbody>
