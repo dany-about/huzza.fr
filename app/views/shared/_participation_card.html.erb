@@ -11,6 +11,8 @@
             <p class="badge badge-secondary"><%= participation.user.full_name %> - created</p>
           <% when "participation_achieved" %>
             <p class="badge badge-secondary"><%= participation.user.full_name %> - a réussi !</p>
+          <% when "achievement_rejected" %>          
+            <p class="badge badge-secondary">La communauté remet en question la réalisation de <%= participation.user.full_name %> !</p>          
           <% end %>
         <% end %>
         <a href="#" class="ml-9">
@@ -67,8 +69,15 @@
     <div class="card collapse">
       <%= render 'shared/card_elements/rating', dare: participation.dare %>
     </div>
-    <div class="card collapse">
-      <%= render 'shared/card_elements/proof', participation: participation %>
-    </div>
+    <% case occasion %>
+    <% when "participation_created" %>
+      <div class="card collapse">
+        <%= render 'shared/card_elements/proof', participation: participation %>
+      </div>
+    <% when "participation_achieved", "achievement_rejected" %>
+      <div class="card collapse">
+        <%= render 'shared/card_elements/proof', participation: participation %>
+      </div>
+    <% end %>
   </div>
 </div>
