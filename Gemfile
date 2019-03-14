@@ -71,10 +71,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # custom gems begin
 gem 'devise'
-<<<<<<< HEAD
 gem 'omniauth-facebook'
-=======
 gem 'friendly_id', '~> 5.2.4'
 gem 'table_print'
->>>>>>> delivery-nans
 # custom gems end
