@@ -16,7 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
-//= require event_creation
+//= require participation_card
 //= require dropdowns
 
 //= require assets/js/purpose.core.js

@@ -15,49 +15,21 @@
       </div>
 
       <div class="list-group list-group-flush">
-
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="d-flex align-items-center" data-toggle="tooltip" data-placement="right" data-title="2 hrs ago">
-            <div>
-              <img alt="Image placeholder" src="http://sunrift.com/wp-content/uploads/2014/12/Blake-profile-photo-square.jpg" class="avatar rounded-circle avatar-sm shadow hover-shadow-lg">
-            </div>
-            <div class="flex-fill ml-3">
-              <div class="h6 text-sm mb-0">Alex Michael <small class="float-right text-muted">2 hrs ago</small></div>
-              <p class="text-sm lh-140 mb-0">
-                Some quick example text to build on the card title.
-              </p>
-            </div>
-          </div>
-        </a>
-
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="d-flex align-items-center" data-toggle="tooltip" data-placement="right" data-title="3 hrs ago">
-            <div>
-              <img alt="Image placeholder" src="https://dieteticallyspeaking.com/wp-content/uploads/2017/01/profile-square.jpg" class="avatar rounded-circle avatar-sm shadow hover-shadow-lg">
-            </div>
-            <div class="flex-fill ml-3">
-              <div class="h6 text-sm mb-0">Sandra Wayne <small class="float-right text-muted">3 hrs ago</small></div>
-              <p class="text-sm lh-140 mb-0">
-                Some quick example text to build on the card title.
-              </p>
+        <% participation.comments.each do |comment| %>
+          <div class="list-group-item list-group-item-action">
+            <div class="d-flex align-items-center" data-toggle="tooltip" data-placement="right" data-title="2 hrs ago">
+              <div>
+                <img alt="Image placeholder" src="http://sunrift.com/wp-content/uploads/2014/12/Blake-profile-photo-square.jpg" class="avatar rounded-circle avatar-sm shadow hover-shadow-lg">
+              </div>
+              <div class="flex-fill ml-3">
+                <div class="h6 text-sm mb-0"><%= comment.user.full_name %><small class="float-right text-muted"><%= ((Time.current - comment.created_at)/1.hour).round %> hours ago</small></div>
+                <p class="text-sm lh-140 mb-0">
+                  <%= comment.content %>
+                </p>
+              </div>
             </div>
           </div>
-        </a>
-
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="d-flex align-items-center" data-toggle="tooltip" data-placement="right" data-title="5 hrs ago">
-            <div>
-              <img alt="Image placeholder" src="https://images.pexels.com/photos/555790/pexels-photo-555790.png?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="avatar rounded-circle avatar-sm shadow hover-shadow-lg">
-            </div>
-            <div class="flex-fill ml-3">
-              <div class="h6 text-sm mb-0">Jason Miller <small class="float-right text-muted">5 hrs ago</small></div>
-              <p class="text-sm lh-140 mb-0">
-                Some quick example text to build on the card title.
-              </p>
-            </div>
-          </div>
-        </a>
-
+        <% end %>
       </div>
       <div class="card-footer">
         <div class="row align-items-center">
@@ -70,6 +42,9 @@
             <form class="card-comment-box" role="form">
               <textarea rows="1" class="form-control" data-toggle="autosize" placeholder="Add a comment..."></textarea>
             </form>
+          </div>
+          <div class="col-4 col-md-3 text-right">
+            <button class="btn btn-sm btn-outline-success" type="submit">Post</button>
           </div>
         </div>
       </div>

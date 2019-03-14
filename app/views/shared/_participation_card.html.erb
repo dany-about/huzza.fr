@@ -8,7 +8,7 @@
         <%= link_to user_path(participation.user), class:"ml-4" do %>
           <% case occasion %>
           <% when "participation_created" %>
-            <p class="badge badge-secondary"><%= participation.user.first_name %> - participe :</p>
+            <p class="badge badge-secondary"><%= participation.user.first_name %> <%= participation.user.last_name %> - created</p>
           <% when "participation_achieved" %>
             <p class="badge badge-secondary"><%= participation.user.first_name %> - a réussi !</p>
           <% end %>
@@ -20,13 +20,13 @@
       <div class="card-body pt-0">
         <div class="row row-grid" style="margin-left:-0.5rem;">
           <div class="col-sm-2 text-center">
-            <p class="card-text"><%= participation.user.rank %></p>
+            <p class="card-text">Level <%= participation.user.rank %></p>
             <div class="icon bg-gradient-success text-white rounded-circle icon-shape hover-rotate-360">
               <h4 style="margin-top: 11px">🤠</h4>
             </div>
           </div>
           <div class="col-sm-8 my-auto text-center">
-            <h5 class="card-title"><%= participation.dare.title %></h5>
+            <h5 class="card-title" style="text-align: justify; text-justify: inter-word"><%= participation.dare.title %></h5>
           </div>
           <div class="col-sm-2 text-center">
             <% if StarDare.find_by(user: current_user, dare: participation.dare) == nil %>
@@ -36,9 +36,21 @@
                 </button>
               <% end %>
             <% else %>
-              <!-- ELEMENT A METTRE SI LE DEFI EST DEJA STARRED -->
+              <%= link_to star_dare_path(StarDare.find_by(dare: participation.dare, user: current_user)), method: "DELETE", remote: true do %>
+                <button type="button" class="btn-md btn-dark rounded-circle btn-icon-only" style="font-size:19px;margin-top:-1rem">
+                  <p class="ml-1 my-auto hover-rotate-360">⭐</p>
+                </button>
+              <% end %>
             <% end %>
-            <button type="button" class="btn-md btn-secondary rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
+            <% if Reaction.find_by(user: current_user, participation: participation) == nil %>
+              <%= link_to reactions_path(participation: participation), method: "POST", remote: true do %>
+                <button type="button" class="btn-md btn-secondary rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
+              <% end %>
+            <% else %>
+              <%= link_to reaction_path(Participation.find_by(participation: participation, user: current_user)), method: "DELETE", remote: true do %>
+      <!-- ELEMENT A METTRE SI J'AI DEJA REAGI' -->        
+              <% end %>
+            <% end %>
           </div>
         </div>
       </div>

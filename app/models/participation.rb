@@ -3,9 +3,9 @@ class Participation < ApplicationRecord
   belongs_to :dare
   has_many :reactions
 
-
-  # Polymorphic association 
+  # Polymorphic associations
   has_many :news, as: :event
+  has_many :comments, as: :commentable
 
   # Validations
   validate :deadline_in_futur
@@ -18,7 +18,7 @@ class Participation < ApplicationRecord
   end
 
   def cant_participate_twice
-    if Participation.where({user: self.user, dare: self.dare}).count > 0
+    if Participation.find_by(user: self.user, dare: self.dare) != nil
       errors.add(:dare, "déjà inscrit !")
     end
   end

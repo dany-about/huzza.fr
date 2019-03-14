@@ -17,13 +17,14 @@ class Dare < ApplicationRecord
   has_many :star_dares
   has_many :starrers, through: :star_dares, source: :user
 
-
-  # Polymorphic association for News
+  # Polymorphic associations for News & Comments
   has_many :news, as: :event
+  has_many :comments, as: :commentable
+  has_many :participation_comments, through: :participations, source: :comments
 
   # Validations
-  validates :description, presence: true, length: { in: 100..1000}
-  validates :title, presence: true, length: { minimum: 5, maximum: 140}
+  validates :description, presence: true, length: { in: 100..1000 }
+  validates :title, presence: true, length: { minimum: 5, maximum: 140 }
 
   
   # Assuming difficulty ranges from 0 to 100
