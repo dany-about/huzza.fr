@@ -1,0 +1,62 @@
+<div class="container ">
+  <div class="col-md-9 mx-auto participationCard">
+    <div class="card" style="margin-bottom: -0.2px;border-width: 3px;border-color: #27ae60">
+      <div class="row row-grid" style="margin-top: -1rem">
+        <%= link_to user_path(participation.user), class:"ml-0" do %>
+          <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/11/1/1552315427-noe-pp.jpg" class="avatar rounded-circle avatar-lg shadow hover-shadow-lg" style="margin-left:-0.5rem;margin-top:-1rem">
+        <% end %>
+        <%= link_to user_path(participation.user), class:"ml-4" do %>
+          <% case occasion %>
+          <% when "participation_created" %>
+            <p class="badge badge-secondary"><%= participation.user.first_name %> - participe :</p>
+          <% when "participation_achieved" %>
+            <p class="badge badge-secondary"><%= participation.user.first_name %> - a réussi !</p>
+          <% end %>
+        <% end %>
+        <a href="#" class="ml-9">
+          <p class="badge badge-lg badge-success badge-circle">3</p>
+        </a>
+      </div>
+      <div class="card-body pt-0">
+        <div class="row row-grid" style="margin-left:-0.5rem;">
+          <div class="col-sm-2 text-center">
+            <p class="card-text"><%= participation.user.rank %></p>
+            <div class="icon bg-gradient-success text-white rounded-circle icon-shape hover-rotate-360">
+              <h4 style="margin-top: 11px">🤠</h4>
+            </div>
+          </div>
+          <div class="col-sm-8 my-auto text-center">
+            <h5 class="card-title"><%= participation.dare.title %></h5>
+          </div>
+          <div class="col-sm-2 text-center">
+            <% if StarDare.find_by(user: current_user, dare: participation.dare) == nil %>
+              <%= link_to star_dares_path(dare: participation.dare), method: "POST", remote: true do %>
+                <button type="button" class="btn-md btn-secondary rounded-circle btn-icon-only" style="font-size:19px;margin-top:-1rem">
+                  <p class="ml-1 my-auto hover-rotate-360">⭐</p>
+                </button>
+              <% end %>
+            <% else %>
+              <!-- ELEMENT A METTRE SI LE DEFI EST DEJA STARRED -->
+            <% end %>
+            <button type="button" class="btn-md btn-secondary rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row row-grid mr-auto ml-auto collapse">
+      <%= render 'shared/card_elements/tab_btns', participation: participation %>
+    </div>
+    <div class="card collapse">
+      <%= render 'shared/card_elements/description', participation: participation %>
+    </div>
+    <div class="card collapse">
+      <%= render 'shared/card_elements/comments', participation: participation %>
+    </div>
+    <div class="card collapse">
+      <%= render 'shared/card_elements/rating', participation: participation %>
+    </div>
+    <div class="card collapse">
+      <%= render 'shared/card_elements/proof', participation: participation %>
+    </div>
+  </div>
+</div>

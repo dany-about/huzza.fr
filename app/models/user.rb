@@ -41,11 +41,17 @@ class User < ApplicationRecord
   end
 
   def rank
+    # EXP FORMULA
+    def f(i)
+      f = 100
+      i == 0 ? (return 0) : ( (i-1).times { f = f * 1.5 + 50 }; return f.round(-1) )
+    end
+    20.times { |i| if (f(i)..f(i+1)-1).include?(self.elo_points) then return i+1 end }
   end
 
   def badge
     case self.rank
-    when 1 then return "" 
+    when 1 then return "🤠" 
     when 2 then return "" 
     when 3 then return "" 
     when 4 then return "" 
