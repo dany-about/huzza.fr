@@ -1,5 +1,5 @@
 <div class="card-body">
-  <% if DifficultyRating.find_by(difficulty_rater: current_user, dare: participation.dare) == nil %>
+  <% if DifficultyRating.find_by(difficulty_rater: current_user, dare: dare) == nil %>
     <div class="row row-grid mx-auto my-auto">
       <div class="col-lg-12">
         <div class="row" style="display: grid; grid-template-columns: 1fr 1fr;">
@@ -10,7 +10,7 @@
           <div style="text-align: right">
             <input type="range" class="custom-range" min="0" max="100" step="1" id="customRange3">
             <!-- LIER LE RESULTAT DU VOTE AU BOUTON SUBMIT (au lieu de rating: 50) -->
-            <%= link_to difficulty_ratings_path(dare: participation.dare, rating: 50), method: "POST", remote: true do %>
+            <%= link_to difficulty_ratings_path(dare: dare, rating: 50), method: "POST", remote: true do %>
               <button class="btn btn-sm btn-soft-success" type="submit">Submit</button>
             <% end %>
           </div>

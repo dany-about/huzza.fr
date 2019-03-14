@@ -15,4 +15,15 @@
       </div>
     </div>
   </div>
+
+  <!-- Si le current_user est aussi le participant, il peut upload des proofs -->
+  <% if current_user = participation.user %>
+    <!-- Bouton pour upload sa preuve (attacher la photo) -->
+
+
+  
+    <%= link_to participation_path(participation), method: "PATCH", remote: true do %>
+      <!-- Bouton pour submit ses preuves pour valider la réalisation du défi -->
+    <% end %>
+  <% end %>
 </div>

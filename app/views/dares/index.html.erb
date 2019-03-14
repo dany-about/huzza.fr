@@ -6,8 +6,6 @@
   <%= render "shared/friendfeed", user: friend %>
 <% end %>
 
-
-
 <!-- Section << Achievements de mes amis >> -->
 
 <table>
@@ -20,6 +18,7 @@
         <%= render "shared/participation", participation: news.event, disclaimer: "yes", disclaimer_type: news.occasion, status: news.read %>
       <% end %>
       <!-- Si l'évènement est un défi (i.e. défi créé, défi lancé ou défi relevé; disclaimer_type peut prendre les valeurs: "dare_created", "dare_sent" ou "dare_accepted") -->
+
       <% if news.event.is_a(Dare) %>
         <%= render "shared/dare", dare: news.event, disclaimer: "yes", disclaimer_type: news.occasion, status: news.read %>
       <% end %>

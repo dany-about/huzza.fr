@@ -12,7 +12,7 @@ module Naboo
     config.load_defaults 5.2
 
     # Translation config
-    config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '**', '**', '*.{rb,yml}').to_s]
     # Default language EN
     config.i18n.default_locale = :en
     # Settings in config/environments/* take precedence over those specified here.

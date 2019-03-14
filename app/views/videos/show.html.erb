@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @video.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @video.description %>
+</p>
+
+<!-- Custom video.js -->
+<video id='my-video' class='video-js' controls preload='auto' width='640' height='264' poster='<%= url_for(@video.thumbnail) %>' data-setup='{}'>
+  <source src='<%= url_for(@video.clip) %>' type='video/mp4'>
+</video>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<%= link_to 'Edit', edit_video_path(@video) %> |
+<%= link_to 'Back', videos_path %>
+
+<script>
+    'use strict';
+
+    var video = videojs('my-video');
+    video.socialShare({
+        facebook: { // optional, includes a Facebook share button (See the [Facebook documentation](https://developers.facebook.com/docs/sharing/reference/share-dialog) for more information)
+            shareUrl: '', // optional, defaults to window.location.href
+            shareImage: '', // optional, defaults to the Facebook-scraped image
+            shareText: '',  // optional
+            app_id: '', // optional, facebook app_id to use (if not specified, the plugin will try to
+                        // use an existing FB Javascript object, or it will try to scrape the app_id from the
+                        // <meta property="fb:app_id"> element in the document
+        },
+        twitter: { // optional, includes a Twitter share button (See the [Twitter documentation](https://dev.twitter.com/web/tweet-button/web-intent) for more information)
+            handle: '', // optional, appends `via @handle` to the end of the tweet
+            shareUrl: '', // optional, defaults to window.location.href
+            shareText: ''
+        },
+        embed: { // optional, includes an embed code button
+            embedMarkup: 'YOURMARKUPHERE' // required
+        }
+    });
+</script>

@@ -11,6 +11,8 @@
             <p class="badge badge-secondary"><%= participation.user.full_name %> - created</p>
           <% when "participation_achieved" %>
             <p class="badge badge-secondary"><%= participation.user.full_name %> - a réussi !</p>
+          <% when "achievement_rejected" %>          
+            <p class="badge badge-secondary">La communauté remet en question la réalisation de <%= participation.user.full_name %> !</p>          
           <% end %>
         <% end %>
         <a href="#" class="ml-9">
@@ -21,7 +23,7 @@
         <div class="row row-grid" style="margin-left:-0.5rem;">
           <div class="col-sm-2 text-center">
             <p class="card-text">Level <%= participation.user.rank %></p>
-            <div class="icon bg-gradient-success text-white rounded-circle icon-shape hover-rotate-360">
+            <div class="<%= participation.user.badge[:animation] %>">
               <h4 style="margin-top: 11px"><%= participation.user.badge[:emote] %></h4>
             </div>
           </div>
@@ -56,19 +58,26 @@
       </div>
     </div>
     <div class="row row-grid mr-auto ml-auto collapse">
-      <%= render 'shared/card_elements/tab_btns', participation: participation %>
+      <%= render 'shared/card_elements/tab_btns' %>
     </div>
     <div class="card collapse">
-      <%= render 'shared/card_elements/description', participation: participation %>
+      <%= render 'shared/card_elements/description', dare: participation.dare %>
     </div>
     <div class="card collapse">
       <%= render 'shared/card_elements/comments', participation: participation %>
     </div>
     <div class="card collapse">
-      <%= render 'shared/card_elements/rating', participation: participation %>
+      <%= render 'shared/card_elements/rating', dare: participation.dare %>
     </div>
-    <div class="card collapse">
-      <%= render 'shared/card_elements/proof', participation: participation %>
-    </div>
+    <% case occasion %>
+    <% when "participation_created" %>
+      <div class="card collapse">
+        <%= render 'shared/card_elements/proof', participation: participation %>
+      </div>
+    <% when "participation_achieved", "achievement_rejected" %>
+      <div class="card collapse">
+        <%= render 'shared/card_elements/proof', participation: participation %>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -4,6 +4,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.1'
 # Langage selector
 gem 'browser'
+# VideoJS - Add social share
+gem 'videojs-ng-socialshare'
+# DotEnv
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'sendgrid-ruby'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
 # Use postgresql as the database for Active Record
@@ -65,6 +70,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # custom gems begin
 gem 'devise'
+gem 'omniauth-facebook'
 gem 'friendly_id', '~> 5.2.4'
 gem 'table_print'
 # custom gems end
