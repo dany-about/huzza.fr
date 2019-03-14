@@ -20,7 +20,7 @@
         <% if participation == nil %>
           <%= link_to participations_path(dare: dare), method: "POST", remote: true do %>
             <button type="button" class="btn btn-sm btn-soft-success">
-              Achieve it
+              Do it too
             </button>
           <% end %>
         <% elsif !participation.is_achieved %>
