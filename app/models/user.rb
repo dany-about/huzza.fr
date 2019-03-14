@@ -4,9 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
-
   def self.from_omniauth(auth)
-
     where(provider: auth['provider'], uid: auth['uid']).first_or_create do |user|
       user.email = auth['info']['email']
       user.password = (0...20).map { (65 + rand(26)).chr }.join
@@ -55,7 +53,6 @@ class User < ApplicationRecord
     self.participated_dares.joins(:participations).where({ participations: {is_achieved: true} }).reverse
   end
 
-
   # Active Storage Avatar Image
   has_one_attached :avatar
 
@@ -63,20 +60,18 @@ class User < ApplicationRecord
   after_create :welcome_send
 
   # Welcome Email
-
   def welcome_send
-
     UserMailer.welcome_email(self).deliver_now
+  end
 
+  # EXP FORMULA
+  def self.exp_rank(i)
+    f = 100
+    i == 1 ? (return 0) : ( (i-2).times { f = f * 1.5 + 50 }; return f.round(-1) )
   end
 
   def rank
-    # EXP FORMULA
-    def f(i)
-      f = 100
-      i == 0 ? (return 0) : ( (i-1).times { f = f * 1.5 + 50 }; return f.round(-1) )
-    end
-    20.times { |i| if (f(i)..f(i+1)-1).include?(self.elo_points) then return i+1 end }
+    20.times { |i| if (User.exp_rank(i+1)..User.exp_rank(i+2)-1).include?(self.elo_points) then return i+1 end }
   end
 
   def badge
@@ -120,7 +115,6 @@ class User < ApplicationRecord
     self.followers.each { |follower| 
       News.create!(user: follower, friend: self, event: event, occasion: occasion)
     }
-
   end
 
 
