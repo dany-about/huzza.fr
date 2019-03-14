@@ -43,7 +43,7 @@
               <% end %>
             <% end %>
             <% if Reaction.find_by(user: current_user, participation: participation) == nil %>
-              <%= link_to reactions_path(participation: participation), method: "POST", remote: true do %>
+              <%= link_to reactions_path(participation: participation, reaction: "strong"), method: "POST", remote: true do %>
                 <button type="button" class="btn-md btn-secondary rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
               <% end %>
             <% else %>
