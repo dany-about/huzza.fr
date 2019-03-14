@@ -5,20 +5,32 @@
     </div>
   </div>
   <br>
-  <div class="text-center" style="margin-top: 7px">
-    <% if Participation.find_by(dare: dare, user: current_user) == nil %>
-      <%= link_to participations_path(dare: dare), method: "POST", remote: true do %>
+  <div class="text-center" style="margin-top: 5px">
+    <div class="row" style="display: grid; grid-template-columns: 1fr 1fr;">
+      <div style="text-align: left; padding-left: 24px;">
+        <span class="badge badge-dot">
+          <i class="bg-danger"></i>104 participants
+        </span>
+        <span class="badge badge-dot">
+          <i class="bg-success"></i>809 achievers
+        </span>
+      </div>
+      <div style="text-align: right; padding-right: 24px;">
+        <% if Participation.find_by(dare: dare, user: current_user) == nil %>
+        <%= link_to participations_path(dare: dare), method: "POST", remote: true do %>
         <button type="button" class="btn btn-sm btn-soft-success">
-          Je participe aussi
+          Achieve it
         </button>
-      <% end %>
-    <% else %>
-      <!-- ELEMENT A METTRE SI JE PARTICIPE DEJA AU DEFI -->
-    <% end %>
-    <%= link_to user_send_dares_path(dare: dare, recipient: User.all[1].id), method: "POST", remote: true do %>
-      <button type="button" class="btn btn-sm btn-soft-warning">
-        Challenge a friend
-      </button>
-    <% end %>
+        <% end %>
+        <% else %>
+        <!-- ELEMENT A METTRE SI JE PARTICIPE DEJA AU DEFI -->
+        <% end %>
+        <%= link_to user_send_dares_path(dare: dare, recipient: User.all[1].id), method: "POST", remote: true do %>
+        <button type="button" class="btn btn-sm btn-soft-warning">
+          Challenge a friend
+        </button>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
