@@ -18,7 +18,7 @@
         <% end %>
         <!-- Si l'évènement est un défi (i.e. défi créé, défi lancé ou défi relevé; disclaimer_type peut prendre les valeurs: "dare_created", "dare_sent" ou "dare_accepted") -->
         <% if news.event.is_a?(Dare) %>
-          <%= render "shared/dare", dare: news.event, disclaimer: "yes", occasion: news.occasion, read: news.read %>
+          <%= render "shared/dare_card", dare: news.event, disclaimer: "yes", occasion: news.occasion, read: news.read %>
         <% end %>
       <% end %>
     </tbody>

@@ -56,16 +56,16 @@
       </div>
     </div>
     <div class="row row-grid mr-auto ml-auto collapse">
-      <%= render 'shared/card_elements/tab_btns', participation: participation %>
+      <%= render 'shared/card_elements/tab_btns' %>
     </div>
     <div class="card collapse">
-      <%= render 'shared/card_elements/description', participation: participation %>
+      <%= render 'shared/card_elements/description', dare: participation.dare %>
     </div>
     <div class="card collapse">
       <%= render 'shared/card_elements/comments', participation: participation %>
     </div>
     <div class="card collapse">
-      <%= render 'shared/card_elements/rating', participation: participation %>
+      <%= render 'shared/card_elements/rating', dare: participation.dare %>
     </div>
     <div class="card collapse">
       <%= render 'shared/card_elements/proof', participation: participation %>
