@@ -2,7 +2,18 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
+
+
+  def self.from_omniauth(auth)
+
+    where(provider: auth['provider'], uid: auth['uid']).first_or_create do |user|
+      user.email = auth['info']['email']
+      user.password = (0...20).map { (65 + rand(26)).chr }.join
+      user.name = auth['info']['image']
+      #user.avatar = auth['info']['image']
+    end
+  end
 
   extend FriendlyId
   friendly_id :email, use: :slugged
@@ -44,6 +55,21 @@ class User < ApplicationRecord
     self.participated_dares.joins(:participations).where({ participations: {is_achieved: true} }).reverse
   end
 
+
+  # Active Storage Avatar Image
+  has_one_attached :avatar
+
+  # User Mailer
+  after_create :welcome_send
+
+  # Welcome Email
+
+  def welcome_send
+
+    UserMailer.welcome_email(self).deliver_now
+
+  end
+
   def rank
     # EXP FORMULA
     def f(i)
@@ -55,21 +81,21 @@ class User < ApplicationRecord
 
   def badge
     case self.rank
-    when 1 then return {emote: "🤠", animation:""}
-    when 2 then return "" 
-    when 3 then return "" 
-    when 4 then return "" 
-    when 5 then return "" 
-    when 6 then return "" 
-    when 7 then return "" 
-    when 8 then return "" 
-    when 9 then return "" 
-    when 10 then return ""
-    when 11 then return ""
-    when 12 then return ""
-    when 13 then return ""
-    when 14 then return ""
-    when 15 then return ""
+    when 1 then return { emote: "🤠", animation:"icon bg-gradient-success text-white rounded-circle icon-shape hover-rotate-360" }
+    when 2 then return { emote: "", animation: "" }
+    when 3 then return { emote: "", animation: "" }
+    when 4 then return { emote: "", animation: "" }
+    when 5 then return { emote: "", animation: "" }
+    when 6 then return { emote: "", animation: "" }
+    when 7 then return { emote: "", animation: "" }
+    when 8 then return { emote: "", animation: "" }
+    when 9 then return { emote: "", animation: "" }
+    when 10 then return { emote: "", animation: "" }
+    when 11 then return { emote: "", animation: "" }
+    when 12 then return { emote: "", animation: "" }
+    when 13 then return { emote: "", animation: "" }
+    when 14 then return { emote: "", animation: "" }
+    when 15 then return { emote: "", animation: "" }
     when 16 then return ""
     when 17 then return ""
     when 18 then return ""
@@ -94,6 +120,7 @@ class User < ApplicationRecord
     self.followers.each { |follower| 
       News.create!(user: follower, friend: self, event: event, occasion: occasion)
     }
+
   end
 
 
