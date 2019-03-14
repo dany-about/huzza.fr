@@ -23,7 +23,9 @@
     </div>
 
     <div class="col-6">
-
+      <% @user.participations.each do |participation| %>
+        <%= render "shared/participation_card", participation: participation, occasion: nil, disclaimer: false %>
+      <% end %>
     </div>
 
     <div class="col-3">
