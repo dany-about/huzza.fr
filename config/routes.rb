@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   
   resources :dares, except: [:show, :destroy]
   resources :participations, only: [:create, :update]
+  resources :news, only: [:index]
 
   resources :user_send_dares, only: [:create, :update]
   resources :star_dares, only: [:create, :destroy]
