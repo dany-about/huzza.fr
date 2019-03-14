@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     if request.referer == sign_in_url
       super
     else
-     root_path
+     news_index_path
     end
   end
 
