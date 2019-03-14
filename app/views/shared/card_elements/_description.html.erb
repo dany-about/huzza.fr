@@ -5,17 +5,24 @@
     </div>
   </div>
   <% if Participation.find_by(dare: participation.dare, user: current_user) == nil %>
-    <%= link_to participations_path(dare: participation.dare), method: "POST", remote: true do %>
-      <button type="button" class="btn btn-outline-success">
-        I wanna do it!
-      </button>
-    <% end %>
+  <%= link_to participations_path(dare: participation.dare), method: "POST", remote: true do %>
+  <div class="text-center" style="margin-top: 7px">
+    <button type="button" class="btn btn-sm btn-soft-success">
+      Achieve it
+    </button>
+    <button type="button" class="btn btn-sm btn-soft-warning">
+      Challenge a friend
+    </button>
+  </div>
+  <% end %>
   <% end %>
   <% else %>
-      <!-- ELEMENT A METTRE SI JE PARTICIPE DEJA AU DEFI -->
+  <!-- ELEMENT A METTRE SI JE PARTICIPE DEJA AU DEFI -->
   <%= link_to user_send_dares_path(dare: participation.dare, recipient: User.all[1].id), method: "POST", remote: true do %>
-    <button type="button" class="btn btn-outline-warning">
-      I wanna invite a friend!
+  <div class="text-center" style="margin-top: 7px">
+    <button type="button" class="btn btn-sm btn-soft-warning">
+      Challenge a friend
     </button>
+  </div>
   <% end %>
 </div>

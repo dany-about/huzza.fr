@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'home/test_card'
   get 'home/testdany'
+  get 'home/chantier_card'
   get 'users/showtest'
 
   resources :dares, except: [:show, :destroy]
