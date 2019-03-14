@@ -55,7 +55,7 @@ class User < ApplicationRecord
 
   def badge
     case self.rank
-    when 1 then return "🤠" 
+    when 1 then return {emote: "🤠", animation:""}
     when 2 then return "" 
     when 3 then return "" 
     when 4 then return "" 
