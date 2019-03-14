@@ -1,16 +1,18 @@
 Rails.application.routes.draw do
   resources :videos
 
-    devise_for :users, only: :omniauth_callbacks, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
+  devise_for :users, only: :omniauth_callbacks, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
 
-    scope '/(:locale)', locale: /en|fr/ do
+  scope '/(:locale)', locale: /en|fr/ do
       devise_for :users, skip: :omniauth_callbacks
-    end
+  end
 
-    # Avatar route
-    resources :users do
-      resources :avatars, only: [:create]
-    end
+  post '/sign_up_validation', to: 'users/omniauth_callbacks#sign_up_validation'
+
+  # Avatar route
+  resources :users do
+    resources :avatars, only: [:create]
+  end
 
     # Need to be deleted
   get 'home/index'
@@ -36,9 +38,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root "home#index"
-
-
-  post '/sign_up_validation', to: 'users/omniauth_callbacks#sign_up_validation'
 
   # Dares route
   resources :dares
