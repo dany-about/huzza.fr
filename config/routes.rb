@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :videos
   scope "(:locale)", locale: /en|fr/ do  # Devise route
 
   # Need to be deleted
