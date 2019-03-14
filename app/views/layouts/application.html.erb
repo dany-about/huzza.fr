@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bucket</title>
+    <title>Huzza</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,10 +10,13 @@
   </head>
 
   <body>
+
   <%= render 'layouts/flash'%>
-  <%= render "layouts/navbar" %>
+  <%= render 'layouts/header' %>
+
     <%= yield %>
 
 
   </body>
+
 </html>

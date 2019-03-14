@@ -1,0 +1,28 @@
+<div class="card-body">
+  <% if DifficultyRating.find_by(difficulty_rater: current_user, dare: participation.dare) == nil %>
+    <div class="row row-grid mx-auto my-auto">
+      <div class="col-lg-12">
+        <div class="row" style="display: grid; grid-template-columns: 1fr 1fr;">
+          <div>0</div>
+          <div style="text-align: right">100</div>
+        </div>
+        <div class="row" style="display: grid; grid-template-columns: 1fr;">
+          <div style="text-align: right">
+            <input type="range" class="custom-range" min="0" max="100" step="1" id="customRange3">
+            <!-- LIER LE RESULTAT DU VOTE AU BOUTON SUBMIT (au lieu de rating: 50) -->
+            <%= link_to difficulty_ratings_path(dare: participation.dare, rating: 50), method: "POST", remote: true do %>
+              <button class="btn btn-sm btn-soft-success" type="submit">Submit</button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="progress-wrapper">
+      <span class="progress-tooltip" style="left: 82%;">82</span>
+      <div class="progress" style="height: 10px;">
+        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" style="width: 82%;"></div>
+      </div>
+    </div>
+  <% end %>
+</div>

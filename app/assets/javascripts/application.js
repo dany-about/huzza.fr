@@ -10,14 +10,21 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
+//= require jquery3
+//= require jquery_ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
 
+//= require participation_card
+//= require dropdowns
+
 //= require assets/js/purpose.core.js
 //= require assets/libs/swiper/dist/js/swiper.min.js
+//= require assets/libs/highlightjs/highlight.pack.min.js
+//= require assets/libs/clipboard/dist/clipboard.min.js
 //= require assets/js/purpose.js
 //= require assets/js/demo.js
 //= require assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js
 //= require assets/libs/swiper/dist/js/swiper.min.js
+//= require assets/libs/typed.js/lib/typed.min.js
