@@ -7,7 +7,7 @@
   <br>
   <div class="text-center" style="margin-top: 7px">
     <% participation = Participation.find_by(dare: dare, user: current_user) %>
-    <% if Participation.find_by(dare: dare, user: current_user) == nil %>
+    <% if participation == nil %>
       <%= link_to participations_path(dare: dare), method: "POST", remote: true do %>
         <button type="button" class="btn btn-sm btn-soft-success">
           Je participe aussi
