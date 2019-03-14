@@ -2,7 +2,18 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
+
+
+  def self.from_omniauth(auth)
+
+    where(provider: auth['provider'], uid: auth['uid']).first_or_create do |user|
+      user.email = auth['info']['email']
+      user.password = (0...20).map { (65 + rand(26)).chr }.join
+      user.name = auth['info']['image']
+      #user.avatar = auth['info']['image']
+    end
+  end
 
   extend FriendlyId
   friendly_id :email, use: :slugged
@@ -42,6 +53,21 @@ class User < ApplicationRecord
   
   def achieved_dares
     self.participated_dares.joins(:participations).where({ participations: {is_achieved: true} }).reverse
+  end
+
+
+  # Active Storage Avatar Image
+  has_one_attached :avatar
+
+  # User Mailer
+  after_create :welcome_send
+
+  # Welcome Email
+
+  def welcome_send
+
+    UserMailer.welcome_email(self).deliver_now
+
   end
 
   def rank
@@ -94,6 +120,7 @@ class User < ApplicationRecord
     self.followers.each { |follower| 
       News.create!(user: follower, friend: self, event: event, occasion: occasion)
     }
+
   end
 
 
