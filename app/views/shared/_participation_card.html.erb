@@ -8,9 +8,9 @@
         <%= link_to user_path(participation.user), class:"ml-4" do %>
           <% case occasion %>
           <% when "participation_created" %>
-            <p class="badge badge-secondary"><%= participation.user.first_name %> <%= participation.user.last_name %> - created</p>
+            <p class="badge badge-secondary"><%= participation.user.full_name %> - created</p>
           <% when "participation_achieved" %>
-            <p class="badge badge-secondary"><%= participation.user.first_name %> - a réussi !</p>
+            <p class="badge badge-secondary"><%= participation.user.full_name %> - a réussi !</p>
           <% end %>
         <% end %>
         <a href="#" class="ml-9">
@@ -22,7 +22,7 @@
           <div class="col-sm-2 text-center">
             <p class="card-text">Level <%= participation.user.rank %></p>
             <div class="icon bg-gradient-success text-white rounded-circle icon-shape hover-rotate-360">
-              <h4 style="margin-top: 11px">🤠</h4>
+              <h4 style="margin-top: 11px"><%= participation.user.badge[:emote] %></h4>
             </div>
           </div>
           <div class="col-sm-8 my-auto text-center">
@@ -47,8 +47,8 @@
                 <button type="button" class="btn-md btn-secondary rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
               <% end %>
             <% else %>
-              <%= link_to reaction_path(Participation.find_by(participation: participation, user: current_user)), method: "DELETE", remote: true do %>
-      <!-- ELEMENT A METTRE SI J'AI DEJA REAGI' -->        
+              <%= link_to reaction_path(Reaction.find_by(participation: participation, user: current_user)), method: "DELETE", remote: true do %>
+                <button type="button" class="btn-md btn-dark rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
               <% end %>
             <% end %>
           </div>

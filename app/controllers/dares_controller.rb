@@ -7,6 +7,7 @@ class DaresController < ApplicationController
   # GET /dares.json
  # participation controller
 
+
   def index  #feed
     @user = current_user
     @network = @user.friends
@@ -22,6 +23,7 @@ class DaresController < ApplicationController
     @network_news.sort_by!{ |news| news[:date] }
     @friends_list = []
     @network_news.each { |news|  @friends_list << news[:friend] }.uniq!
+
 
 
   end
