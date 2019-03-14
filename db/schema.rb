@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_13_092830) do
+
+ActiveRecord::Schema.define(version: 2019_03_14_084751) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +44,17 @@ ActiveRecord::Schema.define(version: 2019_03_13_092830) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "commentable_type"
+    t.bigint "commentable_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "dares", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -63,7 +76,40 @@ ActiveRecord::Schema.define(version: 2019_03_13_092830) do
     t.index ["difficulty_rater_id"], name: "index_difficulty_ratings_on_difficulty_rater_id"
   end
 
+<<<<<<< HEAD
   create_table "notifications", force: :cascade do |t|
+=======
+  create_table "follows", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "follower_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
+    t.index ["user_id"], name: "index_follows_on_user_id"
+  end
+
+  create_table "friend_requests", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "follower_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follower_id"], name: "index_friend_requests_on_follower_id"
+    t.index ["user_id"], name: "index_friend_requests_on_user_id"
+  end
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "news", force: :cascade do |t|
+>>>>>>> delivery-nans
     t.bigint "user_id"
     t.bigint "friend_id"
     t.string "event_type"
@@ -72,9 +118,9 @@ ActiveRecord::Schema.define(version: 2019_03_13_092830) do
     t.boolean "read", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["event_type", "event_id"], name: "index_notifications_on_event_type_and_event_id"
-    t.index ["friend_id"], name: "index_notifications_on_friend_id"
-    t.index ["user_id"], name: "index_notifications_on_user_id"
+    t.index ["event_type", "event_id"], name: "index_news_on_event_type_and_event_id"
+    t.index ["friend_id"], name: "index_news_on_friend_id"
+    t.index ["user_id"], name: "index_news_on_user_id"
   end
 
   create_table "participations", force: :cascade do |t|
@@ -88,11 +134,36 @@ ActiveRecord::Schema.define(version: 2019_03_13_092830) do
     t.index ["user_id"], name: "index_participations_on_user_id"
   end
 
-  create_table "proofs", force: :cascade do |t|
+  create_table "reactions", force: :cascade do |t|
     t.bigint "participation_id"
+    t.bigint "user_id"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["participation_id"], name: "index_proofs_on_participation_id"
+    t.index ["participation_id"], name: "index_reactions_on_participation_id"
+    t.index ["user_id"], name: "index_reactions_on_user_id"
+  end
+
+  create_table "star_dares", force: :cascade do |t|
+    t.bigint "dare_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dare_id"], name: "index_star_dares_on_dare_id"
+    t.index ["user_id"], name: "index_star_dares_on_user_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "provider"
+    t.string "uid"
+    t.string "access_token_secret"
+    t.string "refresh_token"
+    t.datetime "expires_at"
+    t.text "auth"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_services_on_user_id"
   end
 
   create_table "services", force: :cascade do |t|
@@ -120,6 +191,9 @@ ActiveRecord::Schema.define(version: 2019_03_13_092830) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "elo_points", default: 0
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -131,8 +205,18 @@ ActiveRecord::Schema.define(version: 2019_03_13_092830) do
     t.string "provider"
     t.string "name"
     t.string "avatar"
+    t.string "slug"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["slug"], name: "index_users_on_slug", unique: true
+  end
+
+
+  create_table "videos", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "videos", force: :cascade do |t|
@@ -143,10 +227,19 @@ ActiveRecord::Schema.define(version: 2019_03_13_092830) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "users"
   add_foreign_key "dares", "categories"
   add_foreign_key "difficulty_ratings", "dares"
   add_foreign_key "notifications", "users"
+  add_foreign_key "follows", "users"
+  add_foreign_key "friend_requests", "users"
+  add_foreign_key "news", "users"
   add_foreign_key "participations", "users"
+  add_foreign_key "reactions", "participations"
+  add_foreign_key "reactions", "users"
+  add_foreign_key "star_dares", "dares"
+  add_foreign_key "star_dares", "users"
   add_foreign_key "proofs", "participations"
   add_foreign_key "services", "users"
+
 end

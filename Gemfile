@@ -4,6 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.1'
 # Langage selector
 gem 'browser'
+# VideoJS - Add social share
+gem 'videojs-ng-socialshare'
 # DotEnv
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'sendgrid-ruby'
@@ -30,6 +32,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+# Jquery
+gem 'jquery-rails'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -67,6 +71,10 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # custom gems begin
 gem 'devise'
+<<<<<<< HEAD
 gem 'omniauth-facebook'
-# custom gems end
+=======
+gem 'friendly_id', '~> 5.2.4'
 gem 'table_print'
+>>>>>>> delivery-nans
+# custom gems end
