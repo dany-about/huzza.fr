@@ -21,7 +21,7 @@
         <div class="row row-grid" style="margin-left:-0.5rem;">
           <div class="col-sm-2 text-center">
             <p class="card-text">Level <%= participation.user.rank %></p>
-            <div class="icon bg-gradient-success text-white rounded-circle icon-shape hover-rotate-360">
+            <div class="<%= participation.user.badge[:animation] %>">
               <h4 style="margin-top: 11px"><%= participation.user.badge[:emote] %></h4>
             </div>
           </div>
