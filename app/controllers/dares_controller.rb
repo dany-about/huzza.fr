@@ -7,9 +7,7 @@ class DaresController < ApplicationController
   # GET /dares.json
  # participation controller
 
-  def index  #feed
-    @network_news = current_user.news
-    @friends_list = current_user.friends_list
+  def index
   end
 
 
