@@ -63,14 +63,16 @@
         <div class="row row-grid mx-auto my-auto">
           <div class="col-lg-12">
             <p class="card-text">Hi folks! I'm really happy to introduce you to my new personnal challenge. I'm fond of airplanes since my early childhood, and i'm now deeply motivated into flying as a bird. I'm not brave enough for skydiving, thats why paragliding seems perfect for me lol. Give me strengh in upvoting my dare ! Cheers</p>
-            <% if Participation.where({dare: dare, user: current_user}).count == 0 %>
-              <%= link_to participations_path(dare: dare), method: "POST", remote: true do %>
+            <% if Participation.find_by(dare: participation.dare, user: current_user) == nil %>
+              <%= link_to participations_path(dare: participation.dare), method: "POST", remote: true do %>
                 <button type="button" class="btn btn-outline-success">
                   I wanna do it!
                 </button>
               <% end %>
             <% end %>
-            <%= link_to user_send_dares_path(dare: dare, recipient: User.all[1].id), method: "POST", remote: true do %>
+            <% else %>
+                <!-- ELEMENT A METTRE SI JE PARTICIPE DEJA AU DEFI -->
+            <%= link_to user_send_dares_path(dare: participation.dare, recipient: User.all[1].id), method: "POST", remote: true do %>
               <button type="button" class="btn btn-outline-warning">
                 I wanna invite a friend!
               </button>
