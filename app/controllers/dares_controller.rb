@@ -7,25 +7,7 @@ class DaresController < ApplicationController
   # GET /dares.json
  # participation controller
 
-
-  def index  #feed
-    @user = current_user
-    @network = @user.friends
-    @network_news = []
-    @network.each { |friend| 
-      friend.participations.each { |participation| @network_news << {event: participation, occasion: "participation_created", friend: friend, date: participation.created_at} }
-      friend.participations.where(is_achieved: true).each { |participation| @network_news << {event: participation, occasion: "participation_achieved" friend: friend, date: participation.updated_at} }
-      friend.created_dare.each { |dare| @network_news << {event: dare, occasion: "dare_created", friend: friend, date: dare.created_at} }
-      friend.sent_dare.each { |sent_dare| @network_news << {event: sent_dare, occasion: "dare_sent", friend: friend, date: sent_dare.user_dare.created_at} }
-      friend.received_dare.each { |dare| @network_new << {event: dare, occasion: "dare_accepted", friend: friend, date: friend.participations.find_by(dares: dare).created_at} }
-    }
-
-    @network_news.sort_by!{ |news| news[:date] }
-    @friends_list = []
-    @network_news.each { |news|  @friends_list << news[:friend] }.uniq!
-
-
-
+  def index
   end
 
 
@@ -98,6 +80,6 @@ class DaresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dare_params
-      params.require(:dares).permit(:title, :description, :user_id, :category_id)
+      params.require(:dare).permit(:title, :description, :user_id, :category_id)
     end
 end
