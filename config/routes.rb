@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'home/chantier_card'
   get 'users/showtest'
 
+  devise_for :users
+
   resources :dares
   resources :participations, only: [:create, :update]
   resources :user_send_dares, only: [:create, :update]
@@ -13,7 +15,7 @@ Rails.application.routes.draw do
   resources :difficulty_ratings, only: [:create]
 
   resources :users, only: [:show]
-  devise_for :users
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "home#index"
 
