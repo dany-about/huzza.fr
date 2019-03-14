@@ -36,7 +36,11 @@
                 </button>
               <% end %>
             <% else %>
-              <!-- ELEMENT A METTRE SI LE DEFI EST DEJA STARRED -->
+              <%= link_to star_dare_path(StarDare.find_by(dare: participation.dare, user: current_user)), method: "DELETE", remote: true do %>
+                <button type="button" class="btn-md btn-dark rounded-circle btn-icon-only" style="font-size:19px;margin-top:-1rem">
+                  <p class="ml-1 my-auto hover-rotate-360">⭐</p>
+                </button>
+              <% end %>
             <% end %>
             <button type="button" class="btn-md btn-secondary rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
           </div>

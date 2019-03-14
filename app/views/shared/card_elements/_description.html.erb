@@ -4,25 +4,21 @@
       <p class="card-text" style="text-align: justify; text-justify: inter-word"><%= participation.dare.description %></p>
     </div>
   </div>
-  <% if Participation.find_by(dare: participation.dare, user: current_user) == nil %>
-  <%= link_to participations_path(dare: participation.dare), method: "POST", remote: true do %>
+  <br>
   <div class="text-center" style="margin-top: 7px">
-    <button type="button" class="btn btn-sm btn-soft-success">
-      Achieve it
-    </button>
-    <button type="button" class="btn btn-sm btn-soft-warning">
-      Challenge a friend
-    </button>
+    <% if Participation.find_by(dare: participation.dare, user: current_user) == nil %>
+      <%= link_to participations_path(dare: participation.dare), method: "POST", remote: true do %>
+        <button type="button" class="btn btn-sm btn-soft-success">
+          Je participe aussi
+        </button>
+      <% end %>
+    <% else %>
+      <!-- ELEMENT A METTRE SI JE PARTICIPE DEJA AU DEFI -->
+    <% end %>
+    <%= link_to user_send_dares_path(dare: participation.dare, recipient: User.all[1].id), method: "POST", remote: true do %>
+      <button type="button" class="btn btn-sm btn-soft-warning">
+        Challenge a friend
+      </button>
+    <% end %>
   </div>
-  <% end %>
-  <% end %>
-  <% else %>
-  <!-- ELEMENT A METTRE SI JE PARTICIPE DEJA AU DEFI -->
-  <%= link_to user_send_dares_path(dare: participation.dare, recipient: User.all[1].id), method: "POST", remote: true do %>
-  <div class="text-center" style="margin-top: 7px">
-    <button type="button" class="btn btn-sm btn-soft-warning">
-      Challenge a friend
-    </button>
-  </div>
-  <% end %>
 </div>

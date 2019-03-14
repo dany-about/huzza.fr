@@ -5,7 +5,7 @@ class StarDaresController < ApplicationController
   end
   
   def destroy
-    StarDare.find_by(dare: Dare.find(params[:dare]), user: current_user).destroy
+    StarDare.find(params[:id]), user: current_user).destroy
   end
   
 end
