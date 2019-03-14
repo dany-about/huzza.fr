@@ -17,7 +17,7 @@
   </div>
 
   <!-- Si le current_user est aussi le participant, il peut upload des proofs -->
-  <% if current_user = participation.user %>
+  <% if current_user == participation.user %>
     <!-- Bouton pour upload sa preuve (attacher la photo) -->
 
 
