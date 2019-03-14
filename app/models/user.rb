@@ -14,7 +14,7 @@ class User < ApplicationRecord
   end
 
   extend FriendlyId
-  friendly_id :email, use: :slugged
+  friendly_id :first_name, use: :slugged
 
   # Dares & Participations
   has_many :created_dares, class_name: "Dare", foreign_key: "creator_id"
