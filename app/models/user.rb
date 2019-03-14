@@ -81,21 +81,21 @@ class User < ApplicationRecord
 
   def badge
     case self.rank
-    when 1 then return {emote: "🤠", animation:""}
-    when 2 then return "" 
-    when 3 then return "" 
-    when 4 then return "" 
-    when 5 then return "" 
-    when 6 then return "" 
-    when 7 then return "" 
-    when 8 then return "" 
-    when 9 then return "" 
-    when 10 then return ""
-    when 11 then return ""
-    when 12 then return ""
-    when 13 then return ""
-    when 14 then return ""
-    when 15 then return ""
+    when 1 then return { emote: "🤠", animation:"icon bg-gradient-success text-white rounded-circle icon-shape hover-rotate-360" }
+    when 2 then return { emote: "", animation: "" }
+    when 3 then return { emote: "", animation: "" }
+    when 4 then return { emote: "", animation: "" }
+    when 5 then return { emote: "", animation: "" }
+    when 6 then return { emote: "", animation: "" }
+    when 7 then return { emote: "", animation: "" }
+    when 8 then return { emote: "", animation: "" }
+    when 9 then return { emote: "", animation: "" }
+    when 10 then return { emote: "", animation: "" }
+    when 11 then return { emote: "", animation: "" }
+    when 12 then return { emote: "", animation: "" }
+    when 13 then return { emote: "", animation: "" }
+    when 14 then return { emote: "", animation: "" }
+    when 15 then return { emote: "", animation: "" }
     when 16 then return ""
     when 17 then return ""
     when 18 then return ""
