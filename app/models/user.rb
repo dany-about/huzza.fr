@@ -36,6 +36,10 @@ class User < ApplicationRecord
   has_many :reactions
   has_many :difficulty_ratings, foreign_key: "difficulty_rater_id"
 
+  def full_name
+    self.first_name.to_s+" "+self.last_name.to_s
+  end
+  
   def achieved_dares
     self.participated_dares.joins(:participations).where({ participations: {is_achieved: true} }).reverse
   end

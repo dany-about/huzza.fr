@@ -5,11 +5,12 @@ Rails.application.routes.draw do
   get 'home/testdany'
   get 'users/showtest'
 
-  resources :dares
+  resources :dares, except: [:show, :destroy]
   resources :participations, only: [:create, :update]
   resources :user_send_dares, only: [:create, :update]
   resources :star_dares, only: [:create, :destroy]
   resources :difficulty_ratings, only: [:create]
+  resources :comments, only: [:create, :update, :destroy]
 
   resources :users, only: [:show]
   devise_for :users

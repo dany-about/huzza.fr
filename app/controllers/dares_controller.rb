@@ -1,5 +1,5 @@
 class DaresController < ApplicationController
-  before_action :set_dare, only: [:show, :update, :destroy]
+  before_action :set_dare, only: [:show,:edit, :update, :destroy]
   after_create :notify_followers
   before_action :set_user_in_js
 
@@ -25,6 +25,9 @@ class DaresController < ApplicationController
   # GET /dares/new
   def new
     @dare = Dare.new
+  end
+
+  def edit
   end
 
   # POST /dares
