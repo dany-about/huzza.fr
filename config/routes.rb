@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   # Home page
   devise_for :users
   resources :users, only: [:show]
-  resources :news, only: [:index]
   
   resources :dares, except: [:show, :destroy]
   resources :participations, only: [:create, :update]
