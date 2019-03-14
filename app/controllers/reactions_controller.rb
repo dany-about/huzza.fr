@@ -1,7 +1,7 @@
 class ReactionsController < ApplicationController
 
   def create
-    Reaction.create!(participation: Participation.find(params[:participation]), user: current_user)
+    Reaction.create!(participation: Participation.find(params[:participation]), user: current_user, name: params[:reaction])
   end
 
   def update
