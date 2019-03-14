@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :user_send_dares, only: [:create, :update]
   resources :star_dares, only: [:create, :destroy]
   resources :difficulty_ratings, only: [:create]
+  resources :reactions, only: [:create, :update, :destroy]
   resources :comments, only: [:create, :update, :destroy]
 
   resources :users, only: [:show]
