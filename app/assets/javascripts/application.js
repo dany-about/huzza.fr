@@ -28,3 +28,5 @@
 //= require assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js
 //= require assets/libs/swiper/dist/js/swiper.min.js
 //= require assets/libs/typed.js/lib/typed.min.js
+//= video-socialshare
+

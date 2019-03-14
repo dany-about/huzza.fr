@@ -10,10 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2019_03_14_084751) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -53,6 +76,9 @@ ActiveRecord::Schema.define(version: 2019_03_14_084751) do
     t.index ["difficulty_rater_id"], name: "index_difficulty_ratings_on_difficulty_rater_id"
   end
 
+<<<<<<< HEAD
+  create_table "notifications", force: :cascade do |t|
+=======
   create_table "follows", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "follower_id"
@@ -83,6 +109,7 @@ ActiveRecord::Schema.define(version: 2019_03_14_084751) do
   end
 
   create_table "news", force: :cascade do |t|
+>>>>>>> delivery-nans
     t.bigint "user_id"
     t.bigint "friend_id"
     t.string "event_type"
@@ -126,6 +153,32 @@ ActiveRecord::Schema.define(version: 2019_03_14_084751) do
     t.index ["user_id"], name: "index_star_dares_on_user_id"
   end
 
+  create_table "services", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "provider"
+    t.string "uid"
+    t.string "access_token_secret"
+    t.string "refresh_token"
+    t.datetime "expires_at"
+    t.text "auth"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_services_on_user_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "provider"
+    t.string "uid"
+    t.string "access_token_secret"
+    t.string "refresh_token"
+    t.datetime "expires_at"
+    t.text "auth"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_services_on_user_id"
+  end
+
   create_table "user_send_dares", force: :cascade do |t|
     t.bigint "dare_id"
     t.bigint "sender_id"
@@ -148,15 +201,36 @@ ActiveRecord::Schema.define(version: 2019_03_14_084751) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uid"
+    t.string "provider"
+    t.string "name"
+    t.string "avatar"
     t.string "slug"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
   end
 
+
+  create_table "videos", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "users"
   add_foreign_key "dares", "categories"
   add_foreign_key "difficulty_ratings", "dares"
+  add_foreign_key "notifications", "users"
   add_foreign_key "follows", "users"
   add_foreign_key "friend_requests", "users"
   add_foreign_key "news", "users"
@@ -165,4 +239,7 @@ ActiveRecord::Schema.define(version: 2019_03_14_084751) do
   add_foreign_key "reactions", "users"
   add_foreign_key "star_dares", "dares"
   add_foreign_key "star_dares", "users"
+  add_foreign_key "proofs", "participations"
+  add_foreign_key "services", "users"
+
 end

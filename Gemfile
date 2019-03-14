@@ -4,6 +4,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.1'
 # Langage selector
 gem 'browser'
+# VideoJS - Add social share
+gem 'videojs-ng-socialshare'
+# DotEnv
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'sendgrid-ruby'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
 # Use postgresql as the database for Active Record
@@ -50,6 +55,7 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'byebug'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
@@ -65,6 +71,10 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # custom gems begin
 gem 'devise'
+<<<<<<< HEAD
+gem 'omniauth-facebook'
+=======
 gem 'friendly_id', '~> 5.2.4'
 gem 'table_print'
+>>>>>>> delivery-nans
 # custom gems end
