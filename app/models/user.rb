@@ -9,8 +9,8 @@ class User < ApplicationRecord
     where(provider: auth['provider'], uid: auth['uid']).first_or_create do |user|
       user.email = auth['info']['email']
       user.password = (0...20).map { (65 + rand(26)).chr }.join
-        # user.name = auth['info']['name']
-     # user.image = auth['info']['image']
+      user.name = auth['info']['image']
+      #user.avatar = auth['info']['image']
     end
   end
 
