@@ -8,7 +8,7 @@ class ParticipationsController < ApplicationController
   end
 
   def update
-    @participation = Participation.find(params[:id]))
+    @participation = Participation.find(params[:id])
     @participation.is_achieved = nil
     current_user.notify_followers(@participation, "participation_achieved")
   end
