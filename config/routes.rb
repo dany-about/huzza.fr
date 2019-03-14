@@ -1,8 +1,18 @@
 Rails.application.routes.draw do
   resources :videos
-  scope "(:locale)", locale: /en|fr/ do  # Devise route
 
-  # Need to be deleted
+    devise_for :users, only: :omniauth_callbacks, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
+
+    scope '/(:locale)', locale: /en|fr/ do
+      devise_for :users, skip: :omniauth_callbacks
+    end
+
+    # Avatar route
+    resources :users do
+      resources :avatars, only: [:create]
+    end
+
+    # Need to be deleted
   get 'home/index'
   get 'home/test_card'
   get 'home/testdany'
@@ -10,7 +20,7 @@ Rails.application.routes.draw do
   get 'users/showtest'
 
   # Home page
-  devise_for :users
+
   resources :users, only: [:show]
   
   resources :dares, except: [:show, :destroy]
@@ -26,20 +36,13 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root "home#index"
-  end
 
-  devise_for :users, controllers: {
-      omniauth_callbacks: 'users/omniauth_callbacks'
-  }
 
   post '/sign_up_validation', to: 'users/omniauth_callbacks#sign_up_validation'
 
   # Dares route
   resources :dares
 
-  # Avatar route
-  resources :users do
-    resources :avatars, only: [:create]
-  end
+
 
 end
