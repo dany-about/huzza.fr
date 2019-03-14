@@ -1,0 +1,1 @@
+$("#ok").html("<%= j (render 'shared/testdany', dare: Dare.find(params[:dare]), disclaimer_type: News.all[0].occasion, status: News.all[0].read) %>")

@@ -1,0 +1,20 @@
+.flex-grid {
+ height: 100%;
+ overflow: hidden;
+ position: relative;
+}
+
+/*p {
+position: absolute;
+top: 50%;
+left:50%;
+transform: translate(-50%,-50%);
+}*/
+
+#header {
+height: 35%;
+}
+
+#content {
+height: 65%;
+}

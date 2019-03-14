@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+# Jquery
+gem 'jquery-rails'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -53,6 +55,7 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'byebug'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
@@ -68,5 +71,10 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # custom gems begin
 gem 'devise'
-# custom gems end
+<<<<<<< HEAD
+gem 'omniauth-facebook'
+=======
+gem 'friendly_id', '~> 5.2.4'
 gem 'table_print'
+>>>>>>> delivery-nans
+# custom gems end
