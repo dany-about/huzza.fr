@@ -36,15 +36,9 @@
         <div class="starElement_<%=dare.id%>">
           <%= render 'shared/card_elements/star', dare: dare %>
         </div>
-        <% if Reaction.find_by(user: current_user, reactionable: sent_dare) == nil %>
-          <%= link_to reactions_path(reactionable_type: "UserSendDare", reactionable_id: sent_dare, reaction: "strong"), method: "POST", remote: true do %>
-            <button type="button" class="btn-md btn-secondary rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
-          <% end %>
-        <% else %>
-          <%= link_to reaction_path(Reaction.find_by(reactionable:sent_dare, user: current_user)), method: "DELETE", remote: true do %>
-            <button type="button" class="btn-md btn-dark rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
-          <% end %>
-        <% end %>
+        <div class="reactionElement_<%=sent_dare.id%>">
+          <%= render 'shared/card_elements/reaction', event_id: sent_dare.id, type: sent_dare.class.name %>
+        </div>
       </div>
     </div>
   </div>
