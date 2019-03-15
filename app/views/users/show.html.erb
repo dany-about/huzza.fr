@@ -72,9 +72,13 @@
               <% end %>
               <div style="margin-top: -50px">
                 <% @user.participations.each do |participation| %>
-                  <div style="margin-top: 50px">
-                    <%= render "shared/participation_card", participation: participation, occasion: nil, disclaimer: false %>
+                <div style="margin-top: 50px">
+                  <div class="container ">
+                    <div class="col-md-12 mx-auto participationCard">
+                      <%= render "shared/participation_card", participation: participation, occasion: nil, disclaimer: false %>
+                    </div>
                   </div>
+                 </div> 
                 <% end %>
               </div>
             </div>
