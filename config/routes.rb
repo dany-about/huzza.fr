@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       devise_for :users, skip: :omniauth_callbacks
     end
 
-    # Avatar route
+    # Avatar routes
     resources :users do
       resources :avatars, only: [:create]
     end
@@ -20,9 +20,11 @@ Rails.application.routes.draw do
   get 'users/showtest'
 
   # Home page
+  root "home#index"
 
   resources :users, only: [:show]
   resources :follows, only: [:create, :destroy]
+  resources :friend_requests, only: [:create, :destroy]
   
   resources :dares, except: [:show, :destroy]
   resources :participations, only: [:create, :update]
@@ -36,14 +38,6 @@ Rails.application.routes.draw do
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root "home#index"
-
-
   post '/sign_up_validation', to: 'users/omniauth_callbacks#sign_up_validation'
-
-  # Dares route
-  resources :dares
-
-
 
 end
