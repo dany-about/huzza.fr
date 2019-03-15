@@ -46,6 +46,15 @@
                 </button>
               <% end %>
             <% end %>
+            <% if Reaction.find_by(user: current_user, reactionable: dare) == nil %>
+              <%= link_to reactions_path(reactionable_type: "Dare", reactionable_id: dare, reaction: "strong"), method: "POST", remote: true do %>
+                <button type="button" class="btn-md btn-secondary rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
+              <% end %>
+            <% else %>
+              <%= link_to reaction_path(Reaction.find_by(reactionable: dare, user: current_user)), method: "DELETE", remote: true do %>
+                <button type="button" class="btn-md btn-dark rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
+              <% end %>
+            <% end %>
           </div>
         </div>
       </div>

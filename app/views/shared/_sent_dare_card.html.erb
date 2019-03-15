@@ -1,4 +1,4 @@
-<% dare = sent_dare.dare, sender = sent_dare.sender, recipient = sent_dare.recipient %>
+<% dare = sent_dare.dare; sender = sent_dare.sender; recipient = sent_dare.recipient %>
 
 <div class="container ">
   <div class="col-md-9 mx-auto participationCard">
@@ -47,6 +47,15 @@
                 <button type="button" class="btn-md btn-dark rounded-circle btn-icon-only" style="font-size:19px;margin-top:-1rem">
                   <p class="ml-1 my-auto hover-rotate-360">⭐</p>
                 </button>
+              <% end %>
+            <% end %>
+            <% if Reaction.find_by(user: current_user, reactionable: sent_dare) == nil %>
+              <%= link_to reactions_path(reactionable_type: "UserSendDare", reactionable_id: sent_dare, reaction: "strong"), method: "POST", remote: true do %>
+                <button type="button" class="btn-md btn-secondary rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
+              <% end %>
+            <% else %>
+              <%= link_to reaction_path(Reaction.find_by(reactionable:sent_dare, user: current_user)), method: "DELETE", remote: true do %>
+                <button type="button" class="btn-md btn-dark rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
               <% end %>
             <% end %>
           </div>

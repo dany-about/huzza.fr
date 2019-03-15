@@ -65,12 +65,12 @@
                 </button>
               <% end %>
             <% end %>
-            <% if Reaction.find_by(user: current_user, participation: participation) == nil %>
-              <%= link_to reactions_path(participation: participation, reaction: "strong"), method: "POST", remote: true do %>
+            <% if Reaction.find_by(user: current_user, reactionable: participation) == nil %>
+              <%= link_to reactions_path(reactionable_type: "Participation", reactionable_id: participation, reaction: "strong"), method: "POST", remote: true do %>
                 <button type="button" class="btn-md btn-secondary rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
               <% end %>
             <% else %>
-              <%= link_to reaction_path(Reaction.find_by(participation: participation, user: current_user)), method: "DELETE", remote: true do %>
+              <%= link_to reaction_path(Reaction.find_by(reactionable: participation, user: current_user)), method: "DELETE", remote: true do %>
                 <button type="button" class="btn-md btn-dark rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
               <% end %>
             <% end %>

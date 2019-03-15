@@ -6,6 +6,7 @@ class UserSendDare < ApplicationRecord
   # Polymorphic associations
   has_many :news, as: :event
   has_many :comments, as: :commentable
+  has_many :reactions, as: :reactionable
 
   validate :sender_is_not_also_recipient
 
