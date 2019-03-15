@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 DifficultyRating.destroy_all
 Reaction.destroy_all
 Comment.destroy_all
@@ -15,16 +16,22 @@ UserSendDare.destroy_all
 Dare.destroy_all
 Follow.destroy_all
 User.destroy_all
+Category.destroy_all
+
+category = Category.create(name: "defis de base")
+category1 = Category.create(name: "defis intermediaires")
+category2 = Category.create(name: "defis pro")
 
 admin = User.create!(email: 'nabooadmin@yopmail.com', password: '123456', password_confirmation: '123456', first_name: "God,", last_name: "I mean Dany")
 admin2 = User.create!(email: 'nabooadmin@yopmail.com2', password: '123456', password_confirmation: '123456')
 noe = User.create!(email: "example@example.gmail", password:"123456", password_confirmation: "123456", first_name: "Noé", last_name: "Margui")
 
-dare1 = Dare.create!(title: "first dare", description: "test "*30, creator: admin)
+
+dare1 = Dare.create!(title: "first dare", description: "test "*30, creator: admin, category: category)
 DifficultyRating.create!(user: admin, dare: dare1, rating: 20)
-dare2 = Dare.create!(title: "second dare", description: "test2 "*30, creator: admin2)
+dare2 = Dare.create!(title: "second dare", description: "test2 "*30, creator: admin2, category: category)
 DifficultyRating.create!(user: admin, dare: dare2, rating: 50)
-dare_noe = Dare.create!(creator: noe, title: "Go paragliding above Annecy lake with my two sweet girlfriends and their anaconda who loves flying too", description: "Hi folks! I'm really happy to introduce you to my new personnal challenge. I'm fond of airplanes since my early childhood, and i'm now deeply motivated into flying as a bird. I'm not brave enough for skydiving, thats why paragliding seems perfect for me lol. Give me strengh in upvoting my dare ! Cheers")
+dare_noe = Dare.create!(creator: noe, title: "Go paragliding above Annecy lake with my two sweet girlfriends and their anaconda who loves flying too", description: "Hi folks! I'm really happy to introduce you to my new personnal challenge. I'm fond of airplanes since my early childhood, and i'm now deeply motivated into flying as a bird. I'm not brave enough for skydiving, thats why paragliding seems perfect for me lol. Give me strengh in upvoting my dare ! Cheers", category: category)
 DifficultyRating.create!(user: admin, dare: dare_noe, rating: 80)
 
 participation1 = Participation.create!(user: admin, dare: dare1)
