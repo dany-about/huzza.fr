@@ -38,39 +38,41 @@
     <section class="slice">
       <div class="container">
         <div class="row row-grid">
-          <div class="col-lg-9 order-lg-2">
-            <!-- Change avatar -->
-            <div class="card bg-gradient-warning hover-shadow-lg">
-              <div class="card-body py-3">
-                <div class="row row-grid align-items-center">
-                  <div class="col-lg-8">
-                    <div class="media align-items-center">
-                      <a href="#" class="avatar avatar-lg rounded-circle mr-3">
-                        <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/11/2/1552390314-team-2-800x800.jpg">
-                      </a>
-                      <div class="media-body">
-                        <h5 class="text-white mb-0">Emilie Djato</h5>
-                        <div>
-                          <form>
-                            <input type="file" name="file-1[]" id="file-1" class="custom-input-file custom-input-file-link" data-multiple-caption="{count} files selected" multiple />
-                            <label for="file-1">
-                              <span class="text-white">Upgrade your account to add more filters</span>
-                            </label>
-                          </form>
+          <% if @user == current_user %>
+            <div class="col-lg-9 order-lg-2">
+              <!-- Change avatar -->
+              <div class="card bg-gradient-warning hover-shadow-lg">
+                <div class="card-body py-3">
+                  <div class="row row-grid align-items-center">
+                    <div class="col-lg-8">
+                      <div class="media align-items-center">
+                        <a href="#" class="avatar avatar-lg rounded-circle mr-3">
+                          <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/11/2/1552390314-team-2-800x800.jpg">
+                        </a>
+                        <div class="media-body">
+                          <h5 class="text-white mb-0"><%= @user.full_name%></h5>
+                          <div>
+                            <form>
+                              <input type="file" name="file-1[]" id="file-1" class="custom-input-file custom-input-file-link" data-multiple-caption="{count} files selected" multiple />
+                              <label for="file-1">
+                                <span class="text-white">Upgrade your account to add more filters</span>
+                              </label>
+                            </form>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right d-none d-lg-block">
-                    <a href="#" class="btn btn-sm btn-white rounded-pill btn-icon shadow">
-                      <span class="btn-inner--icon"><i class="fas fa-fire"></i></span>
-                      <span class="btn-inner--text">Upgrade to Pro</span>
-                    </a>
+                    <div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right d-none d-lg-block">
+                      <a href="#" class="btn btn-sm btn-white rounded-pill btn-icon shadow">
+                        <span class="btn-inner--icon"><i class="fas fa-fire"></i></span>
+                        <span class="btn-inner--text">Upgrade to Pro</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          <% end %>
           <div class="col-lg-3 order-lg-1">
             <div data-toggle="sticky" data-sticky-offset="30" data-negative-margin=".card-profile-cover">
               <div class="card">
