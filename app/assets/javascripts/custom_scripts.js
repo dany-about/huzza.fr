@@ -1,4 +1,15 @@
 $(() => { 
+// SCROLL 
+function scrollToAnchor(aid){
+  var aTag = $(aid);
+  $('html,body').animate({scrollTop: aTag.offset().top},'slow');
+}
+
+// USER PAGE SCROLL
+Array.from($(".tongue-bottom")).forEach(function(element) { $(element).on("click", function(event) {
+  console.log("ok")
+  event.preventDefault(); scrollToAnchor($("body"))
+}) })
 
 // PARTICIPATION CARD: Toggle Tabs on hover
 Array.from($(".participationCard")).forEach(function(element) { $(element).hover(function() {
@@ -13,11 +24,12 @@ cardElements.forEach( (element,i) => {
     let dad = this.parentNode.parentNode
     let array = [5,7,9,11]
     delete array[i]; array = array.filter( i => i )
-    console.log(array)
     array.forEach( (nbr) => { if(!$(dad.childNodes[nbr]).hasClass('collapse')) { $(dad.childNodes[nbr]).addClass('collapse') } })
-    $(dad.childNodes[tab_nbrs[i]]).toggleClass("collapse")  
+    $(dad.childNodes[tab_nbrs[i]]).toggleClass("collapse")
+    scrollToAnchor($(dad))  
   }) })
 })
   
+
 })
 

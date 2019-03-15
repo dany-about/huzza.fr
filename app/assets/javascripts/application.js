@@ -13,11 +13,9 @@
 //= require jquery3
 //= require jquery_ujs
 //= require activestorage
-//= require turbolinks
 //= require_tree .
 
-//= require participation_card
-//= require dropdowns
+//= require custom_scripts
 
 //= require assets/js/purpose.core.js
 //= require assets/libs/swiper/dist/js/swiper.min.js
@@ -28,5 +26,8 @@
 //= require assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js
 //= require assets/libs/swiper/dist/js/swiper.min.js
 //= require assets/libs/typed.js/lib/typed.min.js
+//= require assets/libs/select2/dist/js/select2.min.js
+//= require assets/libs/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js
+//= require assets/libs/flatpickr/dist/flatpickr.min.js
 //= video-socialshare
 
