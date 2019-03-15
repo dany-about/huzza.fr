@@ -59,7 +59,7 @@
           <!-- status prend les valeurs true ou false selon que la notification a été lue -->
           <div style="margin-top: 80px">
             <div class="container ">
-              <div class="col-md-12 mx-auto participationCard">
+              <div class="col-md-12 mx-auto participationCard" id="<%=news.event.class.name%>_<%=news.event.id%>">
                 <% case news.event.class.name %>
                 <% when "Participation" %>
                 <%= render "shared/participation_card", participation: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
