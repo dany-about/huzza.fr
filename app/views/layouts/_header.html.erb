@@ -1,6 +1,7 @@
 <nav class="navbar navbar-horizontal navbar-expand-lg navbar-dark mt-0"  style="height: 50px; background-color: #0a3d62">
     <div class="container">
-        <a class="navbar-brand" href="#">Huzza</a>
+        <%= link_to 'Huzza', news_index_path, class: 'navbar-brand'%>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-secondary" aria-controls="navbar-secondary" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -8,13 +9,13 @@
 
             <ul class="navbar-nav ml-lg-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Feed <span class="sr-only">(current)</span></a>
+                  <%= link_to 'Feed', news_index_path, class: 'nav-link'%>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Discover</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
+                  <%= link_to 'Profile', user_path(current_user), class: 'nav-link'%>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" id="navbar-white_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>

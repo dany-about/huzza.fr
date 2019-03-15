@@ -1,25 +1,25 @@
 Rails.application.routes.draw do
   resources :videos
 
-    devise_for :users, only: :omniauth_callbacks, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
+  devise_for :users, only: :omniauth_callbacks, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
 
-    scope '/(:locale)', locale: /en|fr/ do
-      devise_for :users, skip: :omniauth_callbacks
-    end
+  scope '/(:locale)', locale: /en|fr/ do
+    devise_for :users, skip: :omniauth_callbacks
+  end
 
-    # Avatar routes
-    resources :users do
-      resources :avatars, only: [:create]
-    end
+  # Avatar routes
+  resources :users do
+    resources :avatars, only: [:create]
+  end
 
-    # Need to be deleted
+  # Need to be deleted
   get 'home/test_card'
   get 'home/testdany'
   get 'home/chantier_card'
   get 'users/showtest'
 
   # Home page
-  root "home#index"
+  root 'news#index'
 
   resources :follows, only: [:create, :destroy]
   resources :friend_requests, only: [:create, :destroy]
