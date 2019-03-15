@@ -15,14 +15,18 @@
         <!-- status prend les valeurs true ou false selon que la notification a été lue -->
         
         <div style="margin-top: 80px">
-          <% case news.event.class.name %>
-          <% when "Participation" %>  
-            <%= render "shared/participation_card", participation: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
-          <% when "Dare" %>  
-            <%= render "shared/dare_card", dare: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
-          <% when "UserSendDare" %>            
-            <%= render "shared/sent_dare_card", sent_dare: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
-          <% end %>
+          <div class="container ">
+            <div class="col-md-9 mx-auto participationCard">
+              <% case news.event.class.name %>
+              <% when "Participation" %>  
+                <%= render "shared/participation_card", participation: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
+              <% when "Dare" %>  
+                <%= render "shared/dare_card", dare: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
+              <% when "UserSendDare" %>            
+                <%= render "shared/sent_dare_card", sent_dare: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
+              <% end %>
+            </div>
+          </div>
         </div>
       <% end %>
     </tbody>
