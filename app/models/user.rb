@@ -39,6 +39,9 @@ class User < ApplicationRecord
   has_many :star_dares
   has_many :starred_dares, through: :star_dares, source: :dare
 
+  # Accomplishments
+  has_many :user_accomplishments
+  has_many :accomplishments, through: :user_accomplishments
   
   # Miscellaneous
   has_many :news
@@ -98,6 +101,9 @@ class User < ApplicationRecord
     when 20 then return ""
     end
   end
+
+  # Accomplishements and titles
+  # A FAIRE
 
   def friends
     friends = []

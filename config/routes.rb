@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     end
 
     # Need to be deleted
-  get 'home/index'
   get 'home/test_card'
   get 'home/testdany'
   get 'home/chantier_card'
