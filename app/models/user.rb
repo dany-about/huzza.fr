@@ -76,7 +76,7 @@ class User < ApplicationRecord
 
   def badge
     case self.rank
-    when 1 then return { emote: "🤠", animation:"icon bg-gradient-success text-white rounded-circle icon-shape hover-rotate-360" }
+    when 1 then return { title: "Empailleur de marmottes", emote: "🤠", animation:"icon bg-gradient-success text-white rounded-circle icon-shape hover-rotate-360" }
     when 2 then return { emote: "", animation: "" }
     when 3 then return { emote: "", animation: "" }
     when 4 then return { emote: "", animation: "" }
