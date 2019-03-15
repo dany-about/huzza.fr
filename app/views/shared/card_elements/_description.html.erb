@@ -14,6 +14,9 @@
         <span class="badge badge-dot">
           <i class="bg-success"></i>dont <%= dare.achievers.count %> achievers
         </span>
+        <span class="badge badge-dot">
+          <i class="bg-primary"></i> Dare originally created by <%= link_to "#{dare.creator.full_name}", user_path(dare.creator) %>
+        </span>
       </div>
       <div style="text-align: right; padding-right: 24px;">
         <% participation = Participation.find_by(dare: dare, user: current_user) %>

@@ -65,13 +65,13 @@ ActiveRecord::Schema.define(version: 2019_03_14_084751) do
   end
 
   create_table "difficulty_ratings", force: :cascade do |t|
-    t.bigint "difficulty_rater_id"
+    t.bigint "user_id"
     t.bigint "dare_id"
-    t.float "rating"
+    t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["dare_id"], name: "index_difficulty_ratings_on_dare_id"
-    t.index ["difficulty_rater_id"], name: "index_difficulty_ratings_on_difficulty_rater_id"
+    t.index ["user_id"], name: "index_difficulty_ratings_on_user_id"
   end
 
   create_table "follows", force: :cascade do |t|
@@ -84,12 +84,12 @@ ActiveRecord::Schema.define(version: 2019_03_14_084751) do
   end
 
   create_table "friend_requests", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "follower_id"
+    t.bigint "user_asking_id"
+    t.bigint "user_asked_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["follower_id"], name: "index_friend_requests_on_follower_id"
-    t.index ["user_id"], name: "index_friend_requests_on_user_id"
+    t.index ["user_asked_id"], name: "index_friend_requests_on_user_asked_id"
+    t.index ["user_asking_id"], name: "index_friend_requests_on_user_asking_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -174,6 +174,7 @@ ActiveRecord::Schema.define(version: 2019_03_14_084751) do
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
+    t.integer "elo_points", default: 0
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -202,8 +203,8 @@ ActiveRecord::Schema.define(version: 2019_03_14_084751) do
   add_foreign_key "comments", "users"
   add_foreign_key "dares", "categories"
   add_foreign_key "difficulty_ratings", "dares"
+  add_foreign_key "difficulty_ratings", "users"
   add_foreign_key "follows", "users"
-  add_foreign_key "friend_requests", "users"
   add_foreign_key "news", "users"
   add_foreign_key "participations", "users"
   add_foreign_key "reactions", "participations"

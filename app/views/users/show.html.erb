@@ -120,6 +120,10 @@
     </section>
   </div>
 
+  <% @user.participations.each do |participation| %>
+  <%= render "shared/participation_card", participation: participation, occasion: nil, disclaimer: false %>
+  <% end %>
+
   <div class="row">
     <div class="col-md-12">
       <div class="p-4 rounded" style="height: 50px; background-color: #0a3d62">
