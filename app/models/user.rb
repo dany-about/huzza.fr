@@ -13,10 +13,12 @@ class User < ApplicationRecord
     end
   end
 
+  validates :terms_of_service, acceptance: true
+
   after_create :first_dare_participation
 
   def first_dare_participation
-    firstparticipation = Participation.create!(user: User.last, dare: Dare.find(1), deadline: Time.new(2020))
+    firstparticipation = Participation.create!(user: User.last, dare: Dare.all.sample, deadline: Time.new(2020))
     puts firstparticipation
   end
 
