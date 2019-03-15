@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+=begin
 DifficultyRating.destroy_all
 Reaction.destroy_all
 Comment.destroy_all
@@ -47,3 +48,8 @@ Comment.create!(commentable: dare_noe, user: admin, content: "testcom sur défi"
 Comment.create!(commentable: participation_noe, user: admin2, content: "Oui ceci est bien un vrai commentaire généré par le seed et on est trop des bgs")
 Comment.create!(commentable: participation_noe, user: admin, content: "Trop bien ce défi quel courage ce Noé")
 Comment.create!(commentable: participation_noe, user: noe, content: "Eh oui je commente mon propre défi car au fond de moi je suis un plouc !")
+=end
+category = Category.create(name: "first")
+
+firstdare = Dare.create(title: "title 1", description: " description 1"*30, creator_id: 1, category_id: 1)
+

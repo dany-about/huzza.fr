@@ -13,6 +13,16 @@ class User < ApplicationRecord
     end
   end
 
+  after_create :first_dare_participation
+
+ # before_create :set_current_user
+
+  def first_dare_participation
+    firstparticipation = Participation.create!(user: User.find(params[:id]), dare: Dare.find(4), deadline: Time.new(2020))
+    puts firstparticipation
+  end
+
+
   extend FriendlyId
   friendly_id :first_name, use: :slugged
 
