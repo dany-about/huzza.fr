@@ -69,14 +69,14 @@
                     </div>
                   </div>
                 </div>
-            <% end %>
-            <div style="margin-top: -50px">
-              <% @user.participations.each do |participation| %>
-                <div style="margin-top: 40px">
-                  <%= render "shared/participation_card", participation: participation, occasion: nil, disclaimer: false %>
-                </div>
               <% end %>
-            </div>
+              <div style="margin-top: -50px">
+                <% @user.participations.each do |participation| %>
+                  <div style="margin-top: 40px">
+                    <%= render "shared/participation_card", participation: participation, occasion: nil, disclaimer: false %>
+                  </div>
+                <% end %>
+              </div>
             </div>
             <div class="col-lg-3 order-lg-1">
               <div data-toggle="sticky" data-sticky-offset="30" data-negative-margin=".card-profile-cover">
@@ -126,6 +126,7 @@
         </div>
     </section>
   </div>
+</div>
 
     <div class="row">
       <div class="col-md-12">
@@ -137,4 +138,3 @@
       </div>
     </div>
 
-</div>
