@@ -39,7 +39,7 @@
             </button>        
           <% end %>
         <% end %>
-        <%= link_to user_send_dares_path(dare: dare, recipient: User.all[1].id), method: "POST", remote: true do %>
+        <%= link_to user_send_dares_path(dare: dare, recipient: User.first.id), method: "POST", remote: true do %>
           <button type="button" class="btn btn-sm btn-soft-warning">
             Challenge a friend
           </button>
