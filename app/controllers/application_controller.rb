@@ -22,16 +22,22 @@ class ApplicationController < ActionController::Base
    current_user
     sign_in_url = new_user_session_url
     if request.referer == sign_in_url
-      super
+      news_index_path
+      #super
     else
-     news_index_path
+     #news_index_path
+     super
     end
   end
+
+  #def set_current_user(current_user)
+   # @user = current_user
+  #end
 
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :terms_of_service]) 
   end
 
 end
