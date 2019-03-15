@@ -47,13 +47,13 @@
       </div>
     </div>
 
-    <% @friends_list.each do |friend| %>
+    <% current_user.friends_list.each do |friend| %>
     <% end %>
 
     <div class="col-lg-9 order-lg-2 mt-3">
       <table>
         <tbody>
-          <% @network_news.each do |news| %>
+          <% current_user.news.each do |news| %>
           <!-- Si l'évènement est une participation; disclaimer_type peut prendre les valeurs: "participation_created" ou "participation_achieved" -->
           <!-- Il faudra voir comment on gère les participations qui sont "un-achieved", quand la preuve est rejetée -->
           <!-- status prend les valeurs true ou false selon que la notification a été lue -->
