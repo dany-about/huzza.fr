@@ -15,10 +15,8 @@ class User < ApplicationRecord
 
   after_create :first_dare_participation
 
- # before_create :set_current_user
-
   def first_dare_participation
-    firstparticipation = Participation.create!(user: User.find(params[:id]), dare: Dare.find(4), deadline: Time.new(2020))
+    firstparticipation = Participation.create!(user: User.last, dare: Dare.find(1), deadline: Time.new(2020))
     puts firstparticipation
   end
 
