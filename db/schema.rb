@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_14_084751) do
+ActiveRecord::Schema.define(version: 2019_03_15_010409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accomplishments", force: :cascade do |t|
+    t.string "name"
+    t.string "title"
+    t.string "icon_class"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -158,6 +166,15 @@ ActiveRecord::Schema.define(version: 2019_03_14_084751) do
     t.datetime "updated_at", null: false
     t.index ["dare_id"], name: "index_star_dares_on_dare_id"
     t.index ["user_id"], name: "index_star_dares_on_user_id"
+  end
+
+  create_table "user_accomplishements", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "accomplishment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["accomplishment_id"], name: "index_user_accomplishements_on_accomplishment_id"
+    t.index ["user_id"], name: "index_user_accomplishements_on_user_id"
   end
 
   create_table "user_send_dares", force: :cascade do |t|
