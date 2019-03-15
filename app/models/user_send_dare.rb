@@ -3,6 +3,10 @@ class UserSendDare < ApplicationRecord
   belongs_to :recipient, class_name: "User"
   belongs_to :dare
 
+  # Polymorphic associations
+  has_many :news, as: :event
+  has_many :comments, as: :commentable
+
   validate :sender_is_not_also_recipient
 
   def sender_is_not_also_recipient
