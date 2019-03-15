@@ -29,8 +29,10 @@
       <div class="col-sm-8 my-auto text-center">
         <h5 class="card-title" style="text-align: justify; text-justify: inter-word"><%= dare.title %></h5>
       </div>
-      <div class="col-sm-2 text-center starElement_<%=dare.id%>">
-        <%= render 'shared/card_elements/star', dare: dare %>        
+      <div class="col-sm-2 text-center">
+        <div class="starElement_<%=dare.id%>">
+          <%= render 'shared/card_elements/star', dare: dare %>
+        </div>
         <% if Reaction.find_by(user: current_user, reactionable: dare) == nil %>
           <%= link_to reactions_path(reactionable_type: "Dare", reactionable_id: dare, reaction: "strong"), method: "POST", remote: true do %>
             <button type="button" class="btn-md btn-secondary rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>

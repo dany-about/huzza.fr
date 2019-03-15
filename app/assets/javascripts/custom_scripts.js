@@ -11,9 +11,9 @@ Array.from($(".tongue-bottom")).forEach(function(element) { $(element).on("click
 }) })
 
 // PARTICIPATION CARD: Toggle Tabs on hover
-Array.from($(".participationCard")).forEach(function(element) { $(element).on( "mouseenter mouseleave", function() {
-  $(this.childNodes[3]).toggleClass("collapse")
-}) })
+// Array.from($(".participationCard")).forEach(function(element) { $(element).on( "mouseenter mouseleave", function() {
+//   $(this.childNodes[3]).toggleClass("collapse")
+// }) })
 
 // CARD: Toggle Tabs Content
 var cardElements = [".cardDescription",".cardComments",".cardRating",".cardProof"]
