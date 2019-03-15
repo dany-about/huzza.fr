@@ -54,22 +54,33 @@
           <span class="btn-inner--text">Add a friend</span>
         </button>
         <% if !@user.followers.include?(current_user) %>
-          <button type="button" class="btn btn-soft-info btn-icon btn-sm">
-            <span class="btn-inner--icon">
-              <i class="fas fa-user-secret"></i>
-            </span>
-            <span class="btn-inner--text">Follow</span>
-          </button>
+          <%= link_to follows_path(user: @user.id), method: "POST", remote: true do %>
+            <button type="button" class="btn btn-soft-info btn-icon btn-sm">
+              <span class="btn-inner--icon">
+                <i class="fas fa-user-secret"></i>
+              </span>
+              <span class="btn-inner--text">Follow</span>
+            </button>
+          <% end %>
         <% else %>
-        <!-- Bouton Unfollow -->
+          <%= link_to follow_path(Follow.find_by(user: @user, follower: current_user)), method: "DELETE", remote: true do %>
+            <button type="button" class="btn btn-soft-danger btn-icon btn-sm">
+              <span class="btn-inner--icon">
+                <i class="fas fa-user-times"></i>
+              </span>
+              <span class="btn-inner--text">Unfollow</span>
+            </button>
+          <% end %>
         <% end %>
       <% else %>
-        <button type="button" class="btn btn-soft-danger btn-icon btn-sm">
-          <span class="btn-inner--icon">
-            <i class="fas fa-user-times"></i>
-          </span>
-          <span class="btn-inner--text">Unfriend</span>
-        </button>
+        <%= link_to follow_path(Follow.find_by(user: @user, follower: current_user)), method: "DELETE", remote: true do %>
+          <button type="button" class="btn btn-soft-danger btn-icon btn-sm">
+            <span class="btn-inner--icon">
+              <i class="fas fa-user-times"></i>
+            </span>
+            <span class="btn-inner--text">Unfriend</span>
+          </button>
+        <% end %>
       <% end %>
     <% end %>
   </div>

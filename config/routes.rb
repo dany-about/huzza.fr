@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   # Home page
 
   resources :users, only: [:show]
+  resources :follows, only: [:create, :destroy]
   
   resources :dares, except: [:show, :destroy]
   resources :participations, only: [:create, :update]
