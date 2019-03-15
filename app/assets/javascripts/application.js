@@ -16,8 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
-//= require participation_card
-//= require dropdowns
+//= require custom_scripts
 
 //= require assets/js/purpose.core.js
 //= require assets/libs/swiper/dist/js/swiper.min.js
