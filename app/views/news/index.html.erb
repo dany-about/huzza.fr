@@ -1,6 +1,5 @@
-<!-- ICI COMMENCE LE FEED -->
+<!-- Navigation Bloc -->
 
-<!-- bloc navigation -->
 <div class="container">
   <div class="row row-grid">
     <div class="col-lg-3 order-lg-1 mt-3">
@@ -47,36 +46,35 @@
         </div>
       </div>
     </div>
-<!-- Section << Profil de mes amis >> -->
 
-<% @friends_list.each do |friend| %>
-<% end %>
+    <% @friends_list.each do |friend| %>
+    <% end %>
 
-<!-- Section << Achievements de mes amis >> -->
-<div class="col-lg-9 order-lg-2 mt-3"
-  <table>
-    <tbody>
-      <% @network_news.each do |news| %>
-        <!-- Si l'évènement est une participation; disclaimer_type peut prendre les valeurs: "participation_created" ou "participation_achieved" -->
-        <!-- Il faudra voir comment on gère les participations qui sont "un-achieved", quand la preuve est rejetée -->
-        <!-- status prend les valeurs true ou false selon que la notification a été lue -->
-        <div style="margin-top: 80px">
-          <div class="container ">
-            <div class="col-md-9 mx-auto participationCard">
-              <% case news.event.class.name %>
-              <% when "Participation" %>
+    <div class="col-lg-9 order-lg-2 mt-3">
+      <table>
+        <tbody>
+          <% @network_news.each do |news| %>
+          <!-- Si l'évènement est une participation; disclaimer_type peut prendre les valeurs: "participation_created" ou "participation_achieved" -->
+          <!-- Il faudra voir comment on gère les participations qui sont "un-achieved", quand la preuve est rejetée -->
+          <!-- status prend les valeurs true ou false selon que la notification a été lue -->
+          <div style="margin-top: 80px">
+            <div class="container ">
+              <div class="col-md-12 mx-auto participationCard">
+                <% case news.event.class.name %>
+                <% when "Participation" %>
                 <%= render "shared/participation_card", participation: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
-              <% when "Dare" %>
+                <% when "Dare" %>
                 <%= render "shared/dare_card", dare: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
-              <% when "UserSendDare" %>
+                <% when "UserSendDare" %>
                 <%= render "shared/sent_dare_card", sent_dare: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
-              <% end %>
+                <% end %>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-</div>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
 </div>
