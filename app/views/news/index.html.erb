@@ -2,21 +2,21 @@
 
 <!-- Section << Profil de mes amis >> -->
 
-<% @friends_list.each do |friend| %>
+<% current_user.friends_list.each do |friend| %>
 <% end %>
 
 <!-- Section << Achievements de mes amis >> -->
 <div class="container">
   <table>
     <tbody>
-      <% @network_news.each do |news| %>
+      <% current_user.news.each do |news| %>
         <!-- Si l'évènement est une participation; disclaimer_type peut prendre les valeurs: "participation_created" ou "participation_achieved" -->
         <!-- Il faudra voir comment on gère les participations qui sont "un-achieved", quand la preuve est rejetée -->
         <!-- status prend les valeurs true ou false selon que la notification a été lue -->
         
         <div style="margin-top: 80px">
           <div class="container ">
-            <div class="col-md-9 mx-auto participationCard">
+            <div class="col-md-9 mx-auto participationCard" id="<%=news.event.class.name%>_<%=news.event.id%>">
               <% case news.event.class.name %>
               <% when "Participation" %>  
                 <%= render "shared/participation_card", participation: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
