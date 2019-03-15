@@ -60,18 +60,20 @@
         <!-- Si l'évènement est une participation; disclaimer_type peut prendre les valeurs: "participation_created" ou "participation_achieved" -->
         <!-- Il faudra voir comment on gère les participations qui sont "un-achieved", quand la preuve est rejetée -->
         <!-- status prend les valeurs true ou false selon que la notification a été lue -->
-
-        <% if news.event.is_a?(Participation) %>
-          <div style="margin-top: 80px">
-            <%= render "shared/participation_card", participation: news.event, disclaimer: true, occasion: news.occasion, read: news.read %>
+        <div style="margin-top: 80px">
+          <div class="container ">
+            <div class="col-md-9 mx-auto participationCard">
+              <% case news.event.class.name %>
+              <% when "Participation" %>
+                <%= render "shared/participation_card", participation: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
+              <% when "Dare" %>
+                <%= render "shared/dare_card", dare: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
+              <% when "UserSendDare" %>
+                <%= render "shared/sent_dare_card", sent_dare: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
+              <% end %>
+            </div>
           </div>
-        <% end %>
-        <!-- Si l'évènement est un défi (i.e. défi créé, défi lancé ou défi relevé; disclaimer_type peut prendre les valeurs: "dare_created", "dare_sent" ou "dare_accepted") -->
-        <% if news.event.is_a?(Dare) %>
-          <div style="margin-top: 80px">
-            <%= render "shared/dare_card", dare: news.event, disclaimer: true, occasion: news.occasion, read: news.read %>
-          </div>
-        <% end %>
+        </div>
       <% end %>
     </tbody>
   </table>
