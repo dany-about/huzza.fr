@@ -5,6 +5,18 @@
         <% if disclaimer %>
           <div class="row row-grid" style="margin-top: -1rem">
             <% case %>
+
+
+            <% when occasion.include?("dare_sent") %>
+            <% sender = User.find(occasion.split("_")[-1]); recipient = User.find(occasion.split("_")[-3]) %>
+            <%= link_to user_path(sender), class:"ml-0" do %>
+              <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/11/1/1552315427-noe-pp.jpg" class="avatar rounded-circle avatar-lg shadow hover-shadow-lg" style="margin-left:-0.5rem;margin-top:-1rem">
+            <% end %>
+            <div class="ml-4">
+              <p class="badge badge-secondary"><%= link_to "#{sender.full_name}", user_path(sender) %> défie <%= link_to "#{recipient.full_name}", user_path(recipient) %> </p>
+            </div>
+          <% end %>
+          
             <% when occasion == "dare_created" %>
               <%= link_to user_path(dare.creator), class:"ml-0" do %>
                 <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/11/1/1552315427-noe-pp.jpg" class="avatar rounded-circle avatar-lg shadow hover-shadow-lg" style="margin-left:-0.5rem;margin-top:-1rem">
