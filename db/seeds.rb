@@ -16,7 +16,7 @@ Dare.destroy_all
 Follow.destroy_all
 User.destroy_all
 
-admin = User.create!(first_name: "Admin", last_name:"God",email: 'nabooadmin@yopmail.com', password: '123456', password_confirmation: '123456')
+admin = User.create!(email: 'nabooadmin@yopmail.com', password: '123456', password_confirmation: '123456', first_name: "God,", last_name: "I mean Dany")
 admin2 = User.create!(email: 'nabooadmin@yopmail.com2', password: '123456', password_confirmation: '123456')
 noe = User.create!(email: "example@example.gmail", password:"123456", password_confirmation: "123456", first_name: "Noé", last_name: "Margui")
 

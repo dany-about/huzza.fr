@@ -19,7 +19,8 @@ Rails.application.routes.draw do
   get 'users/showtest'
 
   # Home page
-  root 'news#index'
+  root 'home#index'
+  
 
   resources :follows, only: [:create, :destroy]
   resources :friend_requests, only: [:create, :destroy]
