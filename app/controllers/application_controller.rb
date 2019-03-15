@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   
   def after_sign_in_path_for(resource_or_scope)
    current_user
-  sign_in_url = new_user_session_url
+    sign_in_url = new_user_session_url
     if request.referer == sign_in_url
       super
     else
