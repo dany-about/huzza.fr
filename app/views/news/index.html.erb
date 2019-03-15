@@ -15,13 +15,13 @@
         <!-- status prend les valeurs true ou false selon que la notification a été lue -->
         <% if news.event.is_a?(Participation) %>
           <div style="margin-top: 80px">
-            <%= render "shared/participation_card", participation: news.event, disclaimer: "yes", occasion: news.occasion, read: news.read %>
+            <%= render "shared/participation_card", participation: news.event, disclaimer: true, occasion: news.occasion, read: news.read %>
           </div>
         <% end %>
         <!-- Si l'évènement est un défi (i.e. défi créé, défi lancé ou défi relevé; disclaimer_type peut prendre les valeurs: "dare_created", "dare_sent" ou "dare_accepted") -->
         <% if news.event.is_a?(Dare) %>
           <div style="margin-top: 80px">
-            <%= render "shared/dare", dare: news.event, disclaimer: "yes", occasion: news.occasion, read: news.read %>
+            <%= render "shared/dare", dare: news.event, disclaimer: true, occasion: news.occasion, read: news.read %>
           </div>
         <% end %>
       <% end %>

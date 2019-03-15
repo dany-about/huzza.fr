@@ -9,10 +9,13 @@
     <div class="row" style="display: grid; grid-template-columns: 1fr 1fr;">
       <div style="text-align: left; padding-left: 24px;">
         <span class="badge badge-dot">
-          <i class="bg-danger"></i>104 participants
+          <i class="bg-danger"></i><%= dare.participants.count %> participants
         </span>
         <span class="badge badge-dot">
-          <i class="bg-success"></i>809 achievers
+          <i class="bg-success"></i>dont <%= dare.achievers.count %> achievers
+        </span>
+        <span class="badge badge-dot">
+          <i class="bg-primary"></i> Dare originally created by <%= link_to "#{dare.creator.full_name}", user_path(dare.creator) %>
         </span>
       </div>
       <div style="text-align: right; padding-right: 24px;">
@@ -20,7 +23,7 @@
         <% if participation == nil %>
           <%= link_to participations_path(dare: dare), method: "POST", remote: true do %>
             <button type="button" class="btn btn-sm btn-soft-success">
-              Achieve it
+              Do it too
             </button>
           <% end %>
         <% elsif !participation.is_achieved %>
