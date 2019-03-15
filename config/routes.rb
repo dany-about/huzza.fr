@@ -20,8 +20,6 @@ Rails.application.routes.draw do
 
   # Home page
   root 'news#index'
-
-  resources :users, only: [:show]
   resources :follows, only: [:create, :destroy]
   resources :friend_requests, only: [:create, :destroy]
   
