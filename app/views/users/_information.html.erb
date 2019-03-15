@@ -47,7 +47,7 @@
   <div class="row" style="margin-top: 15px; justify-content: center">
     <% if @user != current_user %>
       <% if !@user.friends.include?(current_user) %>
-        <% if FriendRequest.find_by(user_asked: @user, user_requesting: current_user) == nil %>
+        <% if FriendRequest.find_by(user_asked: @user, user_asking: current_user) == nil %>
           <%= link_to friend_requests_path(user: @user.id), method: "POST", remote: true do %>
             <button type="button" class="btn btn-soft-primary btn-icon btn-sm">
               <span class="btn-inner--icon">
@@ -57,7 +57,7 @@
             </button>
           <% end %>
         <% else %>
-          <%= link_to friend_request_path(FriendRequest.find_by(user_asked: @user, user_requesting: current_user)), method: "DELETE", remote: true do %>
+          <%= link_to friend_request_path(FriendRequest.find_by(user_asked: @user, user_asking: current_user)), method: "DELETE", remote: true do %>
             <button type="button" class="btn btn-soft-danger btn-icon btn-sm">
               <span class="btn-inner--icon">
                 <i class="fas fa-user-times"></i>
