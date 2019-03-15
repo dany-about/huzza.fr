@@ -69,8 +69,11 @@
                                   </div>
                                   <div class="col-sm-5 text-sm-right">
                                       <span class="small d-sm-block d-md-inline">Already registered?</span>
-                                      <%= link_to "Sign in",'users/sign_in', style:"small font-weight-bold"%>
+                                      <%= link_to "Sign in",'/fr/users/sign_in', style:"small font-weight-bold"%>
+
                                       <%= link_to("Logout", destroy_user_session_path, :method => :delete)%>
+                          
+                                      <%= link_to "Sign in with Facebook", '/users/auth/facebook?locale=fr', style:"small font-weight-bold"%>
                                   </div>
                               </div>
                           <% end %>
