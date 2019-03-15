@@ -18,7 +18,9 @@
       <%= yield %>
     
     <footer>
+    <% if user_signed_in? %>
       <%= render 'layouts/footer' %>
+    <% end %>
     </footer>
 
     <div class="customizer">
