@@ -29,5 +29,7 @@
 //= require assets/libs/select2/dist/js/select2.min.js
 //= require assets/libs/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js
 //= require assets/libs/flatpickr/dist/flatpickr.min.js
+//= require assets/libs/isotope-layout/dist/isotope.pkgd.min.js
+//= require assets/libs/jquery-countdown/dist/jquery.countdown.min.js
+//= require assets/libs/sweetalert2/dist/sweetalert2.min.js
 //= video-socialshare
-

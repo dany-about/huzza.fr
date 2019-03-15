@@ -1,8 +1,8 @@
 class ReactionsController < ApplicationController
 
   def create
-    if Reaction.find_by(participation: Participation.find(params[:participation]), user: current_user) == nil
-      Reaction.create!(participation: Participation.find(params[:participation]), user: current_user, name: params[:reaction])
+    if Reaction.find_by(reactionable_type: params[:reactionable_type], reactionable_id: params[:reactionable_id], user: current_user) == nil
+      Reaction.create!(reactionable_type: params[:reactionable_type], reactionable_id: params[:reactionable_id], user: current_user, name: params[:reaction])
     end
   end
 
