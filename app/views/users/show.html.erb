@@ -18,7 +18,7 @@
 
   <div class="main-content">
     <!-- Header (account) -->
-    <section class="header-account-page bg-warning d-flex align-items-end" style="height: 30px;" data-offset-top="#header-main">
+    <section class="header-account-page bg-warning d-flex align-items-end" style="height: 10px;" data-offset-top="#header-main">
       <!-- Header container -->
       <div class="container pt-4 pt-lg-0">
         <div class="row">
@@ -42,7 +42,7 @@
                 <div class="card bg-gradient-warning hover-shadow-lg mb-8">
                   <div class="card-body py-3">
                     <div class="row row-grid align-items-center">
-                      <div class="col-lg-8">
+                      <div class="col-lg-9">
                         <div class="media align-items-center">
                           <a href="#" class="avatar avatar-lg rounded-circle mr-3">
                             <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/11/5/1552660871-screenshot-2019-03-15-at-15-40-57.png">
@@ -72,7 +72,7 @@
               <% end %>
               <div style="margin-top: -50px">
                 <% @user.participations.each do |participation| %>
-                  <div style="margin-top: 40px">
+                  <div style="margin-top: 50px">
                     <%= render "shared/participation_card", participation: participation, occasion: nil, disclaimer: false %>
                   </div>
                 <% end %>
