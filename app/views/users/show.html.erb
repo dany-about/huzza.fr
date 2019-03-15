@@ -73,7 +73,7 @@
               <div style="margin-top: -50px">
                 <% @user.participations.each do |participation| %>
                   <div style="margin-top: 40px">
-                    <%= render "shared/participation_card", participation: participation, occasion: nil, disclaimer: false %>
+                    <%= render "shared/participation_card", participation: participation, friend:@user occasion: nil, disclaimer: false %>
                   </div>
                 <% end %>
               </div>

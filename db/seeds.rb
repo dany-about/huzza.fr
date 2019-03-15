@@ -48,4 +48,5 @@ Comment.create!(commentable: participation_noe, user: admin2, content: "Oui ceci
 Comment.create!(commentable: participation_noe, user: admin, content: "Trop bien ce défi quel courage ce Noé")
 Comment.create!(commentable: participation_noe, user: noe, content: "Eh oui je commente mon propre défi car au fond de moi je suis un plouc !")
 
-News.create!(user: admin, friend: noe, event: dare_noe, occasion: "dare_sent_to_#{admin.id}_from_#{noe.id}")
+usd = UserSendDare.create!(sender: noe, recipient: admin, dare: dare_noe)
+News.create!(user: admin, friend: noe, event: usd, occasion: "sent_dare")

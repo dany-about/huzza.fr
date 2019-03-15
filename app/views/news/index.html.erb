@@ -17,11 +17,11 @@
         <div style="margin-top: 80px">
           <% case news.event.class.name %>
           <% when "Participation" %>  
-            <%= render "shared/participation_card", participation: news.event, disclaimer: true, occasion: news.occasion, read: news.read %>
+            <%= render "shared/participation_card", participation: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
           <% when "Dare" %>  
-            <%= render "shared/dare_card", dare: news.event, disclaimer: true, occasion: news.occasion, read: news.read %>
+            <%= render "shared/dare_card", dare: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
           <% when "UserSendDare" %>            
-            <%= render "shared/dare_card", sent_dare: news.event, disclaimer: true, occasion: news.occasion, read: news.read %>
+            <%= render "shared/dare_card", sent_dare: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
           <% end %>
         </div>
       <% end %>
