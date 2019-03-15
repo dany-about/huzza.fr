@@ -16,7 +16,7 @@ Dare.destroy_all
 Follow.destroy_all
 User.destroy_all
 
-admin = User.create!(email: 'nabooadmin@yopmail.com', password: '123456', password_confirmation: '123456')
+admin = User.create!(first_name: "Admin", last_name:"God",email: 'nabooadmin@yopmail.com', password: '123456', password_confirmation: '123456')
 admin2 = User.create!(email: 'nabooadmin@yopmail.com2', password: '123456', password_confirmation: '123456')
 noe = User.create!(email: "example@example.gmail", password:"123456", password_confirmation: "123456", first_name: "Noé", last_name: "Margui")
 
@@ -47,3 +47,5 @@ Comment.create!(commentable: dare_noe, user: admin, content: "testcom sur défi"
 Comment.create!(commentable: participation_noe, user: admin2, content: "Oui ceci est bien un vrai commentaire généré par le seed et on est trop des bgs")
 Comment.create!(commentable: participation_noe, user: admin, content: "Trop bien ce défi quel courage ce Noé")
 Comment.create!(commentable: participation_noe, user: noe, content: "Eh oui je commente mon propre défi car au fond de moi je suis un plouc !")
+
+News.create!(user: admin, friend: noe, event: dare_noe, occasion: "dare_sent_to_#{admin.id}_from_#{noe.id}")

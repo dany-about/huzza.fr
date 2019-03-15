@@ -1,4 +1,4 @@
-<% user = user %>
+<% user = participation.user %>
 <div class="container ">
   <div class="col-md-9 mx-auto participationCard">
     <div class="card" style="margin-bottom: -0.2px;border-width: 3px;border-color: #27ae60">
@@ -81,20 +81,18 @@
       <%= render 'shared/card_elements/description', dare: participation.dare %>
     </div>
     <div class="card collapse">
-      <%= render 'shared/card_elements/comments', participation: participation %>
+      <%= render 'shared/card_elements/comments', event: participation %>
     </div>
     <div class="card collapse">
       <%= render 'shared/card_elements/rating', dare: participation.dare %>
     </div>
-    <% case occasion %>
-    <% when "participation_created" %>
-      <div class="card collapse">
-        <%= render 'shared/card_elements/proof', participation: participation %>
-      </div>
-    <% when "participation_achieved", "achievement_rejected" %>
-      <div class="card collapse">
-        <%= render 'shared/card_elements/proof', participation: participation %>
-      </div>
-    <% end %>
+  <% case occasion %>
+  <% when "participation_created" %>
+    <div class="card collapse">
+  <% when "participation_achieved", "achievement_rejected" %>
+    <div class="card">
+  <% end %>
+      <%= render 'shared/card_elements/proof', event: participation %>
+    </div>
   </div>
 </div>

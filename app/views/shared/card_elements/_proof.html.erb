@@ -1,6 +1,6 @@
 <div class="card-body">
   <% if false%>
-  <% participation.proofs.each do |proof| %>
+  <% event.proofs.each do |proof| %>
   <% end %>
     <div class="row row-grid mx-auto my-auto">
       <div class="col-lg-12">
@@ -20,17 +20,19 @@
     </div>
   <!-- <% end %> -->
 
-  <!-- Si le current_user est aussi le participant, il peut upload des proofs -->
-  <% if current_user == participation.user %>
-    <!-- Bouton pour upload sa preuve (attacher la photo) -->
+  <!-- S'il s'agit d'une participation: si le current_user est aussi le participant, il peut upload des proofs -->
+  <% if event.is_a?(Participation) %>
+    <% if current_user == event.user %>
+      <!-- Bouton pour upload sa preuve (attacher la photo) -->
 
 
-    <!-- <% if participation.proofs.count > 0 %> -->
-      <%= link_to participation_path(participation), method: "PATCH", remote: true do %>
-        <!-- Bouton pour submit ses preuves (s'il y en a) pour valider la réalisation du défi; si le défi est déjà réalisé on peut quand même resubmit des preuves pr le fun -->
-      <% end %>
-    <!-- <% end %> -->
-  <% elsif current_user != participation.user && participation.is_achieved == nil %>
-    <!-- Bouton pour contester la validité des preuves -->
+      <!-- <% if participation.proofs.count > 0 %> -->
+        <%= link_to participation_path(event), method: "PATCH", remote: true do %>
+          <!-- Bouton pour submit ses preuves (s'il y en a) pour valider la réalisation du défi; si le défi est déjà réalisé on peut quand même resubmit des preuves pr le fun -->
+        <% end %>
+      <!-- <% end %> -->
+    <% elsif current_user != event.user && event.is_achieved == nil %>
+      <!-- Bouton pour contester la validité des preuves -->
+    <% end %>
   <% end %>
 </div>

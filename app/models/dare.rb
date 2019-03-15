@@ -3,10 +3,11 @@ class Dare < ApplicationRecord
   belongs_to :category, optional: true
   has_many :difficulty_ratings
 
-  # Participations and Reactions
+  # Participations
   has_many :participations
   has_many :participants, through: :participations, source: :user
   has_many :reactions, through: :participations
+  # has_many :proofs, through: :participations A REGLER (PHOTO - VIDEOS)
 
   # Sending and receiving Dares
   has_many :user_send_dares
