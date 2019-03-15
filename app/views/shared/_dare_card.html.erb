@@ -1,87 +1,81 @@
 
 
-<div class="container ">
-  <div class="col-md-9 mx-auto participationCard">
-
-    <div class="card" style="margin-bottom: -0.2px;border-width: 3px;border-color: #27ae60">
-      
-      <div class="row row-grid" style="margin-top: -1rem">
-        <%= link_to user_path(friend), class:"ml-0" do %>
-          <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/11/1/1552315427-noe-pp.jpg" class="avatar rounded-circle avatar-lg shadow hover-shadow-lg" style="margin-left:-0.5rem;margin-top:-1rem">
-        <% end %>
-        <% if disclaimer %>
-          <%= link_to user_path(friend), class:"ml-4" do %>
-            <p class="badge badge-secondary"><%= friend.full_name %> - created</p>
-          <% end %>
-          <div class="ml-9">
-            <p class="badge badge-lg badge-success badge-circle"><%= dare.difficulty_level %></p>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="card-body pt-0">
-        <div class="row row-grid" style="margin-left:-0.5rem;">
-          <div class="col-sm-2 text-center">
-            <% if disclaimer %>
-              <p class="card-text">Level <%= friend.rank %></p>
-              <div class="<%= friend.badge[:animation] %>">
-                <h4 style="margin-top: 11px"><%= friend.badge[:emote] %></h4>
-              </div>
-            <% end %>
-          </div>
-          <div class="col-sm-8 my-auto text-center">
-            <h5 class="card-title" style="text-align: justify; text-justify: inter-word"><%= dare.title %></h5>
-          </div>
-          <div class="col-sm-2 text-center">
-            <% if StarDare.find_by(user: current_user, dare: dare) == nil %>
-              <%= link_to star_dares_path(dare: dare), method: "POST", remote: true do %>
-                <button type="button" class="btn-md btn-secondary rounded-circle btn-icon-only" style="font-size:19px;margin-top:-1rem">
-                  <p class="ml-1 my-auto hover-rotate-360">⭐</p>
-                </button>
-              <% end %>
-            <% else %>
-              <%= link_to star_dare_path(StarDare.find_by(dare: dare, user: current_user)), method: "DELETE", remote: true do %>
-                <button type="button" class="btn-md btn-dark rounded-circle btn-icon-only" style="font-size:19px;margin-top:-1rem">
-                  <p class="ml-1 my-auto hover-rotate-360">⭐</p>
-                </button>
-              <% end %>
-            <% end %>
-            <% if Reaction.find_by(user: current_user, reactionable: dare) == nil %>
-              <%= link_to reactions_path(reactionable_type: "Dare", reactionable_id: dare, reaction: "strong"), method: "POST", remote: true do %>
-                <button type="button" class="btn-md btn-secondary rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
-              <% end %>
-            <% else %>
-              <%= link_to reaction_path(Reaction.find_by(reactionable: dare, user: current_user)), method: "DELETE", remote: true do %>
-                <button type="button" class="btn-md btn-dark rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row row-grid mr-auto ml-auto collapse">
-      <%= render 'shared/card_elements/tab_btns' %>
-    </div>
-    <div class="card collapse">
-      <%= render 'shared/card_elements/description', dare: dare %>
-    </div>
-    <div class="card collapse">
-      <%= render 'shared/card_elements/comments', event: dare %>
-    </div>
-    <div class="card collapse">
-      <%= render 'shared/card_elements/rating', dare: dare %>
-    </div>
-    <% case occasion %>
-    <% when "participation_created" %>
-      <div class="card collapse">
-        <%= render 'shared/card_elements/proof', event: dare %>
-      </div>
-    <% when "participation_achieved", "achievement_rejected" %>
-      <div class="card">
-        <%= render 'shared/card_elements/proof', event: dare %>
+<div class="card" style="margin-bottom: -0.2px;border-width: 3px;border-color: #27ae60">
+  
+  <div class="row row-grid" style="margin-top: -1rem">
+    <%= link_to user_path(friend), class:"ml-0" do %>
+      <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/11/1/1552315427-noe-pp.jpg" class="avatar rounded-circle avatar-lg shadow hover-shadow-lg" style="margin-left:-0.5rem;margin-top:-1rem">
+    <% end %>
+    <% if disclaimer %>
+      <%= link_to user_path(friend), class:"ml-4" do %>
+        <p class="badge badge-secondary"><%= friend.full_name %> - created</p>
+      <% end %>
+      <div class="ml-9">
+        <p class="badge badge-lg badge-success badge-circle"><%= dare.difficulty_level %></p>
       </div>
     <% end %>
+  </div>
 
+  <div class="card-body pt-0">
+    <div class="row row-grid" style="margin-left:-0.5rem;">
+      <div class="col-sm-2 text-center">
+        <% if disclaimer %>
+          <p class="card-text">Level <%= friend.rank %></p>
+          <div class="<%= friend.badge[:animation] %>">
+            <h4 style="margin-top: 11px"><%= friend.badge[:emote] %></h4>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-sm-8 my-auto text-center">
+        <h5 class="card-title" style="text-align: justify; text-justify: inter-word"><%= dare.title %></h5>
+      </div>
+      <div class="col-sm-2 text-center">
+        <% if StarDare.find_by(user: current_user, dare: dare) == nil %>
+          <%= link_to star_dares_path(dare: dare), method: "POST", remote: true do %>
+            <button type="button" class="btn-md btn-secondary rounded-circle btn-icon-only" style="font-size:19px;margin-top:-1rem">
+              <p class="ml-1 my-auto hover-rotate-360">⭐</p>
+            </button>
+          <% end %>
+        <% else %>
+          <%= link_to star_dare_path(StarDare.find_by(dare: dare, user: current_user)), method: "DELETE", remote: true do %>
+            <button type="button" class="btn-md btn-dark rounded-circle btn-icon-only" style="font-size:19px;margin-top:-1rem">
+              <p class="ml-1 my-auto hover-rotate-360">⭐</p>
+            </button>
+          <% end %>
+        <% end %>
+        <% if Reaction.find_by(user: current_user, reactionable: dare) == nil %>
+          <%= link_to reactions_path(reactionable_type: "Dare", reactionable_id: dare, reaction: "strong"), method: "POST", remote: true do %>
+            <button type="button" class="btn-md btn-secondary rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
+          <% end %>
+        <% else %>
+          <%= link_to reaction_path(Reaction.find_by(reactionable: dare, user: current_user)), method: "DELETE", remote: true do %>
+            <button type="button" class="btn-md btn-dark rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
+
+<div class="row row-grid mr-auto ml-auto collapse">
+  <%= render 'shared/card_elements/tab_btns' %>
+</div>
+<div class="card collapse">
+  <%= render 'shared/card_elements/description', dare: dare %>
+</div>
+<div class="card collapse">
+  <%= render 'shared/card_elements/comments', event: dare %>
+</div>
+<div class="card collapse">
+  <%= render 'shared/card_elements/rating', dare: dare %>
+</div>
+<% case occasion %>
+<% when "participation_created" %>
+  <div class="card collapse">
+    <%= render 'shared/card_elements/proof', event: dare %>
+  </div>
+<% when "participation_achieved", "achievement_rejected" %>
+  <div class="card">
+    <%= render 'shared/card_elements/proof', event: dare %>
+  </div>
+<% end %>
