@@ -48,20 +48,8 @@
       <div class="col-sm-8 my-auto text-center">
         <h5 class="card-title" style="text-align: justify; text-justify: inter-word"><%= dare.title %></h5>
       </div>
-      <div class="col-sm-2 text-center">
-        <% if StarDare.find_by(user: current_user, dare: dare) == nil %>
-          <%= link_to star_dares_path(dare: dare), method: "POST", remote: true do %>
-            <button type="button" class="btn-md btn-secondary rounded-circle btn-icon-only" style="font-size:19px;margin-top:-1rem">
-              <p class="ml-1 my-auto hover-rotate-360">⭐</p>
-            </button>
-          <% end %>
-        <% else %>
-          <%= link_to star_dare_path(StarDare.find_by(dare: dare, user: current_user)), method: "DELETE", remote: true do %>
-            <button type="button" class="btn-md btn-dark rounded-circle btn-icon-only" style="font-size:19px;margin-top:-1rem">
-              <p class="ml-1 my-auto hover-rotate-360">⭐</p>
-            </button>
-          <% end %>
-        <% end %>
+      <div class="col-sm-2 text-center starElement_<%=dare.id%>">
+        <%= render 'shared/card_elements/star', dare: dare %>
         <% if Reaction.find_by(user: current_user, reactionable: participation) == nil %>
           <%= link_to reactions_path(reactionable_type: "Participation", reactionable_id: participation, reaction: "strong"), method: "POST", remote: true do %>
             <button type="button" class="btn-md btn-secondary rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
@@ -81,7 +69,7 @@
   <%= render 'shared/card_elements/tab_btns' %>
 </div>
 
-<div class="card collapse">
+<div class="card collapse descriptionElement_<%=dare.id%>">
   <%= render 'shared/card_elements/description', dare: dare %>
 </div>
 

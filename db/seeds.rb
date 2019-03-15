@@ -36,7 +36,6 @@ sent_dare2 = UserSendDare.create!(dare: dare2, sender: admin2, recipient:admin)
 
 
 notif2 = News.create!(user: admin, friend: noe, event: participation_noe, occasion: "participation_created")
-notif2 = News.create!(user: admin, friend: noe, event: participation_noe, occasion: "participation_created")
 
 Follow.create!(user: noe, follower: admin)
 Follow.create!(user: admin, follower: noe)
