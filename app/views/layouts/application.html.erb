@@ -11,12 +11,15 @@
 
   <body>
 
-  <%= render 'layouts/flash'%>
-  <% if user_signed_in? %>
-    <%= render 'layouts/header' %>
-  <% end %>
-    <%= yield %>
-
+    <%= render 'layouts/flash'%>
+    <% if user_signed_in? %>
+      <%= render 'layouts/header' %>
+    <% end %>
+      <%= yield %>
+    
+    <footer>
+      <%= render 'layouts/footer' %>
+    </footer>
 
   </body>
 
