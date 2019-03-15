@@ -15,8 +15,11 @@
       <!-- Il faudra voir comment on gère les participations qui sont "un-achieved", quand la preuve est rejetée -->
       <!-- status prend les valeurs true ou false selon que la notification a été lue -->
       <% if news.event.is_a(Participation) %>
-        <%= render "shared/participation", participation: news.event, disclaimer: "yes", disclaimer_type: news.occasion, status: news.read %>
+        <% dare = news.event.dare; user = news.event.user %>
+      <% else %>
+        <% dare = news.event; user = dare.creator %>
       <% end %>
+      <%= render "shared/participation", participation: news.event, disclaimer: "yes", disclaimer_type: news.occasion, status: news.read %>
       <!-- Si l'évènement est un défi (i.e. défi créé, défi lancé ou défi relevé; disclaimer_type peut prendre les valeurs: "dare_created", "dare_sent" ou "dare_accepted") -->
 
       <% if news.event.is_a(Dare) %>

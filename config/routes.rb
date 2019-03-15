@@ -21,7 +21,6 @@ Rails.application.routes.draw do
   # Home page
   root "home#index"
 
-  resources :users, only: [:show]
   resources :follows, only: [:create, :destroy]
   resources :friend_requests, only: [:create, :destroy]
   

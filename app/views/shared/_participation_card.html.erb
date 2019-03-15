@@ -9,9 +9,11 @@
           <%= link_to user_path(participation.user), class:"ml-4" do %>
             <% case occasion %>
             <% when "participation_created" %>
-              <p class="badge badge-secondary"><%= participation.user.full_name %> - created</p>
+              <p class="badge badge-secondary"><%= participation.user.full_name %> - is participating</p>
             <% when "participation_achieved" %>
               <p class="badge badge-secondary"><%= participation.user.full_name %> - a réussi !</p>
+            <% when "dare_accepted" %>
+              <p class="badge badge-secondary"><%= participation.user.full_name %> - relève le défi !</p>
             <% when "achievement_rejected" %>          
               <p class="badge badge-secondary">La communauté remet en question la réalisation de <%= participation.user.full_name %> !</p>          
             <% end %>
