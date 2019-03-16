@@ -83,6 +83,10 @@ class User < ApplicationRecord
     i == 1 ? (return 0) : ( (i-2).times { f = f * 1.5 + 50 }; return f.round(-1) )
   end
 
+  def percent_to_next_lvl
+    return (self.elo_points - User.exp_rank(self.rank))*100 /( User.exp_rank(self.rank+1) - User.exp_rank(self.rank) )
+  end
+
   def rank
     20.times { |i| if (User.exp_rank(i+1)..User.exp_rank(i+2)-1).include?(self.elo_points) then return i+1 end }
   end
@@ -90,7 +94,7 @@ class User < ApplicationRecord
   def badge
     case self.rank
     when 1 then return { title: "Empailleur de marmottes", emote: "🤠", animation:"icon bg-gradient-success text-white rounded-circle icon-shape hover-rotate-360" }
-    when 2 then return { emote: "", animation: "" }
+    when 2 then return { title: "Bold Motherfucker", emote: "🧛‍", animation: "icon bg-gradient-success text-white rounded-circle icon-shape hover-rotate-360" }
     when 3 then return { emote: "", animation: "" }
     when 4 then return { emote: "", animation: "" }
     when 5 then return { emote: "", animation: "" }
