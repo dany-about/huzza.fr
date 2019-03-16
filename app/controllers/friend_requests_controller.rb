@@ -6,7 +6,7 @@ class FriendRequestsController < ApplicationController
       FriendRequest.create!(user_asked: User.find(params[:user]), user_asking: current_user)
     end
     respond_to do |format|
-      format.js {render template: 'users/show'}
+      format.js {render template: 'follows/create'}
     end
 
     # A FAIRE : On notifie la personne invitée
@@ -17,7 +17,7 @@ class FriendRequestsController < ApplicationController
       FriendRequest.find(params[:id]).destroy
     end
     respond_to do |format|
-      format.js {render template: 'users/show'}
+      format.js {render template: 'follows/create'}
     end
 
     # A FAIRE : On notifie la personne désinvitée (machin cancelled friend request)

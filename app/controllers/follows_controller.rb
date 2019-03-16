@@ -5,9 +5,6 @@ class FollowsController < ApplicationController
     if Follow.find_by(user: User.find(params[:user]), follower: current_user) == nil
       Follow.create!(user: User.find(params[:user]), follower: current_user)
     end
-    respond_to do |format|
-      format.js {render template: 'users/show'}
-    end
   end
   
   def destroy
@@ -15,7 +12,7 @@ class FollowsController < ApplicationController
       Follow.find(params[:id]).destroy
     end
     respond_to do |format|
-      format.js {render template: 'users/show'}
+      format.js {render :create}
     end
   end
 

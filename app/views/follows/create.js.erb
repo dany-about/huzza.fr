@@ -1,0 +1,1 @@
+Array.from($(".userInfoElement_<%= params[:user] %>")).forEach( function(element) {$(element).html("<%= j (render 'users/information', user: User.find(params[:user])) %>")} )
