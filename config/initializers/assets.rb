@@ -15,3 +15,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 Rails.application.config.assets.paths << Rails.root.join('lib')
 Rails.application.config.assets.paths << Rails.root.join('vendor')
+Rails.application.config.assets.precompile += %w( custom_scripts.js )
