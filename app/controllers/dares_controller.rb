@@ -1,7 +1,6 @@
 class DaresController < ApplicationController
   before_action :set_dare, only: [:show,:edit, :update, :destroy]
-  after_create :notify_followers
-  before_action :set_user_in_js
+  after_action :notify_followers, only: [:create]
 
   # GET /dares
   # GET /dares.json
@@ -72,10 +71,6 @@ class DaresController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_dare
       @dare = Dare.find(params[:id])
-    end
-
-    def set_user_in_js
-      render json: {current_user: current_user}
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

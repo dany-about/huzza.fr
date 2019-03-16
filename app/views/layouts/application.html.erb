@@ -70,11 +70,13 @@
               </label>
             </div>
           </div>
+          <%= link_to new_dare_path, method: "GET" do %>
           <div class="modal-footer border-0">
-            <button type="submit" class="btn btn-block btn-warning mt-auto">
-              Create
-            </button>
-          </div>
+              <button type="submit" class="btn btn-block btn-warning mt-auto">
+                Create
+              </button>
+            </div>
+            <% end %>
         </form>
       </div>
     </div>
