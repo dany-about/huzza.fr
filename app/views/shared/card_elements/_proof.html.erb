@@ -26,7 +26,7 @@
   <% if event.is_a?(Participation) %>
     <% if current_user == event.user %>
       <!-- Bouton pour upload sa preuve (attacher la photo) -->
-
+    
 
       <!-- <% if event.proofs.count > 0 %> -->
         <%= link_to participation_path(event), method: "PATCH", remote: true do %>
