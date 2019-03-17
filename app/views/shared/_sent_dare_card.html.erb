@@ -49,8 +49,8 @@
 <div class="card collapse">
   <%= render 'shared/card_elements/description', dare: dare %>
 </div>
-<div class="card collapse">
-  <%= render 'shared/card_elements/comments', event: dare %>
+<div class="card collapse commentElement_<%=sent_dare.id%>">
+  <%= render 'shared/card_elements/comments', commentable_id: sent_dare.id, type: sent_dare.class.name %>
 </div>
 <div class="card collapse">
   <%= render 'shared/card_elements/rating', dare: dare %>

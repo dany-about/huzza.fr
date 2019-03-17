@@ -1,45 +1,11 @@
-<% if user == current_user %>
-  <div class="card bg-gradient-success hover-shadow-lg mb-8">
-    <div class="card-body py-3">
-      <div class="row row-grid align-items-center">
-        <div class="col-lg-9">
-          <div class="media align-items-center">
-            <a href="#" class="avatar avatar-md rounded-circle mr-3">
-              <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/11/7/1552821633-logohuzza.jpg">
-            </a>
-            <div class="media-body">
-              <h5 class="text-white mb-0"><%= user.full_name%></h5>
-              <div>
-                <form>
-                  <input type="file" name="file-1[]" id="file-1" class="custom-input-file custom-input-file-link" data-multiple-caption="{count} files selected" multiple />
-                  <label for="file-1">
-                    <span class="text-white">Stop making up your profile and start challenging your friends !</span>
-                  </label>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right d-none d-lg-block">
-          <%= link_to news_index_path, class:"btn btn-sm btn-white rounded-pill btn-icon shadow" do %>
-            <span class="btn-inner--icon"><i class="fas fa-fire"></i></span>
-            <span class="btn-inner--text">Go to the Feed</span>
-          <% end %>
-        </div>
+<% user.participations.each do |participation| %>
+  <div style="margin-top: 50px">
+    <div class="container ">
+      <div class="col-md-12 mx-auto participationCard">
+        <%= render "shared/participation_card", participation: participation, friend: user, occasion: nil, disclaimer: false %>
       </div>
     </div>
-  </div>
+  </div> 
 <% end %>
-<div style="margin-top: -50px">
-  <% user.participations.each do |participation| %>
-    <div style="margin-top: 50px">
-      <div class="container ">
-        <div class="col-md-12 mx-auto participationCard">
-          <%= render "shared/participation_card", participation: participation, friend: user, occasion: nil, disclaimer: false %>
-        </div>
-      </div>
-    </div> 
-  <% end %>
-</div>
 
 <%= javascript_include_tag "custom_scripts" %>

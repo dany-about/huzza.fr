@@ -37,8 +37,15 @@
     <section class="slice">
         <div class="container">
           <div class="row row-grid">
-            <div class="col-lg-9 order-lg-2" id="userPageShow">
-              <%= render 'users/participations', user: @user %>
+            <div class="col-lg-9 order-lg-2">
+              <% if @user == current_user %>
+                <div class="card bg-gradient-success hover-shadow-lg mb-8">
+                  <%= render 'users/banner', user: @user %>
+                </div>
+              <% end %>
+              <div style="margin-top: -50px" id="userPageShow">
+                <%= render 'users/participations', user: @user %>
+              </div>
             </div>
             <div class="col-lg-3 order-lg-1">
               <div data-toggle="sticky" data-sticky-offset="30" data-negative-margin=".card-profile-cover">

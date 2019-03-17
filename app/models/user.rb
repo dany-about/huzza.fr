@@ -121,7 +121,7 @@ class User < ApplicationRecord
 
   def friends
     friends = []
-    self.followers.each { |follower| if Follow.all.where({user: follower, follower: self}).count > 0 then friends << follower end }
+    self.followers.each { |follower| if Follow.where({user: follower, follower: self}).count > 0 then friends << follower end }
     return friends
   end
 

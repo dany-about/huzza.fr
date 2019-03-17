@@ -15,14 +15,14 @@
       </div>
 
       <div class="list-group list-group-flush">
-        <% event.comments.each do |comment| %>
+        <% type.constantize.find(commentable_id).comments.each do |comment| %>
           <div class="list-group-item list-group-item-action">
             <div class="d-flex align-items-center" data-toggle="tooltip" data-placement="right" data-title="2 hrs ago">
               <div>
                 <img alt="Image placeholder" src="http://sunrift.com/wp-content/uploads/2014/12/Blake-profile-photo-square.jpg" class="avatar rounded-circle avatar-sm shadow hover-shadow-lg">
               </div>
               <div class="flex-fill ml-3">
-                <div class="h6 text-sm mb-0"><%= comment.user.full_name %><small class="float-right text-muted"><%= ((Time.current - comment.created_at)/1.hour).round %> hours ago</small></div>
+                <div class="h6 text-sm mb-0"><%= comment.user.full_name %><small class="float-right text-muted"><%= time_ago_in_words(comment.created_at) %> ago</small></div>
                 <p class="text-sm lh-140 mb-0">
                   <%= comment.content %>
                 </p>
@@ -39,13 +39,15 @@
               <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/11/2/1552390314-team-2-800x800.jpg" class="avatar  rounded-circle avatar-sm">
 
             </div>
-            <form class="card-comment-box" role="form">
-              <textarea rows="1" class="form-control" data-toggle="autosize" placeholder="Add a comment..."></textarea>
-            </form>
+            
           </div>
-          <div class="col-4 col-md-3 text-right">
-            <button class="btn btn-sm btn-outline-success" type="submit">Post</button>
-          </div>
+          <%= form_with url: comments_path(commentable_id: commentable_id, type: type) do |f| %>          
+            <%= f.text_area :content, placeholder:"Add a comment...", rows:"1", class:"form-control", toggle:"autosize", name:"test" %>
+            <div class="col-4 col-md-3 text-right">
+              <%= f.submit "Post Comment", class:"btn btn-sm btn-outline-success", type:"submit" %>
+            </div>
+          <% end %>
+          
         </div>
       </div>
     </div>
