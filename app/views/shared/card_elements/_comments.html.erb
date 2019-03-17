@@ -23,18 +23,18 @@
               </div>
               <div class="flex-fill ml-3">
                 <div class="h6 text-sm mb-0"><%= comment.user.full_name %><small class="float-right text-muted"><%= time_ago_in_words(comment.created_at) %> ago</small></div>
- 
- <!-- CODE pour supprimer son commentaire (le boutton en front est à créer dans le link_to et l'ensemble est à foutre au bon endroit) -->
-                <% if comment.user == current_user %>
-                  <%= link_to comment_path(comment, commentable_id: commentable_id, type: type), method: "DELETE", remote: true do %>
-                    DELETE
-                  <% end %>
-                <% end %>
- <!-- Fin du code -->
-
                 <p class="text-sm lh-140 mb-0">
                   <%= comment.content %>
                 </p>
+              </div>
+              <div class="text-right">
+                <div class="actions">
+                  <% if comment.user == current_user %>
+                    <%= link_to comment_path(comment, commentable_id: commentable_id, type: type), class: "action-item", method: "DELETE", remote: true do %>
+                      <i class="far fa-trash-alt"></i>
+                    <% end %>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
