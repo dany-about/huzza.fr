@@ -1,7 +1,3 @@
-<div class="spinner-grow" role="status">
-  <span class="sr-only">Loading...</span>
-</div>
-
 <!-- Navigation Bloc -->
 
 <div class="container">
@@ -9,7 +5,7 @@
   <div class="row row-grid">
     <div class="col-lg-3 order-lg-1 mt-0">
       <div data-toggle="sticky" data-sticky-offset="30" data-negative-margin=".card-profile-cover">
-        <div class="card">
+        <div class="card" style="margin-top: 50px">
           <div class="list-group list-group-sm list-group-flush">
             <a href="account-profile.html" class="list-group-item list-group-item-action d-flex justify-content-between">
               <div>
@@ -56,6 +52,17 @@
     <% end %>
 
     <div class="col-lg-9 order-lg-2 mt-3">
+      <div class="text-center">
+        <div class="spinner-grow text-success text-" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success text-" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success text-" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
       <table>
         <tbody>
           <% current_user.news.each do |news| %>
