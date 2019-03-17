@@ -22,9 +22,7 @@
 //= require assets/libs/highlightjs/highlight.pack.min.js
 //= require assets/libs/clipboard/dist/clipboard.min.js
 //= require assets/js/purpose.js
-//= require assets/js/demo.js
 //= require assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js
-//= require assets/libs/swiper/dist/js/swiper.min.js
 //= require assets/libs/typed.js/lib/typed.min.js
 //= require assets/libs/select2/dist/js/select2.min.js
 //= require assets/libs/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js
