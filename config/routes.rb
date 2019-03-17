@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get 'users/showtest'
 
   get 'home/team'
-  get 'home/discover'
+  get 'home/howitworks'
 
   # Home page
   root 'home#index'
