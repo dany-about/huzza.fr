@@ -1,3 +1,4 @@
+<%= StarDare.where({dare: dare, user: current_user}).count %>
 <% if StarDare.find_by(user: current_user, dare: dare) == nil %>
   <%= link_to star_dares_path(dare: dare), method: "POST", remote: true do %>
     <button type="button" class="btn-md btn-secondary rounded-circle btn-icon-only" style="font-size:19px;margin-top:-1rem">
