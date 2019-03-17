@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get 'home/chantier_card'
   get 'users/showtest'
 
+  get 'home/team'
+
   # Home page
   root 'home#index'
   
