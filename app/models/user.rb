@@ -15,12 +15,12 @@ class User < ApplicationRecord
 
   validates :terms_of_service, acceptance: true
 
-  after_create :first_dare_participation
+  # after_create :first_dare_participation
 
-  def first_dare_participation
-    firstparticipation = Participation.create!(user: User.last, dare: Dare.all.sample, deadline: Time.new(2020))
-    puts firstparticipation
-  end
+  # def first_dare_participation
+  #   firstparticipation = Participation.create!(user: self, dare: Dare.all.sample, deadline: Time.new(2020))
+  #   puts firstparticipation
+  # end
 
 
   extend FriendlyId
@@ -37,7 +37,7 @@ class User < ApplicationRecord
   has_many :follows
   has_many :followers, through: :follows
   has_many :reverse_follows, class_name: "Follow", foreign_key: "follower_id"
-  has_many :followed, through: :reverse_follows, source: :user 
+  has_many :followed_users, through: :reverse_follows, source: :user 
   
   # Sending and receiving Dares
   has_many :user_sent_dares, class_name: "UserSendDare", foreign_key: "sender_id"
@@ -63,7 +63,7 @@ class User < ApplicationRecord
   end
   
   def achieved_dares
-    self.participated_dares.joins(:participations).where({ participations: {is_achieved: true} }).reverse
+    self.participated_dares.joins(:participations).where({ participations: {is_achieved: true} })
   end
 
   # Active Storage Avatar Image
@@ -123,6 +123,11 @@ class User < ApplicationRecord
     friends = []
     self.followers.each { |follower| if Follow.all.where({user: follower, follower: self}).count > 0 then friends << follower end }
     return friends
+  end
+
+  def nonreciprocal_followed_users
+    array = []
+    self.followed_users.each { |user| if user.friends.include?(self) then array << user end }
   end
 
   def friends_list
