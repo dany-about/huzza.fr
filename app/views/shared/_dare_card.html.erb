@@ -53,13 +53,13 @@
 <div class="card collapse">
   <%= render 'shared/card_elements/rating', dare: dare %>
 </div>
+
 <% case occasion %>
-<% when "participation_created" %>
-  <div class="card collapse">
-    <%= render 'shared/card_elements/proof', event: dare %>
-  </div>
-<% when "participation_achieved", "achievement_rejected" %>
-  <div class="card">
-    <%= render 'shared/card_elements/proof', event: dare %>
-  </div>
+<% when "participation_achieved", "achievement_rejected" then proof_class = "card" %>
+<% else proof_class = "card collapse" %>
 <% end %>
+
+<div class="<%= proof_class %>">
+  <%= render 'shared/card_elements/proof', event: dare %>
+</div>
+

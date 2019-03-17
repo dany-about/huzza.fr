@@ -140,6 +140,7 @@ class User < ApplicationRecord
     self.followers.each { |follower| 
       News.create!(user: follower, friend: self, event: event, occasion: occasion)
     }
+    News.create!(user: self, friend: self, event: event, occasion: occasion)
   end
 
 
