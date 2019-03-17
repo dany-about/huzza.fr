@@ -13,10 +13,10 @@
                   <%= link_to 'Feed', news_index_path, class: 'nav-link'%>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/home/discover">Discover</a>
+                  <%= link_to 'Profile', user_path(current_user), class: 'nav-link'%>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'Profile', user_path(current_user), class: 'nav-link'%>
+                    <a class="nav-link" href="/home/discover">Discover</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" id="navbar-white_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
