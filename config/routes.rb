@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   devise_for :users, only: :omniauth_callbacks, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
 
   scope '/(:locale)', locale: /en|fr/ do
-    devise_for :users, skip: :omniauth_callbacks
+      devise_for :users, skip: :omniauth_callbacks
   end
+
+  post '/sign_up_validation', to: 'users/omniauth_callbacks#sign_up_validation'
 
   # Avatar routes
   resources :users do
@@ -23,7 +25,7 @@ Rails.application.routes.draw do
   get 'home/createdare'
 
   # Home page
-  root 'home#index'
+  root 'news#index'
   
 
   resources :follows, only: [:create, :destroy]
@@ -41,6 +43,7 @@ Rails.application.routes.draw do
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  post '/sign_up_validation', to: 'users/omniauth_callbacks#sign_up_validation'
+  # Dares route
+  resources :dares
 
 end
