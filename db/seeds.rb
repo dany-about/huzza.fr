@@ -32,10 +32,14 @@ category1 = Category.create(name: "foreign")
 category2 = Category.create(name: "other")
 
 admin = User.create!(email: 'nabooadmin@yopmail.com', password: '123456', password_confirmation: '123456', first_name: "God,", last_name: "I mean Dany")
+dare1 = Dare.create!(title: "first dare", description: "test "*30, creator: admin, category: category)
+
+
+
+
 admin2 = User.create!(email: 'nabooadmin@yopmail.com2', password: '123456', password_confirmation: '123456')
 noe = User.create!(email: "example@example.gmail", password:"123456", password_confirmation: "123456", first_name: "Noé", last_name: "Margui")
 
-dare1 = Dare.create!(title: "first dare", description: "test "*30, creator: admin, category: category)
 DifficultyRating.create!(user: admin, dare: dare1, rating: 20)
 dare2 = Dare.create!(title: "second dare", description: "test2 "*30, creator: admin2, category: category)
 DifficultyRating.create!(user: admin, dare: dare2, rating: 50)

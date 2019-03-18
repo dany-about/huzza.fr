@@ -33,15 +33,15 @@ class Dare < ApplicationRecord
   def difficulty
     diffs = [] 
     self.difficulty_ratings.each { |diff_rating| diffs << diff_rating.rating }
-    return diffs.sum/diffs.count.round
+    if diffs.count > 0 then return diffs.sum/diffs.count.round else return nil end
   end
 
   def difficulty_level
-    x = 
     case self.difficulty
     when 0..33 then return 1
     when 34..67 then return 2
     when 68..100 then return 3
+    when nil then return "?"
     end
   end
 

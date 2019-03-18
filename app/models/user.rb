@@ -14,17 +14,7 @@ class User < ApplicationRecord
   end
 
   validates :terms_of_service, acceptance: true
-
   after_create :first_dare_participation
-
-  def first_dare_participation
-    firstparticipation = Participation.create!(user: self, dare: Dare.all.sample, deadline: Time.new(2020))
-    puts firstparticipation
-    puts Dare.find(params[:id]).difficulty_ratings
-    puts difficultyRating.find(params[:id]).rating
-    puts "*" * 30
-  end
-
 
   extend FriendlyId
   friendly_id :first_name, use: :slugged
@@ -121,6 +111,13 @@ class User < ApplicationRecord
 
   # Accomplishements and titles
   # A FAIRE
+
+  # After create, automatic participation to basic dares
+  def first_dare_participation
+    if User.all.count > 1 
+      firstparticipation = Participation.create!(user: self, dare: Dare.all.sample, deadline: Time.new(2020))
+    end
+  end
 
   def friends
     friends = []
