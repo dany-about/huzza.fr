@@ -27,5 +27,8 @@
 /config/master.key
 
 .idea/
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 .env
