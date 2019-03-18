@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get 'home/createdare'
 
   # Home page
-  root 'home#index'
+  root 'news#index'
   
 
   resources :follows, only: [:create, :destroy]
@@ -43,15 +43,7 @@ Rails.application.routes.draw do
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-<<<<<<< HEAD
-  root "home#index"
-
   # Dares route
   resources :dares
-
-
-=======
-  post '/sign_up_validation', to: 'users/omniauth_callbacks#sign_up_validation'
->>>>>>> b65cfffc70d0371b639ba29c556d6da866bfbe61
 
 end
