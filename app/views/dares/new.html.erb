@@ -1,44 +1,63 @@
-<h1>New Dare</h1>
+<div class="container">
 
-<%= render 'form', dare: @dare %>
+  <div class="col-md-9 mx-auto" style="margin-top: 80px">
+    <select class="custom-select">
+      <option selected>Select your dare's category</option>
+      <option value="1">Adventure</option>
+      <option value="2">Sport</option>
+      <option value="3">Lifestyle</option>
+      <option value="1">Cooking</option>
+      <option value="2">Learning</option>
+      <option value="3">Art</option>
+      <option value="1">Discovering</option>
+      <option value="2">WTF</option>
+      <option value="2">Green</option>
+      <option value="3">Other</option>
+    </select>
+    <div class="card" style="margin-top: 80px; margin-bottom: -0.2px;border-width: 3px;border-color: #27ae60">
 
-
-
-<div class="card" style="margin-bottom: -0.2px;border-width: 3px;border-color: #27ae60">
-  
-  <div class="row row-grid" style="margin-top: -1rem">
-    <%= link_to user_path(current_user), class:"ml-0" do %>
-      <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/11/1/1552315427-noe-pp.jpg" class="avatar rounded-circle avatar-lg shadow hover-shadow-lg" style="margin-left:-0.5rem;margin-top:-1rem">
-    <% end %>
-    <%= link_to user_path(current_user), class:"ml-4" do %>
-      <p class="badge badge-secondary"><%= current_user.full_name %> - created</p>
-    <% end %>
-  </div>
-
-  <div class="card-body pt-0">
-    <div class="row row-grid" style="margin-left:-0.5rem;">
-      <div class="col-sm-2 text-center">
-          <p class="card-text">Level <%= current_user.rank %></p>
-          <div class="<%= current_user.badge[:animation] %>">
-            <h4 style="margin-top: 11px"><%= current_user.badge[:emote] %></h4>
-          </div>
+      <div class="row row-grid" style="margin-top: -1rem">
+        <%= link_to user_path(current_user), class:"ml-0" do %>
+        <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/11/1/1552315427-noe-pp.jpg" class="avatar rounded-circle avatar-lg shadow hover-shadow-lg" style="margin-left:-0.5rem;margin-top:-1rem">
+        <% end %>
+        <%= link_to user_path(current_user), class:"ml-4" do %>
+        <p class="badge badge-secondary"><%= current_user.full_name %> - created</p>
+        <% end %>
       </div>
-      <div class="col-sm-8 my-auto text-center">
-        <h5 class="card-title" style="text-align: justify; text-justify: inter-word">DARE TITLE</h5>
+
+      <div class="card-body pt-0">
+        <div class="row row-grid" style="margin-left:-0.5rem;">
+          <div class="col-sm-2 text-center">
+            <p class="card-text">Level <%= current_user.rank %></p>
+            <div class="<%= current_user.badge[:animation] %>">
+              <h4 style="margin-top: 11px"><%= current_user.badge[:emote] %></h4>
+            </div>
+          </div>
+          <div class="col-sm-8 my-auto text-center">
+            <div class="form-group">
+              <input type="text" class="form-control form-control-flush" placeholder="Your title here...">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<div class="row row-grid mr-auto ml-auto">
-  <%= render 'shared/card_elements/tab_btns' %>
-</div>
-<div class="card">
-  <div class="card-body">
-    <div class="row row-grid mx-auto my-auto">
-      <div class="col-lg-12">
-        <p class="card-text" style="text-align: justify; text-justify: inter-word">DESCRIPTION </p>
+    <div class="row row-grid mr-auto ml-auto">
+      <%= render 'shared/card_elements/tab_btns' %>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="row row-grid mx-auto my-auto">
+          <div class="col-lg-12">
+            <div class="form-group">
+              <input type="text" class="form-control form-control-flush" placeholder="Your description here...">
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+    <div style="display: flex; justify-content: flex-end;">
+      <button class="btn btn-success" data-toggle="sweet-alert" data-sweet-alert="success">Create my dare</button>
     </div>
   </div>
 </div>
