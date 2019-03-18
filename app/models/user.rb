@@ -15,14 +15,16 @@ class User < ApplicationRecord
 
   validates :terms_of_service, acceptance: true
 
-  after_create :first_dare_participation
+  # after_create :first_dare_participation
 
   def first_dare_participation
-    firstparticipation = Participation.create!(user: self, dare: Dare.all.sample, deadline: Time.new(2020))
-    puts firstparticipation
-    puts Dare.find(params[:id]).difficulty_ratings
-    puts difficultyRating.find(params[:id]).rating
-    puts "*" * 30
+    if User.all.count > 1 
+      firstparticipation = Participation.create!(user: self, dare: Dare.all.sample, deadline: Time.new(2020))
+      puts firstparticipation
+      puts Dare.find(params[:id]).difficulty_ratings
+      puts difficultyRating.find(params[:id]).rating
+      puts "*" * 30
+    end
   end
 
 
