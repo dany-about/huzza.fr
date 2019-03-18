@@ -19,8 +19,17 @@ User.destroy_all
 Category.destroy_all
 
 category = Category.create(name: "defis de base")
-category1 = Category.create(name: "defis intermediaires")
-category2 = Category.create(name: "defis pro")
+category2 = Category.create(name: "adventure")
+category2 = Category.create(name: "sport")
+category2 = Category.create(name: "extreme")
+category1 = Category.create(name: "art-technologic")
+category2 = Category.create(name: "only for girls")
+category2 = Category.create(name: "education")
+category2 = Category.create(name: "funny")
+category1 = Category.create(name: "WTF")
+category1 = Category.create(name: "gaming")
+category1 = Category.create(name: "foreign")
+category2 = Category.create(name: "other")
 
 admin = User.create!(email: 'nabooadmin@yopmail.com', password: '123456', password_confirmation: '123456', first_name: "God,", last_name: "I mean Dany")
 admin2 = User.create!(email: 'nabooadmin@yopmail.com2', password: '123456', password_confirmation: '123456')
