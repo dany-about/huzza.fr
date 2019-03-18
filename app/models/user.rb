@@ -15,6 +15,7 @@ class User < ApplicationRecord
 
   validates :terms_of_service, acceptance: true
 
+=begin
   after_create :first_dare_participation
 
   def first_dare_participation
@@ -24,7 +25,7 @@ class User < ApplicationRecord
     puts difficultyRating.find(params[:id]).rating
     puts "*" * 30
   end
-
+=end
 
   extend FriendlyId
   friendly_id :first_name, use: :slugged
