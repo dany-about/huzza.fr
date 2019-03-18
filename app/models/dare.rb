@@ -48,7 +48,7 @@ class Dare < ApplicationRecord
   def achievers
     achievers = []
     self.participations.where(is_achieved: true).each { |participation| achievers << participation.user }
-    return achievers.reverse
+    return achievers
   end
 
   # TBD according to difficulty
