@@ -1,18 +1,12 @@
 <div class="container">
+<%= form_for :dare, url: dares_path(id: current_user.id, show: "users/dares", status: "created"), method:"POST" do |f| %>
 
   <div class="col-md-9 mx-auto" style="margin-top: 80px">
-    <select class="custom-select">
+    <select class="custom-select" name="dare[category_id]">
       <option selected>Select your dare's category</option>
-      <option value="1">Adventure</option>
-      <option value="2">Sport</option>
-      <option value="3">Lifestyle</option>
-      <option value="1">Cooking</option>
-      <option value="2">Learning</option>
-      <option value="3">Art</option>
-      <option value="1">Discovering</option>
-      <option value="2">WTF</option>
-      <option value="2">Green</option>
-      <option value="3">Other</option>
+      <%= Category.all.each do |category| %>
+        <option value="<%= category.id %>"><%= category.name %></option>
+      <% end %>
     </select>
     <div class="card" style="margin-top: 80px; margin-bottom: -0.2px;border-width: 3px;border-color: #27ae60">
 
@@ -35,7 +29,7 @@
           </div>
           <div class="col-sm-8 my-auto text-center">
             <div class="form-group">
-              <input type="text" class="form-control form-control-flush" placeholder="Your title here...">
+              <input type="text" name="dare[title]" class="form-control form-control-flush" placeholder="Your title here...">
             </div>
           </div>
         </div>
@@ -50,14 +44,28 @@
         <div class="row row-grid mx-auto my-auto">
           <div class="col-lg-12">
             <div class="form-group">
-              <input type="text" class="form-control form-control-flush" placeholder="Your description here...">
+              <input type="text" name="dare[description]" class="form-control form-control-flush" placeholder="Your description here...">
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <% if params[:mode] == "sent" %>
+      <select class="custom-select" name="recipient_id">
+        <option selected>Select whom you want to challenge</option>
+        <%= current_user.friends.each do |friend| %>
+          <option value="<%= friend.id %>"><%= friend.full_name %></option>
+        <% end %>
+      </select>
+    <% elsif params[:mode] == "solo" %>
+      <input type = "checkbox" name = "participate" value = "yes" /> J'y participe
+    <% end %>
+
     <div style="display: flex; justify-content: flex-end;">
-      <button class="btn btn-success" data-toggle="sweet-alert" data-sweet-alert="success">Create my dare</button>
+      <%= f.submit "Create my dare", class:"btn btn-success", type:"submit" %>
     </div>
   </div>
+
+<% end %>
 </div>
