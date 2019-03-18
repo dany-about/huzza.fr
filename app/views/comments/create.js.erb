@@ -1,0 +1,2 @@
+Array.from($(".commentElement_<%= params[:commentable_id] %>")).forEach( function(element) {$(element).html("<%= j (render 'shared/card_elements/comments', commentable_id: params[:commentable_id], type: params[:type]) %>")} )
+$("#content").val("")

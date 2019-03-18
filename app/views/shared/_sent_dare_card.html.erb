@@ -1,4 +1,4 @@
-
+<% dare = sent_dare.dare; sender = sent_dare.sender; recipient = sent_dare.recipient %>
 
 <div class="card" style="margin-bottom: -0.2px;border-width: 3px;border-color: #27ae60">
   
@@ -6,14 +6,16 @@
     <%= link_to user_path(friend), class:"ml-0" do %>
       <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/11/1/1552315427-noe-pp.jpg" class="avatar rounded-circle avatar-lg shadow hover-shadow-lg" style="margin-left:-0.5rem;margin-top:-1rem">
     <% end %>
-    <% if disclaimer %>
-      <%= link_to user_path(friend), class:"ml-4" do %>
-        <p class="badge badge-secondary"><%= friend.full_name %> - created</p>
+    <div class="ml-4">
+      <% if friend == sender %>
+        <p class="badge badge-secondary"><%= link_to "#{sender.full_name}", user_path(sender) %> défie <%= link_to "#{recipient.full_name}", user_path(recipient) %> </p>
+      <% elsif friend == recipient %>
+        <p class="badge badge-secondary"><%= link_to "#{recipient.full_name}", user_path(recipient) %> est défié par <%= link_to "#{sender.full_name}", user_path(sender) %> </p>
       <% end %>
-      <div class="ml-9">
-        <p class="badge badge-lg badge-success badge-circle"><%= dare.difficulty_level %></p>
-      </div>
-    <% end %>
+    </div>
+    <div class="ml-9">
+      <p class="badge badge-lg badge-success badge-circle"><%= dare.difficulty_level %></p>
+    </div>
   </div>
 
   <div class="card-body pt-0">
@@ -24,6 +26,7 @@
           <div class="<%= friend.badge[:animation] %>">
             <h4 style="margin-top: 11px"><%= friend.badge[:emote] %></h4>
           </div>
+        <% else %>
         <% end %>
       </div>
       <div class="col-sm-8 my-auto text-center">
@@ -33,22 +36,21 @@
         <div class="starElement_<%=dare.id%>">
           <%= render 'shared/card_elements/star', dare: dare %>
         </div>
-        <div class="reactionElement_<%=dare.id%>">
-          <%= render 'shared/card_elements/reaction', event_id: dare.id, type: dare.class.name %>
+        <div class="reactionElement_<%=sent_dare.id%>">
+          <%= render 'shared/card_elements/reaction', event_id: sent_dare.id, type: sent_dare.class.name %>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <div class="row row-grid mr-auto ml-auto">
   <%= render 'shared/card_elements/tab_btns' %>
 </div>
 <div class="card collapse">
   <%= render 'shared/card_elements/description', dare: dare %>
 </div>
-<div class="card collapse commentElement_<%=dare.id%>">
-  <%= render 'shared/card_elements/comments', commentable_id: dare.id, type: dare.class.name %>
+<div class="card collapse commentElement_<%=sent_dare.id%>">
+  <%= render 'shared/card_elements/comments', commentable_id: sent_dare.id, type: sent_dare.class.name %>
 </div>
 <div class="card collapse">
   <%= render 'shared/card_elements/rating', dare: dare %>

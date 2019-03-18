@@ -1,28 +1,28 @@
 <div class="flex-grid">
 
-  <div class="row bg-warning" style="justify-content: center">
+  <div class="row bg-gradient-success" style="justify-content: center">
 
-    <div class="col-3" style="padding-right: 7px; margin-top: 14px;">
+    <div class="col-3" style="padding-right: 7px; margin-top: 30px;">
       <%= render 'users/badges' %>
     </div>
 
-    <div class="col-5" style="padding-left: 7px; padding-right: 7px; margin-top: 14px">
+    <div class="col-5" style="padding-left: 7px; padding-right: 7px; margin-top: 30px">
       <%= render 'users/profile' %>
     </div>
 
-    <div class="col-3"  style="padding-left: 7px; margin-top: 14px;">
-      <%= render 'users/information' %>
+    <div class="col-3 userInfoElement_<%= @user.id %>" style="padding-left: 7px; margin-top: 30px;">
+      <%= render 'users/information', user: @user %>
     </div>
 
   </div>
 
   <div class="main-content">
     <!-- Header (account) -->
-    <section class="header-account-page bg-warning d-flex align-items-end" style="height: 30px;" data-offset-top="#header-main">
+    <section class="header-account-page d-flex align-items-end bg-gradient-success" style="height: 10px" data-offset-top="#header-main">
       <!-- Header container -->
       <div class="container pt-4 pt-lg-0">
         <div class="row">
-          <div class=" col-lg-12">
+          <div class=" col-lg-12" style="margin-left: -50px">
             <!-- Account navigation -->
             <div class="d-flex">
               <a href="account-profile-public.html" class="btn btn-icon btn-group-nav shadow btn-neutral">
@@ -39,85 +39,63 @@
           <div class="row row-grid">
             <div class="col-lg-9 order-lg-2">
               <% if @user == current_user %>
-                <div class="card bg-gradient-warning hover-shadow-lg">
-                  <div class="card-body py-3">
-                    <div class="row row-grid align-items-center">
-                      <div class="col-lg-8">
-                        <div class="media align-items-center">
-                          <a href="#" class="avatar avatar-lg rounded-circle mr-3">
-                            <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/11/2/1552390314-team-2-800x800.jpg">
-                          </a>
-                          <div class="media-body">
-                            <h5 class="text-white mb-0"><%= @user.full_name%></h5>
-                            <div>
-                              <form>
-                                <input type="file" name="file-1[]" id="file-1" class="custom-input-file custom-input-file-link" data-multiple-caption="{count} files selected" multiple />
-                                <label for="file-1">
-                                  <span class="text-white">Upgrade your account to add more filters</span>
-                                </label>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right d-none d-lg-block">
-                        <a href="#" class="btn btn-sm btn-white rounded-pill btn-icon shadow">
-                          <span class="btn-inner--icon"><i class="fas fa-fire"></i></span>
-                          <span class="btn-inner--text">Upgrade to Pro</span>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                <div class="card bg-gradient-success hover-shadow-lg mb-8">
+                  <%= render 'users/banner', user: @user %>
                 </div>
               <% end %>
-              <div style="margin-top: -50px">
-                <% @user.participations.each do |participation| %>
-                  <div style="margin-top: 40px">
-                    <%= render "shared/participation_card", participation: participation, occasion: nil, disclaimer: false %>
-                  </div>
-                <% end %>
+              <div style="margin-top: -50px" id="userPageShow">
+                <%= render 'users/participations', user: @user %>
               </div>
             </div>
-            <div class="col-lg-3 order-lg-1">
+            <div class="col-lg-3 order-lg-1" style="margin-left: -50px">
               <div data-toggle="sticky" data-sticky-offset="30" data-negative-margin=".card-profile-cover">
                 <div class="card">
                   <div class="list-group list-group-sm list-group-flush">
-                    <a href="account-profile.html" class="list-group-item list-group-item-action d-flex justify-content-between">
+                    <%= link_to user_path(@user.id, show: "users/participations"), class:"list-group-item list-group-item-action d-flex justify-content-between", remote: true do %>
                       <div>
                         <i class="fas fa-user-ninja mr-2"></i>
-                        <span>Participations</span>
+                        <span>Ongoing</span>
                       </div>
                       <div>
                         <i class="fas fa-angle-right"></i>
                       </div>
-                    </a>
-                    <a href="account-settings.html" class="list-group-item list-group-item-action d-flex justify-content-between">
+                    <% end %>
+                    <%= link_to user_path(@user.id, show: "users/dares"), class:"list-group-item list-group-item-action d-flex justify-content-between", remote: true do %>
                       <div>
                         <i class="fas fa-user-injured mr-2"></i>
-                        <span>Dares</span>
+                        <span>Succeeded</span>
                       </div>
                       <div>
                         <i class="fas fa-angle-right"></i>
                       </div>
-                    </a>
-                    <a href="account-billing.html" class="list-group-item list-group-item-action d-flex justify-content-between">
+                    <% end %>
+                    <%= link_to user_path(@user.id, show: "users/friends"), class:"list-group-item list-group-item-action d-flex justify-content-between", remote: true do %>
                       <div>
                         <i class="fas fa-user-friends mr-2"></i>
-                        <span>Friends</span>
+                        <span>Failed</span>
                       </div>
                       <div>
                         <i class="fas fa-angle-right"></i>
                       </div>
-                    </a>
-                    <a href="account-notifications.html" class="list-group-item list-group-item-action d-flex justify-content-between">
+                    <% end %>
+                    <%= link_to user_path(@user.id, show: "users/statistics"), class:"list-group-item list-group-item-action d-flex justify-content-between", remote: true do %>
                       <div>
                         <i class="fas fa-sort-numeric-up mr-2"></i>
-                        <span>Account Metrics</span>
+                        <span>Starred</span>
                       </div>
                       <div>
                         <i class="fas fa-angle-right"></i>
                       </div>
-                    </a>
+                    <% end %>
+                    <%= link_to user_path(@user.id, show: "users/statistics"), class:"list-group-item list-group-item-action d-flex justify-content-between", remote: true do %>
+                      <div>
+                        <i class="fas fa-sort-numeric-up mr-2"></i>
+                        <span>Account Metrics  </span><span class="badge badge-pill badge-soft-warning badge-floating border-">Soon</span>
+                      </div>
+                      <div>
+                        <i class="fas fa-angle-right"></i>
+                      </div>
+                    <% end %>
                   </div>
                 </div>
               </div>
@@ -127,14 +105,3 @@
     </section>
   </div>
 </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="p-4 rounded" style="height: 50px; background-color: #0a3d62">
-          <a href="#" class="tongue tongue-bottom">
-            <i class="fas fa-angle-up"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-

@@ -1,11 +1,11 @@
 class Participation < ApplicationRecord
   belongs_to :user
   belongs_to :dare
-  has_many :reactions
 
   # Polymorphic associations
   has_many :news, as: :event
   has_many :comments, as: :commentable
+  has_many :reactions, as: :reactionable
 
   # Validations
   validate :deadline_in_futur

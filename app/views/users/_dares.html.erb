@@ -1,0 +1,11 @@
+<% user.created_dares.each do |dare| %>
+  <div style="margin-top: 50px">
+    <div class="container ">
+      <div class="col-md-12 mx-auto participationCard">
+        <%= render "shared/dare_card", dare: dare, friend: user, occasion: nil, disclaimer: false %>
+      </div>
+    </div>
+  </div> 
+<% end %>
+
+<%= javascript_include_tag "user_cards_scripts" %>

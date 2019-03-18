@@ -1,8 +1,7 @@
 class NewsController < ApplicationController
+  respond_to :html, :js
 
   def index  #feed
-    @network_news = current_user.news
-    @friends_list = current_user.friends_list
   end
 
 end

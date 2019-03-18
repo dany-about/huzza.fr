@@ -1,5 +1,5 @@
 class ParticipationsController < ApplicationController
-
+  
   def create 
     if Participation.find_by(user: current_user, dare: Dare.find(params[:dare])) == nil
       @participation = Participation.create!(user: current_user, dare: Dare.find(params[:dare])) 
