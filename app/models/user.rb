@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   validates :terms_of_service, acceptance: true
 
-  # after_create :first_dare_participation
+  after_create :first_dare_participation
 
   def first_dare_participation
     if User.all.count > 1 
@@ -26,7 +26,7 @@ class User < ApplicationRecord
       puts "*" * 30
     end
   end
-
+=end
 
   extend FriendlyId
   friendly_id :first_name, use: :slugged
