@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user!
-    redirect_to new_user_registration_path, notice: 'Your custom message here' unless user_signed_in?
+    redirect_to new_user_registration_path unless user_signed_in?
   end
 
 end

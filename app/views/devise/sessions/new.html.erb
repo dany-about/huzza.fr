@@ -1,57 +1,64 @@
-<div class="container py-5 px-md-0 d-flex align-items-center">
-  <div class="w-100">
-    <div class="row row-grid justify-content-center justify-content-lg-between align-items-center">
-      <div class="col-sm-8 col-lg-6 col-xl-5 order-lg-2">
-        <div class="card shadow zindex-100 mb-0">
-          <div class="card-body px-md-5 py-5">
-            <div class="mb-5">
-              <h6 class="h3">Connexion</h6>
-              <p class="text-muted mb-0">Connecte toi poura accéder à ton compte.</p>
-            </div>
-            <span class="clearfix"></span>
+<div class="container py-5">
+  <div class="row justify-content-end">
+      <div class="col-md-8 col-lg-5">
+          <div class="card shadow zindex-100">
+              <div class="card-body px-md-5 py-3 mt-5">
+                  <div class="text-center mb-5">
+                      <h6 class="h3">Sign in</h6>
+                      <p class="text-muted mb-0">continue the adventure</p>
+                  </div>
+                  <span class="clearfix"></span>
+                  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-            <!-- FORM -->
-            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-              <div class="field">
-                <%= f.label :email, class: 'control-label' %><br />
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email...', class: 'form-control' %>
+
+
+                      <div class="form-group">
+                          <label class="form-control-label">Email address</label>
+                          <div class="input-group input-group-transparent">
+                              <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-user"></i></span>
+                              </div>
+                                  <%= f.email_field :email, class: 'form-control', id: 'input-email', placeholder: 'name@example.com', autofocus: true, autocomplete: "email" %>
+                          </div>
+                      </div>
+                      <div class="form-group mb-4">
+                          <label class="form-control-label">Password</label>
+
+                          <div class="input-group input-group-transparent">
+                              <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fas fa-key"></i></span>
+                              </div>
+                              <%= f.password_field :password, class:"form-control", id:"input-password", placeholder:"********", autocomplete: "current-password" %>
+                              <div class="input-group-append">
+                                  <span class="input-group-text">
+                                      <i class="fas fa-eye"></i>
+                                  </span>
+                              </div>
+                          </div>
+                      </div>
+                        <% if devise_mapping.rememberable? %>
+                          <div class="field">
+                            <%= f.check_box :remember_me %>
+                            <%= f.label :remember_me %>
+                          </div>
+                        <% end %>
+
+                      <div class="row align-items-center">
+                          <div class="col-sm-7">
+                                 <%= f.submit "Log in", class:"btn btn-primary mb-3 mb-sm-0" %>
+                          </div>
+                          <div class="col-sm-5 text-sm-right">
+                            <%= link_to("Logout", destroy_user_session_path, :method => :delete)%><br>
+                            <span class="small d-sm-block d-md-inline">No account?</span><br>
+                            <%= link_to "Sign up", new_registration_path(resource_name), style:"small font-weight-bold"%><br>
+                            <span class="small d-sm-block d-md-inline">or</span><br>
+                            <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, style:"small font-weight-bold"%>
+                          </div>
+                      </div>
+                  <% end %>
               </div>
-
-              <div class="field">
-                <%= f.label :"mot de passe", class: 'control-label' %><br />
-                <%= f.password_field :password, autocomplete: "current-password", placeholder: 'Mot de passe...', class: 'form-control' %>
-              </div>
-
-              <% if devise_mapping.rememberable? %>
-                <div class="field">
-                  <%= f.check_box :remember_me %>
-                  <%= f.label :se_souvenir_de_moi %>
-                </div>
-              <% end %>
-
-              <div class="actions">
-                <%= f.submit "Connexion", class: 'btn btn-soft-primary mb-3 mb-sm-0' %>
-              </div>
-            <% end %>
-
-            <!-- FORM END -->
-
           </div>
-          <div class="card-footer px-md-5"><small>Pas de compte ?</small>
-          <%= link_to("Logout", destroy_user_session_path, :method => :delete)%><br>
-          <span class="small d-sm-block d-md-inline">No account?</span><br>
-          <%= link_to "Sign up", new_registration_path(resource_name), style:"small font-weight-bold"%><br>
-          <span class="small d-sm-block d-md-inline">or</span><br>
-          <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, style:"small font-weight-bold"%>
       </div>
-      <div class="col-lg-6 order-lg-1 d-none d-lg-block">
-        <blockquote>
-          <h3 class="h2 mb-4">La vie c’est comme tenter de mettre des chatons dans un panier. Quand on y met le dernier, le premier est déjà de l’autre côté. </h3>
-          <p>— <cite class="text-lg">Joanna Trollope</cite></p>
-        </blockquote>
-      </div>
-    </div>
   </div>
 </div>
-</div>
-</div>
+
