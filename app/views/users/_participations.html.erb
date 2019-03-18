@@ -1,11 +1,21 @@
-<% user.participations.each do |participation| %>
-  <div style="margin-top: 50px">
-    <div class="container ">
-      <div class="col-md-12 mx-auto participationCard">
-        <%= render "shared/participation_card", participation: participation, friend: user, occasion: nil, disclaimer: false %>
+<% case status %>
+<% when "ongoing" then displayed_participations = user.ongoing_participations %>
+<% when "achieved" then displayed_participations = user.achieved_participations %>
+<% when "reviewed" then displayed_participations = user.reviewed_participations %>
+<% end %>
+
+<% if displayed_participations != nil %>
+  <% displayed_participations.each do |participation| %>
+    <div style="margin-top: 50px">
+      <div class="container ">
+        <div class="col-md-12 mx-auto participationCard">
+          <%= render "shared/participation_card", participation: participation, friend: user, occasion: nil, disclaimer: false %>
+        </div>
       </div>
-    </div>
-  </div> 
+    </div> 
+  <% end %>
+<% else %>
+<%# A AFFICHER SI YEN A AUCUN %>
 <% end %>
 
 <%= javascript_include_tag "user_cards_scripts" %>

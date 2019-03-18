@@ -1,11 +1,20 @@
-<% user.created_dares.each do |dare| %>
-  <div style="margin-top: 50px">
-    <div class="container ">
-      <div class="col-md-12 mx-auto participationCard">
-        <%= render "shared/dare_card", dare: dare, friend: user, occasion: nil, disclaimer: false %>
+<% case status %>
+<% when "created" then displayed_dares = user.created_dares %>
+<% when "starred" then displayed_dares = user.starred_dares %>
+<% end %>
+
+<% if displayed_dares != nil %>
+  <% displayed_dares.each do |dare| %>
+    <div style="margin-top: 50px">
+      <div class="container ">
+        <div class="col-md-12 mx-auto participationCard">
+          <%= render "shared/dare_card", dare: dare, friend: user, occasion: nil, disclaimer: false %>
+        </div>
       </div>
-    </div>
-  </div> 
+    </div> 
+  <% end %>
+<% else %>
+<%# A AFFICHER SI YEN A AUCUN %>
 <% end %>
 
 <%= javascript_include_tag "user_cards_scripts" %>

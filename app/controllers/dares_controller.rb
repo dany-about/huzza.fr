@@ -19,29 +19,33 @@ class DaresController < ApplicationController
   def show
   end
 
-  # GET /dares/new
   def new
-    @dare = Dare.new
+
+  end
+
+  def create
+    @dare = Dare.new(dare_params)
+    @dare.creator = current_user
+    if @dare.save
+      if params[:recipient_id] != nil
+        UserSendDare.create!(sender: current_user, recipient: User.find(recipient_id), dare: @dare)
+        current_user.notify_followers(@dare, "dare_sent")
+        User.find(params[:recipient_id]).notify_followers(@dare, "dare_received")
+      else 
+        current_user.notify_followers(@dare, "dare_created")
+      end
+      if params[:participate] == "yes"
+        Participation.create(user: current_user, dare: @dare)
+      end
+      redirect_to user_path(current_user)
+    else
+      render :new
+    end
   end
 
   def edit
   end
 
-  # POST /dares
-  # POST /dares.json
-  def create
-    @dare = Dare.new(dare_params)
-
-    respond_to do |format|
-      if @dare.save
-        format.html { redirect_to @dare, notice: 'Dare was successfully created.' }
-        format.json { render :show, status: :created, location: @dare }
-      else
-        format.html { render :new }
-        format.json { render json: @dare.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   def update
     respond_to do |format|
@@ -64,7 +68,7 @@ class DaresController < ApplicationController
   end
 
   def notify_followers
-    current_user.notify_followers(event: @dare, occasion: "dare_created")
+    current_user.notify_followers(@dare, "dare_created")
   end
 
   private
@@ -75,6 +79,6 @@ class DaresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dare_params
-      params.require(:dare).permit(:title, :description, :user_id, :category_id)
+      params.require(:dare).permit(:title, :description, :category_id)
     end
 end

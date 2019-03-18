@@ -44,14 +44,14 @@
                 </div>
               <% end %>
               <div style="margin-top: -50px" id="userPageShow">
-                <%= render 'users/participations', user: @user %>
+                <%= render 'users/participations', user: @user, status: "ongoing" %>
               </div>
             </div>
             <div class="col-lg-3 order-lg-1" style="margin-left: -50px">
               <div data-toggle="sticky" data-sticky-offset="30" data-negative-margin=".card-profile-cover">
                 <div class="card">
                   <div class="list-group list-group-sm list-group-flush">
-                    <%= link_to user_path(@user.id, show: "users/participations"), class:"list-group-item list-group-item-action d-flex justify-content-between", remote: true do %>
+                    <%= link_to user_path(@user.id, show: "users/participations", status: "ongoing"), class:"list-group-item list-group-item-action d-flex justify-content-between", remote: true do %>
                       <div>
                         <i class="fas fa-user-ninja mr-2"></i>
                         <span>Ongoing</span>
@@ -60,7 +60,7 @@
                         <i class="fas fa-angle-right"></i>
                       </div>
                     <% end %>
-                    <%= link_to user_path(@user.id, show: "users/dares"), class:"list-group-item list-group-item-action d-flex justify-content-between", remote: true do %>
+                    <%= link_to user_path(@user.id, show: "users/participations", status: "achieved"), class:"list-group-item list-group-item-action d-flex justify-content-between", remote: true do %>
                       <div>
                         <i class="fas fa-user-injured mr-2"></i>
                         <span>Succeeded</span>
@@ -69,19 +69,19 @@
                         <i class="fas fa-angle-right"></i>
                       </div>
                     <% end %>
-                    <%= link_to user_path(@user.id, show: "users/friends"), class:"list-group-item list-group-item-action d-flex justify-content-between", remote: true do %>
+                    <%= link_to user_path(@user.id, show: "users/dares", status: "created"), class:"list-group-item list-group-item-action d-flex justify-content-between", remote: true do %>
                       <div>
                         <i class="fas fa-user-friends mr-2"></i>
-                        <span>Failed</span>
+                        <span>Created Dares</span>
                       </div>
                       <div>
                         <i class="fas fa-angle-right"></i>
                       </div>
                     <% end %>
-                    <%= link_to user_path(@user.id, show: "users/statistics"), class:"list-group-item list-group-item-action d-flex justify-content-between", remote: true do %>
+                    <%= link_to user_path(@user.id, show: "users/dares", status: "starred"), class:"list-group-item list-group-item-action d-flex justify-content-between", remote: true do %>
                       <div>
                         <i class="fas fa-sort-numeric-up mr-2"></i>
-                        <span>Starred</span>
+                        <span>Starred Dares</span>
                       </div>
                       <div>
                         <i class="fas fa-angle-right"></i>

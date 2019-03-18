@@ -14,7 +14,15 @@ class User < ApplicationRecord
   end
 
   validates :terms_of_service, acceptance: true
-  after_create :first_dare_participation
+
+
+  # after_create :first_dare_participation
+
+  # def first_dare_participation
+   # firstparticipation = Participation.create!(user: self, dare: Dare.all.sample, deadline: Time.new(2020))
+   # puts firstparticipation
+  # end
+
 
   extend FriendlyId
   friendly_id :first_name, use: :slugged
@@ -54,9 +62,17 @@ class User < ApplicationRecord
   def full_name
     self.first_name.to_s+" "+self.last_name.to_s
   end
-  
-  def achieved_dares
-    self.participated_dares.joins(:participations).where({ participations: {is_achieved: true} })
+
+  def ongoing_participations
+    self.participations.where(is_achieved: false)
+  end
+
+  def reviewed_participations
+    self.participations.where(is_achieved: nil)
+  end
+
+  def achieved_participations
+    self.participations.where(is_achieved: true)
   end
 
   # Active Storage Avatar Image
