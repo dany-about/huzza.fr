@@ -1,6 +1,6 @@
 <div class="flex-grid">
 
-  <div class="row bg-gradient-success" style="justify-content: center">
+  <div class="row bg-translucent-secondary" style="justify-content: center">
 
     <div class="col-3" style="padding-right: 7px; margin-top: 30px;">
       <%= render 'users/badges' %>
@@ -18,7 +18,7 @@
 
   <div class="main-content">
     <!-- Header (account) -->
-    <section class="header-account-page d-flex align-items-end bg-gradient-success" style="height: 10px" data-offset-top="#header-main">
+    <section class="header-account-page d-flex align-items-end bg-translucent-secondary" style="height: 10px" data-offset-top="#header-main">
       <!-- Header container -->
       <div class="container pt-4 pt-lg-0">
         <div class="row">
@@ -39,7 +39,7 @@
           <div class="row row-grid">
             <div class="col-lg-9 order-lg-2">
               <% if @user == current_user %>
-                <div class="card bg-gradient-success hover-shadow-lg mb-8">
+                <div class="card bg-gradient-danger hover-shadow-lg mb-8">
                   <%= render 'users/banner', user: @user %>
                 </div>
               <% end %>
