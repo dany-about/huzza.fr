@@ -22,11 +22,9 @@ class ApplicationController < ActionController::Base
    current_user
     sign_in_url = new_user_session_url
     if request.referer == sign_in_url
-      news_index_path
-      #super
+      super
     else
-     #news_index_path
-     super
+     news_index_path
     end
   end
 
