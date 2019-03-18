@@ -1,4 +1,5 @@
 class DaresController < ApplicationController
+
   before_action :set_dare, only: [:show,:edit, :update, :destroy]
   after_action :notify_followers, only: [:create]
 
