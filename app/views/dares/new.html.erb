@@ -2,4 +2,43 @@
 
 <%= render 'form', dare: @dare %>
 
-<%= link_to 'Back', dares_path %>
+
+
+<div class="card" style="margin-bottom: -0.2px;border-width: 3px;border-color: #27ae60">
+  
+  <div class="row row-grid" style="margin-top: -1rem">
+    <%= link_to user_path(current_user), class:"ml-0" do %>
+      <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/11/1/1552315427-noe-pp.jpg" class="avatar rounded-circle avatar-lg shadow hover-shadow-lg" style="margin-left:-0.5rem;margin-top:-1rem">
+    <% end %>
+    <%= link_to user_path(current_user), class:"ml-4" do %>
+      <p class="badge badge-secondary"><%= current_user.full_name %> - created</p>
+    <% end %>
+  </div>
+
+  <div class="card-body pt-0">
+    <div class="row row-grid" style="margin-left:-0.5rem;">
+      <div class="col-sm-2 text-center">
+          <p class="card-text">Level <%= current_user.rank %></p>
+          <div class="<%= current_user.badge[:animation] %>">
+            <h4 style="margin-top: 11px"><%= current_user.badge[:emote] %></h4>
+          </div>
+      </div>
+      <div class="col-sm-8 my-auto text-center">
+        <h5 class="card-title" style="text-align: justify; text-justify: inter-word">DARE TITLE</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row row-grid mr-auto ml-auto">
+  <%= render 'shared/card_elements/tab_btns' %>
+</div>
+<div class="card">
+  <div class="card-body">
+    <div class="row row-grid mx-auto my-auto">
+      <div class="col-lg-12">
+        <p class="card-text" style="text-align: justify; text-justify: inter-word">DESCRIPTION </p>
+      </div>
+    </div>
+  </div>
+</div>
