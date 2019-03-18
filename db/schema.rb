@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2019_03_12_111441) do
+ActiveRecord::Schema.define(version: 2019_03_15_010409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -179,19 +178,6 @@ ActiveRecord::Schema.define(version: 2019_03_12_111441) do
     t.index ["user_id"], name: "index_user_accomplishements_on_user_id"
   end
 
-  create_table "services", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "provider"
-    t.string "uid"
-    t.string "access_token_secret"
-    t.string "refresh_token"
-    t.datetime "expires_at"
-    t.text "auth"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_services_on_user_id"
-  end
-
   create_table "user_send_dares", force: :cascade do |t|
     t.bigint "dare_id"
     t.bigint "sender_id"
@@ -233,14 +219,6 @@ ActiveRecord::Schema.define(version: 2019_03_12_111441) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "users"
-
-  create_table "videos", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   add_foreign_key "dares", "categories"
   add_foreign_key "difficulty_ratings", "dares"
   add_foreign_key "difficulty_ratings", "users"
@@ -251,7 +229,4 @@ ActiveRecord::Schema.define(version: 2019_03_12_111441) do
   add_foreign_key "services", "users"
   add_foreign_key "star_dares", "dares"
   add_foreign_key "star_dares", "users"
-  add_foreign_key "proofs", "participations"
-  add_foreign_key "services", "users"
-
 end
