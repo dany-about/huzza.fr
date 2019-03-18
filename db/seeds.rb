@@ -59,11 +59,11 @@ DifficultyRating.create!(user: admin, dare: dare10, rating: 40)
 dare11 = Dare.create!(title: "fruit street", description: "buy some fruits, walk down the streets, give some to homeless people"*3, creator: admin, category: category_5)
 DifficultyRating.create!(user: admin, dare: dare11, rating: 30)
 
-participation1 = Participation.create!(user: admin, dare: dare1)
+participation1 = Participation.create!(user: admin, dare: dare3)
 participation_noe = Participation.create!(user: noe, dare: dare_noe)
 participation = Participation.create!(user: noe, dare: dare2)
 
-sent_dare1 = UserSendDare.create!(dare: dare1, sender: admin, recipient:admin2)
+sent_dare1 = UserSendDare.create!(dare: dare_noe, sender: admin, recipient:admin2)
 sent_dare2 = UserSendDare.create!(dare: dare2, sender: admin2, recipient:admin)
 
 notif2 = News.create!(user: admin, friend: noe, event: participation_noe, occasion: "participation_created")
@@ -72,7 +72,7 @@ Follow.create!(user: noe, follower: admin)
 Follow.create!(user: admin, follower: noe)
 Follow.create!(user: admin2, follower: admin)
 
-StarDare.create!(user: admin, dare: dare1)
+StarDare.create!(user: admin, dare: dare_noe)
 
 Comment.create!(commentable: dare_noe, user: admin, content: "testcom sur défi")
 Comment.create!(commentable: participation_noe, user: admin2, content: "Oui ceci est bien un vrai commentaire généré par le seed et on est trop des bgs")
