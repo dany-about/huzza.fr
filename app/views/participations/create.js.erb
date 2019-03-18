@@ -1,1 +1,1 @@
-$("body").html("<%= j (render template:'news/index') %>")
+Array.from($(".descriptionElement_<%= params[:dare] %>")).forEach( function(element) {$(element).html("<%= j (render 'shared/card_elements/description', dare: Dare.find(params[:dare])) %>")} )

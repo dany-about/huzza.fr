@@ -1,0 +1,14 @@
+<%= StarDare.where(dare: dare, user: current_user).count %>
+<% if StarDare.find_by(user: current_user, dare: dare) == nil %>
+  <%= link_to star_dares_path(dare: dare), method: "POST", remote: true do %>
+    <button type="button" class="btn-md btn-secondary rounded-circle btn-icon-only" style="font-size:19px;margin-top:-1rem">
+      <p class="ml-1 my-auto hover-rotate-360">⭐</p>
+    </button>
+  <% end %>
+<% else %>
+  <%= link_to star_dare_path(StarDare.find_by(dare: dare, user: current_user), dare: dare), method: "DELETE", remote: true do %>
+    <button type="button" class="btn-md btn-dark rounded-circle btn-icon-only" style="font-size:19px;margin-top:-1rem">
+      <p class="ml-1 my-auto hover-rotate-360">⭐</p>
+    </button>
+  <% end %>
+<% end %>

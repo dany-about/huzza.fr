@@ -1,0 +1,10 @@
+<%= Reaction.where(reactionable_id: event_id, reactionable_type: type).count %>
+<% if Reaction.find_by(user: current_user, reactionable_id: event_id, reactionable_type: type) == nil %>
+  <%= link_to reactions_path(reactionable_id: event_id, type: type, reaction: "strong"), method: "POST", remote: true do %>
+    <button type="button" class="btn-md btn-secondary rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
+  <% end %>
+<% else %>
+  <%= link_to reaction_path(Reaction.find_by(user: current_user, reactionable_id: event_id, reactionable_type: type), reactionable_id: event_id, type: type), method: "DELETE", remote: true do %>
+    <button type="button" class="btn-md btn-dark rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
+  <% end %>
+<% end %>

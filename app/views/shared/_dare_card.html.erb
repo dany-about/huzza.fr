@@ -30,52 +30,36 @@
         <h5 class="card-title" style="text-align: justify; text-justify: inter-word"><%= dare.title %></h5>
       </div>
       <div class="col-sm-2 text-center">
-        <% if StarDare.find_by(user: current_user, dare: dare) == nil %>
-          <%= link_to star_dares_path(dare: dare), method: "POST", remote: true do %>
-            <button type="button" class="btn-md btn-secondary rounded-circle btn-icon-only" style="font-size:19px;margin-top:-1rem">
-              <p class="ml-1 my-auto hover-rotate-360">⭐</p>
-            </button>
-          <% end %>
-        <% else %>
-          <%= link_to star_dare_path(StarDare.find_by(dare: dare, user: current_user)), method: "DELETE", remote: true do %>
-            <button type="button" class="btn-md btn-dark rounded-circle btn-icon-only" style="font-size:19px;margin-top:-1rem">
-              <p class="ml-1 my-auto hover-rotate-360">⭐</p>
-            </button>
-          <% end %>
-        <% end %>
-        <% if Reaction.find_by(user: current_user, reactionable: dare) == nil %>
-          <%= link_to reactions_path(reactionable_type: "Dare", reactionable_id: dare, reaction: "strong"), method: "POST", remote: true do %>
-            <button type="button" class="btn-md btn-secondary rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
-          <% end %>
-        <% else %>
-          <%= link_to reaction_path(Reaction.find_by(reactionable: dare, user: current_user)), method: "DELETE", remote: true do %>
-            <button type="button" class="btn-md btn-dark rounded-circle btn-icon-only mt-4" style="font-size: 19px"><p class="ml-1 my-auto hover-rotate-360">💪</p></button>
-          <% end %>
-        <% end %>
+        <div class="starElement_<%=dare.id%>">
+          <%= render 'shared/card_elements/star', dare: dare %>
+        </div>
+        <div class="reactionElement_<%=dare.id%>">
+          <%= render 'shared/card_elements/reaction', event_id: dare.id, type: dare.class.name %>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="row row-grid mr-auto ml-auto collapse">
+<div class="row row-grid mr-auto ml-auto">
   <%= render 'shared/card_elements/tab_btns' %>
 </div>
 <div class="card collapse">
   <%= render 'shared/card_elements/description', dare: dare %>
 </div>
-<div class="card collapse">
-  <%= render 'shared/card_elements/comments', event: dare %>
+<div class="card collapse commentElement_<%=dare.id%>">
+  <%= render 'shared/card_elements/comments', commentable_id: dare.id, type: dare.class.name %>
 </div>
 <div class="card collapse">
   <%= render 'shared/card_elements/rating', dare: dare %>
 </div>
+
 <% case occasion %>
-<% when "participation_created" %>
-  <div class="card collapse">
-    <%= render 'shared/card_elements/proof', event: dare %>
-  </div>
-<% when "participation_achieved", "achievement_rejected" %>
-  <div class="card">
-    <%= render 'shared/card_elements/proof', event: dare %>
-  </div>
+<% when "participation_achieved", "achievement_rejected" then proof_class = "card" %>
+<% else proof_class = "card collapse" %>
 <% end %>
+
+<div class="<%= proof_class %>">
+  <%= render 'shared/card_elements/proof', event: dare %>
+</div>
+

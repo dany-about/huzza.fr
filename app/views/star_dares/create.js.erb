@@ -1,0 +1,1 @@
+Array.from($(".starElement_<%= params[:dare] %>")).forEach( function(element) {$(element).html("<%= j (render 'shared/card_elements/star', dare: Dare.find(params[:dare])) %>")} )

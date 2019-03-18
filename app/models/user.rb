@@ -15,12 +15,12 @@ class User < ApplicationRecord
 
   validates :terms_of_service, acceptance: true
 
-  after_create :first_dare_participation
+  # after_create :first_dare_participation
 
-  def first_dare_participation
-    firstparticipation = Participation.create!(user: User.last, dare: Dare.all.sample, deadline: Time.new(2020))
-    puts firstparticipation
-  end
+  # def first_dare_participation
+  #   firstparticipation = Participation.create!(user: self, dare: Dare.all.sample, deadline: Time.new(2020))
+  #   puts firstparticipation
+  # end
 
 
   extend FriendlyId
@@ -37,7 +37,7 @@ class User < ApplicationRecord
   has_many :follows
   has_many :followers, through: :follows
   has_many :reverse_follows, class_name: "Follow", foreign_key: "follower_id"
-  has_many :followed, through: :reverse_follows, source: :user 
+  has_many :followed_users, through: :reverse_follows, source: :user 
   
   # Sending and receiving Dares
   has_many :user_sent_dares, class_name: "UserSendDare", foreign_key: "sender_id"
@@ -63,7 +63,7 @@ class User < ApplicationRecord
   end
   
   def achieved_dares
-    self.participated_dares.joins(:participations).where({ participations: {is_achieved: true} }).reverse
+    self.participated_dares.joins(:participations).where({ participations: {is_achieved: true} })
   end
 
   # Active Storage Avatar Image
@@ -83,6 +83,10 @@ class User < ApplicationRecord
     i == 1 ? (return 0) : ( (i-2).times { f = f * 1.5 + 50 }; return f.round(-1) )
   end
 
+  def percent_to_next_lvl
+    return (self.elo_points - User.exp_rank(self.rank))*100 /( User.exp_rank(self.rank+1) - User.exp_rank(self.rank) )
+  end
+
   def rank
     20.times { |i| if (User.exp_rank(i+1)..User.exp_rank(i+2)-1).include?(self.elo_points) then return i+1 end }
   end
@@ -90,7 +94,7 @@ class User < ApplicationRecord
   def badge
     case self.rank
     when 1 then return { title: "Empailleur de marmottes", emote: "🤠", animation:"icon bg-gradient-success text-white rounded-circle icon-shape hover-rotate-360" }
-    when 2 then return { emote: "", animation: "" }
+    when 2 then return { title: "Bold Motherfucker", emote: "🧛‍", animation: "icon bg-gradient-success text-white rounded-circle icon-shape hover-rotate-360" }
     when 3 then return { emote: "", animation: "" }
     when 4 then return { emote: "", animation: "" }
     when 5 then return { emote: "", animation: "" }
@@ -117,8 +121,13 @@ class User < ApplicationRecord
 
   def friends
     friends = []
-    self.followers.each { |follower| if Follow.all.where({user: follower, follower: self}).count > 0 then friends << follower end }
+    self.followers.each { |follower| if Follow.where({user: follower, follower: self}).count > 0 then friends << follower end }
     return friends
+  end
+
+  def nonreciprocal_followed_users
+    array = []
+    self.followed_users.each { |user| if user.friends.include?(self) then array << user end }
   end
 
   def friends_list
@@ -131,6 +140,7 @@ class User < ApplicationRecord
     self.followers.each { |follower| 
       News.create!(user: follower, friend: self, event: event, occasion: occasion)
     }
+    News.create!(user: self, friend: self, event: event, occasion: occasion)
   end
 
 
