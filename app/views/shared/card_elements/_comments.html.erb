@@ -48,8 +48,8 @@
               <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/11/2/1552390314-team-2-800x800.jpg" class="avatar  rounded-circle avatar-sm">
 
             </div>
-            <%= form_with url: comments_path(commentable_id: commentable_id, type: type) do |f| %>          
-            <%= f.text_area :content, placeholder:"Add a comment...", rows:"1", class:"form-control", toggle:"autosize" %>
+            <%= form_with url: comments_path(commentable_id: commentable_id, type: type) do |f| %>
+            <%= f.text_area :content, placeholder:"Add a comment...", rows:"1", class:"form-control", toggle:"autosize", maxlength:"140" %>
             <div class="col-4 col-md-3 text-right">
               <%= f.submit "Post Comment", class:"btn btn-sm btn-outline-success", type:"submit" %>
             </div>
