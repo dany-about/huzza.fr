@@ -19,9 +19,6 @@
           <p class="badge badge-secondary">La communauté remet en question la réalisation de <%= friend.full_name %> !</p>          
         <% end %>
       <% end %>
-      <div class="ml-9">
-        <p class="badge badge-lg badge-success badge-circle"><%= dare.difficulty_level %></p>
-      </div>
     <% end %>
   </div>
 
@@ -38,9 +35,9 @@
           <% when false %>
             <p class="badge badge-primary"> Ongoing </p>
           <% when nil %>
-            <p class="badge badge-secondary"> Under review by the community </p>
+            <p class="badge badge-secondary"> Under review </p>
           <% when true %>          
-            <p class="badge badge-success"> Achieved!!</p>          
+            <p class="badge badge-success"> Achieved</p>          
           <% end %>
           <p style="margin-top: 11px" class="badge badge-lg badge-success badge-circle"><%= dare.difficulty_level %></p>
         <% end %>

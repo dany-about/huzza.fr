@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_user!
   #before_action :browser_locale(current_user)
 
   def set_locale
@@ -17,25 +18,14 @@ class ApplicationController < ActionController::Base
     { locale: I18n.locale }
   end
 
-  
-  def after_sign_in_path_for(resource_or_scope)
-   current_user
-    sign_in_url = new_user_session_url
-    if request.referer == sign_in_url
-      super
-    else
-     news_index_path
-    end
-  end
-
-  #def set_current_user(current_user)
-   # @user = current_user
-  #end
-
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :terms_of_service]) 
+  end
+
+  def authenticate_user!
+    redirect_to new_user_registration_path unless user_signed_in?
   end
 
 end
