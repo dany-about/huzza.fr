@@ -42,7 +42,7 @@
     <!-- Customizer modal -->
     <div class="modal fade fixed-right" id="modal-customizer1" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog modal-dialog-vertical" role="document">
-        <form class="modal-content" id="form-customizer">
+        <%= form_with url: new_dare_path, method: :get, local: true, class:"modal-content" do |f| %>
           <div class="modal-body">
             <!-- Close -->
             <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-toggle="tooltip" data-placement="left" title="Close Customizer">
@@ -76,20 +76,17 @@
             </p>
             <div class="btn-group-toggle row mx-0 mb-4" data-toggle="buttons">
               <label class="btn btn-sm btn-outline-success flex-fill mb-2 mr-2">
-                <input type="radio" name="mode" value="dark">
+                <input type="radio" name="mode" value="solo">
                 <i class="fas fa-user"></i> Myself
               </label>
               <label class="btn btn-sm btn-outline-success flex-fill mb-2 mr-2">
-                <input type="radio" name="mode" value="dark">
+                <input type="radio" name="mode" value="sent">
                 <i class="fas fa-user"></i> A friend
               </label>
             </div>
           </div>
-          <%= link_to new_dare_path, method: "GET" do %>
             <div class="modal-footer border-0">
-              <button type="submit" class="btn btn-block btn-success mt-auto">
-                Create
-              </button>
+              <%= f.submit "Create", type:"submit", class:"btn btn-block btn-success mt-auto" %>
             </div>
           <% end %>
         </form>

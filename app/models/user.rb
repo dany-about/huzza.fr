@@ -62,9 +62,17 @@ class User < ApplicationRecord
   def full_name
     self.first_name.to_s+" "+self.last_name.to_s
   end
-  
-  def achieved_dares
-    self.participated_dares.joins(:participations).where({ participations: {is_achieved: true} })
+
+  def ongoing_participations
+    self.participations.where(is_achieved: false)
+  end
+
+  def reviewed_participations
+    self.participations.where(is_achieved: nil)
+  end
+
+  def achieved_participations
+    self.participations.where(is_achieved: true)
   end
 
   # Active Storage Avatar Image

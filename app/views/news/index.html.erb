@@ -1,93 +1,82 @@
 <!-- Navigation Bloc -->
-
-<div class="container">
-  
-  <div class="row row-grid">
-    <div class="col-lg-3 order-lg-1 mt-0">
-      <div data-toggle="sticky" data-sticky-offset="30" data-negative-margin=".card-profile-cover">
-        <div class="card" style="margin-top: 50px">
-          <div class="list-group list-group-sm list-group-flush">
-            <a href="account-profile.html" class="list-group-item list-group-item-action d-flex justify-content-between" style="color: #293443">
-              <div>
-                <i class="fas fa-user-ninja mr-2"></i>
-                <span>Défi solo</span>
-              </div>
-              <div>
-                <i class="fas fa-angle-right"></i>
-              </div>
-            </a>
-            <a href="account-settings.html" class="list-group-item list-group-item-action d-flex justify-content-between" style="color: #293443">
-              <div>
-                <i class="fas fa-user-friends mr-2"></i>
-                <span>Défi lancé</span>
-              </div>
-              <div>
-                <i class="fas fa-angle-right"></i>
-              </div>
-            </a>
-            <a href="account-billing.html" class="list-group-item list-group-item-action d-flex justify-content-between" style="color: #293443">
-              <div>
-                <i class="fas fa-user-injured mr-2"></i>
-                <span>Participation à un défi</span>
-              </div>
-              <div>
-                <i class="fas fa-angle-right"></i>
-              </div>
-            </a>
-            <a href="account-notifications.html" class="list-group-item list-group-item-action d-flex justify-content-between" style="color: #293443">
-              <div>
-                <i class="fas fa-sort-numeric-up mr-2"></i>
-                <span>Preuve submitted</span>
-              </div>
-              <div>
-                <i class="fas fa-angle-right"></i>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <% current_user.friends_list.each do |friend| %>
-    <% end %>
-
-    <div class="col-lg-9 order-lg-2 mt-3">
-      <div class="text-center">
-        <div class="spinner-grow text-success text-" role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
-        <div class="spinner-grow text-success text-" role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
-        <div class="spinner-grow text-success text-" role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
-      </div>
-      <table>
-        <tbody>
-          <% current_user.news.each do |news| %>
-          <!-- Si l'évènement est une participation; disclaimer_type peut prendre les valeurs: "participation_created" ou "participation_achieved" -->
-          <!-- Il faudra voir comment on gère les participations qui sont "un-achieved", quand la preuve est rejetée -->
-          <!-- status prend les valeurs true ou false selon que la notification a été lue -->
-          <div style="margin-top: 80px">
-            <div class="container ">
-              <div class="col-md-12 mx-auto participationCard" id="<%=news.event.class.name%>_<%=news.event.id%>">
-                <% case news.event.class.name %>
-                <% when "Participation" %>
-                <%= render "shared/participation_card", participation: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
-                <% when "Dare" %>
-                <%= render "shared/dare_card", dare: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
-                <% when "UserSendDare" %>
-                <%= render "shared/sent_dare_card", sent_dare: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
-                <% end %>
-              </div>
+<div>
+  <div class="col-10 ml-5">
+    <div class="row row-grid">
+      <div class="col-lg-3 order-lg-1 mt-0">
+        <div data-toggle="sticky" data-sticky-offset="30" data-negative-margin=".card-profile-cover">
+          <div class="card" style="margin-top: 50px">
+            <div class="list-group list-group-sm list-group-flush">
+              <a href="account-profile.html" class="list-group-item list-group-item-action d-flex justify-content-between" style="color: #293443">
+                <div>
+                  <i class="fas fa-user-ninja mr-2"></i>
+                  <span>Défi solo</span>
+                </div>
+                <div>
+                  <i class="fas fa-angle-right"></i>
+                </div>
+              </a>
+              <a href="account-settings.html" class="list-group-item list-group-item-action d-flex justify-content-between" style="color: #293443">
+                <div>
+                  <i class="fas fa-user-friends mr-2"></i>
+                  <span>Défi lancé</span>
+                </div>
+                <div>
+                  <i class="fas fa-angle-right"></i>
+                </div>
+              </a>
+              <a href="account-billing.html" class="list-group-item list-group-item-action d-flex justify-content-between" style="color: #293443">
+                <div>
+                  <i class="fas fa-user-injured mr-2"></i>
+                  <span>Participation à un défi</span>
+                </div>
+                <div>
+                  <i class="fas fa-angle-right"></i>
+                </div>
+              </a>
+              <a href="account-notifications.html" class="list-group-item list-group-item-action d-flex justify-content-between" style="color: #293443">
+                <div>
+                  <i class="fas fa-sort-numeric-up mr-2"></i>
+                  <span>Preuve submitted</span>
+                </div>
+                <div>
+                  <i class="fas fa-angle-right"></i>
+                </div>
+              </a>
             </div>
           </div>
-          <% end %>
-        </tbody>
-      </table>
+        </div>
+      </div>
+
+      <% current_user.friends_list.each do |friend| %>
+      <% end %>
+
+      <div class="col-lg-9 order-lg-2 mt-3">
+        <table>
+          <tbody>
+            <% current_user.news.each do |news| %>
+            <!-- Si l'évènement est une participation; disclaimer_type peut prendre les valeurs: "participation_created" ou "participation_achieved" -->
+            <!-- Il faudra voir comment on gère les participations qui sont "un-achieved", quand la preuve est rejetée -->
+            <!-- status prend les valeurs true ou false selon que la notification a été lue -->
+            <div style="margin-top: 80px">
+              <div class="container ">
+                <div class="col-md-12 mx-auto participationCard" id="<%=news.event.class.name%>_<%=news.event.id%>">
+                  <% case news.event.class.name %>
+                  <% when "Participation" %>
+                  <%= render "shared/participation_card", participation: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
+                  <% when "Dare" %>
+                  <%= render "shared/dare_card", dare: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
+                  <% when "UserSendDare" %>
+                  <%= render "shared/sent_dare_card", sent_dare: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      
     </div>
-    
   </div>
 </div>
 
