@@ -5,7 +5,6 @@ class StarDaresController < ApplicationController
     if StarDare.find_by(dare: Dare.find(params[:dare]), user: current_user) == nil
       StarDare.create!(dare: Dare.find(params[:dare]), user: current_user)
     end
-
   end
   
   def destroy
