@@ -1,5 +1,7 @@
 <% case occasion %>
 <% when "all" then displayed_news = current_user.news %>
+<% when "all_unrated" %>
+  <% displayed_news = []; current_user.news.each {|news| if news.is_unrated then displayed_news << news end }%>
 <% else displayed_news = current_user.news.where(occasion: occasion) %>
 <% end %>
 
@@ -28,7 +30,8 @@
 </table>
 
 <% if displayed_news.count == 0 %>
-Rien de neuf !
+<%# A AFFICHER SI VIDE %>
+  Rien de neuf ! Faites-vous des amis, looser !
 <% end %>
 
 <%= javascript_include_tag "user_cards_scripts" %>

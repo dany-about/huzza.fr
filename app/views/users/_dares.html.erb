@@ -4,6 +4,7 @@
 <% end %>
 
 <% if displayed_dares != nil %>
+
   <% displayed_dares.each do |dare| %>
     <div style="margin-top: 50px">
       <div class="container ">
@@ -13,8 +14,16 @@
       </div>
     </div> 
   <% end %>
+  
 <% else %>
-<%# A AFFICHER SI YEN A AUCUN %>
+<%# A AFFICHER SI VIDE %>
+  <% case status %>
+  <% when "created" %>
+    Aucun défi créé. Un peu d'imagination !
+  <% when "starred" %>
+    Aucun défi favori. Vous avez peut-être des goûts de chiotte.
+  <% end %>
+
 <% end %>
 
 <%= javascript_include_tag "user_cards_scripts" %>

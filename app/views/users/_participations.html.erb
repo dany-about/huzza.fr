@@ -5,6 +5,7 @@
 <% end %>
 
 <% if displayed_participations != nil %>
+
   <% displayed_participations.each do |participation| %>
     <div style="margin-top: 50px">
       <div class="container ">
@@ -14,8 +15,18 @@
       </div>
     </div> 
   <% end %>
+
 <% else %>
-<%# A AFFICHER SI YEN A AUCUN %>
+<%# A AFFICHER SI VIDE %>
+  <% case status %>
+  <% when "ongoing" %>
+    Aucune participation en cours. Bougez-vous le cul !
+  <% when "achieved" %>
+    Vous n'avez toujours rien accompli. Bougez-vous le cul !
+  <% when "reviewed" %>
+    Vous n'avez aucune participation en cours d'examination par la communauté. Bougez-vous le cul !
+  <% end %>
+
 <% end %>
 
 <%= javascript_include_tag "user_cards_scripts" %>
