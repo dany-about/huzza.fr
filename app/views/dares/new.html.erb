@@ -2,8 +2,8 @@
 <%= form_for :dare, url: dares_path(id: current_user.id, mode: params[:mode]), method:"POST" do |f| %>
 
   <div class="col-md-9 mx-auto" style="margin-top: 80px">
+    <h6 class="mb-1">Select your dare's category</h6>
     <select class="custom-select" name="dare[category_id]">
-      <option selected>Select your dare's category</option>
       <%= Category.all.each do |category| %>
         <option value="<%= category.id %>"><%= category.name %></option>
       <% end %>
@@ -52,8 +52,8 @@
     </div>
 
     <% if params[:mode] == "sent" %>
+      <h6 class="mb-1">Who do you want to challenge?</h6>
       <select class="custom-select" name="recipient_id">
-        <option selected>Select whom you want to challenge</option>
         <%= current_user.friends.each do |friend| %>
           <option value="<%= friend.id %>"><%= friend.full_name %></option>
         <% end %>

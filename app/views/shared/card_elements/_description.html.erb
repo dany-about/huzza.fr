@@ -66,13 +66,14 @@
             </div>
             <h5 class="text-center mb-2">Challenge a friend</h5>
             <hr class="mb-4">
+            <h6 class="mb-1"><%= dare.title %></h6>
+            <hr class="mb-4">
             <h6 class="mb-1">Make your choice</h6>
             <p class="small text-muted mb-3">
               Who do you want to challenge ?
             </p>
             <%= form_for :user_send_dare, method:"POST" do |f| %>
               <select class="custom-select" name="recipient_id">
-                <option selected>Select whom you want to challenge</option>
                 <%= current_user.friends.each do |friend| %>
                   <option value="<%= friend.id %>"><%= friend.full_name %></option>
                 <% end %>
