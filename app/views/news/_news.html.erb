@@ -30,8 +30,34 @@
 </table>
 
 <% if displayed_news.count == 0 %>
-<%# A AFFICHER SI VIDE %>
-  Rien de neuf ! Faites-vous des amis, looser !
+
+<div class="container">
+  <div class="card bg-gradient-danger hover-shadow-lg mb-8 mt-5">
+    <div class="card-body py-3">
+      <div class="row row-grid align-items-center">
+        <div class="col-lg-9">
+          <div class="media align-items-center">
+            <a href="#" class="avatar avatar-md rounded-circle mr-3">
+              <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/11/7/1552821633-logohuzza.jpg">
+            </a>
+            <div class="media-body">
+              <h5 class="text-white mb-0">No content related to this category yet!</h5>
+              <div>
+                <span class="text-white">Make new friends and add / follow them to enjoy the all platform.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right d-none d-lg-block">
+          <%= link_to dares_path, class:"btn btn-sm btn-white rounded-pill btn-icon shadow" do %>
+          <span class="btn-inner--icon"><i class="fas fa-fire"></i></span>
+          <span class="btn-inner--text">Explore new horizons</span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <% end %>
 
 <%= javascript_include_tag "user_cards_scripts" %>
