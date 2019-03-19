@@ -5,4 +5,13 @@ class News < ApplicationRecord
   
   validates_inclusion_of :occasion, in: %w( participation_created participation_achieved achievement_rejected dare_created dare_sent dare_received dare_accepted ), on: :create, message: "Occasion %s is not included in the list" 
 
+  def is_unrated
+    case self.event.class.name
+    when "Dare" then dare = self.event
+    when "Participation" then dare = self.event.dare
+    when "UserSendDare" then dare = self.event.dare
+    end
+    return true if dare.difficulty_ratings.count == 0
+  end
+
 end

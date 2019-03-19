@@ -20,9 +20,9 @@ class ApplicationController < ActionController::Base
   end
 
   def check_achievements
-    Participations.where(is_achieved: nil).each { |participation| 
+    Participation.where(is_achieved: nil).each { |participation| 
       # Checks for contested proofs
-      if 
+      if true
 
         # ADD NOTIFICATION HERE
       end

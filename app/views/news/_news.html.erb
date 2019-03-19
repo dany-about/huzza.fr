@@ -1,5 +1,7 @@
 <% case occasion %>
 <% when "all" then displayed_news = current_user.news %>
+<% when "all_unrated" %>
+  <% displayed_news = []; current_user.news.each {|news| if news.is_unrated then displayed_news << news end }%>
 <% else displayed_news = current_user.news.where(occasion: occasion) %>
 <% end %>
 
