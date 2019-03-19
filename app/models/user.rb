@@ -102,8 +102,8 @@ class User < ApplicationRecord
 
   def badge
     case self.rank
-    when 1 then return { title: "Empailleur de marmottes", emote: "🤠", animation:"icon bg-gradient-success text-white rounded-circle icon-shape hover-rotate-360" }
-    when 2 then return { title: "Bold Motherfucker", emote: "🧛‍", animation: "icon bg-gradient-success text-white rounded-circle icon-shape hover-rotate-360" }
+    when 1 then return { title: "Empailleur de marmottes", emote: "🤠", animation:"icon bg-gradient-danger text-white rounded-circle icon-shape hover-rotate-360" }
+    when 2 then return { title: "Bold Motherfucker", emote: "🧛‍", animation: "icon bg-gradient-danger text-white rounded-circle icon-shape hover-rotate-360" }
     when 3 then return { emote: "", animation: "" }
     when 4 then return { emote: "", animation: "" }
     when 5 then return { emote: "", animation: "" }

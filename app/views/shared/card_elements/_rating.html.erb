@@ -8,20 +8,20 @@
         </div>
         <div class="row" style="display: grid; grid-template-columns: 1fr;">
           <div style="text-align: right">
-            <input type="range" class="custom-range" min="0" max="100" step="1" id="customRange3">
-            <!-- LIER LE RESULTAT DU VOTE AU BOUTON SUBMIT (au lieu de rating: 50) -->
-            <%= link_to difficulty_ratings_path(dare: dare, rating: 50), method: "POST", remote: true do %>
-              <button class="btn btn-sm btn-soft-success" type="submit">Submit</button>
+            <%= form_with url: difficulty_ratings_path(dare_id: dare.id) do |f| %>
+              <input type="range" class="custom-range" min="0" max="100" step="1" name="rating" id="customRange3">
+              <%= f.submit "Submit Rating", class:"btn btn-sm btn-soft-success", type:"submit" %>
             <% end %>
           </div>
         </div>
       </div>
     </div>
   <% else %>
+    Difficulté moyenne évaluée par la communauté :
     <div class="progress-wrapper">
-      <span class="progress-tooltip" style="left: 82%;">82</span>
+      <span class="progress-tooltip" style="left: <%= dare.difficulty %>%"><%= dare.difficulty %></span>
       <div class="progress" style="height: 10px;">
-        <div class="progress-bar progress-bar-striped bg-success" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" style="width: 82%;"></div>
+        <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: <%= dare.difficulty %>%"></div>
       </div>
     </div>
   <% end %>

@@ -9,11 +9,6 @@ class DaresController < ApplicationController
   def index
   end
 
-
-# index.html.erb (feed view)
-
-
-
   # GET /dares/1
   # GET /dares/1.json
   def show
