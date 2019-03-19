@@ -1,4 +1,5 @@
 class ParticipationsController < ApplicationController
+  respond_to :js
   
   def create 
     if Participation.find_by(user: current_user, dare: Dare.find(params[:dare])) == nil

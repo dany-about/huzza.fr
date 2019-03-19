@@ -70,7 +70,16 @@
             <p class="small text-muted mb-3">
               Who do you want to challenge ?
             </p>
-            <hr class="mb-4">
+            <%= form_for :user_send_dare, method:"POST" do |f| %>
+              <select class="custom-select" name="recipient_id">
+                <option selected>Select whom you want to challenge</option>
+                <%= current_user.friends.each do |friend| %>
+                  <option value="<%= friend.id %>"><%= friend.full_name %></option>
+                <% end %>
+              </select>
+              <hr class="mb-4">
+              <%= f.submit "Create my dare", class:"btn btn-success", type:"submit" %>
+            <% end %>
             <div class="btn-group-toggle row mx-0 mb-4" data-toggle="buttons">
               <label class="btn btn-sm btn-outline-danger active flex-fill mb-2 mr-2">
                 <input type="radio" name="mode" value="dark">

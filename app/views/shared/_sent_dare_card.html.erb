@@ -45,7 +45,7 @@
   <%= render 'shared/card_elements/tab_btns' %>
 </div>
 
-<div class="card collapse">
+<div class="card collapse descriptionElement_<%=dare.id%>">
   <%= render 'shared/card_elements/description', dare: dare %>
 </div>
 
@@ -62,7 +62,7 @@
 <% else proof_class = "card collapse" %>
 <% end %>
 
-<div class="<%= proof_class %>">
+<div class="<%= proof_class %> proofElement">
   <%= render 'shared/card_elements/proof', event: dare %>
 </div>
 
