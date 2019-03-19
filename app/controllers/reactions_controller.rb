@@ -5,9 +5,6 @@ class ReactionsController < ApplicationController
       Reaction.create!(reactionable_type: params[:type], reactionable_id: params[:reactionable_id], user: current_user, name: params[:reaction])
     end
   end
-
-  def update
-  end
   
   def destroy
     if Reaction.exists?(params[:id])
