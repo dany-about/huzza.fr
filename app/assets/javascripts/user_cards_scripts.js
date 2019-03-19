@@ -11,7 +11,7 @@ $(document).ready(function() {
   }) })
   
   // PARTICIPATION CARD: Toggle Tabs on hover
-  // Array.from($(".participationCard")).forEach(function(element) { $(element).on( "mouseenter mouseleave", function() {
+  // Array.from($(".eventCard")).forEach(function(element) { $(element).on( "mouseenter mouseleave", function() {
   //   $(this.childNodes[3]).toggleClass("collapse")
   // }) })
   

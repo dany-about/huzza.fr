@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2019_03_15_010409) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -123,6 +124,17 @@ ActiveRecord::Schema.define(version: 2019_03_15_010409) do
     t.index ["event_type", "event_id"], name: "index_news_on_event_type_and_event_id"
     t.index ["friend_id"], name: "index_news_on_friend_id"
     t.index ["user_id"], name: "index_news_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "recipient_id"
+    t.integer "actor_id"
+    t.datetime "read_at"
+    t.string "action"
+    t.integer "notifiable_id"
+    t.string "notifiable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "participations", force: :cascade do |t|

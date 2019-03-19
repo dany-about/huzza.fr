@@ -3,12 +3,12 @@
 <% when "starred" then displayed_dares = user.starred_dares %>
 <% end %>
 
-<% if displayed_dares != nil %>
+<% if displayed_dares != [] %>
 
   <% displayed_dares.reverse.each do |dare| %>
     <div style="margin-top: 50px">
       <div class="container ">
-        <div class="col-md-12 mx-auto participationCard">
+        <div class="col-md-12 mx-auto eventCard">
           <%= render "shared/dare_card", dare: dare, friend: user, occasion: nil, disclaimer: false %>
         </div>
       </div>
