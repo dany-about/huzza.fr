@@ -19,16 +19,16 @@ User.destroy_all
 Category.destroy_all
 
 
-category_1 = Category.create(name: "adventure")
-category_2 = Category.create(name: "sport")
-category_3 = Category.create(name: "art")
-category_4 = Category.create(name: "charity")
-category_5 = Category.create(name: "girly")
-category_6 = Category.create(name: "green")
-category_7 = Category.create(name: "funny")
-category_8 = Category.create(name: "WTF")
-category_9 = Category.create(name: "gaming")
-category_10 = Category.create(name: "other")
+category_1 = Category.create(name: "Adventure")
+category_2 = Category.create(name: "Sport")
+category_3 = Category.create(name: "Art")
+category_4 = Category.create(name: "Green")
+category_5 = Category.create(name: "Charity")
+category_6 = Category.create(name: "Travel")
+category_7 = Category.create(name: "Self-help")
+category_8 = Category.create(name: "Experiences")
+category_9 = Category.create(name: "Gaming")
+category_10 = Category.create(name: "WTF")
 
 admin = User.create!(email: 'nabooadmin@yopmail.com', password: '123456', password_confirmation: '123456', first_name: "God,", last_name: "I mean Dany")
 admin2 = User.create!(email: 'nabooadmin@yopmail.com2', password: '123456', password_confirmation: '123456')
