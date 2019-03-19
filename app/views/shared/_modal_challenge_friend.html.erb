@@ -1,0 +1,33 @@
+<div class="modal-dialog modal-dialog-vertical" role="document" >
+  <div class="modal-content">
+    <div class="modal-body">
+      <!-- Close -->
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-toggle="tooltip" data-placement="left" title="Close Customizer">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div class="text-center mx-auto mt-4 mb-3" style="width: 80px;">
+        <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/11/7/1552821633-logohuzza.jpg" class="rounded-circle avatar-lg shadow mx-auto">
+      </div>
+      <h5 class="text-center mb-2">Challenge a friend</h5>
+      <hr class="mb-4">
+      <h6 class="mb-1"><%= dare.title %></h6>
+      <hr class="mb-4">
+      <h6 class="mb-1">Make your choice</h6>
+      <p class="small text-muted mb-3">
+        Who do you want to challenge ?
+      </p>
+      <%= form_with url: user_send_dares_path(dare_id: dare.id), method: "POST" do |f| %>
+        <select class="custom-select" name="recipient_id">
+          <%= current_user.friends.each do |friend| %>
+            <option value="<%= friend.id %>"><%= friend.full_name %></option>
+          <% end %>
+        </select>
+        <%= button_tag class:"btn btn-sm btn-outline-danger active flex-fill mb-2 mr-2 mt-4" do %>
+          <i class='fas fa-paper-plane mr-3'></i>Send my challenge
+        <% end %>
+      <% end %>
+        
+    </div>
+    <div class="modal-footer border-0"></div>
+  </div>
+</div>

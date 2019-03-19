@@ -1,4 +1,5 @@
 class UserSendDaresController < ApplicationController
+  respond_to :js
 
   def create
     if UserSendDare.find_by(dare_id: params[:dare_id], sender: current_user, recipient_id: params[:recipient_id]) == nil
