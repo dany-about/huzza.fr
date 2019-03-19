@@ -7,7 +7,7 @@
 
 <table>
   <tbody>
-    <% displayed_news.each do |news| %>
+    <% displayed_news.reverse.each do |news| %>
     <!-- Si l'évènement est une participation; disclaimer_type peut prendre les valeurs: "participation_created" ou "participation_achieved" -->
     <!-- Il faudra voir comment on gère les participations qui sont "un-achieved", quand la preuve est rejetée -->
     <!-- status prend les valeurs true ou false selon que la notification a été lue -->

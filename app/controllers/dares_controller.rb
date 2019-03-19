@@ -1,6 +1,5 @@
 class DaresController < ApplicationController
   before_action :set_dare, only: [:show,:edit, :update, :destroy]
-  after_action :notify_followers, only: [:create]
 
   # GET /dares
   # GET /dares.json
@@ -22,14 +21,15 @@ class DaresController < ApplicationController
     @dare.creator = current_user
     if @dare.save
       if params[:recipient_id] != nil
-        UserSendDare.create!(sender: current_user, recipient: User.find(recipient_id), dare: @dare)
-        current_user.notify_followers(@dare, "dare_sent")
-        User.find(params[:recipient_id]).notify_followers(@dare, "dare_received")
+        sent_dare = UserSendDare.create!(sender: current_user, recipient: User.find(params[:recipient_id]), dare: @dare)
+        current_user.notify_followers(sent_dare, "dare_sent")
+        User.find(params[:recipient_id]).notify_followers(sent_dare, "dare_received")
       else 
         current_user.notify_followers(@dare, "dare_created")
       end
       if params[:participate] == "yes"
-        Participation.create(user: current_user, dare: @dare)
+        participation = Participation.create(user: current_user, dare: @dare)
+        current_user.notify_followers(participation, "participation_created")
       end
       redirect_to user_path(current_user)
     else
@@ -59,10 +59,6 @@ class DaresController < ApplicationController
       format.html { redirect_to dares_url, notice: 'Dare was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  def notify_followers
-    current_user.notify_followers(@dare, "dare_created")
   end
 
   private
