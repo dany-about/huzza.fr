@@ -31,14 +31,14 @@ Rails.application.routes.draw do
   resources :follows, only: [:create, :destroy]
   resources :friend_requests, only: [:create, :destroy]
   
-  resources :dares, except: [:show, :destroy]
+  resources :dares, except: [:show, :edit, :update, :destroy]
   resources :participations, only: [:create, :update]
   resources :news, only: [:index]
 
-  resources :user_send_dares, only: [:create, :update]
+  resources :user_send_dares, only: [:create]
   resources :star_dares, only: [:create, :destroy]
   resources :difficulty_ratings, only: [:create]
-  resources :reactions, only: [:create, :update, :destroy]
+  resources :reactions, only: [:create, :destroy]
   resources :comments, only: [:create, :update, :destroy]
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
