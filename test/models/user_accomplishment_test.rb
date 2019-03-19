@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UserAccomplishementTest < ActiveSupport::TestCase
+class UserAccomplishmentTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -30,16 +30,18 @@ category_8 = Category.create(name: "Experiences", image_url:"https://images.pexe
 category_9 = Category.create(name: "Gaming", image_url:"https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
 category_10 = Category.create(name: "WTF", image_url:"https://images.pexels.com/photos/1564506/pexels-photo-1564506.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
 
-accomplishment_1 = Accomplishment.create(name: "Serial Beginner", description: "Plus de 5 défis à mon actif.")
-accomplishment_2 = Accomplishment.create(name: "Mike Horn", description: "A réussi 5 défis dans la catégorie Adventure.")
-accomplishment_3 = Accomplishment.create(name: "Picasso", description: "A réussi 5 défis dans la catégorie Art.")
-accomplishment_4 = Accomplishment.create(name: "WWF", description: "A réussi 5 défis dans la catégorie Green.")
-accomplishment_5 = Accomplishment.create(name: "Les Enfoirés", description: "A réussi 5 défis dans la catégorie Charity.")
-accomplishment_6 = Accomplishment.create(name: "Jules Vernes", description: "A réussi 5 défis dans la catégorie Travel.")
-accomplishment_7 = Accomplishment.create(name: "Olypic Games", description: "A réussi 5 défis dans la catégorie Sport.")
-accomplishment_8 = Accomplishment.create(name: "Geek 2.0", description: "A réussi 5 défis dans la catégorie Gaming.")
-accomplishment_9 = Accomplishment.create(name: "Jean Michel Blague", description: "A réussi 5 défis dans la catégorie WTF.")
-accomplishment_10 = Accomplishment.create(name: "Mister Bucket", description: "A réussi 5 défis dans la catégorie Experiences.")
+
+Accomplishment.create!(name: "Serial Beginner", title: "Plus de 5 défis à mon actif.", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Mike Horn", title: "Bg de la mort qui tue", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Picasso", title: "A réussi 5 défis dans la catégorie Adventure.", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "WWF", title: "A réussi 5 défis dans la catégorie Green.", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Les Enfoirés", title: "A réussi 5 défis dans la catégorie Charity.", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Jules Vernes", title: "A réussi 5 défis dans la catégorie Travel.", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Olypic Games", title: "BA réussi 5 défis dans la catégorie Sport.", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Geek 2.0", title: "A réussi 5 défis dans la catégorie Gaming.", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Jean Michel Blague", title: "A réussi 5 défis dans la catégorie WTF.", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Mister Bucket", title: "A réussi 5 défis dans la catégorie Experiences.", icon_class:"fas fa-fish")
+
 
 admin = User.create!(email: 'nabooadmin@yopmail.com', password: '123456', password_confirmation: '123456', first_name: "God,", last_name: "I mean Dany")
 admin2 = User.create!(email: 'nabooadmin@yopmail.com2', password: '123456', password_confirmation: '123456')
