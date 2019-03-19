@@ -16,12 +16,21 @@
   <% end %>
   
 <% else %>
-<%# A AFFICHER SI VIDE %>
-  <% case status %>
-  <% when "created" %>
-    Aucun défi créé. Un peu d'imagination !
-  <% when "starred" %>
-    Aucun défi favori. Vous avez peut-être des goûts de chiotte.
+
+  <% if current_user == user %>
+    <% case status %>
+    <% when "created" %>
+      Vous n'avez aucun défi créé pour le moment. Un peu d'imagination voyons !
+    <% when "starred" %>
+      Vous n'avez aucun défi favori pour le moment. Laissez-vous guider par la communauté !
+    <% end %>
+  <% else %>
+    <% case status %>
+    <% when "created" %>
+      <%= user.full_name %> n'a encore pas créé de défi. Mais il nous a promis qu'il allait s'y mettre.
+    <% when "starred" %>
+      <%= user.full_name %> n'a encore pas de défi favori. Mais il est un peu timide m'voyez.
+    <% end %>
   <% end %>
 
 <% end %>
