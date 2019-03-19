@@ -102,26 +102,26 @@ class User < ApplicationRecord
 
   def badge
     case self.rank
-    when 1 then return { title: "Empailleur de marmottes", emote: "🤠", animation:"icon bg-gradient-success text-white rounded-circle icon-shape hover-rotate-360" }
-    when 2 then return { title: "Bold Motherfucker", emote: "🧛‍", animation: "icon bg-gradient-success text-white rounded-circle icon-shape hover-rotate-360" }
-    when 3 then return { emote: "", animation: "" }
-    when 4 then return { emote: "", animation: "" }
-    when 5 then return { emote: "", animation: "" }
-    when 6 then return { emote: "", animation: "" }
-    when 7 then return { emote: "", animation: "" }
-    when 8 then return { emote: "", animation: "" }
-    when 9 then return { emote: "", animation: "" }
-    when 10 then return { emote: "", animation: "" }
-    when 11 then return { emote: "", animation: "" }
-    when 12 then return { emote: "", animation: "" }
-    when 13 then return { emote: "", animation: "" }
-    when 14 then return { emote: "", animation: "" }
-    when 15 then return { emote: "", animation: "" }
-    when 16 then return ""
-    when 17 then return ""
-    when 18 then return ""
-    when 19 then return ""
-    when 20 then return ""
+    when 1 then return { title: "Exporateur intergalactique", emote: "👨🏽‍🚀", animation:"icon bg-gradient-danger text-white rounded-circle icon-shape hover-rotate-90" }
+    when 2 then return { title: "Chef en herbe", emote: "👩🏻‍🍳", animation: "icon bg-gradient-danger text-white rounded-circle icon-shape hover-scale-110" }
+    when 3 then return { title: "Maraîcher des bois", emote: "👨🏾‍🌾", animation:"icon bg-gradient-danger text-white rounded-circle icon-shape hover-rotate-180" }
+    when 4 then return { title: "Mage envoûtant", emote: "🧙‍♂️", animation:"icon bg-gradient-danger text-white rounded-circle icon-shape hover-scale-110" }
+    when 5 then return { title: "Bouc masqué", emote: "🦹‍♂️", animation:"icon bg-gradient-danger text-white rounded-circle icon-shape hover-rotate-360" }
+    when 6 then return { title: "Pink lady", emote: "👩🏻‍🎤", animation:"icon bg-gradient-danger text-white rounded-circle icon-shape hover-scale-110" }
+    when 7 then return { title: "Chimiste fou", emote: "👨🏽‍🔬", animation:"icon bg-gradient-danger text-white rounded-circle icon-shape hover-rotate-90" }
+    when 8 then return { title: "Peintre haute en couleur", emote: "👩🏾‍🎨", animation:"icon bg-gradient-danger text-white rounded-circle icon-shape hover-scale-110" }
+    when 9 then return { title: "Pompière on fire", emote: "👩🏼‍🚒", animation:"icon bg-gradient-danger text-white rounded-circle icon-shape hover-rotate-180" }
+    when 10 then return { title: "Géni en devenir", emote: "🧞‍♂️", animation:"icon bg-gradient-danger text-white rounded-circle icon-shape hover-scale-110" }
+    when 11 then return { title: "Queen B", emote: "👸🏾", animation:"icon bg-gradient-danger text-white rounded-circle icon-shape hover-rotate-90" }
+    when 12 then return { title: "Clown dangereux", emote: "🤡", animation:"icon bg-gradient-danger text-white rounded-circle icon-shape hover-scale-110" }
+    when 13 then return { title: "Dracu-la plus belle", emote: "🧛‍♀️", animation:"icon bg-gradient-danger text-white rounded-circle icon-shape hover-rotate-360" }
+    when 14 then return { title: "La seigneur des agneaux", emote: "🧝‍♂️", animation:"icon bg-gradient-danger text-white rounded-circle icon-shape hover-scale-110" }
+    when 15 then return { title: "Zombie affectueux", emote: "🧟‍♂️", animation:"icon bg-gradient-danger text-white rounded-circle icon-shape hover-rotate-180" }
+    when 16 then return { title: "Héroïne des temps modernes", emote: "🦸‍♀️", animation:"icon bg-gradient-danger text-white rounded-circle icon-shape hover-scale-110" }
+    when 17 then return { title: "Gardien de troupeau", emote: "🤠", animation:"icon bg-gradient-danger text-white rounded-circle icon-shape hover-rotate-90" }
+    when 18 then return { title: "Sirène malicieuse", emote: "🧜‍♀️", animation:"icon bg-gradient-danger text-white rounded-circle icon-shape hover-scale-110" }
+    when 19 then return { title: "Inspecteur en chef", emote: "🕵🏾", animation:"icon bg-gradient-danger text-white rounded-circle icon-shape hover-rotate-180" }
+    when 20 then return { title: "Merlin l'enchianteur", emote: "🧙‍♂️", animation:"icon bg-gradient-danger text-white rounded-circle icon-shape hover-rotate-360" }
     end
   end
 

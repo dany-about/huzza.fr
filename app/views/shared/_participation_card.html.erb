@@ -70,7 +70,7 @@
   <%= render 'shared/card_elements/comments', commentable_id: participation.id, type: participation.class.name %>
 </div>
 
-<div class="card collapse ratingElement">
+<div class="card collapse ratingElement_<%=dare.id%>">
   <%= render 'shared/card_elements/rating', dare: dare %>
 </div>
 
@@ -79,7 +79,7 @@
 <% else proof_class = "card collapse" %>
 <% end %>
 
-<div class="<%= proof_class %>">
+<div class="<%= proof_class %> proofElement">
   <%= render 'shared/card_elements/proof', event: participation %>
 </div>
 

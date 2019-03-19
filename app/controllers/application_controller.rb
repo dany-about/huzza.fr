@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
+  before_action :check_achievements
   #before_action :browser_locale(current_user)
 
   def set_locale
@@ -16,6 +17,22 @@ class ApplicationController < ActionController::Base
 
   def default_url_options
     { locale: I18n.locale }
+  end
+
+  def check_achievements
+    Participation.where(is_achieved: nil).each { |participation| 
+      # Checks for contested proofs
+      if true
+
+        # ADD NOTIFICATION HERE
+      end
+      # Checks if any proofs have passed the review period without being contested
+      if Time.now - participation.updated_at >= 3.days
+        participation.is_achieved = true
+        participation.user.elo_points += participation.dare.difficulty
+        # ADD NOTIFICATION HERE
+      end
+    }
   end
 
   protected
