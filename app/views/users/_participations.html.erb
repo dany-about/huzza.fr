@@ -17,16 +17,25 @@
   <% end %>
 
 <% else %>
-<%# A AFFICHER SI VIDE %>
-  <% case status %>
-  <% when "ongoing" %>
-    Aucune participation en cours. Bougez-vous le cul !
-  <% when "achieved" %>
-    Vous n'avez toujours rien accompli. Bougez-vous le cul !
-  <% when "reviewed" %>
-    Vous n'avez aucune participation en cours d'examination par la communauté. Bougez-vous le cul !
+  <% if current_user == user %>
+    <% case status %>
+    <% when "ongoing" %>
+      Aucune participation en cours. Il serait temps de s'y mettre !
+    <% when "achieved" %>
+      Vous n'avez toujours rien accompli. Il serait temps de s'y mettre !
+    <% when "reviewed" %>
+      Vous n'avez aucune participation en cours d'examination par la communauté.
+    <% end %>
+  <% else %>
+    <% case status %>
+    <% when "ongoing" %>
+      <%= user.full_name %> n'a pas encore de défi en cours, mais ça ne saurait tarder !
+    <% when "achieved" %>
+      <%= user.full_name %> est sur le point d'achieve son premier défi. Repasse d'ici quelques jours.
+    <% when "reviewed" %>
+      <%= user.full_name %> n'a aucune participation en cours d'examination par la communauté.
+    <% end %>
   <% end %>
-
 <% end %>
 
 <%= javascript_include_tag "user_cards_scripts" %>
