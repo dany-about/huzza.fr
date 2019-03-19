@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
-  before_action :set_locale
+  before_action :set_locale, :authenticate_user!, :check_achievements, :check_accomplishments
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :authenticate_user!
-  before_action :check_achievements
   #before_action :browser_locale(current_user)
 
   def set_locale
@@ -33,6 +31,17 @@ class ApplicationController < ActionController::Base
         # ADD NOTIFICATION HERE
       end
     }
+  end
+
+  def check_accomplishments
+    if user_signed_in?
+      Accomplishment.all.each { |accomplishment| 
+        if accomplishment.condition_satisfied_by(current_user)
+          UserAccomplishment.create!(user: current_user, accomplishment: accomplishment) unless UserAccomplishment.find_by(user: current_user, accomplishment: accomplishment) != nil
+          # ADD NOTIFICATION HERE, using accomplishment.name          
+        end
+      }
+    end
   end
 
   protected

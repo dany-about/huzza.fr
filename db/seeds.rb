@@ -30,6 +30,42 @@ category_8 = Category.create(name: "Experiences", image_url:"https://images.pexe
 category_9 = Category.create(name: "Gaming", image_url:"https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
 category_10 = Category.create(name: "WTF", image_url:"https://images.pexels.com/photos/1564506/pexels-photo-1564506.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
 
+Accomplishment.create!(name: "Créer mon premier défi", title: "Bg de la mort qui tue", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Créer mon premier défi", title: "Bg de la mort qui tue", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Créer mon premier défi", title: "Bg de la mort qui tue", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Créer mon premier défi", title: "Bg de la mort qui tue", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Créer mon premier défi", title: "Bg de la mort qui tue", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Créer mon premier défi", title: "Bg de la mort qui tue", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Créer mon premier défi", title: "Bg de la mort qui tue", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Créer mon premier défi", title: "Bg de la mort qui tue", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Créer mon premier défi", title: "Bg de la mort qui tue", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Créer mon premier défi", title: "Bg de la mort qui tue", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Créer mon premier défi", title: "Bg de la mort qui tue", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Créer mon premier défi", title: "Bg de la mort qui tue", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Créer mon premier défi", title: "Bg de la mort qui tue", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Créer mon premier défi", title: "Bg de la mort qui tue", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Créer mon premier défi", title: "Bg de la mort qui tue", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Créer mon premier défi", title: "Bg de la mort qui tue", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Créer mon premier défi", title: "Bg de la mort qui tue", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Créer mon premier défi", title: "Bg de la mort qui tue", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Créer mon premier défi", title: "Bg de la mort qui tue", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Créer mon premier défi", title: "Bg de la mort qui tue", icon_class:"fas fa-fish")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 admin = User.create!(email: 'nabooadmin@yopmail.com', password: '123456', password_confirmation: '123456', first_name: "God,", last_name: "I mean Dany")
 admin2 = User.create!(email: 'nabooadmin@yopmail.com2', password: '123456', password_confirmation: '123456')
 noe = User.create!(email: "example@example.gmail", password:"123456", password_confirmation: "123456", first_name: "Noé", last_name: "Margui")
