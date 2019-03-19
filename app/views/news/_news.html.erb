@@ -1,0 +1,34 @@
+<% case occasion %>
+<% when "all" then displayed_news = current_user.news %>
+<% else displayed_news = current_user.news.where(occasion: occasion) %>
+<% end %>
+
+<table>
+  <tbody>
+    <% displayed_news.each do |news| %>
+    <!-- Si l'évènement est une participation; disclaimer_type peut prendre les valeurs: "participation_created" ou "participation_achieved" -->
+    <!-- Il faudra voir comment on gère les participations qui sont "un-achieved", quand la preuve est rejetée -->
+    <!-- status prend les valeurs true ou false selon que la notification a été lue -->
+      <div style="margin-top: 80px">
+        <div class="container">
+          <div class="col-md-12 mx-auto participationCard" id="<%=news.event.class.name%>_<%=news.event.id%>">
+            <% case news.event.class.name %>
+            <% when "Participation" %>
+            <%= render "shared/participation_card", participation: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
+            <% when "Dare" %>
+            <%= render "shared/dare_card", dare: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
+            <% when "UserSendDare" %>
+            <%= render "shared/sent_dare_card", sent_dare: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </tbody>
+</table>
+
+<% if displayed_news.count == 0 %>
+Rien de neuf !
+<% end %>
+
+<%= javascript_include_tag "user_cards_scripts" %>
