@@ -4,6 +4,7 @@
   <div class="col-md-9 mx-auto" style="margin-top: 80px">
     <h6 class="mb-1">Choisis la catégorie de ton défi...</h6>
     <select class="custom-select" name="dare[category_id]">
+      <option selected>Select your dare's category</option>
       <%= Category.all.each do |category| %>
         <option value="<%= category.id %>"><%= category.name %></option>
       <% end %>

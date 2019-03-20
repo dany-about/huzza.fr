@@ -9,8 +9,6 @@ class FriendRequestsController < ApplicationController
     respond_to do |format|
       format.js {render template: 'follows/create'}
     end
-
-    # A FAIRE : On notifie la personne invitée
   end
 
   def update
