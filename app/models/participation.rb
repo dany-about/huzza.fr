@@ -9,7 +9,7 @@ class Participation < ApplicationRecord
 
   # Validations
   validate :deadline_in_futur
-  validate :cant_participate_twice
+  validate :cant_participate_twice, on: :create
 
   def deadline_in_futur
     if self.deadline != nil && self.deadline < DateTime.now
