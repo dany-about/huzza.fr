@@ -5,29 +5,16 @@
       <div class="col-lg-12">
         <div class="row">
           <div class="col-6">
-
             <% if event.is_a?(Participation) %>
 
+              <!-- DISPLAY IMAGES PROOF -->
               <%if event.pictures.attached?%>
                 <% event.pictures.each do |picture| %>
                   <%= image_tag picture, class: 'img-fluid rounded' %>
                 <% end %>
 
-              <%else%>
-
-                <h3>Changer d'avatar ?</h3>
-
-                <!-- ADD FORM -->
-                <%= form_tag participation_pictures_path(event), multipart: true do %>
-                  <%= file_field_tag :pictures %>
-                  <%= submit_tag "mettre à jour" %>
-
-                <% end %>
-                </div>
               <% end %>
-
-
-
+              <!-- DISPLAY VIDEOS PROOF -->
               <%if event.videos.attached?%>
                 <% event.videos.each do |video| %>
 
@@ -37,43 +24,46 @@
                   </video>
 
                 <% end %>
+              <% end %>
 
-              <%else%>
+              <% if current_user == event.user %>
+                <!-- Bouton pour upload sa preuve (attacher la photo) -->
+                <h3>Ajouter une preuve image</h3>
 
-                <h3>Ajouter une vidéo</h3>
+                <!-- ADD FORM -->
+                <%= form_tag participation_pictures_path(event), multipart: true do %>
+                  <%= file_field_tag :pictures %>
+                  <%= submit_tag "mettre à jour" %>
+
+                <% end %>
+
+                <h3>Ajouter une preuve vidéo</h3>
                 <%= form_tag participation_videos_path(event), multipart: true do %>
                   <%= file_field_tag :clip %>
                   <%= hidden_field_tag :participation_id %>
                   <%= submit_tag "mettre à jour" %>
                 <% end %>
+
+
+
+              <% elsif current_user != event.user && event.is_achieved == nil %>
+
+                <!-- Bouton pour contester la validité des preuves -->
+
+              <% else %>
+
               <% end %>
-              </div>
+
             <% end %>
 
-
-            <% if current_user == event.user %>
-              <!-- Bouton pour upload sa preuve (attacher la photo) -->
-              <h3>Changer d'avatar ?</h3>
-              <%= form_tag participation_pictures_path(event), multipart: true do %>
-                <%= file_field_tag :pictures %>
-                <%= submit_tag "mettre à jour" %>
-              <% end %>
-            <% elsif current_user != event.user && event.is_achieved == nil %>
-              <!-- Bouton pour contester la validité des preuves -->
             <% else %>
+            <!-- Si le défi est un dare -->
+              Ce défi n'a pas encore de participants
             <% end %>
-
-            <div class="col-6">
-              <a href="https://lemag.nikonclub.fr/wp-content/uploads/2017/07/08.jpg" data-fancybox="group" data-caption="My caption">
-                <img src="https://lemag.nikonclub.fr/wp-content/uploads/2017/07/08.jpg" class="img-fluid rounded">
-              </a>
-            </div>
-
-<% else %>
-  Ce défi n'a pas encore de participants
-<% end %>
-</div>
-</div>
+          </div>
+      </div>
+      </div>
+    </div>
 </div>
 
 
