@@ -52,35 +52,35 @@
                 <div class="card">
                   <div class="list-group list-group-sm list-group-flush">
                     <%= link_to user_path(@user.id, show: "users/participations", status: "ongoing"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>
-                      <div>
-                        <i class="fas fa-stopwatch mr-2"></i>
-                        <span>En cours</span>
-                      </div>
-                      <div>
-                        <i class="fas fa-angle-right"></i>
-                      </div>
+                    <div>
+                      <span class="btn-inner--icon btn btn-danger btn-icon-only btn-zoom--hover rounded-circle btn-sm"><i class="fas fa-stopwatch"></i></span>
+                      <span>En cours</span>
+                    </div>
+                    <div>
+                      <i class="fas fa-angle-right"></i>
+                    </div>
                     <% end %>
                     <%= link_to user_path(@user.id, show: "users/participations", status: "achieved"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>
-                      <div>
-                        <i class="fas fa-trophy mr-2"></i>
-                        <span>Réussis</span>
-                      </div>
-                      <div>
-                        <i class="fas fa-angle-right"></i>
-                      </div>
+                    <div>
+                      <span class="btn-inner--icon btn btn-dark btn-icon-only btn-zoom--hover rounded-circle btn-sm"> <i class="fas fa-trophy"></i></span>
+                      <span>Réussis</span>
+                    </div>
+                    <div>
+                      <i class="fas fa-angle-right"></i>
+                    </div>
                     <% end %>
                     <%= link_to user_path(@user.id, show: "users/participations", status: "reviewed"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>
                       <div>
-                        <i class="fas fa-search mr-2"></i>
+                        <span class="btn-inner--icon btn btn-dark btn-icon-only btn-zoom--hover rounded-circle btn-sm"> <i class="fas fa-search"></i></span>
                         <span>À l'étude</span>
                       </div>
                       <div>
                         <i class="fas fa-angle-right"></i>
                       </div>
-                    <% end %>
-                    <%= link_to user_path(@user.id, show: "users/dares", status: "created"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>
+                      <% end %>
+                      <%= link_to user_path(@user.id, show: "users/dares", status: "created"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>
                       <div>
-                        <i class="fas fa-user-friends mr-2"></i>
+                        <span class="btn-inner--icon btn btn-dark btn-icon-only btn-zoom--hover rounded-circle btn-sm"> <i class="fas fa-user-friends"></i></span>
                         <span>Créés</span>
                       </div>
                       <div>
@@ -89,7 +89,7 @@
                     <% end %>
                     <%= link_to user_path(@user.id, show: "users/dares", status: "starred"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>
                       <div>
-                        <i class="fas fa-heart mr-2"></i>
+                        <span class="btn-inner--icon btn btn-dark btn-icon-only btn-zoom--hover rounded-circle btn-sm"> <i class="fas fa-heart"></i></span>
                         <span>Favoris</span>
                       </div>
                       <div>
