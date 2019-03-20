@@ -10,18 +10,20 @@
   </head>
 
   <body>
+    <div id="container">
+        <div id="body">
+        <% if user_signed_in? %>
+        <%= render 'layouts/header' %>
+        <%= render 'layouts/flash'%>
+      <% end %>
+          <%= yield %>
 
-    <% if user_signed_in? %>
-    <%= render 'layouts/header' %>
-    <%= render 'layouts/flash'%>
-  <% end %>
-      <%= yield %>
+        </div>
+        <% if user_signed_in? %>
+          <%= render 'layouts/footer' %>
+        <% end %>
+    </div >
 
-
-    <% if user_signed_in? %>
-      <%= render 'layouts/footer' %>
-    <% end %>
-    
 <!---------------------------if user is not connected display: none;-------------------------------->
     <% if !user_signed_in? %>
     <div class="customizer" style="display: none;">
