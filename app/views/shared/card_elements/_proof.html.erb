@@ -7,6 +7,7 @@
 
               <!-- DISPLAY IMAGES PROOF -->
               <%if event.pictures.attached?%>
+                <h3>Les preuves en images</h3>
                 <% event.pictures.each do |picture| %>
                   <%= image_tag picture, class: 'img-fluid rounded' %>
                 <% end %>
@@ -14,6 +15,7 @@
               <% end %>
               <!-- DISPLAY VIDEOS PROOF -->
               <%if event.videos.attached?%>
+                <h3>Les preuves en vidéos</h3>
                 <% event.videos.each do |video| %>
 
                   <!-- Custom video.js -->
@@ -42,17 +44,15 @@
                   <%= submit_tag "mettre à jour" %>
                 <% end %>
 
-
-
               <% elsif current_user != event.user && event.is_achieved == nil %>
 
                 <!-- Bouton pour contester la validité des preuves -->
+                <%= debug event.class.name %>
+                Ce défi peut être contesté !!
 
               <% else %>
 
               <% end %>
-
-
 
               <% else %>
                 <!-- Si le défi est un dare -->
