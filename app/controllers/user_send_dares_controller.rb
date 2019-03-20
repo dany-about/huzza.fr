@@ -12,11 +12,11 @@ class UserSendDaresController < ApplicationController
   def update
     sent_dare = UserSendDare.find(params[:id])
     if params[:answer] = "accept"
-      sent_dare.accepted = true
+      sent_dare.update(accepted: true)
       Participation.create!(user: current_user, dare: sent_dare.dare)
       # FLASH NOTICE défi relevé
     elsif params[:answer] = "decline"
-      sent_dare = false
+      sent_dare.update(accepted: false)
       # FLASH NOTICE défi refusé
     end
   end

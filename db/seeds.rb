@@ -20,7 +20,6 @@ Follow.destroy_all
 User.destroy_all
 Category.destroy_all
 
-
 category_1 = Category.create(name: "Aventure", image_url:"https://images.pexels.com/photos/672358/pexels-photo-672358.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
 category_2 = Category.create(name: "Sport", image_url:"https://images.pexels.com/photos/235922/pexels-photo-235922.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
 category_3 = Category.create(name: "Art", image_url:"https://images.pexels.com/photos/1053687/pexels-photo-1053687.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
@@ -31,8 +30,6 @@ category_7 = Category.create(name: "Bien-être", image_url:"https://images.pexel
 category_8 = Category.create(name: "Expériences", image_url:"https://images.pexels.com/photos/1670732/pexels-photo-1670732.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
 category_9 = Category.create(name: "Gaming", image_url:"https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
 category_10 = Category.create(name: "WTF", image_url:"https://images.pexels.com/photos/1564506/pexels-photo-1564506.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
-
-
 
 Accomplishment.create!(title: "No Longer A Newcomer", name: "Mon premier défi créé !", icon_class:"fas fa-money-bill-alt")
 Accomplishment.create!(title: "Michael Scott", name: "Mon premier ami !", icon_class:"fas fa-user-friends")
@@ -56,11 +53,8 @@ Accomplishment.create!(title: "Mister Bucket", name: "A réussi 5 défis dans la
 Accomplishment.create!(title: "Geek 2.0", name: "A réussi 5 défis dans la catégorie Gaming.", icon_class:"fas fa-gamepad")
 Accomplishment.create!(title: "Jean Michel Blague", name: "A réussi 5 défis dans la catégorie WTF.", icon_class:"fas fa-spider")
 
-
 admin = User.create!(email: 'nabooadmin@yopmail.com', password: '123456', password_confirmation: '123456', first_name: "God,", last_name: "I mean Dany")
-admin2 = User.create!(email: 'nabooadmin@yopmail.com2', password: '123456', password_confirmation: '123456')
 noe = User.create!(email: "example@example.gmail", password:"123456", password_confirmation: "123456", first_name: "Noé", last_name: "Margui")
-
 
 # les defis de base
 dare_noe = Dare.create!(creator: noe, title: "Go paragliding above Annecy lake with my two sweet girlfriends and their anaconda who loves flying too", description: "Hi folks! I'm really happy to introduce you to my new personnal challenge. I'm fond of airplanes since my early childhood, and i'm now deeply motivated into flying as a bird. I'm not brave enough for skydiving, thats why paragliding seems perfect for me lol. Give me strengh in upvoting my dare ! Cheers", category: category_3)
@@ -85,26 +79,3 @@ dare10 = Dare.create!(title: "first destination", description: " buy a ticket fo
 DifficultyRating.create!(user: admin, dare: dare10, rating: 40)
 dare11 = Dare.create!(title: "fruit street", description: "buy some fruits, walk down the streets, give some to homeless people"*3, creator: admin, category: category_5)
 DifficultyRating.create!(user: admin, dare: dare11, rating: 30)
-
-participation1 = Participation.create!(user: admin, dare: dare3)
-participation_noe = Participation.create!(user: noe, dare: dare_noe)
-participation = Participation.create!(user: noe, dare: dare2)
-
-sent_dare1 = UserSendDare.create!(dare: dare_noe, sender: admin, recipient:admin2)
-sent_dare2 = UserSendDare.create!(dare: dare2, sender: admin2, recipient:admin)
-
-notif2 = News.create!(user: admin, friend: noe, event: participation_noe, occasion: "participation_created")
-
-Follow.create!(user: noe, follower: admin)
-Follow.create!(user: admin, follower: noe)
-Follow.create!(user: admin2, follower: admin)
-
-StarDare.create!(user: admin, dare: dare_noe)
-
-Comment.create!(commentable: dare_noe, user: admin, content: "testcom sur défi")
-Comment.create!(commentable: participation_noe, user: admin2, content: "Oui ceci est bien un vrai commentaire généré par le seed et on est trop des bgs")
-Comment.create!(commentable: participation_noe, user: admin, content: "Trop bien ce défi quel courage ce Noé")
-Comment.create!(commentable: participation_noe, user: noe, content: "Eh oui je commente mon propre défi car au fond de moi je suis un plouc !")
-
-usd = UserSendDare.create!(sender: noe, recipient: admin, dare: dare_noe)
-News.create!(user: admin, friend: noe, event: usd, occasion: "dare_sent")
