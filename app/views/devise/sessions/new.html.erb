@@ -37,7 +37,7 @@
     <rect id="Rectangle_715" data-name="Rectangle 715" class="cls-1" width="89" height="75" transform="translate(683 378)"></rect>
     <rect id="Rectangle_693" data-name="Rectangle 693" class="cls-1" width="89" height="75" transform="translate(-118 413)"></rect>
   </g>
-</svg>
+          </svg>
         </figure>
       </div>
       <div class="container py-5 position-relative zindex-100">
@@ -55,7 +55,7 @@
                           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
                               <div class="form-group">
-                                  <label class="form-control-label">Email address</label>
+                                  <label class="form-control-label" for="input-email">Email address</label>
                                   <div class="input-group input-group-transparent">
                                       <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -64,15 +64,14 @@
                                   </div>
                               </div>
                               <div class="form-group mb-4">
-                                  <label class="form-control-label">Password</label>
-
+                                  <label class="form-control-label" for="input-password">Password</label>
                                   <div class="input-group input-group-transparent">
                                       <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fas fa-key"></i></span>
                                       </div>
                                       <%= f.password_field :password, class:"form-control", id:"input-password", placeholder:"********", autocomplete: "current-password" %>
                                       <div class="input-group-append">
-                                          <span class="input-group-text">
+                                          <span class="input-group-text" onclick="showPassword('input-password')">
                                               <i class="fas fa-eye"></i>
                                           </span>
                                       </div>
