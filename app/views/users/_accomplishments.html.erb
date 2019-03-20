@@ -3,21 +3,23 @@
     <div>
       <% a = ["primary", "warning", "success", "danger", "secondary", "info"]; colors = a+a+a+a+a+a+a %>
       <% user.accomplishments.each_with_index do |accomplishment, i| %>
-        <span class="badge badge-<%= colors[i] %> badge-pill">
+        <div class="row" style="justify-content: center; margin-top: 15px">
+          <span class="badge badge-<%= colors[i] %> badge-pill">
           <i class="<%= accomplishment.icon_class %>"></i><%= accomplishment.title %>
-        </span>
+          </span>
+        </div>
       <% end %>
     </div>
 
     <div>
       <% if user.accomplishments.count >= 5 %>
-        <div class="icon icon-warning rounded-circle icon-shape icon-sm hover-rotate-360">
-          <i class="fas fa-medal"></i>
+        <div class="row" style="justify-content: center; margin-top: 15px">
+          <span class="icon icon-warning rounded-circle icon-shape icon-md hover-rotate-360"><i class="fas fa-medal"></i></span>
         </div>
         <% if user.accomplishments.count >= 10 %>
-          <div class="icon icon-success icon-shape icon-sm hover-rotate-360">
-            <i class="fas fa-trophy"></i>
-          </div>
+        <div class="row" style="justify-content: center; margin-top: 15px">
+          <span class="icon icon-success rounded-circle icon-shape icon-md hover-rotate-360"><i class="fas fa-trophy"></i></span>
+        </div>
         <% end %>
       <% end %>
     </div>
