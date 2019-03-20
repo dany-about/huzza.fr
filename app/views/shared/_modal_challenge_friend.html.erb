@@ -16,8 +16,10 @@
       <p class="small text-muted mb-3">
         Qui veux-tu challenger ?
       </p>
-      <%= form_with url: user_send_dares_path(dare_id: dare.id), method: "POST" do |f| %>
-        <select class="custom-select" name="recipient_id">
+
+      <% @new_sent_dare = UserSendDare.new  %>
+      <%= form_with model: @new_sent_dare, url: user_send_dares_path(dare_id: dare.id, random_id: random_id), method: "POST" do |f| %>
+        <select class="custom-select" name="new_sent_dare[recipient_id]" id="friendSelection_<%= dare.id %>_<%= random_id %>">
           <%= current_user.friends.each do |friend| %>
             <option value="<%= friend.id %>"><%= friend.full_name %></option>
           <% end %>
