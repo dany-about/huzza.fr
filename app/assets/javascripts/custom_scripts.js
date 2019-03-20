@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  // SCROLL 
+  // SCROLL
   function scrollToAnchor(aid){
     var aTag = $(aid);
     $('html,body').animate({scrollTop: aTag.offset().top},'slow');
@@ -10,8 +10,13 @@ $(document).ready(function() {
     event.preventDefault(); scrollToAnchor($("body"))
   }) })
 
-})
+});
 
-
-  
-
+function showPassword(id) {
+  var x = document.getElementById(id);
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
