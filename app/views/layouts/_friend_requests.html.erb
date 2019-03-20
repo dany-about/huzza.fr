@@ -1,7 +1,7 @@
 <% if current_user.received_friend_requests.count > 0 %>
   <% current_user.received_friend_requests.each do |request| %>
     <div class="dropdown-item">
-      <%= request.user_asking.full_name %> wants to be friends
+      <%= link_to "#{request.user_asking.full_name}", user_path(request.user_asking) %> wants to be friends
       <%= link_to "Accept", friend_request_path(request.id, answer: "accept"), method: "DELETE", remote: true %>
       <%= link_to "Decline", friend_request_path(request.id, answer: "decline"), method: "DELETE", remote: true %>
       <div class="dropdown-divider"></div>
