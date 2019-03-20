@@ -33,8 +33,8 @@ class User < ApplicationRecord
   has_many :participated_dares, through: :participations, source: :dare
   
   # Friend requests, Friends & Follows 
-  has_many :sent_friend_requests, class_name: "FriendRequest", foreign_key: "user_requesting_id"
-  has_many :received_friend_requests, class_name: "FriendRequest", foreign_key: "user_asking_id"
+  has_many :sent_friend_requests, class_name: "FriendRequest", foreign_key: "user_asking_id"
+  has_many :received_friend_requests, class_name: "FriendRequest", foreign_key: "user_asked_id"
   has_many :follows
   has_many :followers, through: :follows
   has_many :reverse_follows, class_name: "Follow", foreign_key: "follower_id"

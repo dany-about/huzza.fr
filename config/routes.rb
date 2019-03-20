@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   
 
   resources :follows, only: [:create, :destroy]
-  resources :friend_requests, only: [:create, :destroy]
+  resources :friend_requests, only: [:create, :update, :destroy]
   
   resources :dares, except: [:show, :edit, :update, :destroy]
   resources :participations, only: [:create, :update]
