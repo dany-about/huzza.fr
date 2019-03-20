@@ -1,174 +1,156 @@
 <div class="main-content">
-    <!-- Header (v9) -->
-    <section class="slice slice-xl pb-0 bg-gradient-success" style="padding-bottom: 150px; margin-top: -200px">
-      <!-- SVG background -->
-      <div class="bg-absolute-cover bg-size--contain d-flex align-items-center">
-        <figure class="w-100">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1956 1143 1385 601" class="injected-svg svg-inject">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #fff;
-        opacity: 0.046;
-      }
-    </style>
-  </defs>
-  <g id="Group_243" data-name="Group 243" transform="translate(-1838 1118)">
-    <rect id="Rectangle_689" data-name="Rectangle 689" class="cls-1" width="89" height="75" transform="translate(54 476)"></rect>
-    <rect id="Rectangle_690" data-name="Rectangle 690" class="cls-1" width="89" height="75" transform="translate(333 140)"></rect>
-    <rect id="Rectangle_691" data-name="Rectangle 691" class="cls-1" width="89" height="75" transform="translate(479 200)"></rect>
-    <rect id="Rectangle_692" data-name="Rectangle 692" class="cls-1" width="89" height="75" transform="translate(493 327)"></rect>
-    <rect id="Rectangle_694" data-name="Rectangle 694" class="cls-1" width="89" height="75" transform="translate(280 364)"></rect>
-    <rect id="Rectangle_695" data-name="Rectangle 695" class="cls-1" width="89" height="75" transform="translate(100 354)"></rect>
-    <rect id="Rectangle_696" data-name="Rectangle 696" class="cls-1" width="89" height="75" transform="translate(493 41)"></rect>
-    <rect id="Rectangle_697" data-name="Rectangle 697" class="cls-1" width="89" height="75" transform="translate(10 39)"></rect>
-    <rect id="Rectangle_698" data-name="Rectangle 698" class="cls-1" width="89" height="75" transform="translate(325 25)"></rect>
-    <rect id="Rectangle_699" data-name="Rectangle 699" class="cls-1" width="89" height="75" transform="translate(964 514)"></rect>
-    <rect id="Rectangle_703" data-name="Rectangle 703" class="cls-1" width="89" height="75" transform="translate(659 539)"></rect>
-    <rect id="Rectangle_705" data-name="Rectangle 705" class="cls-1" width="89" height="75" transform="translate(945 354)"></rect>
-    <rect id="Rectangle_707" data-name="Rectangle 707" class="cls-1" width="89" height="75" transform="translate(855 39)"></rect>
-    <rect id="Rectangle_700" data-name="Rectangle 700" class="cls-1" width="89" height="75" transform="translate(1178 140)"></rect>
-    <rect id="Rectangle_704" data-name="Rectangle 704" class="cls-1" width="89" height="75" transform="translate(1125 364)"></rect>
-    <rect id="Rectangle_708" data-name="Rectangle 708" class="cls-1" width="89" height="75" transform="translate(1170 25)"></rect>
-    <rect id="Rectangle_709" data-name="Rectangle 709" class="cls-1" width="89" height="75" transform="translate(212 238)"></rect>
-    <rect id="Rectangle_710" data-name="Rectangle 710" class="cls-1" width="89" height="75" transform="translate(123 154)"></rect>
-    <rect id="Rectangle_713" data-name="Rectangle 713" class="cls-1" width="89" height="75" transform="translate(390 551)"></rect>
-    <rect id="Rectangle_714" data-name="Rectangle 714" class="cls-1" width="89" height="75" transform="translate(884 178)"></rect>
-    <rect id="Rectangle_715" data-name="Rectangle 715" class="cls-1" width="89" height="75" transform="translate(683 378)"></rect>
-    <rect id="Rectangle_693" data-name="Rectangle 693" class="cls-1" width="89" height="75" transform="translate(-118 413)"></rect>
-  </g>
-</svg>
-        </figure>
-      </div>
-
-
-      <!--carousel -->
-      <div id="MyCarousel" class="carousel slide" data-ride="carousel">
-        <div class="carousel">
-          <div class="carousel-item active">
-            <img class="d-block w-50 mt-10 ml-6" src="https://pp.userapi.com/c855636/v855636070/33c7/P6Ab2oAJqzk.jpg" alt="First slide">
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-50 mt-10 ml-6" src="..." alt="Second slide">
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#MyCarousel" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#MyCarousel" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-
-      <!-- registration -->
-      <div class="container py-5">
-        <div class="row justify-content-end">
-            <div class="col-md-8 col-lg-5">
-                <div class="card shadow zindex-100 mt-5">
-                    <div class="card-body px-md-5 py-3 mt-5">
-                        <div class="text-center mb-5">
-                            <h6 class="h3">Create your free account</h6>
-                            <p class="text-muted mb-0">to join the adventure</p>
-                        </div>
-                        <span class="clearfix"></span>
-                        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                        <%= render "devise/shared/error_messages", resource: resource %>
-                          <div class="form-group">
-                            <div class="row">
-                              <div class="col">
-                                  <label class="form-control-label" for="user_first_name">First name</label>
-                                  <%= f.text_field :first_name, class: 'form-control', placeholder: 'First name', autofocus: true, autocomplete: "first name" %>
-                              </div>
-                              <div class="col">
-                                <label class="form-control-label" for="user_last_name">Last name</label>
-                                <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last name', autofocus: true, autocomplete: "last name" %>
-                              </div>
-                            </div>
-                          </div>
-
-
-                            <div class="form-group">
-                                <label class="form-control-label" for="input-email">Email address</label>
-                                <div class="input-group input-group-transparent">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                    </div>
-                                        <%= f.email_field :email, class: 'form-control', id: 'input-email', placeholder: 'name@example.com', autofocus: true, autocomplete: "email" %>
-                                </div>
-                            </div>
-                            <div class="form-group mb-4">
-                                <label class="form-control-label" for="input-password">Password</label>
-                                <% if @minimum_password_length %>
-                                 <em>(<%= @minimum_password_length %> characters minimum)</em>
-                                <% end %><br />
-                                <div class="input-group input-group-transparent">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-key"></i></span>
-                                    </div>
-                                    <%= f.password_field :password, class:"form-control", id:"input-password", placeholder:"********", autocomplete: "new-password" %>
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">
-                                            <i class="fas fa-eye"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label" for="input-password-confirm">Confirm password</label>
-                                <div class="input-group input-group-transparent">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-key"></i></span>
-                                    </div>
-                                        <%= f.password_field :password_confirmation,class:"form-control", id:"input-password-confirm", placeholder:"********", autocomplete: "new-password" %>
-                                </div>
-                            </div>
-                            <div class="my-4">
-                                <div class="custom-checkbox">
-                                  <%= f.label :terms_of_service, :class => 'checkbox' do %>
-                                    <%= f.check_box :terms_of_service %>
-                                    <span style="margin-left:6px">I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.</span>
-                                  <% end %>
-                                </div>
-                            </div>
-                            <div class="row align-items-center">
-                                <div class="col-sm-7">
-                                       <%= f.submit "Create account", class:"btn btn-primary mb-3 mb-sm-0" %>
-                                </div>
-                                <div class="col-sm-5 text-sm-right">
-                                    <span class="small d-sm-block d-md-inline">Already registered?</span>
-                                    <%= link_to "Sign in",'/fr/users/sign_in', style:"small font-weight-bold"%>
-
-                                    <%= link_to("Logout", destroy_user_session_path, :method => :delete)%>
-
-                                    <%= link_to "Sign in with Facebook", '/users/auth/facebook?locale=fr', style:"small font-weight-bold"%>
-                                </div>
-                                <div class="col-sm-5 text-sm-right">
-                                <%= link_to "Sign up debug", '/fr/users/sign_up', style:"small font-weight-bold"%>
-                                </div>
-                            </div>
-                        <% end %>
-                    </div>
-                </div>
-            </div>
-        </div>
-      </div>
-
-<!--<div class="container position-relative zindex-100 py-lg">
+  <!-- Header (v9) -->
+  <section class="slice slice-xl bg-gradient-danger" style="padding-bottom: 150px; margin-top: -200px">
+    <!-- SVG background -->
+    <div class="bg-absolute-cover bg-size--contain d-flex align-items-center">
+      <figure class="w-100">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1956 1143 1385 601" class="injected-svg svg-inject">
+          <defs>
+            <style>
+            .cls-1 {
+              fill: #fff;
+              opacity: 0.046;
+            }
+          </style>
+        </defs>
+        <g id="Group_243" data-name="Group 243" transform="translate(-1838 1118)">
+          <rect id="Rectangle_689" data-name="Rectangle 689" class="cls-1" width="89" height="75" transform="translate(54 476)"></rect>
+          <rect id="Rectangle_690" data-name="Rectangle 690" class="cls-1" width="89" height="75" transform="translate(333 140)"></rect>
+          <rect id="Rectangle_691" data-name="Rectangle 691" class="cls-1" width="89" height="75" transform="translate(479 200)"></rect>
+          <rect id="Rectangle_692" data-name="Rectangle 692" class="cls-1" width="89" height="75" transform="translate(493 327)"></rect>
+          <rect id="Rectangle_694" data-name="Rectangle 694" class="cls-1" width="89" height="75" transform="translate(280 364)"></rect>
+          <rect id="Rectangle_695" data-name="Rectangle 695" class="cls-1" width="89" height="75" transform="translate(100 354)"></rect>
+          <rect id="Rectangle_696" data-name="Rectangle 696" class="cls-1" width="89" height="75" transform="translate(493 41)"></rect>
+          <rect id="Rectangle_697" data-name="Rectangle 697" class="cls-1" width="89" height="75" transform="translate(10 39)"></rect>
+          <rect id="Rectangle_698" data-name="Rectangle 698" class="cls-1" width="89" height="75" transform="translate(325 25)"></rect>
+          <rect id="Rectangle_699" data-name="Rectangle 699" class="cls-1" width="89" height="75" transform="translate(964 514)"></rect>
+          <rect id="Rectangle_703" data-name="Rectangle 703" class="cls-1" width="89" height="75" transform="translate(659 539)"></rect>
+          <rect id="Rectangle_705" data-name="Rectangle 705" class="cls-1" width="89" height="75" transform="translate(945 354)"></rect>
+          <rect id="Rectangle_707" data-name="Rectangle 707" class="cls-1" width="89" height="75" transform="translate(855 39)"></rect>
+          <rect id="Rectangle_700" data-name="Rectangle 700" class="cls-1" width="89" height="75" transform="translate(1178 140)"></rect>
+          <rect id="Rectangle_704" data-name="Rectangle 704" class="cls-1" width="89" height="75" transform="translate(1125 364)"></rect>
+          <rect id="Rectangle_708" data-name="Rectangle 708" class="cls-1" width="89" height="75" transform="translate(1170 25)"></rect>
+          <rect id="Rectangle_709" data-name="Rectangle 709" class="cls-1" width="89" height="75" transform="translate(212 238)"></rect>
+          <rect id="Rectangle_710" data-name="Rectangle 710" class="cls-1" width="89" height="75" transform="translate(123 154)"></rect>
+          <rect id="Rectangle_713" data-name="Rectangle 713" class="cls-1" width="89" height="75" transform="translate(390 551)"></rect>
+          <rect id="Rectangle_714" data-name="Rectangle 714" class="cls-1" width="89" height="75" transform="translate(884 178)"></rect>
+          <rect id="Rectangle_715" data-name="Rectangle 715" class="cls-1" width="89" height="75" transform="translate(683 378)"></rect>
+          <rect id="Rectangle_693" data-name="Rectangle 693" class="cls-1" width="89" height="75" transform="translate(-118 413)"></rect>
+        </g>
+      </svg>
+    </figure>
+  </div>
+  <div class="container py-5 position-relative zindex-100">
     <div class="row row-grid justify-content-around align-items-center">
-        <div class="col-lg-6">
-            <div class="pt-lg text-center">
-                <h2 class="h1 text-white mb-3">Unleash your <span class="text-info typed" id="type-example" data-type-this="creativity., imagination., energy., inspiration.">creativity.</span><span class="typed-cursor typed-cursor--blink">|</span></h2>
-                <p class="lead text-white lh-180">Build responsive, mobile-first projects on the web with the world's most popular front-end component library.</p>
-                <div class="mt-5">
-                    <a href="#" class="btn btn-warning btn-circle btn-translate--hover mr-4">Learn more</a>
-                    <a href="#" class="btn btn-outline-white btn-circle btn-translate--hover">Get started</a>
-                </div>
-            </div>
+      <div class="col-lg-5">
+        <div class="text-center text-lg-left">
+          <h1 class="text-white mt-4 mb-3">Défi tous tes potes !</h1>
+          <p class="lead lh-180 text-white">Build responsive, mobile-first projects on the web with the world's most popular front-end component library.</p>
+          <div class="mt-6">
+            <a href="#" class="btn btn-white btn-icon rounded-pill hover-translate-y-n3">
+              <span class="btn-inner--icon"><i class="fas fa-angle-down"></i>
+              <span class="btn-inner--text">Découvrir la plateforme</span>
+            </a>
+          </div>
         </div>
+      </div>
+      <div class="col-lg-6 d-none d-lg-block">
+        <div class="card bg-section-secondary mt-6 mb-0 py-5 px-4 shadow-lg perspective-right hover-scale-110">
+          <div class="card-body px-md-5 py-3 mt-1">
+            <div class="text-center mb-5">
+              <h6 class="h3">Join the Huzza mafia</h6>
+            </div>
+            <span class="clearfix"></span>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+            <div class="form-group">
+              <div class="row">
+                <div class="col">
+                  <label class="form-control-label" for="user_first_name">First name</label>
+                  <%= f.text_field :first_name, class: 'form-control', placeholder: 'First name', autofocus: true, autocomplete: "first name" %>
+                </div>
+                <div class="col">
+                  <label class="form-control-label" for="user_last_name">Last name</label>
+                  <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last name', autofocus: true, autocomplete: "last name" %>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="form-control-label" for="input-email">Email address</label>
+              <div class="input-group input-group-transparent">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-user"></i></span>
+                </div>
+                <%= f.email_field :email, class: 'form-control', id: 'input-email', placeholder: 'name@example.com', autofocus: true, autocomplete: "email" %>
+              </div>
+            </div>
+            <div class="form-group mb-4">
+              <label class="form-control-label" for="input-password">Password</label>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <div class="input-group input-group-transparent">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-key"></i></span>
+                </div>
+                <%= f.password_field :password, class:"form-control", id:"input-password", placeholder:"********", autocomplete: "new-password" %>
+                <div class="input-group-append">
+                  <span class="input-group-text" onclick="showPassword('input-password')">
+                    <i class="fas fa-eye"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-control-label" for="input-password-confirm">Confirm password</label>
+              <div class="input-group input-group-transparent">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-key"></i></span>
+                </div>
+                <%= f.password_field :password_confirmation,class:"form-control", id:"input-password-confirm", placeholder:"********", autocomplete: "new-password" %>
+              </div>
+            </div>
+            <div class="my-4">
+              <div class="custom-checkbox">
+                <%= f.label :terms_of_service, :class => 'checkbox' do %>
+                <%= f.check_box :terms_of_service %>
+                <span style="margin-left:6px">I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.</span>
+                <% end %>
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <div class="col-sm-7">
+               <%= f.submit "Create account", class:"btn btn-primary mb-3 mb-sm-0" %>
+             </div>
+             <div class="col-sm-5 text-sm-right">
+              <span class="small d-sm-block d-md-inline">Already registered?</span>
+              <%= link_to "Sign in",'/fr/users/sign_in', style:"small font-weight-bold"%>
+
+              <%= link_to("Logout", destroy_user_session_path, :method => :delete)%>
+
+              <%= link_to "Sign in with Facebook", '/users/auth/facebook?locale=fr', style:"small font-weight-bold"%>
+            </div>
+            <div class="col-sm-5 text-sm-right">
+              <%= link_to "Sign up debug", '/fr/users/sign_up', style:"small font-weight-bold"%>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
     </div>
-</div>-->
+  </div>
+</div>
+<!-- SVG shape -->
+<figure class="shape-container shape-position-bottom" style="height: 432px;">
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" viewBox="0 0 1000 300" style="enable-background:new 0 0 1000 300;" xml:space="preserve" class="ie-shape-wave-1">
+    <path d="M 0 246.131 C 0 246.131 31.631 250.035 47.487 249.429 C 65.149 248.755 82.784 245.945 99.944 241.732 C 184.214 221.045 222.601 171.885 309.221 166.413 C 369.892 162.581 514.918 201.709 573.164 201.709 C 714.375 201.709 772.023 48.574 910.547 21.276 C 939.811 15.509 1000 24.025 1000 24.025 L 1000 300.559 L -0.002 300.559 L 0 246.131 Z"></path>
+  </svg>
+</figure>
+</section>
+</div>
+
       <section class="bg-secondary pt-5">
           <div class="container">
               <div class="mb-md text-center">
@@ -238,7 +220,7 @@
                       </a>
                   </div>
                   <div>
-                      <h4 class="ml-3 mb-0">Build professional and modern looking websites in no time.</h4>
+                      <h4 class="ml-3 mb-0">Build with love by a team a life enthusistics.</h4>
                   </div>
               </div>
           </div>
