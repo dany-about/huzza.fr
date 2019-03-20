@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   resources :participations, only: [:create, :update]
   resources :news, only: [:index]
 
-  resources :user_send_dares, only: [:create]
+  resources :user_send_dares, only: [:create, :update]
   resources :star_dares, only: [:create, :destroy]
   resources :difficulty_ratings, only: [:create]
   resources :reactions, only: [:create, :destroy]
