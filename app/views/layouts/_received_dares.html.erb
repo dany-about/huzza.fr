@@ -3,7 +3,7 @@
   <% list.each_with_index do |sent_dare, i| %>
   <% if i > 0 %> <div class="dropdown-divider"></div> <% end %>
     <div class="dropdown-item">
-      <b><%= link_to "#{sent_dare.sender.full_name}", user_path(sent_dare.sender) %></b> vous défie de "<%= sent_dare.dare.title %>".
+      <b><%= link_to "#{sent_dare.sender.full_name}", user_path(sent_dare.sender) %></b> vous défie de <%= link_to "#{truncate(sent_dare.dare.title, length: 100)}", dares_path(anchor: "showing_#{sent_dare.dare.id}"), method: "GET" %>
       <%= link_to "Accepter", user_send_dare_path(sent_dare.id, answer: "accept"), class: "btn btn-sm btn-soft-success", method: "PATCH", remote: true %>
       <%= link_to "Refuser", user_send_dare_path(sent_dare.id, answer: "decline"), class: "btn btn-sm btn-soft-danger", method: "PATCH", remote: true %>
     </div>

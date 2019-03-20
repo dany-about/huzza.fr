@@ -11,7 +11,7 @@
     <% array1.each do |dare| %>
       <div style="margin-top: 50px">
         <div class="container ">
-          <div class="col-md-12 mx-auto eventCard">
+          <div class="col-md-12 mx-auto eventCard" id="showing_<%= dare.id %>">
             <%= render "shared/dare_card", dare: dare, friend: dare.creator, occasion: nil, disclaimer: false %>
           </div>
         </div>
