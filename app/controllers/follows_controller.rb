@@ -9,7 +9,11 @@ class FollowsController < ApplicationController
   
   def destroy
     if Follow.exists?(params[:id])
-      Follow.find(params[:id]).destroy
+      follow = Follow.find(params[:id])
+      if FriendRequest.find_by(user_asked: follow.user, user_asking: follow.follower) != nil
+        FriendRequest.find_by(user_asked: follow.user, user_asking: follow.follower).destroy
+      end
+      follow.destroy
     end
     respond_to do |format|
       format.js {render :create}

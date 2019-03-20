@@ -53,7 +53,7 @@
               </button>
             <% end %>
           <% else %>
-            <%= link_to friend_request_path(FriendRequest.find_by(user_asked: user, user_asking: current_user), user: user.id), method: "DELETE", remote: true do %>
+            <%= link_to friend_request_path(FriendRequest.find_by(user_asked: user, user_asking: current_user), user: user.id), method: "PATCH", remote: true do %>
               <button type="button" class="btn btn-soft-danger btn-icon btn-sm">
                 <span class="btn-inner--icon">
                   <i class="fas fa-user-times"></i>
