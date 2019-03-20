@@ -10,6 +10,10 @@ $(document).ready(function() {
     event.preventDefault(); scrollToAnchor($("body"))
   }) })
 
+  $("#showFriendRequests").on('hide.bs.dropdown', function () {
+    return false;
+  });
+
 });
 
 function showPassword(id) {
