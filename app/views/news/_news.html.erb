@@ -34,7 +34,7 @@
             </div>
           </div>
       </th>
-      <td> news.created_at </td>
+      <td> <%= time_ago_in_words(news.created_at) %> ago </td>
     </tr>
     <% end %>
   </tbody>

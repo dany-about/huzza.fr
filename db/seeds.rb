@@ -30,12 +30,25 @@ category_8 = Category.create(name: "Experiences", image_url:"https://images.pexe
 category_9 = Category.create(name: "Gaming", image_url:"https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
 category_10 = Category.create(name: "WTF", image_url:"https://images.pexels.com/photos/1564506/pexels-photo-1564506.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
 
+
+Accomplishment.create!(name: "Serial Beginner", title: "Plus de 5 défis à mon actif.", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Mike Horn", title: "Bg de la mort qui tue", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Picasso", title: "A réussi 5 défis dans la catégorie Adventure.", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "WWF", title: "A réussi 5 défis dans la catégorie Green.", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Les Enfoirés", title: "A réussi 5 défis dans la catégorie Charity.", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Jules Vernes", title: "A réussi 5 défis dans la catégorie Travel.", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Olypic Games", title: "BA réussi 5 défis dans la catégorie Sport.", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Geek 2.0", title: "A réussi 5 défis dans la catégorie Gaming.", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Jean Michel Blague", title: "A réussi 5 défis dans la catégorie WTF.", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Mister Bucket", title: "A réussi 5 défis dans la catégorie Experiences.", icon_class:"fas fa-fish")
+
+
 admin = User.create!(email: 'nabooadmin@yopmail.com', password: '123456', password_confirmation: '123456', first_name: "God,", last_name: "I mean Dany")
 admin2 = User.create!(email: 'nabooadmin@yopmail.com2', password: '123456', password_confirmation: '123456')
 noe = User.create!(email: "example@example.gmail", password:"123456", password_confirmation: "123456", first_name: "Noé", last_name: "Margui")
 
 
-# les defis de bas
+# les defis de base
 dare_noe = Dare.create!(creator: noe, title: "Go paragliding above Annecy lake with my two sweet girlfriends and their anaconda who loves flying too", description: "Hi folks! I'm really happy to introduce you to my new personnal challenge. I'm fond of airplanes since my early childhood, and i'm now deeply motivated into flying as a bird. I'm not brave enough for skydiving, thats why paragliding seems perfect for me lol. Give me strengh in upvoting my dare ! Cheers", category: category_3)
 DifficultyRating.create!(user: admin, dare: dare_noe, rating: 80)
 dare2 = Dare.create!(title: "street clining", description: "put in the trash garbage you find in the street " *3, creator: admin, category: category_4)

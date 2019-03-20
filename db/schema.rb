@@ -181,13 +181,13 @@ ActiveRecord::Schema.define(version: 2019_03_15_010409) do
     t.index ["user_id"], name: "index_star_dares_on_user_id"
   end
 
-  create_table "user_accomplishements", force: :cascade do |t|
+  create_table "user_accomplishments", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "accomplishment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["accomplishment_id"], name: "index_user_accomplishements_on_accomplishment_id"
-    t.index ["user_id"], name: "index_user_accomplishements_on_user_id"
+    t.index ["accomplishment_id"], name: "index_user_accomplishments_on_accomplishment_id"
+    t.index ["user_id"], name: "index_user_accomplishments_on_user_id"
   end
 
   create_table "user_send_dares", force: :cascade do |t|

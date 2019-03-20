@@ -1,98 +1,56 @@
-<!DOCTYPE html>
-<html>
-  <body>
+<% random_id = rand(100000) %>
 
-    <div class="card-body">
-      <div class="row row-grid mx-auto my-auto">
-        <div class="col-lg-12">
-          <p class="card-text" style="text-align: justify; text-justify: inter-word"><%= dare.description %></p>
-        </div>
+<div class="card-body">
+  <div class="row row-grid mx-auto my-auto">
+    <div class="col-lg-12">
+      <p class="card-text" style="text-align: justify; text-justify: inter-word"><%= dare.description %></p>
+    </div>
+  </div>
+  <br>
+  <div class="text-center" style="margin-top: 5px">
+    <div class="row" style="display: grid; grid-template-columns: 1fr 1fr;">
+      <div style="text-align: left; padding-left: 24px;">
+        <span class="badge badge-dot">
+          <i class="bg-danger"></i><%= dare.participants.count %> participants
+        </span>
+        <span class="badge badge-dot">
+          <i class="bg-success"></i>dont <%= dare.achievers.count %> achievers
+        </span>
+        <span class="badge badge-dot">
+          <i class="bg-primary"></i> Dare originally created by <%= link_to "#{dare.creator.full_name}", user_path(dare.creator) %>
+        </span>
       </div>
-      <br>
-      <div class="text-center" style="margin-top: 5px">
-        <div class="row" style="display: grid; grid-template-columns: 1fr 1fr;">
-          <div style="text-align: left; padding-left: 24px;">
-            <span class="badge badge-dot">
-              <i class="bg-danger"></i><%= dare.participants.count %> participants
-            </span>
-            <span class="badge badge-dot">
-              <i class="bg-success"></i>dont <%= dare.achievers.count %> achievers
-            </span>
-            <span class="badge badge-dot">
-              <i class="bg-primary"></i> Dare originally created by <%= link_to "#{dare.creator.full_name}", user_path(dare.creator) %>
-            </span>
-          </div>
-          <div style="text-align: right; padding-right: 24px;">
-            <% participation = Participation.find_by(dare: dare, user: current_user) %>
-            <% if participation == nil %>
-            <%= link_to participations_path(dare: dare), method: "POST", remote: true do %>
-            <button type="button" class="btn btn-sm btn-soft-success">
-              Do it too
-            </button>
-            <% end %>
-            <% elsif !participation.is_achieved %>
-            <%= link_to user_path(current_user, participation: Participation.find_by(dare: dare, user: current_user)) do %>
-            <button type="button" class="btn btn-sm btn-soft-primary">
-              J'y participe déjà
-            </button>        
-            <% end %>
-            <% elsif participation.is_achieved %>
-            <%= link_to user_path(current_user, participation: Participation.find_by(dare: dare, user: current_user)) do %>
-            <button type="button" class="btn btn-sm btn-soft-success">
-              Déjà réalisé
-            </button>        
-            <% end %>
-            <% end %>
-            <a href="#modal-customizer2" class="btn btn-sm btn-soft-warning" data-toggle="modal">
-              Challenge a friend
-            </a>            
-          </div>
-        </div>
+      <div style="text-align: right; padding-right: 24px;">
+        <% participation = Participation.find_by(dare: dare, user: current_user) %>
+        <% if participation == nil %>
+        <%= link_to participations_path(dare: dare), method: "POST", remote: true do %>
+        <button type="button" class="btn btn-sm btn-soft-success">
+          Do it too
+        </button>
+        <% end %>
+        <% elsif !participation.is_achieved %>
+        <%= link_to user_path(current_user, participation: Participation.find_by(dare: dare, user: current_user)) do %>
+        <button type="button" class="btn btn-sm btn-soft-primary">
+          J'y participe déjà
+        </button>        
+        <% end %>
+        <% elsif participation.is_achieved %>
+        <%= link_to user_path(current_user, participation: Participation.find_by(dare: dare, user: current_user)) do %>
+        <button type="button" class="btn btn-sm btn-soft-success">
+          Déjà réalisé
+        </button>        
+        <% end %>
+        <% end %>
+        <button class="btn btn-sm btn-soft-warning" data-toggle="modal" data-target="#modalChallengeFriend_<%= dare.id %>_<%= random_id %>">
+          Challenge a friend
+        </button>            
       </div>
     </div>
+  </div>
 
-<!----------------------------------------------------------->
-    <!-- Customizer modal -->
-    <div class="modal fade fixed-left" id="modal-customizer2" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-vertical" role="document">
-        <div class="modal-content">
-          <div class="modal-body">
-            <!-- Close -->
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-toggle="tooltip" data-placement="left" title="Close Customizer">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <div class="text-center mx-auto mt-4 mb-3" style="width: 80px;">
-              <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/11/7/1552821633-logohuzza.jpg" class="rounded-circle avatar-lg shadow mx-auto">
-            </div>
-            <h5 class="text-center mb-2">Challenge a friend</h5>
-            <hr class="mb-4">
-            <h6 class="mb-1">Make your choice</h6>
-            <p class="small text-muted mb-3">
-              Who do you want to challenge ?
-            </p>
-            <%= form_for :user_send_dare, method:"POST" do |f| %>
-              <select class="custom-select" name="recipient_id">
-                <option selected>Select whom you want to challenge</option>
-                <%= current_user.friends.each do |friend| %>
-                  <option value="<%= friend.id %>"><%= friend.full_name %></option>
-                <% end %>
-              </select>
-              <hr class="mb-4">
-              <%= f.submit "Create my dare", class:"btn btn-success", type:"submit" %>
-            <% end %>
-            <div class="btn-group-toggle row mx-0 mb-4" data-toggle="buttons">
-              <label class="btn btn-sm btn-outline-danger active flex-fill mb-2 mr-2">
-                <input type="radio" name="mode" value="dark">
-                <i class="fas fa-paper-plane"></i> Send my challenge
-              </label>
-            </div>
-          </div>
-            <div class="modal-footer border-0">
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- Customizer modal -->
+  <div class="modal fade" id="modalChallengeFriend_<%= dare.id %>_<%= random_id %>" aria-labelledby="modalChallengeFriend" tabindex="-1" role="dialog" aria-hidden="true">
+    <%= render "shared/modal_challenge_friend", dare: dare %>
+  </div>
 
-  </body>
-
-</html>
+</div>
