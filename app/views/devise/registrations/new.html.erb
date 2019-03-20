@@ -109,7 +109,7 @@
                                     </div>
                                     <%= f.password_field :password, class:"form-control", id:"input-password", placeholder:"********", autocomplete: "new-password" %>
                                     <div class="input-group-append">
-                                        <span class="input-group-text">
+                                        <span class="input-group-text" onclick="showPassword('input-password')">
                                             <i class="fas fa-eye"></i>
                                         </span>
                                     </div>
@@ -122,6 +122,11 @@
                                         <span class="input-group-text"><i class="fas fa-key"></i></span>
                                     </div>
                                         <%= f.password_field :password_confirmation,class:"form-control", id:"input-password-confirm", placeholder:"********", autocomplete: "new-password" %>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" onclick="showPassword('input-password-confirm')">
+                                                <i class="fas fa-eye"></i>
+                                            </span>
+                                        </div>
                                 </div>
                             </div>
                             <div class="my-4">
