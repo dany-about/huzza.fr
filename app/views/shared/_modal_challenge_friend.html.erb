@@ -8,7 +8,7 @@
       <div class="text-center mx-auto mt-4 mb-3" style="width: 80px;">
         <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/11/7/1552821633-logohuzza.jpg" class="rounded-circle avatar-lg shadow mx-auto">
       </div>
-      <h5 class="text-center mb-2">Challenger un ami</h5>
+      <h5 class="text-center mb-2">Défier un ami</h5>
       <hr class="mb-4">
       <h6 class="mb-1"><%= dare.title %></h6>
       <hr class="mb-4">
@@ -22,9 +22,11 @@
             <option value="<%= friend.id %>"><%= friend.full_name %></option>
           <% end %>
         </select>
-        <%= button_tag class:"btn btn-sm btn-outline-danger active flex-fill mb-2 mr-2 mt-4" do %>
-          <i class='fas fa-paper-plane mr-3'></i>Envoyer le défi
-        <% end %>
+        <div class="modal-footer border-0">
+          <%= button_tag class:"btn btn-sm btn-outline-danger active flex-fill mb-2 mr-2 mt-4" do %>
+            <i class='fas fa-paper-plane mr-3'></i>Envoyer le défi
+          <% end %>
+        </div>
       <% end %>
         
     </div>

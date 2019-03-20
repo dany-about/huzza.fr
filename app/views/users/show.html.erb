@@ -26,8 +26,8 @@
             <!-- Account navigation -->
             <div class="d-flex">
               <a href="account-profile-public.html" class="btn btn-icon btn-group-nav shadow btn-neutral">
-                <span class="btn-inner--icon"><i class="fas fa-user-astronaut"></i></span>
-                <span class="btn-inner--text d-none d-md-inline-block">Intergalactic Dares</span>
+                <span class="btn-inner--icon"><i class="fas fa-book-dead"></i></span>
+                <span class="btn-inner--text d-none d-md-inline-block">Les défis</span>
               </a>
             </div>
           </div>
@@ -53,8 +53,8 @@
                   <div class="list-group list-group-sm list-group-flush">
                     <%= link_to user_path(@user.id, show: "users/participations", status: "ongoing"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>
                       <div>
-                        <i class="fas fa-user-ninja mr-2"></i>
-                        <span>Ongoing</span>
+                        <i class="fas fa-stopwatch mr-2"></i>
+                        <span>En cours</span>
                       </div>
                       <div>
                         <i class="fas fa-angle-right"></i>
@@ -63,7 +63,7 @@
                     <%= link_to user_path(@user.id, show: "users/participations", status: "achieved"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>
                       <div>
                         <i class="fas fa-trophy mr-2"></i>
-                        <span>Succeeded</span>
+                        <span>Réussis</span>
                       </div>
                       <div>
                         <i class="fas fa-angle-right"></i>
@@ -72,7 +72,7 @@
                     <%= link_to user_path(@user.id, show: "users/participations", status: "reviewed"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>
                       <div>
                         <i class="fas fa-search mr-2"></i>
-                        <span>Under-review</span>
+                        <span>À l'étude</span>
                       </div>
                       <div>
                         <i class="fas fa-angle-right"></i>
@@ -81,7 +81,7 @@
                     <%= link_to user_path(@user.id, show: "users/dares", status: "created"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>
                       <div>
                         <i class="fas fa-user-friends mr-2"></i>
-                        <span>Created Dares</span>
+                        <span>Créés</span>
                       </div>
                       <div>
                         <i class="fas fa-angle-right"></i>
@@ -89,8 +89,8 @@
                     <% end %>
                     <%= link_to user_path(@user.id, show: "users/dares", status: "starred"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>
                       <div>
-                        <i class="fas fa-sort-numeric-up mr-2"></i>
-                        <span>Starred Dares</span>
+                        <i class="fas fa-heart mr-2"></i>
+                        <span>Favoris</span>
                       </div>
                       <div>
                         <i class="fas fa-angle-right"></i>
@@ -100,7 +100,7 @@
                       <button class="list-group-item list-group-item-action d-flex justify-content-between" disabled>
                       <div>
                         <i class="fas fa-sort-numeric-up mr-2"></i>
-                        Account Metrics<span class="badge badge-pill badge-soft-warning badge-floating border- ml-2">Soon</span>
+                        Statistiques profil<span class="badge badge-pill badge-soft-warning badge-floating border- ml-2">Bientôt</span>
                       </div>
                       <div>
                         <i class="fas fa-angle-right"></i>

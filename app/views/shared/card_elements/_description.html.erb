@@ -25,13 +25,13 @@
         <% if participation == nil %>
         <%= link_to participations_path(dare: dare), method: "POST", remote: true do %>
         <button type="button" class="btn btn-sm btn-soft-success">
-          Do it too
+          Le réaliser
         </button>
         <% end %>
         <% elsif !participation.is_achieved %>
         <%= link_to user_path(current_user, participation: Participation.find_by(dare: dare, user: current_user)) do %>
         <button type="button" class="btn btn-sm btn-soft-primary">
-          J'y participe déjà
+          En cours
         </button>        
         <% end %>
         <% elsif participation.is_achieved %>
