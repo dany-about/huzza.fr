@@ -10,13 +10,13 @@
 
             <ul class="navbar-nav ml-lg-auto">
                 <li class="nav-item">
-                  <%= link_to 'Feed', news_index_path, class: 'nav-link'%>
+                  <%= link_to '<i class="fas fa-bullhorn"></i>Feed'.html_safe, news_index_path, class: 'nav-link'%>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'Explorer', dares_path, class: 'nav-link'%>
+                  <%= link_to '<i class="fas fa-globe"></i>Explorer'.html_safe, dares_path, class: 'nav-link'%>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'Profile', user_path(current_user), class: 'nav-link'%>
+                  <%= link_to '<i class="fas fa-user-ninja"></i>Profile'.html_safe, user_path(current_user), class: 'nav-link'%>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" id="navbar-white_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-angle-down"></i></a>
