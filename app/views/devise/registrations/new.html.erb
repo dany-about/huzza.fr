@@ -42,191 +42,115 @@
   </div>
   <div class="container py-5 position-relative zindex-100">
     <div class="row row-grid justify-content-around align-items-center">
-      <div class="col-lg-5">
+      <div class="col-lg-6">
         <div class="text-center text-lg-left">
-          <h1 class="text-white mt-4 mb-3">Défi tous tes potes !</h1>
-          <p class="lead lh-180 text-white">Build responsive, mobile-first projects on the web with the world's most popular front-end component library.</p>
+          <h1 class="text-white mt-4 mb-3">Quand défier devient un jeu !</h1>
+          <p class="lead lh-180 text-white">Le premier réseau social qui te pousse à profiter de la vie réelle.</p>
           <div class="mt-6">
             <a href="#" class="btn btn-white btn-icon rounded-pill hover-translate-y-n3">
               <span class="btn-inner--icon"><i class="fas fa-angle-down"></i>
-              <span class="btn-inner--text">Découvrir la plateforme</span>
-            </a>
+                <span class="btn-inner--text">Découvrir la plateforme</span>
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-6 d-none d-lg-block">
-        <div class="card bg-section-secondary mt-6 mb-0 py-5 px-4 shadow-lg perspective-right hover-scale-110">
-          <div class="card-body px-md-5 py-3 mt-1">
-            <div class="text-center mb-5">
-              <h6 class="h3">Join the Huzza mafia</h6>
-            </div>
-            <span class="clearfix"></span>
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <%= render "devise/shared/error_messages", resource: resource %>
-            <div class="form-group">
-              <div class="row">
-                <div class="col">
-                  <label class="form-control-label" for="user_first_name">First name</label>
-                  <%= f.text_field :first_name, class: 'form-control', placeholder: 'First name', autofocus: true, autocomplete: "first name" %>
-                </div>
-                <div class="col">
-                  <label class="form-control-label" for="user_last_name">Last name</label>
-                  <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last name', autofocus: true, autocomplete: "last name" %>
+        <div class="col-lg-6 d-none d-lg-block">
+          <div class="card bg-section-secondary mt-6 mb-0 py-5 px-4 shadow-lg perspective-right hover-scale-110">
+            <div class="card-body px-md-5 py-3 mt-1">
+              <span class="clearfix"></span>
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col">
+                    <label class="form-control-label" for="user_first_name">Prénom</label>
+                    <%= f.text_field :first_name, class: 'form-control', placeholder: 'Mike', autofocus: true, autocomplete: "first name" %>
+                  </div>
+                  <div class="col">
+                    <label class="form-control-label" for="user_last_name">Nom</label>
+                    <%= f.text_field :last_name, class: 'form-control', placeholder: 'Horn', autofocus: true, autocomplete: "last name" %>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label class="form-control-label" for="input-email">Email address</label>
-              <div class="input-group input-group-transparent">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-user"></i></span>
-                </div>
-                <%= f.email_field :email, class: 'form-control', id: 'input-email', placeholder: 'name@example.com', autofocus: true, autocomplete: "email" %>
-              </div>
-            </div>
-            <div class="form-group mb-4">
-              <label class="form-control-label" for="input-password">Password</label>
-              <% if @minimum_password_length %>
-              <em>(<%= @minimum_password_length %> characters minimum)</em>
-              <% end %><br />
-              <div class="input-group input-group-transparent">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-key"></i></span>
-                </div>
-                <%= f.password_field :password, class:"form-control", id:"input-password", placeholder:"********", autocomplete: "new-password" %>
-                <div class="input-group-append">
-                  <span class="input-group-text" onclick="showPassword('input-password')">
-                    <i class="fas fa-eye"></i>
-                  </span>
+              <div class="form-group">
+                <label class="form-control-label" for="input-email">Email</label>
+                <div class="input-group input-group-transparent">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                  </div>
+                  <%= f.email_field :email, class: 'form-control', id: 'input-email', placeholder: 'mike.horn@huzza.com', autofocus: true, autocomplete: "email" %>
                 </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label class="form-control-label" for="input-password-confirm">Confirm password</label>
-              <div class="input-group input-group-transparent">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-key"></i></span>
+              <div class="form-group mb-4">
+                <label class="form-control-label" for="input-password">Mot de Passe</label>
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> caractères minimum)</em>
+                <% end %><br />
+                <div class="input-group input-group-transparent">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                  </div>
+                  <%= f.password_field :password, class:"form-control", id:"input-password", placeholder:"********", autocomplete: "new-password" %>
+                  <div class="input-group-append">
+                    <span class="input-group-text" onclick="showPassword('input-password')">
+                      <i class="fas fa-eye"></i>
+                    </span>
+                  </div>
                 </div>
-                <%= f.password_field :password_confirmation,class:"form-control", id:"input-password-confirm", placeholder:"********", autocomplete: "new-password" %>
+              </div>
+              <div class="form-group">
+                <label class="form-control-label" for="input-password-confirm">Confirmation</label>
+                <div class="input-group input-group-transparent">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                  </div>
+                  <%= f.password_field :password_confirmation,class:"form-control", id:"input-password-confirm", placeholder:"********", autocomplete: "new-password" %>
+                </div>
+              </div>
+              <div class="row align-items-center">
+                <div class="col-sm-7">
+                 <%= f.submit "Rejoindre", class:"btn btn-dark mb-3 mb-sm-0" %>
+               </div>
+               <div class="col-sm-5 text-sm-right">
+                <div>
+                  <span class="small d-sm-block d-md-inline">Already registered?</span>
+                  <%= link_to "Connexion",'/fr/users/sign_in', style:"small font-weight-bold"%>
+                </div>
+                <div>
+                  <%= link_to "Facebook Connect", '/users/auth/facebook?locale=fr', style:"small font-weight-bold"%>
+                </div>
+                  <%= link_to("Déconnexion", destroy_user_session_path, :method => :delete)%>
               </div>
             </div>
-            <div class="my-4">
-              <div class="custom-checkbox">
-                <%= f.label :terms_of_service, :class => 'checkbox' do %>
-                <%= f.check_box :terms_of_service %>
-                <span style="margin-left:6px">I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.</span>
-                <% end %>
-              </div>
-            </div>
-            <div class="row align-items-center">
-              <div class="col-sm-7">
-               <%= f.submit "Create account", class:"btn btn-primary mb-3 mb-sm-0" %>
-             </div>
-             <div class="col-sm-5 text-sm-right">
-              <span class="small d-sm-block d-md-inline">Already registered?</span>
-              <%= link_to "Sign in",'/fr/users/sign_in', style:"small font-weight-bold"%>
-
-              <%= link_to("Logout", destroy_user_session_path, :method => :delete)%>
-
-              <%= link_to "Sign in with Facebook", '/users/auth/facebook?locale=fr', style:"small font-weight-bold"%>
-            </div>
-            <div class="col-sm-5 text-sm-right">
-              <%= link_to "Sign up debug", '/fr/users/sign_up', style:"small font-weight-bold"%>
-            </div>
+            <% end %>
           </div>
-          <% end %>
         </div>
       </div>
     </div>
   </div>
-</div>
-<!-- SVG shape -->
-<figure class="shape-container shape-position-bottom" style="height: 432px;">
-  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" viewBox="0 0 1000 300" style="enable-background:new 0 0 1000 300;" xml:space="preserve" class="ie-shape-wave-1">
-    <path d="M 0 246.131 C 0 246.131 31.631 250.035 47.487 249.429 C 65.149 248.755 82.784 245.945 99.944 241.732 C 184.214 221.045 222.601 171.885 309.221 166.413 C 369.892 162.581 514.918 201.709 573.164 201.709 C 714.375 201.709 772.023 48.574 910.547 21.276 C 939.811 15.509 1000 24.025 1000 24.025 L 1000 300.559 L -0.002 300.559 L 0 246.131 Z"></path>
-  </svg>
-</figure>
+  <!-- SVG shape -->
+  <figure class="shape-container shape-position-bottom" style="height: 432px;">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" viewBox="0 0 1000 300" style="enable-background:new 0 0 1000 300;" xml:space="preserve" class="ie-shape-wave-1">
+      <path d="M 0 246.131 C 0 246.131 31.631 250.035 47.487 249.429 C 65.149 248.755 82.784 245.945 99.944 241.732 C 184.214 221.045 222.601 171.885 309.221 166.413 C 369.892 162.581 514.918 201.709 573.164 201.709 C 714.375 201.709 772.023 48.574 910.547 21.276 C 939.811 15.509 1000 24.025 1000 24.025 L 1000 300.559 L -0.002 300.559 L 0 246.131 Z"></path>
+    </svg>
+  </figure>
 </section>
 </div>
 
-      <section class="bg-secondary pt-5">
-          <div class="container">
-              <div class="mb-md text-center">
-                  <span class="badge badge-lg badge-success badge-pill">Our process</span>
-                  <h3 class="h3 mt-4">Customize with confidence</h3>
-                  <div class="fluid-paragraph text-center mt-4">
-                      <p class="lead lh-180">Customization has never been easier. Purpose has all the right tools in order to make your website building process a breeze.</p>
-                  </div>
-              </div>
-              <div class="row row-grid">
-                  <div class="col-lg-4">
-
-                      <div class="card shadow shadow-lg--hover">
-                          <div class="py-5 text-center">
-                              <div class="icon icon-xl icon-shape rounded-circle icon-teal">
-                                  <i class="fas fa-file-archive"></i>
-                              </div>
-                          </div>
-                          <div class="px-4 pb-5 text-center">
-                              <h5 class="font-weight-bold">Download Purpose</h5>
-                              <p class="mt-2">Purpose is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
-                          </div>
-                      </div>
-
-                  </div>
-                  <div class="col-lg-4">
-
-                      <div class="card shadow shadow-lg--hover">
-                          <div class="py-5 text-center">
-                              <div class="icon icon-xl icon-shape rounded-circle icon-pink">
-                                  <i class="fas fa-palette"></i>
-                              </div>
-                          </div>
-                          <div class="px-4 pb-5 text-center">
-                              <h5 class="font-weight-bold">Change its colors</h5>
-                              <p class="mt-2">Purpose is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
-                          </div>
-                      </div>
-
-                  </div>
-                  <div class="col-lg-4">
-
-                      <div class="card shadow shadow-lg--hover">
-                          <div class="py-5 text-center">
-                              <div class="icon icon-xl icon-shape rounded-circle icon-yellow">
-                                  <i class="fas fa-cogs"></i>
-                              </div>
-                          </div>
-                          <div class="px-4 pb-5 text-center">
-                              <h5 class="font-weight-bold">Create your website</h5>
-                              <p class="mt-2">Purpose is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
-                          </div>
-                      </div>
-
-                  </div>
-              </div>
-          </div>
-      </section>
-
-      <!-- Call to action -->
-      <section class="slice delimiter-bottom">
-          <div class="container">
-              <div class="d-flex align-items-center justify-content-center">
-                  <div>
-                      <a href="#" class="btn btn-danger btn-icon-only btn-zoom--hover rounded-circle">
-                          <span class="btn-inner--icon"><i class="fas fa-heart"></i></span>
-                      </a>
-                  </div>
-                  <div>
-                      <h4 class="ml-3 mb-0">Build with love by a team a life enthusistics.</h4>
-                  </div>
-              </div>
-          </div>
-      </section>
-    </section>
+<!-- Call to action -->
+<section class="slice delimiter-bottom">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-center">
+      <div>
+        <a href="#" class="btn btn-danger btn-icon-only btn-zoom--hover rounded-circle">
+          <span class="btn-inner--icon"><i class="fas fa-heart"></i></span>
+        </a>
+      </div>
+      <div>
+        <h4 class="ml-3 mb-0">Build with love by a team a life enthusistics.</h4>
+      </div>
+    </div>
   </div>
-
-
-
-<!--/body>
-</html-->
+</section>
+</section>
+</div>
