@@ -20,6 +20,7 @@ class FriendRequestsController < ApplicationController
       format.js {render template: 'follows/create'}
     end
 
-    # A FAIRE : On notifie la personne désinvitée (machin cancelled friend request)
+    # A FAIRE : On notifie la personne désinvitée (machin cancelled friend request), ou alors on supprime la notification
   end
+
 end
