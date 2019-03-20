@@ -3,11 +3,11 @@
   <% list.each_with_index do |sent_dare, i| %>
   <% if i > 0 %> <div class="dropdown-divider"></div> <% end %>
     <div class="dropdown-item">
-      <b><%= link_to "#{sent_dare.sender.full_name}", user_path(sent_dare.sender) %></b> vous met au défi de réaliser "<%= sent_dare.dare.title %>"
-      <%= link_to "Relever le défi", user_send_dare_path(sent_dare.id, answer: "accept"), class: "btn btn-sm btn-soft-success", method: "PATCH", remote: true %>
-      <%= link_to "Se Dégonfler", user_send_dare_path(sent_dare.id, answer: "decline"), class: "btn btn-sm btn-soft-danger", method: "PATCH", remote: true %>
+      <b><%= link_to "#{sent_dare.sender.full_name}", user_path(sent_dare.sender) %></b> vous défie de "<%= sent_dare.dare.title %>".
+      <%= link_to "Accepter", user_send_dare_path(sent_dare.id, answer: "accept"), class: "btn btn-sm btn-soft-success", method: "PATCH", remote: true %>
+      <%= link_to "Refuser", user_send_dare_path(sent_dare.id, answer: "decline"), class: "btn btn-sm btn-soft-danger", method: "PATCH", remote: true %>
     </div>
   <% end %>
 <% else %>
-  Personne ne vous met au défi. 
+  Aucun nouveau défi reçu.
 <% end %>
