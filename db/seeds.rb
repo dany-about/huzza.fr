@@ -19,14 +19,14 @@ User.destroy_all
 Category.destroy_all
 
 
-category_1 = Category.create(name: "Adventure", image_url:"https://images.pexels.com/photos/672358/pexels-photo-672358.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
+category_1 = Category.create(name: "Aventure", image_url:"https://images.pexels.com/photos/672358/pexels-photo-672358.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
 category_2 = Category.create(name: "Sport", image_url:"https://images.pexels.com/photos/235922/pexels-photo-235922.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
 category_3 = Category.create(name: "Art", image_url:"https://images.pexels.com/photos/1053687/pexels-photo-1053687.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
-category_4 = Category.create(name: "Green", image_url:"https://images.pexels.com/photos/802221/pexels-photo-802221.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
-category_5 = Category.create(name: "Charity", image_url:"https://images.pexels.com/photos/933624/pexels-photo-933624.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
-category_6 = Category.create(name: "Travel", image_url:"https://images.pexels.com/photos/1118448/pexels-photo-1118448.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
-category_7 = Category.create(name: "Self-help", image_url:"https://images.pexels.com/photos/1263986/pexels-photo-1263986.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
-category_8 = Category.create(name: "Experiences", image_url:"https://images.pexels.com/photos/1670732/pexels-photo-1670732.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
+category_4 = Category.create(name: "Eco-friendly", image_url:"https://images.pexels.com/photos/802221/pexels-photo-802221.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
+category_5 = Category.create(name: "Caritatif", image_url:"https://images.pexels.com/photos/933624/pexels-photo-933624.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
+category_6 = Category.create(name: "Voyage", image_url:"https://images.pexels.com/photos/1118448/pexels-photo-1118448.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
+category_7 = Category.create(name: "Bien-être", image_url:"https://images.pexels.com/photos/1263986/pexels-photo-1263986.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
+category_8 = Category.create(name: "Expériences", image_url:"https://images.pexels.com/photos/1670732/pexels-photo-1670732.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
 category_9 = Category.create(name: "Gaming", image_url:"https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
 category_10 = Category.create(name: "WTF", image_url:"https://images.pexels.com/photos/1564506/pexels-photo-1564506.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
 

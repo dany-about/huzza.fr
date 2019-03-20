@@ -8,7 +8,7 @@
     <% end %>
     <% if disclaimer %>
       <%= link_to user_path(friend), class:"ml-4" do %>
-        <p class="badge badge-secondary"><%= friend.full_name %> - created</p>
+        <p class="badge badge-secondary"><%= friend.full_name %> - a créé</p>
       <% end %>
     <% end %>
   </div>
@@ -16,7 +16,7 @@
   <div class="card-body pt-0">
     <div class="row row-grid" style="margin-left:-0.5rem;">
       <div class="col-sm-2 text-center">
-        <p class="card-text">Level <%= friend.rank %></p>
+        <p class="card-text">Niveau <%= friend.rank %></p>
         <div class="<%= friend.badge[:animation] %>">
           <h4 style="margin-top: 11px"><%= friend.badge[:emote] %></h4>
         </div>

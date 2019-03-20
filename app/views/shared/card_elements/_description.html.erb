@@ -17,7 +17,7 @@
           <i class="bg-success"></i>dont <%= dare.achievers.count %> achievers
         </span>
         <span class="badge badge-dot">
-          <i class="bg-primary"></i> Dare originally created by <%= link_to "#{dare.creator.full_name}", user_path(dare.creator) %>
+          <i class="bg-primary"></i> Défi imaginé et créé par <%= link_to "#{dare.creator.full_name}", user_path(dare.creator) %>
         </span>
       </div>
       <div style="text-align: right; padding-right: 24px;">
@@ -42,7 +42,7 @@
         <% end %>
         <% end %>
         <button class="btn btn-sm btn-soft-warning" data-toggle="modal" data-target="#modalChallengeFriend_<%= dare.id %>_<%= random_id %>">
-          Challenge a friend
+          Défier un ami
         </button>            
       </div>
     </div>

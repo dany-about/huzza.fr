@@ -10,11 +10,11 @@
       <%= link_to user_path(friend), class:"ml-4" do %>
         <% case occasion %>
         <% when "participation_created" %>
-          <p class="badge badge-secondary"><%= friend.full_name %> - is participating</p>
+          <p class="badge badge-secondary"><%= friend.full_name %> - participe.</p>
         <% when "participation_achieved" %>
-          <p class="badge badge-secondary"><%= friend.full_name %> - a réussi !</p>
+          <p class="badge badge-secondary"><%= friend.full_name %> - a réussi.</p>
         <% when "dare_accepted" %>
-          <p class="badge badge-secondary"><%= friend.full_name %> - relève le défi !</p>
+          <p class="badge badge-secondary"><%= friend.full_name %> - relève le défi.</p>
         <% when "achievement_rejected" %>         
           <p class="badge badge-secondary">La communauté remet en question la réalisation de <%= friend.full_name %> !</p>          
         <% end %>
@@ -33,11 +33,11 @@
         <% else %>
           <% case participation.is_achieved %>
           <% when false %>
-            <p class="badge badge-primary"> Ongoing </p>
+            <p class="badge badge-primary"> En cours </p>
           <% when nil %>
-            <p class="badge badge-secondary"> Under review </p>
+            <p class="badge badge-secondary"> À l'étude </p>
           <% when true %>          
-            <p class="badge badge-success"> Achieved</p>          
+            <p class="badge badge-success"> Réussi </p>          
           <% end %>
           <p style="margin-top: 11px" class="badge badge-lg badge-success badge-circle"><%= dare.difficulty_level %></p>
         <% end %>
