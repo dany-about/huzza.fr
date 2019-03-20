@@ -113,7 +113,7 @@
                </div>
                <div class="col-sm-5 text-sm-right">
                 <div>
-                  <span class="small d-sm-block d-md-inline">Already registered?</span>
+                  <span class="small d-sm-block d-md-inline">Déja un compte Huzza ?</span>
                   <%= link_to "Connexion",'/fr/users/sign_in', style:"small font-weight-bold"%>
                 </div>
                 <div>
@@ -142,12 +142,10 @@
   <div class="container">
     <div class="d-flex align-items-center justify-content-center">
       <div>
-        <a href="#" class="btn btn-danger btn-icon-only btn-zoom--hover rounded-circle">
-          <span class="btn-inner--icon"><i class="fas fa-heart"></i></span>
-        </a>
+        <%= link_to '<span class="btn-inner--icon"><i class="fas fa-heart"></i></span>'.html_safe, home_team_path, class: 'btn btn-danger btn-icon-only btn-zoom--hover rounded-circle'%>
       </div>
       <div>
-        <h4 class="ml-3 mb-0">Build with love by a team a life enthusistics.</h4>
+        <h4 class="ml-3 mb-0">Codé avec passion par une brochette d'épicuriens.</h4>
       </div>
     </div>
   </div>
