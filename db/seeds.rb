@@ -33,14 +33,17 @@ category_10 = Category.create(name: "WTF", image_url:"https://images.pexels.com/
 
 Accomplishment.create!(name: "Serial Beginner", title: "Plus de 5 défis à mon actif.", icon_class:"fas fa-fish")
 Accomplishment.create!(name: "Mike Horn", title: "Bg de la mort qui tue", icon_class:"fas fa-fish")
-Accomplishment.create!(name: "Picasso", title: "A réussi 5 défis dans la catégorie Adventure.", icon_class:"fas fa-fish")
+
+Accomplishment.create!(name: "Michael Phelps", title: "A réussi 5 défis dans la catégorie Adventure.", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Olypic Games", title: "A réussi 5 défis dans la catégorie Sport.", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Picasso", title: "A réussi 5 défis dans la catégorie Art.", icon_class:"fas fa-fish")
 Accomplishment.create!(name: "WWF", title: "A réussi 5 défis dans la catégorie Green.", icon_class:"fas fa-fish")
 Accomplishment.create!(name: "Les Enfoirés", title: "A réussi 5 défis dans la catégorie Charity.", icon_class:"fas fa-fish")
 Accomplishment.create!(name: "Jules Vernes", title: "A réussi 5 défis dans la catégorie Travel.", icon_class:"fas fa-fish")
-Accomplishment.create!(name: "Olypic Games", title: "BA réussi 5 défis dans la catégorie Sport.", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Tim Harris", title: "A réussi 5 défis dans la catégorie Self-Help.", icon_class:"fas fa-fish")
+Accomplishment.create!(name: "Mister Bucket", title: "A réussi 5 défis dans la catégorie Experiences.", icon_class:"fas fa-fish")
 Accomplishment.create!(name: "Geek 2.0", title: "A réussi 5 défis dans la catégorie Gaming.", icon_class:"fas fa-fish")
 Accomplishment.create!(name: "Jean Michel Blague", title: "A réussi 5 défis dans la catégorie WTF.", icon_class:"fas fa-fish")
-Accomplishment.create!(name: "Mister Bucket", title: "A réussi 5 défis dans la catégorie Experiences.", icon_class:"fas fa-fish")
 
 
 admin = User.create!(email: 'nabooadmin@yopmail.com', password: '123456', password_confirmation: '123456', first_name: "God,", last_name: "I mean Dany")

@@ -13,17 +13,17 @@ class Accomplishment < ApplicationRecord
   # when 7 then return true if 
   # when 8 then return true if 
   # when 9 then return true if 
-  # when 10 then return true if 
-  # when 11 then return true if 
-  # when 12 then return true if 
-  # when 13 then return true if 
-  # when 14 then return true if 
-  # when 15 then return true if 
-  # when 16 then return true if 
-  # when 17 then return true if 
-  # when 18 then return true if 
-  # when 19 then return true if 
-  # when 20 then return true if 
+  # when 10 then return true if user.achieved_participations.count >= 5
+  # when 11 then return true if user.achieved_participations_in("Aventure") >= 5
+  # when 12 then return true if user.achieved_participations_in("Sport") >= 5
+  # when 13 then return true if user.achieved_participations_in("Art") >= 5
+  # when 14 then return true if user.achieved_participations_in("Green") >= 5
+  # when 15 then return true if user.achieved_participations_in("Charity") >= 5
+  # when 16 then return true if user.achieved_participations_in("Travel") >= 5
+  # when 17 then return true if user.achieved_participations_in("Self-help") >= 5
+  # when 18 then return true if user.achieved_participations_in("Experiences") >= 5
+  # when 19 then return true if user.achieved_participations_in("Gaming") >= 5
+  # when 20 then return true if user.achieved_participations_in("WTF") >= 5
     end
   end
 

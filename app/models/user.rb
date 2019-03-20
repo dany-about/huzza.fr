@@ -75,6 +75,10 @@ class User < ApplicationRecord
     self.participations.where(is_achieved: true)
   end
 
+  def achieved_participations_in(category)
+    Participation.joins(:dare).where(user: self, is_achieved: true, dares: {category: Category.find_by(name: category)})
+  end
+
   # Active Storage Avatar Image
   has_one_attached :avatar
 
