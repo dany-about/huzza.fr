@@ -2,13 +2,13 @@
 <%= form_for :dare, url: dares_path(id: current_user.id, mode: params[:mode]), method:"POST" do |f| %>
 
   <div class="col-md-9 mx-auto" style="margin-top: 80px">
-    <h6 class="mb-1">Select your dare's category</h6>
+    <h6 class="mb-1">Choisis la catégorie de ton défi...</h6>
     <select class="custom-select" name="dare[category_id]">
       <%= Category.all.each do |category| %>
         <option value="<%= category.id %>"><%= category.name %></option>
       <% end %>
     </select>
-    <div class="card" style="margin-top: 80px; margin-bottom: -0.2px;border-width: 3px;border-color: #27ae60">
+    <div class="card" style="margin-top: 80px; margin-bottom: -0.2px;border-width: 3px;border-color: #2b3442">
 
       <div class="row row-grid" style="margin-top: -1rem">
         <%= link_to user_path(current_user), class:"ml-0" do %>
@@ -64,7 +64,7 @@
     <br/>
     <br/>
     <div style="display: flex; justify-content: flex-end;">
-      <%= f.submit "Create my dare", class:"btn btn-success", type:"submit" %>
+      <%= f.submit "Create my dare", class:"btn btn-danger", type:"submit" %>
     </div>
   </div>
 
