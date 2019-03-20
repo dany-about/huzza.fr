@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Accomplishment.destroy_all
 DifficultyRating.destroy_all
 Reaction.destroy_all
 Comment.destroy_all
@@ -43,16 +44,16 @@ Accomplishment.create!(title: "Serial Rater", name: "A voté 10 fois la difficul
 Accomplishment.create!(title: "The Gossip Master", name: "A commenté 20 fois", icon_class:"fas fa-fish")
 Accomplishment.create!(title: "Serial Beginner", name: "Plus de 5 défis à mon actif.", icon_class:"fas fa-fish")
 
-Accomplishment.create!(title: "Michael Phelps", name: "A réussi 5 défis dans la catégorie Adventure.", icon_class:"fas fa-fish")
+Accomplishment.create!(title: "Michael Phelps", name: "A réussi 5 défis dans la catégorie Aventure.", icon_class:"fas fa-fish")
 Accomplishment.create!(title: "Olypic Games", name: "A réussi 5 défis dans la catégorie Sport.", icon_class:"fas fa-fish")
 Accomplishment.create!(title: "Picasso", name: "A réussi 5 défis dans la catégorie Art.", icon_class:"fas fa-fish")
-Accomplishment.create!(title: "WWF", name: "A réussi 5 défis dans la catégorie Green.", icon_class:"fas fa-fish")
+Accomplishment.create!(title: "WWF", name: "A réussi 5 défis dans la catégorie Green.", icon_class:"fas fa-tree")
 Accomplishment.create!(title: "Les Enfoirés", name: "A réussi 5 défis dans la catégorie Charity.", icon_class:"fas fa-fish")
-Accomplishment.create!(title: "Jules Vernes", name: "A réussi 5 défis dans la catégorie Travel.", icon_class:"fas fa-fish")
+Accomplishment.create!(title: "Jules Vernes", name: "A réussi 5 défis dans la catégorie Travel.", icon_class:"fas fa-user-astronaut")
 Accomplishment.create!(title: "Tim Harris", name: "A réussi 5 défis dans la catégorie Self-Help.", icon_class:"fas fa-fish")
 Accomplishment.create!(title: "Mister Bucket", name: "A réussi 5 défis dans la catégorie Experiences.", icon_class:"fas fa-fish")
 Accomplishment.create!(title: "Geek 2.0", name: "A réussi 5 défis dans la catégorie Gaming.", icon_class:"fas fa-fish")
-Accomplishment.create!(title: "Jean Michel Blague", name: "A réussi 5 défis dans la catégorie WTF.", icon_class:"fas fa-fish")
+Accomplishment.create!(title: "Jean Michel Blague", name: "A réussi 5 défis dans la catégorie WTF.", icon_class:"fas fa-user-injured")
 
 
 admin = User.create!(email: 'nabooadmin@yopmail.com', password: '123456', password_confirmation: '123456', first_name: "God,", last_name: "I mean Dany")
