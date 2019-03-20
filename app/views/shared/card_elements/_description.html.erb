@@ -29,13 +29,13 @@
         </button>
         <% end %>
         <% elsif !participation.is_achieved %>
-        <%= link_to user_path(current_user, participation: Participation.find_by(dare: dare, user: current_user)) do %>
+        <%= link_to user_path(current_user) do %>
         <button type="button" class="btn btn-sm btn-soft-primary">
           En cours
         </button>        
         <% end %>
         <% elsif participation.is_achieved %>
-        <%= link_to user_path(current_user, participation: Participation.find_by(dare: dare, user: current_user)) do %>
+        <%= link_to user_path(current_user) do %>
         <button type="button" class="btn btn-sm btn-soft-success">
           Déjà réalisé
         </button>        
