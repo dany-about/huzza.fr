@@ -4,7 +4,7 @@
 <% when "reviewed" then displayed_participations = user.reviewed_participations %>
 <% end %>
 
-<% if displayed_participations != nil %>
+<% if displayed_participations.count > 0 %>
 
   <% displayed_participations.reverse.each do |participation| %>
     <div style="margin-top: 50px">
