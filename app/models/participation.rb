@@ -11,6 +11,11 @@ class Participation < ApplicationRecord
   validate :deadline_in_futur
   validate :cant_participate_twice, on: :create
 
+  # Proof
+  has_many_attached :pictures
+  has_many_attached :videos
+
+
   def deadline_in_futur
     if self.deadline != nil && self.deadline < DateTime.now
       errors.add(:deadline, "ne peut pas être déjà passée !")
