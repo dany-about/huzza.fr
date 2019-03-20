@@ -19,7 +19,7 @@
                   <%= link_to '<i class="fas fa-user-ninja"></i>Profil'.html_safe, user_path(current_user), class: 'nav-link'%>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="navbar-white_dropdown_2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-plus"></i></a>
+                    <a class="nav-link" href="#" id="friendRequests" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-plus"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-white_dropdown_1" id="showFriendRequests">
                         <%= render "layouts/friend_requests" %>
                     </div>

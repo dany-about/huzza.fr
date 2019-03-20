@@ -1,7 +1,7 @@
 <% if current_user.received_friend_requests.count > 0 %>
   <% current_user.received_friend_requests.each do |request| %>
     <div class="dropdown-item">
-      <b><%= request.user_asking.full_name %></b> vous envoie une demande d'ajout en ami
+      <b><%= link_to "#{request.user_asking.full_name}", user_path(request.user_asking) %></b> vous envoie une demande d'ajout en ami
       <%= link_to "Accepter", friend_request_path(request.id, answer: "accept"), class: "btn btn-sm btn-soft-success", method: "DELETE", remote: true %>
       <%= link_to "Refuser", friend_request_path(request.id, answer: "decline"), class: "btn btn-sm btn-soft-danger", method: "DELETE", remote: true %>
     </div>
