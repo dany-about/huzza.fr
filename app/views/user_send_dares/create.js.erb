@@ -1,1 +1,5 @@
+<% if @success %>
 $('.modal').each(function(){$(this).modal('hide')})
+<% else %>
+$("#friendSelection_<%= params[:dare_id] %>_<%= params[:random_id] %>").after("Déja défié sur ce défi !")
+<% end %>

@@ -25,8 +25,10 @@ class ApplicationController < ActionController::Base
       end
       # Checks if any proofs have passed the review period without being contested
       if Time.now - participation.updated_at >= 3.days
-        participation.is_achieved = true
-        participation.user.elo_points += participation.dare.difficulty
+        participation.update(is_achieved: true)
+        exp = participation.user.elo_points 
+        exp += participation.dare.difficulty
+        exp.save
         # ADD NOTIFICATION HERE
       end
     }

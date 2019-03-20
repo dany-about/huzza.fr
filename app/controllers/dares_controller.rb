@@ -4,6 +4,7 @@ class DaresController < ApplicationController
   end
 
   def new
+    @dare = Dare.new
   end
 
   def create

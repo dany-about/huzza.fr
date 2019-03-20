@@ -9,8 +9,6 @@ class FriendRequestsController < ApplicationController
     respond_to do |format|
       format.js {render template: 'follows/create'}
     end
-
-    # A FAIRE : On notifie la personne invitée
   end
 
   def update
@@ -25,10 +23,10 @@ class FriendRequestsController < ApplicationController
   def destroy
     if FriendRequest.exists?(params[:id])
       request = FriendRequest.find(params[:id])
-      if params[:answer] == "Accept"
+      if params[:answer] == "accept"
         Follow.create!(user: request.user_asking, follower: current_user) unless Follow.find_by(user: request.user_asking, follower: current_user) != nil
         # A FAIRE : Notif request.user_asking : Demande acceptée
-      elsif params[:answer] == "Decline"
+      elsif params[:answer] == "decline"
         # A FAIRE : Notif request.user_asking : Demande non acceptée
       end
       request.destroy        
