@@ -56,8 +56,8 @@
             <div class="list-group list-group-sm list-group-flush">
               <%= link_to news_index_path(occasion: "all"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>                
                 <div>
-                  <i class="fas fa-user-ninja mr-2"></i>
-                  <span>All</span>
+                  <i class="fas fa-dumpster-fire mr-2"></i>
+                  <span>Tous les défis</span>
                 </div>
                 <div>
                   <i class="fas fa-angle-right"></i>
@@ -65,8 +65,8 @@
               <% end %>
               <%= link_to news_index_path(occasion: "all_unrated"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>                
                 <div>
-                  <i class="fas fa-user-ninja mr-2"></i>
-                  <span>Unrated Dares - Rate'em!</span>
+                  <i class="fas fa-star-half-alt mr-2"></i>
+                  <span>Défis à noter</span>
                 </div>
                 <div>
                   <i class="fas fa-angle-right"></i>
@@ -74,7 +74,7 @@
               <% end %>
               <%= link_to news_index_path(occasion: "dare_created"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>                
                 <div>
-                  <i class="fas fa-user-ninja mr-2"></i>
+                  <i class="fas fa-hammer mr-2"></i>
                   <span>Défis créés</span>
                 </div>
                 <div>
@@ -83,7 +83,7 @@
               <% end %>
               <%= link_to news_index_path(occasion: "participation_created"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>                
                 <div>
-                  <i class="fas fa-user-ninja mr-2"></i>
+                  <i class="fas fa-handshake mr-2"></i>
                   <span>Participations à un défi</span>
                 </div>
                 <div>
@@ -92,7 +92,7 @@
               <% end %>
               <%= link_to news_index_path(occasion: ["dare_sent","dare_received"]), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>                
                 <div>
-                  <i class="fas fa-user-ninja mr-2"></i>
+                  <i class="fas fa-user-friends mr-2"></i>
                   <span>Défis lancés</span>
                 </div>
                 <div>
@@ -101,8 +101,8 @@
               <% end %>
               <%= link_to news_index_path(occasion: "participation_achieved"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>                
                 <div>
-                  <i class="fas fa-user-ninja mr-2"></i>
-                  <span>Preuve submitted</span>
+                  <i class="fas fa-camera mr-2"></i>
+                  <span>Preuves soumises</span>
                 </div>
                 <div>
                   <i class="fas fa-angle-right"></i>
