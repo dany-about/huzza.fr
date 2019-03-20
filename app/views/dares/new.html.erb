@@ -1,5 +1,5 @@
 <div class="container">
-<%= form_for :dare, url: dares_path(id: current_user.id, mode: params[:mode]), method:"POST" do |f| %>
+<%= form_for :dare, url: dares_path(mode: params[:mode]), method:"POST" do |f| %>
 
   <div class="col-md-9 mx-auto" style="margin-top: 80px">
     <h6 class="mb-1">Choisis la catégorie de ton défi...</h6>
@@ -59,7 +59,7 @@
           <option value="<%= friend.id %>"><%= friend.full_name %></option>
         <% end %>
       </select>
-    <% elsif params[:mode] == "solo" %>
+    <% else %>
       <input type = "checkbox" name = "participate" value = "yes" /> J'y participe
     <% end %>
     <br/>
