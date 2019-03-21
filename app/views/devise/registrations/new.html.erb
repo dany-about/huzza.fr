@@ -120,7 +120,8 @@
                   <%= link_to "Connexion",'/fr/users/sign_in', style:"small font-weight-bold"%>
                 </div>
                 <div>
-                  <%= link_to "Facebook Connect", '/users/auth/facebook?locale=fr', style:"small font-weight-bold"%>
+                  <span class="small d-sm-block d-md-inline">ou</span><br>
+                  <%= link_to "S'enregistrer avec Facebook", user_facebook_omniauth_authorize_path, style:"small font-weight-bold"%>
                 </div>
               </div>
             </div>
