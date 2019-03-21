@@ -260,7 +260,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :facebook, ENV['FACEBOOK_LOGIN'], ENV['FACEBOOK_PWD'], callback_url:'http://bucket-live.herokuapp.com/users/auth/facebook/callback', scope: 'email', info_fields: 'email,name'
+  config.omniauth :facebook, ENV['FACEBOOK_LOGIN'], ENV['FACEBOOK_PWD'], callback_url:'https://bucket-live.herokuapp.com/users/auth/facebook/callback', scope: 'email', info_fields: 'email,name'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
