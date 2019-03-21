@@ -35,8 +35,9 @@
     <div class="spinner-border spinner-border-sm text-warning" role="status"></div>
      
 
+    <%= user.percent_to_next_lvl %>% jusqu'au rang suivant
     <div class="progress" style="margin-top: 8px; margin-bottom: 5px; height: 18px">
-      <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: <%= user.percent_to_next_lvl %>%" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"><%= user.percent_to_next_lvl %>% to next Rank</div>
+      <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: <%= user.percent_to_next_lvl %>%" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
   </div>
 
