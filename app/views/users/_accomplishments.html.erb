@@ -1,13 +1,41 @@
 <div class="card border-0 hover-shadow-lg" style="height: 300px; overflow: scroll">
   <div class="card-body p-3 pt-0 text-center">
     <div>
-      <% a = ["primary", "warning", "success", "danger", "secondary", "info"]; colors = a+a+a+a+a+a+a %>
-      <% user.accomplishments.each_with_index do |accomplishment, i| %>
-        <div class="row" style="justify-content: center; margin-top: 15px">
-          <span class="badge badge-<%= colors[i] %> badge-pill">
-          <i class="<%= accomplishment.icon_class %>"></i><%= accomplishment.title %>
-          </span>
-        </div>
+      <% if user.accomplishments.count == 0 %>
+        <% if current_user == user %>
+          <div class="row" style="justify-content: center; margin-top: 15px">
+            <div class="mx-1">
+              <b><h7>Tu n'as pas encore de trophée à ton actif, jeune Huzzard !</h7></b>
+            </div>
+            <div class="mx-1 mt-3">
+              <a class="btn btn-sm btn-danger rounded-pill btn-icon shadow" href="/dares/new?locale=en">
+                <span class="btn-inner--icon"><i class="fas fa-fire"></i></span>
+                <span class="btn-inner--text">Créer un défi</span>
+              </a>
+            </div>
+          </div>
+        <% else %>
+          <div class="row" style="justify-content: center; margin-top: 15px">
+            <div class="mx-1">
+              <b><h7>Petit huzzard deviendra grand..</h7></b>
+            </div>
+            <div class="mx-1 mt-3">
+              <a class="btn btn-sm btn-danger rounded-pill btn-icon shadow" href="/news">
+                <span class="btn-inner--icon"><i class="fas fa-fire"></i></span>
+                <span class="btn-inner--text">Retour au Feed</span>
+              </a>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <% a = ["primary", "warning", "success", "danger", "secondary", "info"]; colors = a+a+a+a+a+a+a %>
+        <% user.accomplishments.each_with_index do |accomplishment, i| %>
+          <div class="row" style="justify-content: center; margin-top: 15px">
+            <span class="badge badge-<%= colors[i] %> badge-pill">
+            <i class="<%= accomplishment.icon_class %>"></i><%= accomplishment.title %>
+            </span>
+          </div>
+        <% end %>
       <% end %>
     </div>
 
