@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_dummy_user
-    if current_user == nil then @current_user = User.first end
+    @current_user = User.first unless user_signed_in?
   end
 
 
