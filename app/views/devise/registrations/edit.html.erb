@@ -1,66 +1,92 @@
-<h1>Page Profil</h1>
 
-<p>Bienvenue sur la page d'ajout d'un avatar pour le User portant l'id : <%=@user.id%></p>
-<h3>Avatar actuel</h3>
+<!-- SVG background -->
+<div class="bg-absolute-cover bg-size--contain d-none d-lg-block">
+  <figure class="w-100">
+  </figure>
+</div>
+<div class="container py-5 px-md-0 d-flex align-items-center">
+  <div class="w-100">
+    <div class="row row-grid justify-content-center justify-content-lg-between align-items-center">
+      <div class="col-sm-8 col-lg-6 col-xl-5 order-lg-2">
+        <div class="card shadow zindex-100 mb-0">
+          <div class="card-body px-md-5 py-5">
+            <div class="mb-5">
+              <h6 class="h3">Changer d'avatar ?</h6>
+            </div>
+            <span class="clearfix"></span>
+            <!-- FORM -->
 
-<!-- Function that will display the avatar -->
-<%if @user.avatar.attached?%>
-  <%= image_tag @user.avatar, alt: 'avatar' %>
-<%else%>
-  <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
-<%end%>
+            <div class="field">
+            <%= form_tag user_avatars_path(@user), multipart: true do %>
+              <%= file_field_tag :avatar %>
+              <%= submit_tag "mettre à jour", class: 'btn btn-outline-dark' %>
+            <% end %>
+            </div><br>
 
-<!-- Form to upload the avatar -->
+            <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<h3>Changer d'avatar ?</h3>
-<%= form_tag user_avatars_path(@user), multipart: true do %>
-  <%= file_field_tag :avatar %>
-  <%= submit_tag "mettre à jour" %>
-<% end %>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
 
-<!-- Form to edit profile informations -->
+              <div class="field">
+                <%= f.label :email, class: 'control-label' %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+              </div>
 
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+              <div class="field"><br>
+                <%= f.label :password, class: 'control-label' %> <i>(leave blank if you don't want to change it)</i><br />
+                <%= f.password_field :password, autocomplete: "new-password", placeholder: 'new password', class: 'form-control' %>
+                <% if @minimum_password_length %>
+                  <br />
+                  <em><%= @minimum_password_length %> characters minimum</em>
+                <% end %>
+              </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+
+              <div class="field">
+                <%= f.label :password_confirmation, class: 'control-label' %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: 'confirm new password', class: 'form-control' %>
+              </div><br>
+
+              <div class="field">
+                <%= f.label :current_password, class: 'control-label' %> <i>(we need your current password to confirm your changes)</i><br />
+                <%= f.password_field :current_password, autocomplete: "current-password", placeholder: '******', class: 'form-control' %>
+              </div><br>
+
+              <div class="actions">
+                <%= f.submit "Update", class: 'btn btn-dark'%>
+              </div><br>
+            <% end %>
+
+            <h3>Cancel my account</h3>
+
+            <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-outline-danger'%></p>
+
+            <%= link_to "Back", :back %>
+          
+            <!-- FORM END -->
+          </div>
+
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-1 d-none d-lg-block">
+
+        <h1>Page Profil</h1>
+        <p>Bienvenue sur la page d'ajout d'un avatar pour le User portant l'id : <%=@user.id%></p>
+        <h3>Avatar actuel</h3>
+
+        <!-- Function that will display the avatar -->
+        <%if @user.avatar.attached?%>
+          <%= image_tag @user.avatar, alt: 'avatar' %>
+        <%else%>
+          <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
+        <%end%>
+
+      </div>
+    </div>
   </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
-
+</div>
