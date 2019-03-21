@@ -13,6 +13,7 @@
     <div id="container">
         <div id="body">
         <% if user_signed_in? %>
+        <%= render 'layouts/addon' %>
         <%= render 'layouts/header' %>
         <%= render 'layouts/flash'%>
       <% end %>
