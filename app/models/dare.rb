@@ -25,7 +25,7 @@ class Dare < ApplicationRecord
   has_many :reactions, as: :reactionable
 
   # Validations
-  validates :description, presence: true, length: { in: 5..1000 }
+  validates :description, presence: true, length: { in: 30..1000 }
   validates :title, presence: true, length: { minimum: 20, maximum: 140 }
 
   

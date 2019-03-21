@@ -4,8 +4,12 @@
 
   <div class="row row-grid" style="margin-top: -1rem">
     <%= link_to user_path(friend), class:"ml-0" do %>
-      <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/11/1/1552315427-noe-pp.jpg" class="avatar rounded-circle avatar-lg shadow hover-shadow-lg" style="margin-left:-0.5rem;margin-top:-1rem">
-    <% end %>
+      <%if friend.avatar.attached?%>
+        <%= image_tag(friend.avatar, alt: 'avatar', :class => "avatar rounded-circle avatar-lg shadow hover-shadow-lg mx-auto") %>
+      <%else%>
+      <img alt="Image placeholder" src="http://chittagongit.com//images/no-profile-picture-icon/no-profile-picture-icon-15.jpg" class="avatar rounded-circle avatar-lg shadow hover-shadow-lg" style="margin-left:-0.5rem;margin-top:-1rem">
+      <% end %>
+    <% end %>    
     <% if disclaimer %>
       <%= link_to user_path(friend), class:"ml-4" do %>
         <% case occasion %>
