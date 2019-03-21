@@ -49,7 +49,7 @@
                 <span class="btn-inner--icon">
                   <i class="fas fa-user-plus"></i>
                 </span>
-                <span class="btn-inner--text">Ajouter comme ami</span>
+                <span class="btn-inner--text">Ajouter</span>
               </button>
             <% end %>
           <% else %>
@@ -58,13 +58,13 @@
                 <span class="btn-inner--icon">
                   <i class="fas fa-user-times"></i>
                 </span>
-                <span class="btn-inner--text">Annuler la demande d'ajout</span>
+                <span class="btn-inner--text">Annuler</span>
               </button>
             <% end %>
           <% end %>
           <% if !user.followers.include?(current_user) %>
             <%= link_to follows_path(user: user.id), method: "POST", remote: true do %>
-              <button type="button" class="btn btn-soft-info btn-icon btn-sm">
+              <button type="button" class="btn btn-soft-info btn-icon btn-sm ml-2">
                 <span class="btn-inner--icon">
                   <i class="fas fa-user-secret"></i>
                 </span>
@@ -73,7 +73,7 @@
             <% end %>
           <% else %>
             <%= link_to follow_path(Follow.find_by(user: user, follower: current_user), user: user.id), method: "DELETE", remote: true do %>
-              <button type="button" class="btn btn-soft-danger btn-icon btn-sm">
+              <button type="button" class="btn btn-soft-danger btn-icon btn-sm ml-2">
                 <span class="btn-inner--icon">
                   <i class="fas fa-user-times"></i>
                 </span>
@@ -83,7 +83,7 @@
           <% end %>
         <% else %>
           <%= link_to follows_path(user: user.id), method: "POST", remote: true do %>
-            <button type="button" class="btn btn-soft-info btn-icon btn-sm">
+            <button type="button" class="btn btn-soft-info btn-icon btn-sm ml-2">
               <span class="btn-inner--icon">
                 <i class="fas fa-user-secret"></i>
               </span>
@@ -93,11 +93,11 @@
         <% end %>  
       <% else %>
         <%= link_to follow_path(Follow.find_by(user: user, follower: current_user), user: user.id), method: "DELETE", remote: true do %>
-          <button type="button" class="btn btn-soft-danger btn-icon btn-sm">
+          <button type="button" class="btn btn-soft-danger btn-icon btn-sm ml-2">
             <span class="btn-inner--icon">
               <i class="fas fa-user-times"></i>
             </span>
-            <span class="btn-inner--text">Supprimer l'amitié</span>
+            <span class="btn-inner--text">Supprimer</span>
           </button>
         <% end %>
       <% end %>

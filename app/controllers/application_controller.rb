@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :set_locale, :check_achievements, :check_accomplishments
+  before_action :set_locale, :check_achievements, :check_accomplishments, :set_dummy_user
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!, except: [:new, :create]
 
@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_accomplishments
-    if user_signed_in?
+    if user_signed_in? && @current_user != User.first
       Accomplishment.all.each { |accomplishment| 
         if accomplishment.condition_satisfied_by(current_user)
           UserAccomplishment.create!(user: current_user, accomplishment: accomplishment) unless UserAccomplishment.find_by(user: current_user, accomplishment: accomplishment) != nil
@@ -48,6 +48,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_dummy_user
+    @current_user = User.first unless user_signed_in?
+  end
 
 
   protected

@@ -139,6 +139,11 @@
 </section>
 </div>
 
+
+<section>
+  <%= render "shared/dare_card", dare: Dare.first, friend: Dare.first.creator, occasion: nil, disclaimer: false %>
+</section>
+
 <!-- Call to action -->
 <section class="slice delimiter-bottom">
   <div class="container" id="exampleCards">
@@ -154,3 +159,5 @@
 </section>
 </section>
 </div>
+
+<%= javascript_include_tag "user_cards_scripts" %>
