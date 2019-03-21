@@ -1,4 +1,4 @@
 Array.from($(".proofElement_Participation_<%= params[:id] %>")).forEach( function(element) {
   $(element).html("<%= j (render 'shared/card_elements/proof', event: Participation.find(params[:id])) %>")
-  $(element).prepend("Confirmation validée ! Votre participation sera validée dans 3 jours si vos trophées ne sont pas trop contestés.")
+  $(element).prepend("Contestation prise en compte !")
 } )

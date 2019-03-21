@@ -23,7 +23,6 @@ class User < ApplicationRecord
    # puts firstparticipation
   # end
 
-
   extend FriendlyId
   friendly_id :first_name, use: :slugged
 
@@ -59,6 +58,7 @@ class User < ApplicationRecord
   has_many :reactions
   has_many :difficulty_ratings
   has_many :comments
+  has_many :contestations
 
   def full_name
     self.first_name.to_s+" "+self.last_name.to_s

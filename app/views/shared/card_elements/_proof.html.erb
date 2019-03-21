@@ -9,6 +9,9 @@
       <div class="row">
         <div class="col-6">
           <% list.reverse.each_with_index do |event, i| %>
+            <% if current_user == event.user && event.is_achieved == nil %>
+            Réalisation à l'étude depuis <%= time_ago_in_words(event.updated_at) %>; <%= event.contestations.count %> personnes ont contesté votre réalisation.
+            <% end %>
             <% if i > 0 %> <div class="divider"></div> <% end %>
 
             <!-- DISPLAY IMAGES PROOF -->
@@ -41,7 +44,6 @@
               <%= form_tag participation_pictures_path(event), multipart: true do %>
                 <%= file_field_tag :pictures %>
                 <%= submit_tag "mettre à jour" %>
-
               <% end %>
 
               <h3>Ajouter une preuve vidéo</h3>
@@ -56,9 +58,14 @@
 
             <% elsif current_user != event.user && event.is_achieved == nil %>
 
-              <!-- Bouton pour contester la validité des preuves -->
-              <%= debug event.class.name %>
-              Ce défi peut être contesté !!
+              <% if Contestation.find_by(user: current_user, participation: event) == nil %>
+                <%= link_to contestations_path(id: event), method: "POST", remote: true do %>
+                  <!-- Bouton pour contester la validité des preuves -->
+                  ICONE DANGER  Contester ces preuves de réalisation
+                <% end %>
+              <% else %>
+                Déjà contesté
+              <% end %>
 
             <% end %>
           <% end %>

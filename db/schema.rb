@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_15_010409) do
+ActiveRecord::Schema.define(version: 2019_03_21_144456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,15 @@ ActiveRecord::Schema.define(version: 2019_03_15_010409) do
     t.datetime "updated_at", null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "contestations", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "participation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["participation_id"], name: "index_contestations_on_participation_id"
+    t.index ["user_id"], name: "index_contestations_on_user_id"
   end
 
   create_table "dares", force: :cascade do |t|
@@ -232,6 +241,8 @@ ActiveRecord::Schema.define(version: 2019_03_15_010409) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "users"
+  add_foreign_key "contestations", "participations"
+  add_foreign_key "contestations", "users"
   add_foreign_key "dares", "categories"
   add_foreign_key "difficulty_ratings", "dares"
   add_foreign_key "difficulty_ratings", "users"
