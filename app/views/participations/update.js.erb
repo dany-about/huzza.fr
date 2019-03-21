@@ -1,4 +1,4 @@
 Array.from($(".showProof_<%= params[:id] %>")).forEach( function(element) {
   $(element).html("<%= j (render 'shared/card_elements/proofs_list', event: Participation.find(params[:id])) %>")
-  $(element).append("Confirmation validée ! Votre participation sera validée dans 3 jours si vos trophées ne sont pas trop contestés.")
+  $(element).append("Votre preuve est en ligne ! Vos points seront comptabilisés dans 72 heures, si votre preuve n'est pas contestée par la communauté.")
 } )
