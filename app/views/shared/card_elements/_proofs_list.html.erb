@@ -1,18 +1,25 @@
 <% if current_user == event.user && event.is_achieved == nil %>
-  Réalisation à l'étude depuis <%= time_ago_in_words(event.updated_at) %>; <%= event.contestations.count %> personnes ont contesté cette réalisation.
+  <div style="margin-bottom: 20px">
+  Preuves à l'étude depuis <%= time_ago_in_words(event.updated_at) %> : <b><%= event.contestations.count %> personnes </b> ont contesté cette réalisation.
+  </div>
 <% end %>
 
 <!-- DISPLAY IMAGES PROOF -->
 <%if event.pictures.attached?%>
-  <h3>Les trophées en images postés par <%= event.user.full_name %></h3>
-  <% event.pictures.each do |picture| %> postée il y a <%= time_ago_in_words(picture.created_at) %>
-    <%= image_tag picture, class: 'img-fluid rounded' %>
+  <h5>La preuve en image par <%= event.user.full_name %></h5>
+  <% event.pictures.each do |picture| %> 
+      <div class="mt-4">
+        <%= image_tag picture, class: 'img-fluid rounded', style: 'width: 450px' %>
+      </div>
+      <div class="mt-2">
+        posté il y a <%= time_ago_in_words(picture.created_at) %>
+      </div>
   <% end %>
-
 <% end %>
+
 <!-- DISPLAY VIDEOS PROOF -->
 <%if event.videos.attached?%>
-  <h3>Les trophées en vidéos postés par <%= event.user.full_name %></h3>
+  <h5>La preuve en vidéo par <%= event.user.full_name %></h5>
   <% event.videos.each do |video| %>
 
     <!-- Custom video.js -->
@@ -46,10 +53,12 @@
     </div>
   </div>
 
-  <div class="row text-center">
-    <%= link_to "Poster ma preuve", participation_path(event), method: "PATCH", class: "btn btn-sm btn-soft-danger mx-auto", remote: true %>
-    Attention, vous ne pourrez plus poster de photos ou vidéos supplémentaires jusqu'à ce que la communauté juge votre réalisation.
-  </div>
+  <% if event.videos.attached? || event.pictures.attached? %>
+    <div class="row text-center">
+      <%= link_to "Poster ma preuve", participation_path(event), method: "PATCH", class: "btn btn-sm btn-soft-danger mx-auto", remote: true %>
+      Attention, vous ne pourrez plus poster de photos ou vidéos supplémentaires jusqu'à ce que la communauté juge votre réalisation.
+    </div>
+  <% end %>
 
 <% elsif current_user != event.user && event.is_achieved == nil %>
 
