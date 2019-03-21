@@ -17,9 +17,8 @@ $(document).ready(function() {
   }) })
 
   // WHATEVER THIS IS
-  if($('footer').length > 0) {$('#body').addClass('withfooter')};
-  
-  
+  if($('footer').length > 0) {$('#body').addClass('withfooter')};  
+    
 });
 
 function showPassword(id) {
