@@ -1,4 +1,4 @@
-Array.from($(".proofElement_Participation_<%= params[:id] %>")).forEach( function(element) {
-  $(element).html("<%= j (render 'shared/card_elements/proof', event: Participation.find(params[:id])) %>")
-  $(element).prepend("Contestation prise en compte !")
+Array.from($(".showProof_<%= params[:id] %>")).forEach( function(element) {
+  $(element).html("<%= j (render 'shared/card_elements/proofs_list', event: Participation.find(params[:id])) %>")
+  $(element).append("Contestation prise en compte !")
 } )

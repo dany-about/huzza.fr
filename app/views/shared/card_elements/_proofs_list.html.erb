@@ -1,0 +1,58 @@
+<% if current_user == event.user && event.is_achieved == nil %>
+  Réalisation à l'étude depuis <%= time_ago_in_words(event.updated_at) %>; <%= event.contestations.count %> personnes ont contesté cette réalisation.
+<% end %>
+
+<!-- DISPLAY IMAGES PROOF -->
+<%if event.pictures.attached?%>
+  <h3>Les trophées en images postés par <%= event.user.full_name %></h3>
+  <% event.pictures.each do |picture| %> postée il y a <%= time_ago_in_words(picture.created_at) %>
+    <%= image_tag picture, class: 'img-fluid rounded' %>
+  <% end %>
+
+<% end %>
+<!-- DISPLAY VIDEOS PROOF -->
+<%if event.videos.attached?%>
+  <h3>Les trophées en vidéos postés par <%= event.user.full_name %></h3>
+  <% event.videos.each do |video| %>
+
+    <!-- Custom video.js -->
+    <video id='my-video' class='video-js' controls preload='auto' width='640' height='264' data-setup='{}'>
+      <source src='<%= url_for(video) %>' type='video/mp4'>
+    </video>
+    postée <%= time_ago_in_words(video.created_at) %>
+
+  <% end %>
+<% end %>
+
+<% if current_user == event.user && event.is_achieved == false %>
+  <!-- Bouton pour upload sa preuve (attacher la photo) -->
+  <h3>Ajouter une preuve image</h3>
+
+  <!-- ADD FORM -->
+  <%= form_tag participation_pictures_path(event), multipart: true do %>
+    <%= file_field_tag :pictures %>
+    <%= submit_tag "mettre à jour" %>
+  <% end %>
+
+  <h3>Ajouter une preuve vidéo</h3>
+  <%= form_tag participation_videos_path(event), multipart: true do %>
+    <%= file_field_tag :clip %>
+    <%= hidden_field_tag :participation_id %>
+    <%= submit_tag "mettre à jour" %>
+  <% end %>
+
+  <%= link_to "Confirmer la réalisation", participation_path(event), method: "PATCH", class: "btn btn-sm btn-soft-primary", remote: true %>
+  Attention, vous ne pourrez plus poster de photos ou vidéos supplémentaires en attendant que la communauté juge votre réalisation.
+
+<% elsif current_user != event.user && event.is_achieved == nil %>
+
+  <% if Contestation.find_by(user: current_user, participation: event) == nil %>
+    <%= link_to contestations_path(id: event), method: "POST", remote: true do %>
+      <!-- Bouton pour contester la validité des preuves -->
+      ICONE DANGER  Contester ces preuves de réalisation
+    <% end %>
+  <% else %>
+    Déjà contesté
+  <% end %>
+
+<% end %>
