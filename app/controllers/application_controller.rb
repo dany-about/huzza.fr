@@ -49,7 +49,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_dummy_user
-    @current_user = User.create!(email:"#{rand(10000)}fake#{rand(10000)}@fake.fake", password: "123456", password_confirmation: '123456', first_name: "Fake", last_name: "User") unless user_signed_in?
+    @current_user = User.create!(email:"#{rand(100000)}fake#{rand(100000)}@fake.fake", password: "123456", password_confirmation: '123456', first_name: "Fake", last_name: "User") unless user_signed_in?
   end
 
   protected
