@@ -2,7 +2,7 @@
 <div class="card border-0 hover-shadow-lg"  style="height: 300px">
 
   <%if @user.avatar.attached?%>
-    <%= image_tag(@user.avatar, alt: 'avatar', :class => "avatar rounded-circle avatar-lg shadow hover-shadow-lg mx-auto") %>
+    <%= image_tag(@user.avatar, alt: 'avatar', :class => "avatar rounded-circle avatar-lg shadow hover-shadow-lg mx-auto mt-1 mb-0") %>
   <%else%>
     <%= form_tag user_avatars_path(@user), multipart: true do %>
       <div class="col-md-12 text-center">
