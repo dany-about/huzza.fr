@@ -24,14 +24,8 @@ Rails.application.routes.draw do
   end
 
   # Need to be deleted
-  get 'home/test_card'
-  get 'home/testdany'
-  get 'home/chantier_card'
-  get 'users/showtest'
 
   get 'home/team'
-  get 'home/howitworks'
-  get 'home/createdare'
 
   # Home page
   root 'news#index'
