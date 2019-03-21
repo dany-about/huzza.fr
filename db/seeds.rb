@@ -57,6 +57,7 @@ admin = User.create!(email: 'nabooadmin@yopmail.com', password: '123456', passwo
 noe = User.create!(email: "example@example.gmail", password:"123456", password_confirmation: "123456", first_name: "Noé", last_name: "Margui")
 
 # les defis de base
+dare_landing = Dare.create!(creator: noe, title: "Faire Paris - Montcuq en autostop sans dépenser le moindre euro", description: "Je projette cet été de me rendre à Montcuq, pour y faire le tour à pieds. La SNCF n'ayant, à mon grand regret, pas encore déployée de ligne à grande vitesse à destination de Montcuq, j'ai pris la lourde décision de m'y rendre en stop. Et toi, tu seras où cet été ?", category: category_2)
 dare_noe = Dare.create!(creator: noe, title: "Go paragliding above Annecy lake with my two sweet girlfriends and their anaconda who loves flying too", description: "Hi folks! I'm really happy to introduce you to my new personnal challenge. I'm fond of airplanes since my early childhood, and i'm now deeply motivated into flying as a bird. I'm not brave enough for skydiving, thats why paragliding seems perfect for me lol. Give me strengh in upvoting my dare ! Cheers", category: category_3)
 DifficultyRating.create!(user: admin, dare: dare_noe, rating: 80)
 dare2 = Dare.create!(title: "Street clining in Hong Kong", description: "put in the trash garbage you find in the street " *3, creator: admin, category: category_4)
