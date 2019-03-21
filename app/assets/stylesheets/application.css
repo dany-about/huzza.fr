@@ -42,7 +42,7 @@ body {
   min-height: 100%;
   position:relative;
 }
-#body.withfooter {
+#body {
    padding-bottom:160px;   /* Height of the footer */
 }
 
