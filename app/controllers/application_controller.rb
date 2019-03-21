@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :set_locale, :check_achievements, :check_accomplishments
+  before_action :set_locale, :check_achievements, :check_accomplishments, :set_dummy_user
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!, except: [:new, :create]
 
@@ -48,6 +48,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_dummy_user
+    if current_user == nil then @current_user = User.first end
+  end
 
 
   protected
