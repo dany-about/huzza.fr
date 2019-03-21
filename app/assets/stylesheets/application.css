@@ -42,11 +42,8 @@ body {
   min-height: 100%;
   position:relative;
 }
-#body {
-   /*padding:10px;*/
-
+#body.withfooter {
    padding-bottom:160px;   /* Height of the footer */
-   /*height: calc(100% - 80px);*/
 }
 
 .navbar-nav {
