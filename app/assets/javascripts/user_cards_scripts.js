@@ -28,7 +28,16 @@ $(document).ready(function() {
       scrollToAnchor($(dad))  
     }) })
   })
-    
+
+  // CLOSE TABS ON OUTSIDE CLICK
+  function closeOnClickOutside(element){						
+     $(window).on("click.Bst", function(event){		
+      if ( $(element).has(event.target).length == 0 && !$(element).is(event.target)){
+        Array.from($(element).find('.cardElementCanBeHidden')).forEach(function(child) { if(!$(child).hasClass('collapse')) {$(child).addClass('collapse')} })
+      }
+    })
+  }
+  Array.from($(".eventCard")).forEach(function(element) { closeOnClickOutside(element)})
   
 })
   
