@@ -23,7 +23,7 @@
           <div class="list-group-item list-group-item-action">
             <div class="d-flex align-items-center" data-toggle="tooltip" data-placement="right" data-title="2 hrs ago">
               <div>
-                <%= render "shared/user_avatar", user: comment.user%>
+                <%= render "shared/user_avatar", user: comment.user %>
               </div>
               <div class="flex-fill ml-3">
                 <div class="h6 text-sm mb-0"><%= comment.user.full_name %><small class="float-right text-muted"><%= time_ago_in_words(comment.created_at) %> ago</small></div>
