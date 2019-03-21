@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :set_locale, :authenticate_user!, :check_achievements, :check_accomplishments
+  before_action :set_locale, :check_achievements, :check_accomplishments
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def set_locale
