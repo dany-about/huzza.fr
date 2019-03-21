@@ -1,0 +1,1 @@
+Array.from($(".proofElement_Participation_<%= params[:id] %>")).forEach( function(element) {$(element).html("<%= j (render 'shared/card_elements/proof', event: Participation.find(params[:id])) %>")} )
