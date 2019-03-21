@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_accomplishments
-    if user_signed_in?
+    if user_signed_in? && @current_user != User.first
       Accomplishment.all.each { |accomplishment| 
         if accomplishment.condition_satisfied_by(current_user)
           UserAccomplishment.create!(user: current_user, accomplishment: accomplishment) unless UserAccomplishment.find_by(user: current_user, accomplishment: accomplishment) != nil
