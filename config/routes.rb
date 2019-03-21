@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post '/sign_up_validation', to: 'users/omniauth_callbacks#sign_up_validation'
 
   # Avatar routes
-  resources :users, only: [:create] do
+  resources :users, only: [:show] do
     resources :avatars, only: [:create]
   end
 

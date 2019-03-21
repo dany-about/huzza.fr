@@ -23,7 +23,7 @@
           <div class="list-group-item list-group-item-action">
             <div class="d-flex align-items-center" data-toggle="tooltip" data-placement="right" data-title="2 hrs ago">
               <div>
-                <img alt="Image placeholder" src="http://sunrift.com/wp-content/uploads/2014/12/Blake-profile-photo-square.jpg" class="avatar rounded-circle avatar-sm shadow hover-shadow-lg">
+                <%= render "shared/user_avatar", user: comment.user%>
               </div>
               <div class="flex-fill ml-3">
                 <div class="h6 text-sm mb-0"><%= comment.user.full_name %><small class="float-right text-muted"><%= time_ago_in_words(comment.created_at) %> ago</small></div>
@@ -48,7 +48,7 @@
         <div class="row align-items-center">
           <div class="col-8 col-md-12 d-flex align-items-center">
             <div class="pr-3">
-              <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/11/2/1552390314-team-2-800x800.jpg" class="avatar  rounded-circle avatar-sm">
+              <%= render "shared/user_avatar", user: current_user %>
             </div>
             <div>
             <%= form_with url: comments_path(commentable_id: commentable_id, type: type) do |f| %>
