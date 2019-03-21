@@ -23,7 +23,6 @@ class User < ApplicationRecord
    # puts firstparticipation
   # end
 
-
   extend FriendlyId
   friendly_id :first_name, use: :slugged
 
@@ -59,6 +58,7 @@ class User < ApplicationRecord
   has_many :reactions
   has_many :difficulty_ratings
   has_many :comments
+  has_many :contestations
 
   def full_name
     self.first_name.to_s+" "+self.last_name.to_s
@@ -98,7 +98,9 @@ class User < ApplicationRecord
   end
 
   def percent_to_next_lvl
-    return (self.elo_points - User.exp_rank(self.rank))*100 /( User.exp_rank(self.rank+1) - User.exp_rank(self.rank) )
+    if self.elo_points == 0 then return 1
+    else return (self.elo_points - User.exp_rank(self.rank))*100 /( User.exp_rank(self.rank+1) - User.exp_rank(self.rank) )
+    end
   end
 
   def rank

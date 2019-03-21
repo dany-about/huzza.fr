@@ -10,7 +10,7 @@
           <div style="text-align: right">
             <%= form_with url: difficulty_ratings_path(dare_id: dare.id) do |f| %>
               <input type="range" class="custom-range" min="0" max="100" step="1" name="rating" id="customRange3">
-              <%= f.submit "Submit Rating", class:"btn btn-sm btn-soft-success", type:"submit" %>
+              <%= f.submit "Noter le défi", class:"btn btn-sm btn-soft-success", type:"submit" %>
             <% end %>
           </div>
         </div>

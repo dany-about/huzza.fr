@@ -35,83 +35,83 @@
       </div>
     </section>
     <section class="slice">
-        <div class="col-11 ml-8">
-          <div class="row row-grid">
-            <div class="col-lg-9 order-lg-2">
-              <% if @user == current_user %>
-                <div class="card bg-gradient-danger hover-shadow-lg mb-8">
-                  <%= render 'users/banner', user: @user %>
-                </div>
-              <% end %>
-              <div style="margin-top: -50px" id="userPageShow">
-                <%= render 'users/participations', user: @user, status: "ongoing" %>
-              </div>
+      <div class="col-11 ml-8">
+        <div class="row row-grid">
+          <div class="col-lg-9 order-lg-2">
+            <% if @user == current_user %>
+            <div class="card bg-gradient-danger hover-shadow-lg mb-8">
+              <%= render 'users/banner', user: @user %>
             </div>
-            <div class="col-lg-3 order-lg-1" style="margin-left: -50px">
-              <div data-toggle="sticky" data-sticky-offset="30" data-negative-margin=".card-profile-cover">
-                <div class="card">
-                  <div class="list-group list-group-sm list-group-flush">
-                    <%= link_to user_path(@user.id, show: "users/participations", status: "ongoing"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>
-                    <div>
-                      <span class="btn-inner--icon btn btn-danger btn-icon-only btn-zoom--hover rounded-circle btn-sm"><i class="fas fa-stopwatch"></i></span>
-                      <span>En cours</span>
-                    </div>
-                    <div>
-                      <i class="fas fa-angle-right"></i>
-                    </div>
-                    <% end %>
-                    <%= link_to user_path(@user.id, show: "users/participations", status: "achieved"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>
-                    <div>
-                      <span class="btn-inner--icon btn btn-dark btn-icon-only btn-zoom--hover rounded-circle btn-sm"> <i class="fas fa-trophy"></i></span>
-                      <span>Réussis</span>
-                    </div>
-                    <div>
-                      <i class="fas fa-angle-right"></i>
-                    </div>
-                    <% end %>
-                    <%= link_to user_path(@user.id, show: "users/participations", status: "reviewed"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>
-                      <div>
-                        <span class="btn-inner--icon btn btn-dark btn-icon-only btn-zoom--hover rounded-circle btn-sm"> <i class="fas fa-search"></i></span>
-                        <span>À l'étude</span>
-                      </div>
-                      <div>
-                        <i class="fas fa-angle-right"></i>
-                      </div>
-                      <% end %>
-                      <%= link_to user_path(@user.id, show: "users/dares", status: "created"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>
-                      <div>
-                        <span class="btn-inner--icon btn btn-dark btn-icon-only btn-zoom--hover rounded-circle btn-sm"> <i class="fas fa-user-friends"></i></span>
-                        <span>Créés</span>
-                      </div>
-                      <div>
-                        <i class="fas fa-angle-right"></i>
-                      </div>
-                    <% end %>
-                    <%= link_to user_path(@user.id, show: "users/dares", status: "starred"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>
-                      <div>
-                        <span class="btn-inner--icon btn btn-dark btn-icon-only btn-zoom--hover rounded-circle btn-sm"> <i class="fas fa-heart"></i></span>
-                        <span>Favoris</span>
-                      </div>
-                      <div>
-                        <i class="fas fa-angle-right"></i>
-                      </div>
-                    <% end %>
-    <% if false %>    <%= link_to user_path(@user.id, show: "users/statistics"), class:"list-group-item list-group-item-action d-flex justify-content-between", remote: true do %><% end %>    <% end %>
-                      <button class="list-group-item list-group-item-action d-flex justify-content-between" disabled>
-                      <div>
-                        <i class="fas fa-sort-numeric-up mr-2"></i>
-                        Statistiques profil<span class="badge badge-pill badge-soft-warning badge-floating border- ml-2">Bientôt</span>
-                      </div>
-                      <div>
-                        <i class="fas fa-angle-right"></i>
-                      </div>
-                      </button>
+            <% end %>
+            <div style="margin-top: -50px" id="userPageShow">
+              <%= render 'users/participations', user: @user, status: "ongoing" %>
+            </div>
+          </div>
+          <div class="col-lg-3 order-lg-1" style="margin-left: -50px">
+            <div data-toggle="sticky" data-sticky-offset="30" data-negative-margin=".card-profile-cover">
+              <div class="card">
+                <div class="list-group list-group-sm list-group-flush">
+                  <%= link_to user_path(@user.id, show: "users/participations", status: "ongoing"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>
+                  <div>
+                    <span class="btn-inner--icon btn btn-danger btn-icon-only btn-zoom--hover rounded-circle btn-sm"><i class="fas fa-stopwatch"></i></span>
+                    <span>En cours</span>
                   </div>
+                  <div>
+                    <i class="fas fa-angle-right"></i>
+                  </div>
+                  <% end %>
+                  <%= link_to user_path(@user.id, show: "users/participations", status: "achieved"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>
+                  <div>
+                    <span class="btn-inner--icon btn btn-dark btn-icon-only btn-zoom--hover rounded-circle btn-sm"> <i class="fas fa-trophy"></i></span>
+                    <span>Réussis</span>
+                  </div>
+                  <div>
+                    <i class="fas fa-angle-right"></i>
+                  </div>
+                  <% end %>
+                  <%= link_to user_path(@user.id, show: "users/participations", status: "reviewed"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>
+                  <div>
+                    <span class="btn-inner--icon btn btn-dark btn-icon-only btn-zoom--hover rounded-circle btn-sm"> <i class="fas fa-search"></i></span>
+                    <span>À l'étude</span>
+                  </div>
+                  <div>
+                    <i class="fas fa-angle-right"></i>
+                  </div>
+                  <% end %>
+                  <%= link_to user_path(@user.id, show: "users/dares", status: "created"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>
+                  <div>
+                    <span class="btn-inner--icon btn btn-dark btn-icon-only btn-zoom--hover rounded-circle btn-sm"> <i class="fas fa-user-friends"></i></span>
+                    <span>Créés</span>
+                  </div>
+                  <div>
+                    <i class="fas fa-angle-right"></i>
+                  </div>
+                  <% end %>
+                  <%= link_to user_path(@user.id, show: "users/dares", status: "starred"), class:"list-group-item list-group-item-action d-flex justify-content-between", style:"color: #293443", remote: true do %>
+                  <div>
+                    <span class="btn-inner--icon btn btn-dark btn-icon-only btn-zoom--hover rounded-circle btn-sm"> <i class="fas fa-heart"></i></span>
+                    <span>Favoris</span>
+                  </div>
+                  <div>
+                    <i class="fas fa-angle-right"></i>
+                  </div>
+                  <% end %>
+                  <% if false %>    <%= link_to user_path(@user.id, show: "users/statistics"), class:"list-group-item list-group-item-action d-flex justify-content-between", remote: true do %><% end %>    <% end %>
+                  <button class="list-group-item list-group-item-action d-flex justify-content-between" disabled>
+                    <div>
+                      <i class="fas fa-sort-numeric-up mr-2"></i>
+                      Statistiques profil<span class="badge badge-pill badge-soft-warning badge-floating border- ml-2">Bientôt</span>
+                    </div>
+                    <div>
+                      <i class="fas fa-angle-right"></i>
+                    </div>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
     </section>
   </div>
 </div>
