@@ -19,9 +19,8 @@ class DaresController < ApplicationController
       if params[:participate] == "yes"
         participation = Participation.create(user: current_user, dare: @dare)
         current_user.notify_followers(participation, "participation_created")
-      else
-        current_user.notify_followers(@dare, "dare_created") unless params[:recipient_id] != nil
       end
+      current_user.notify_followers(@dare, "dare_created")
       redirect_to user_path(current_user)
     else
       render :new
