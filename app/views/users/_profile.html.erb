@@ -19,15 +19,12 @@
     <% end %>
   <%else%>
     <%= form_tag user_avatars_path(@user), multipart: true do %>
-      <div class="col-md-12 text-center">
-        <div class="actions">
-          <label for="file-1">
-          </label>
-          <span class="btn btn-large btn-soft-warning btn-file">
+      <div class="col-md-12 text-center" style="margin-bottom: -50px">
+        <div class="actions mt-3">
+          <span>
              <i class="fa fa-upload"></i>
-              <span>Choose a file…</span>
             <%= file_field_tag :avatar %>
-            <%= submit_tag "Mettre à jour l'image", class: "btn btn-sm btn-soft-primary" %>
+            <%= submit_tag "Upload ma photo", class: "btn btn-sm btn-danger" %>
           </span>
         </div>
       </div>
