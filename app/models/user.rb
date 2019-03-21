@@ -166,5 +166,21 @@ class User < ApplicationRecord
     News.create!(user: self, friend: self, event: event, occasion: occasion)
   end
 
+  def is_fake?
+    return true if self.email.include?("@fake.fake")
+  end
+
+  def self.real_users
+    array = []
+    User.all.each { |user| array << user unless user.is_fake? }
+    return array
+  end
+
+  def self.fake_users
+    array = []
+    User.all.each { |user| array << user if user.is_fake? }
+    return array
+  end
+
 
 end
