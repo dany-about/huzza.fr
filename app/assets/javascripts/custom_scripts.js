@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  // SCROLL
+  // SCROLLS
   function scrollToAnchor(aid){
     var aTag = $(aid);
     $('html,body').animate({scrollTop: aTag.offset().top},'slow');
@@ -8,8 +8,8 @@ $(document).ready(function() {
   function scrollToElementById(id) { 
     $(`a[href='${id}']`).on("click", function(event) { event.preventDefault(); scrollToAnchor(`${id}`) })
   }
-
   scrollToElementById("#exampleCards")
+  scrollToElementById("#showTeamMembers")
 
   // USER PAGE SCROLL
   Array.from($(".tongue-bottom")).forEach(function(element) { $(element).on("click", function(event) {
