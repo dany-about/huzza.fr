@@ -2,21 +2,7 @@
 <div class="card border-0 hover-shadow-lg"  style="height: 300px">
 
   <%if @user.avatar.attached?%>
-    <%= image_tag(@user.avatar, alt: 'avatar', :class => "avatar rounded-circle avatar-lg shadow hover-shadow-lg mx-auto") %>
-    <%= form_tag user_avatars_path(@user), multipart: true do %>
-      <div class="col-md-12 text-center">
-        <div class="actions">
-          <label for="file-1">
-          </label>
-          <span class="btn btn-large btn-soft-warning btn-file">
-             <i class="fa fa-upload"></i>
-              <span>Choose a file…</span>
-            <%= file_field_tag :avatar %>
-            <%= submit_tag "Mettre à jour l'image", class: "btn btn-sm btn-soft-primary" %>
-          </span>
-        </div>
-      </div>
-    <% end %>
+    <%= image_tag(@user.avatar, alt: 'avatar', :class => "avatar rounded-circle avatar-lg shadow hover-shadow-lg mx-auto mt-2", style: "margin-bottom: -10px") %>
   <%else%>
     <%= form_tag user_avatars_path(@user), multipart: true do %>
       <div class="col-md-12 text-center" style="margin-bottom: -50px">
