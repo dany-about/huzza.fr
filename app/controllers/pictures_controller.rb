@@ -1,7 +1,9 @@
 class PicturesController < ApplicationController
+
   def create
     @participation = Participation.find(params[:participation_id])
     @participation.pictures.attach(params[:pictures])
-    redirect_to(root_path)
+    redirect_back fallback_location: user_path(current_user)
   end
+  
 end

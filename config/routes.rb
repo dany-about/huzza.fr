@@ -33,5 +33,6 @@ Rails.application.routes.draw do
   resources :difficulty_ratings, only: [:create]
   resources :reactions, only: [:create, :destroy]
   resources :comments, only: [:create, :destroy]
+  resources :contestations, only: [:create]
 
 end

@@ -15,12 +15,12 @@ class DaresController < ApplicationController
         sent_dare = UserSendDare.create!(sender: current_user, recipient: User.find(params[:recipient_id]), dare: @dare)
         current_user.notify_followers(sent_dare, "dare_sent")
         User.find(params[:recipient_id]).notify_followers(sent_dare, "dare_received")
-      else 
-        current_user.notify_followers(@dare, "dare_created")
       end
       if params[:participate] == "yes"
         participation = Participation.create(user: current_user, dare: @dare)
         current_user.notify_followers(participation, "participation_created")
+      else
+        current_user.notify_followers(@dare, "dare_created") unless params[:recipient_id] != nil
       end
       redirect_to user_path(current_user)
     else

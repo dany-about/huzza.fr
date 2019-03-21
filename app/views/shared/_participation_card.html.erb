@@ -7,18 +7,18 @@
       <%if friend.avatar.attached?%>
         <%= image_tag(friend.avatar, alt: 'avatar', :class => "avatar rounded-circle avatar-lg shadow hover-shadow-lg mx-auto") %>
       <%else%>
-      <img alt="Image placeholder" src="http://chittagongit.com//images/no-profile-picture-icon/no-profile-picture-icon-15.jpg" class="avatar rounded-circle avatar-lg shadow hover-shadow-lg" style="margin-left:-0.5rem;margin-top:-1rem">
+      <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/12/4/1553168518-pngpic.png" class="avatar rounded-circle avatar-lg shadow hover-shadow-lg" style="margin-left:-0.5rem;margin-top:-1rem">
       <% end %>
     <% end %>    
     <% if disclaimer %>
       <%= link_to user_path(friend), class:"ml-4" do %>
         <% case occasion %>
         <% when "participation_created" %>
-          <p class="badge badge-secondary"><%= friend.full_name %> - participe.</p>
+          <p class="badge badge-secondary"><%= friend.full_name %> - participe</p>
         <% when "participation_achieved" %>
-          <p class="badge badge-secondary"><%= friend.full_name %> - a réussi.</p>
+          <p class="badge badge-secondary"><%= friend.full_name %> - a réussi</p>
         <% when "dare_accepted" %>
-          <p class="badge badge-secondary"><%= friend.full_name %> - relève le défi.</p>
+          <p class="badge badge-secondary"><%= friend.full_name %> - relève le défi</p>
         <% when "achievement_rejected" %>         
           <p class="badge badge-secondary">La communauté remet en question la réalisation de <%= friend.full_name %> !</p>          
         <% end %>
@@ -28,7 +28,7 @@
 
   <div class="card-body pt-0">
     <div class="row row-grid" style="margin-left:-0.5rem;">
-      <div class="col-sm-2 text-center">
+      <div class="col-sm-2 text-center my-auto">
         <% if disclaimer %>
           <p class="card-text">Level <%= friend.rank %></p>
           <div class="<%= friend.badge[:animation] %>">
@@ -38,12 +38,15 @@
           <% case participation.is_achieved %>
           <% when false %>
             <p class="badge badge-primary"> En cours </p>
+            <p class="badge badge-primary"><i class="far fa-clock"></i> depuis <%= time_ago_in_words(participation.created_at) %> </p> 
           <% when nil %>
-            <p class="badge badge-secondary"> À l'étude </p>
+            <p class="badge badge-secondary"><i class="fas fa-search"></i> À l'étude </p>
+            <p class="badge badge-secondary"><i class="far fa-clock"></i> depuis <%= time_ago_in_words(participation.updated_at) %> </p> 
           <% when true %>          
-            <p class="badge badge-success"> Réussi </p>          
+            <p class="badge badge-success"><i class="fas fa-trophy"></i> Réussi </p>
+            <p class="badge badge-success"><i class="far fa-clock"></i> Il y a <%= time_ago_in_words(participation.updated_at) %> </p> 
           <% end %>
-          <p style="margin-top: 11px" class="badge badge-lg badge-success badge-circle"><%= dare.difficulty_level %></p>
+          <p class="badge badge-secondary">since X days</p> 
         <% end %>
       </div>
       <div class="col-sm-8 my-auto text-center">
@@ -83,7 +86,7 @@
 <% else proof_class = "card collapse" %>
 <% end %>
 
-<div class="<%= proof_class %> proofElement">
+<div class="<%= proof_class %> proofElement_<%=participation.class.name%>_<%=participation.id%>">
   <%= render 'shared/card_elements/proof', event: participation %>
 </div>
 
