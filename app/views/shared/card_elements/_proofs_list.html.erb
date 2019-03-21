@@ -8,10 +8,12 @@
 <%if event.pictures.attached?%>
   <h5>La preuve en image par <%= event.user.full_name %></h5>
   <% event.pictures.each do |picture| %> 
-    <div class="mx-auto mt-5">
-      posté il y a <%= time_ago_in_words(picture.created_at) %>
-      <%= image_tag picture, class: 'img-fluid rounded', style: 'width: 450px' %>
-    </div>
+      <div class="mt-4">
+        <%= image_tag picture, class: 'img-fluid rounded', style: 'width: 450px' %>
+      </div>
+      <div class="mt-2">
+        posté il y a <%= time_ago_in_words(picture.created_at) %>
+      </div>
   <% end %>
 <% end %>
 
