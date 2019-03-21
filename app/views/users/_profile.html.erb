@@ -2,20 +2,18 @@
 <div class="card border-0 hover-shadow-lg"  style="height: 300px">
 
   <%if @user.avatar.attached?%>
-    <%= image_tag(@user.avatar, alt: 'avatar', :class => "avatar rounded-circle avatar-lg shadow hover-shadow-lg mx-auto mt-2", style: "margin-bottom: -10px") %>
+    <%= image_tag(@user.avatar, alt: 'avatar', class: "avatar rounded-circle avatar-lg shadow hover-shadow-lg mx-auto", style: "margin-bottom: -10px") %>
   <%else%>
     <%= form_tag user_avatars_path(@user), multipart: true do %>
       <div class="col-md-12 text-center" style="margin-bottom: -50px">
-        <div class="actions mt-3">
-          <span>
-             <i class="fa fa-upload"></i>
-            <%= file_field_tag :avatar %>
-            <%= submit_tag "Upload ma photo", class: "btn btn-sm btn-danger" %>
-          </span>
+        <div class="image-upload">
+          <label for="avatar">
+            <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/12/4/1553168518-pngpic.png" class="avatar rounded-circle avatar-lg shadow hover-shadow-lg mx-auto">
+          </label>
+          <input class="profile_input" id="avatar" name="avatar" type="file" />
         </div>
+          <%= submit_tag "Poster une photo", class: "btn btn-sm btn-soft-primary" %>
       </div>
-      <br />
-      <br />
     <% end %>
   <% end %>
 
