@@ -38,12 +38,14 @@
           <% case participation.is_achieved %>
           <% when false %>
             <p class="badge badge-primary"> En cours </p>
+            <p class="badge badge-primary"><i class="far fa-clock"></i> depuis <%= time_ago_in_words(participation.created_at) %> </p> 
           <% when nil %>
-            <p class="badge badge-secondary"> À l'étude </p>
+            <p class="badge badge-secondary"><i class="fas fa-search"></i> À l'étude </p>
+            <p class="badge badge-secondary"><i class="far fa-clock"></i> depuis <%= time_ago_in_words(participation.updated_at) %> </p> 
           <% when true %>          
-            <p class="badge badge-success"> Réussi </p>          
+            <p class="badge badge-success"><i class="fas fa-trophy"></i> Réussi </p>
+            <p class="badge badge-success"><i class="far fa-clock"></i> Il y a <%= time_ago_in_words(participation.updated_at) %> </p> 
           <% end %>
-        <p class="badge badge-secondary">since X days</p> 
         <% end %>
       </div>
       <div class="col-sm-8 my-auto text-center">
