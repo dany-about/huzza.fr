@@ -233,7 +233,7 @@ Devise.setup do |config|
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
   # config.scoped_views = true
-  
+
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
@@ -260,7 +260,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :facebook, '2276901442564929', '93c801f9f631c090030ce00c2356ca64', callback_url:'http://localhost:3000/users/auth/facebook/callback', scope: 'email', info_fields: 'email,name'
+  config.omniauth :facebook, 'ENV[FACEBOOK_LOGIN', 'ENV[FACEBOOK_PWD]', callback_url:'http://bucket-live.herokuapp.com/users/auth/facebook/callback', scope: 'email', info_fields: 'email,name'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
