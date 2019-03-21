@@ -14,8 +14,6 @@ Rails.application.routes.draw do
   end
 
   get 'home/team'
-  get 'home/howitworks'
-  get 'home/createdare'
 
   # Home page
   root 'news#index'
