@@ -98,7 +98,9 @@ class User < ApplicationRecord
   end
 
   def percent_to_next_lvl
-    return (self.elo_points - User.exp_rank(self.rank))*100 /( User.exp_rank(self.rank+1) - User.exp_rank(self.rank) )
+    if self.elo_points == 0 then return 1
+    else return (self.elo_points - User.exp_rank(self.rank))*100 /( User.exp_rank(self.rank+1) - User.exp_rank(self.rank) )
+    end
   end
 
   def rank
