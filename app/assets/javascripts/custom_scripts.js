@@ -1,15 +1,23 @@
 $(document).ready(function() {
+
   // SCROLL
   function scrollToAnchor(aid){
     var aTag = $(aid);
     $('html,body').animate({scrollTop: aTag.offset().top},'slow');
   }
+  function scrollToElementById(id) { 
+    $(`a[href='${id}']`).on("click", function(event) { event.preventDefault(); scrollToAnchor(`${id}`) })
+  }
+
+  scrollToElementById("#exampleCards")
 
   // USER PAGE SCROLL
   Array.from($(".tongue-bottom")).forEach(function(element) { $(element).on("click", function(event) {
     event.preventDefault(); scrollToAnchor($("body"))
   }) })
 
+  
+  
 });
 
 function showPassword(id) {
