@@ -46,10 +46,12 @@
     </div>
   </div>
 
-  <div class="row text-center">
-    <%= link_to "Poster ma preuve", participation_path(event), method: "PATCH", class: "btn btn-sm btn-soft-danger mx-auto", remote: true %>
-    Attention, vous ne pourrez plus poster de photos ou vidéos supplémentaires jusqu'à ce que la communauté juge votre réalisation.
-  </div>
+  <% if event.videos.attached? || event.pictures.attached? %>
+    <div class="row text-center">
+      <%= link_to "Poster ma preuve", participation_path(event), method: "PATCH", class: "btn btn-sm btn-soft-danger mx-auto", remote: true %>
+      Attention, vous ne pourrez plus poster de photos ou vidéos supplémentaires jusqu'à ce que la communauté juge votre réalisation.
+    </div>
+  <% end %>
 
 <% elsif current_user != event.user && event.is_achieved == nil %>
 
