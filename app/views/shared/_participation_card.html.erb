@@ -83,7 +83,7 @@
 <% else proof_class = "card collapse" %>
 <% end %>
 
-<div class="<%= proof_class %> proofElement">
+<div class="<%= proof_class %> proofElement_<%=participation.class.name%>_<%=participation.id%>">
   <%= render 'shared/card_elements/proof', event: participation %>
 </div>
 
