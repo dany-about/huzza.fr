@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_accomplishments
-    if user_signed_in? && @current_user != User.first
+    if user_signed_in? && !current_user.is_fake?
       Accomplishment.all.each { |accomplishment| 
         if accomplishment.condition_satisfied_by(current_user)
           UserAccomplishment.create!(user: current_user, accomplishment: accomplishment) unless UserAccomplishment.find_by(user: current_user, accomplishment: accomplishment) != nil
@@ -49,9 +49,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_dummy_user
-    @current_user = User.first unless user_signed_in?
+    @current_user = User.create!(email:"#{rand(10000)}fake#{rand(10000)}@fake.fake", password: "123456", password_confirmation: '123456', first_name: "Fake", last_name: "User") unless user_signed_in?
   end
-
 
   protected
 

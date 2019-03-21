@@ -54,7 +54,6 @@ Accomplishment.create!(title: "Mister Bucket", name: "A réussi 5 défis dans la
 Accomplishment.create!(title: "Geek 2.0", name: "A réussi 5 défis dans la catégorie Gaming.", icon_class:"fas fa-gamepad")
 Accomplishment.create!(title: "Jean Michel Blague", name: "A réussi 5 défis dans la catégorie WTF.", icon_class:"fas fa-spider")
 
-dummy = User.create!(email:'fake@fake.com', password: "123456", password_confirmation: '123456', first_name: "Fake", last_name: "User")
 admin = User.create!(email: 'nabooadmin@yopmail.com', password: '123456', password_confirmation: '123456', first_name: "God,", last_name: "I mean Dany")
 noe = User.create!(email: "example@example.gmail", password:"123456", password_confirmation: "123456", first_name: "Noé", last_name: "Margui")
 
