@@ -7,7 +7,6 @@ class Dare < ApplicationRecord
   has_many :participations
   has_many :participants, through: :participations, source: :user
   has_many :reactions, through: :participations
-  # has_many :proofs, through: :participations A REGLER (PHOTO - VIDEOS)
 
   # Sending and receiving Dares
   has_many :user_send_dares
@@ -40,6 +39,12 @@ class Dare < ApplicationRecord
     achievers = []
     self.participations.where(is_achieved: true).each { |participation| achievers << participation.user }
     return achievers
+  end
+
+  def achievers_under_review
+    achievers_under_review = []
+    self.participations.where(is_achieved: nil).each { |participation| achievers_under_review << participation.user}
+    return achievers_under_review
   end
 
   # TBD according to difficulty

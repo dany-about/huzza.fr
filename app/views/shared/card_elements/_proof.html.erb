@@ -14,6 +14,11 @@
               <%= render "shared/card_elements/proofs_list", event: event %>
             </div>
           <% end %>
+          <% if list.count == 0 %>
+            Personne ne participe à ce défi. Soyez le premier à participer !
+          <% elsif event.class.name == "Dare" && event.achievers_under_review.count == 0 && event.achievers == 0 %>
+            Personne n'a encore réussi ce défi. Soyez le premier à y arriver !
+          <% end %>
         </div>
       </div>
     </div>
