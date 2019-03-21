@@ -2,40 +2,29 @@
 <% when "all" then displayed_news = current_user.news %>
 <% when "all_unrated" %>
   <% displayed_news = []; current_user.news.each {|news| if news.is_unrated_by(current_user) then displayed_news << news end }%>
-<% else displayed_news = current_user.news.where({occasion: occasion}) %>
+<% else displayed_news = current_user.news.where(occasion: occasion) %>
 <% end %>
 
 <table>
-  <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
   <tbody>
     <% displayed_news.reverse.each do |news| %>
-    <tr>
-      <th scope="row">
-        <!-- Si l'évènement est une participation; disclaimer_type peut prendre les valeurs: "participation_created" ou "participation_achieved" -->
-        <!-- Il faudra voir comment on gère les participations qui sont "un-achieved", quand la preuve est rejetée -->
-        <!-- status prend les valeurs true ou false selon que la notification a été lue -->
-          <div style="margin-top: 80px">
-            <div class="container">
-              <div class="col-md-12 mx-auto eventCard" id="<%=news.event.class.name%>_<%=news.event.id%>">
-                <% case news.event.class.name %>
-                <% when "Participation" %>
-                <%= render "shared/participation_card", participation: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
-                <% when "Dare" %>
-                <%= render "shared/dare_card", dare: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
-                <% when "UserSendDare" %>
-                <%= render "shared/sent_dare_card", sent_dare: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
-                <% end %>
-              </div>
-            </div>
+      <div style="margin-top: 80px">
+        <div class="row row-grid mx-auto">
+          <div class="col-lg-10 order-lg-1 mx-auto eventCard" id="<%=news.event.class.name%>_<%=news.event.id%>">
+            <% case news.event.class.name %>
+            <% when "Participation" %>
+            <%= render "shared/participation_card", participation: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
+            <% when "Dare" %>
+            <%= render "shared/dare_card", dare: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
+            <% when "UserSendDare" %>
+            <%= render "shared/sent_dare_card", sent_dare: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
+            <% end %>
           </div>
-      </th>
-      <td> <%= time_ago_in_words(news.created_at) %> ago </td>
-    </tr>
+          <div class="col-lg-2 order-lg-2 mx-auto mt-6">
+            <small> <%= time_ago_in_words(news.created_at) %> ago </small>
+          </div>
+        </div>
+      </div>
     <% end %>
   </tbody>
 </table>
