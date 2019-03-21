@@ -6,8 +6,7 @@
   <%else%>
     <%= form_tag user_avatars_path(@user), multipart: true do %>
       <div class="col-md-12 text-center" style="margin-bottom: -20px">
-        <div class="ml-10">
-          <div class="row row-grid">
+          <div class="row mx-auto" style="justify-content: center">
             <div class="image-upload mt-2">
               <label for="avatar">
                 <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/12/4/1553168518-pngpic.png" class="avatar rounded-circle avatar-lg shadow hover-shadow-lg mx-auto">
@@ -15,10 +14,9 @@
               <input class="profile_input" id="avatar" name="avatar" type="file" />
             </div>
             <div class="my-auto ml-2">
-              <%= submit_tag "Upload ma photo", class: "btn btn-sm btn-dark btn-sm" %>
+              <%= submit_tag "Upload photo", class: "btn btn-sm btn-dark btn-sm" %>
             </div>
           </div>
-        </div>
       </div>
     <% end %>
   <% end %>
