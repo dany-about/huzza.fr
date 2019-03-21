@@ -60,12 +60,12 @@
                       <%= render "devise/shared/error_messages", resource: resource %>
 
 
-                      <div class="form-group mb-4" style="width:100%">
+                      <div class="form-group mb-4 text-center">
                       <%= f.label :email %><br />
-                      <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "40" %>
+                      <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "35" %>
                       </div>
 
-                      <div class="actions">
+                      <div class="actions text-center">
                       <%= f.submit "Send me reset password instructions", class:"btn btn-dark mb-2 mb-sm-0" %>
                       </div>
                       <% end %>
