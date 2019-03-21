@@ -16,6 +16,7 @@
         <%= render 'layouts/header' %>
         <%= render 'layouts/flash'%>
         <% end %>
+        <% puts current_user.full_name*200%>
           <%= yield %>
 
         </div>
@@ -25,7 +26,7 @@
     </div >
 
 <!---------------------------if user is not connected display: none;-------------------------------->
-    <% if !user_signed_in? && current_user == User.first %>
+    <% if current_user == User.first %>
     <div class="customizer" style="display: none;">
       <a href="#modal-customizer1" class="btn bg-gradient-danger btn-lg btn-icon-only rounded-circle text-white hover-scale-110 shadow-lg mr-3" data-toggle="modal">
         <span class="btn-inner--icon"><i class="fas fa-plus"></i></span>
