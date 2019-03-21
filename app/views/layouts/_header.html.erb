@@ -1,4 +1,4 @@
-<nav class="navbar navbar-horizontal navbar-expand-lg navbar-dark mt-0"  style="height: 50px; background-color: #293443">
+<nav class="navbar navbar-horizontal navbar-expand-lg navbar-sticky navbar-dark bg-dark sticky mt-0"  style="height: 50px; background-color: #293443">
     <div class="container">
         <%= link_to news_index_path, class: 'nav-link' do %>
           <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/12/2/1552984818-logo2huzza.jpg" width="17%" height="17%" class="img-fluid">
@@ -30,7 +30,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" id="navbar-white_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-angle-down"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-white_dropdown_1">
-                        <%= link_to "Editer mon profil", edit_user_registration_path, class: "dropdown-item"%> 
+                        <%= link_to "Editer mon profil", edit_user_registration_path, class: "dropdown-item"%>
                         <div class="dropdown-divider"></div>
                         <%= link_to("Déconnexion", destroy_user_session_path, :method => :delete, class: "dropdown-item")%>
                     </div>

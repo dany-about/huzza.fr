@@ -1,1 +1,8 @@
 $("#explorerIndex").html("<%= j (render 'dares/dares', category: Category.find(params[:category_id])) %>")
+
+function scrollToAnchor(aid){
+  var aTag = $(aid);
+  $('html,body').animate({scrollTop: aTag.offset().top},'slow');
+}
+
+scrollToAnchor($("body"))

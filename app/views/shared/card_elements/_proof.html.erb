@@ -9,7 +9,7 @@
       <div class="row">
         <% list.reverse.each_with_index do |event, i| %>
           <% if i > 0 %> <div class="divider"></div> <% end %>
-          <div class="showProof_<%=event.id%>">
+          <div class="showProof_<%=event.id%> mx-auto">
             <%= render "shared/card_elements/proofs_list", event: event %>
           </div>
         <% end %>

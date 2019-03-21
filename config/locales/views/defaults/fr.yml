@@ -73,3 +73,45 @@ fr:
       title: 'Powitanie!'
     about:
       title: 'O nas'
+
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: une heure
+        other: ~ %{count} heures
+      about_x_months:
+        one: un mois
+        other: ~ %{count} mois
+      about_x_years:
+        one: un an
+        other: ~ %{count} ans
+      almost_x_years:
+        one: presque un an
+        other: presque %{count} ans
+      half_a_minute: une demi-minute
+      less_than_x_minutes:
+        zero: une minute
+        one: une minute
+        other: ~ %{count} minutes
+      less_than_x_seconds:
+        zero: une seconde
+        one: une seconde
+        other: ~ %{count} secondes
+      over_x_years:
+        one: plus d'un an
+        other: plus de %{count} ans
+      x_days:
+        one: 1 jour
+        other: "%{count} jours"
+      x_minutes:
+        one: 1 minute
+        other: "%{count} minutes"
+      x_months:
+        one: 1 mois
+        other: "%{count} mois"
+      x_years:
+        one: un an
+        other: "%{count} ans"
+      x_seconds:
+        one: 1 seconde
+        other: "%{count} secondes"
