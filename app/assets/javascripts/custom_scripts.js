@@ -16,6 +16,8 @@ $(document).ready(function() {
     event.preventDefault(); scrollToAnchor($("body"))
   }) })
 
+  // WHATEVER THIS IS
+  if($('footer').length > 0) {$('#body').addClass('withfooter')};
   
   
 });

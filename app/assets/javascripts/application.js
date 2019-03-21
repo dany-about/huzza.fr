@@ -31,10 +31,3 @@
 //= require assets/libs/sweetalert2/dist/sweetalert2.min.js
 //= require assets/libs/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js
 //= video-socialshare
-
-
-$(function {
-  if($('footer').length > 0)
-    $('#body').addClass('withfooter');
-
-});
