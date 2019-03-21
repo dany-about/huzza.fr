@@ -139,7 +139,7 @@
 </section>
 </div>
 
-<div class="container">
+<div class="container" id="exampleCards">
   <div class="col-10 mx-auto" style="margin-top: 100px">
     <%= render "shared/dare_card", dare: Dare.first, friend: Dare.first.creator, occasion: nil, disclaimer: false %>
   </div>
@@ -163,7 +163,7 @@
 
 <!-- Call to action -->
 <section class="slice delimiter-bottom" style="margin-top: 50px">
-  <div class="container" id="exampleCards">
+  <div class="container">
     <div class="d-flex align-items-center justify-content-center">
       <div>
         <%= link_to '<span class="btn-inner--icon"><i class="fas fa-heart"></i></span>'.html_safe, home_team_path, class: 'btn btn-danger btn-icon-only btn-zoom--hover rounded-circle'%>
