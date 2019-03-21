@@ -15,7 +15,7 @@
         <% end %>
         <% if list.count == 0 %>
           Personne ne participe à ce défi. Soyez le premier à participer !
-        <% elsif event.class.name == "Dare" && event.achievers_under_review.count == 0 && event.achievers == 0 %>
+        <% elsif event.is_a?(Dare) && event.achievers_under_review.count == 0 && event.achievers.count == 0 %>
           Personne n'a encore réussi ce défi. Soyez le premier à y arriver !
         <% end %>
       </div>

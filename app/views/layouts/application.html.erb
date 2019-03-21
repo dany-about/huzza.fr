@@ -12,21 +12,22 @@
   <body>
     <div id="container">
         <div id="body">
-        <% if user_signed_in? %>
+        <% if user_signed_in? && !current_user.is_fake? %>
         <%= render 'layouts/addon' %>
         <%= render 'layouts/header' %>
         <%= render 'layouts/flash'%>
-      <% end %>
+        <% end %>
+        
           <%= yield %>
 
         </div>
-        <% if user_signed_in? %>
+        <% if user_signed_in? && !current_user.is_fake? %>
           <%= render 'layouts/footer' %>
         <% end %>
     </div >
 
 <!---------------------------if user is not connected display: none;-------------------------------->
-    <% if !user_signed_in? %>
+    <% if current_user.is_fake? %>
     <div class="customizer" style="display: none;">
       <a href="#modal-customizer1" class="btn bg-gradient-danger btn-lg btn-icon-only rounded-circle text-white hover-scale-110 shadow-lg mr-3" data-toggle="modal">
         <span class="btn-inner--icon"><i class="fas fa-plus"></i></span>
