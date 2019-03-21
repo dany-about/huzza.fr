@@ -139,10 +139,11 @@
 </section>
 </div>
 
-
-<section>
-  <%= render "shared/dare_card", dare: Dare.first, friend: Dare.first.creator, occasion: nil, disclaimer: false %>
-</section>
+<div class="container">
+  <div class="col-10 mx-auto">
+    <%= render "shared/dare_card", dare: Dare.first, friend: Dare.first.creator, occasion: nil, disclaimer: false %>
+  </div>
+</div>
 
 <!-- Call to action -->
 <section class="slice delimiter-bottom">
