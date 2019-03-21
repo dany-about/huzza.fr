@@ -1,1 +1,8 @@
 $("#feedIndex").html("<%= j (render 'news/news', occasion: params[:occasion]) %>")
+
+function scrollToAnchor(aid){
+  var aTag = $(aid);
+  $('html,body').animate({scrollTop: aTag.offset().top},'slow');
+}
+
+scrollToAnchor($("body"))
