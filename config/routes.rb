@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :videos
 
   devise_for :users, only: :omniauth_callbacks, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
 
@@ -12,6 +11,16 @@ Rails.application.routes.draw do
   # Avatar routes
   resources :users do
     resources :avatars, only: [:create]
+  end
+
+  # Avatar routes
+  resources :participations do
+    resources :pictures, only: [:create]
+  end
+
+  # Avatar routes
+  resources :participations do
+    resources :videos
   end
 
   # Need to be deleted
@@ -40,6 +49,8 @@ Rails.application.routes.draw do
   resources :difficulty_ratings, only: [:create]
   resources :reactions, only: [:create, :destroy]
   resources :comments, only: [:create, :update, :destroy]
-  
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # Dares route
+  resources :dares
+
 end
