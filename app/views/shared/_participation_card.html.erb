@@ -28,7 +28,7 @@
 
   <div class="card-body pt-0">
     <div class="row row-grid" style="margin-left:-0.5rem;">
-      <div class="col-sm-2 text-center">
+      <div class="col-sm-2 text-center my-auto">
         <% if disclaimer %>
           <p class="card-text">Level <%= friend.rank %></p>
           <div class="<%= friend.badge[:animation] %>">
@@ -44,6 +44,7 @@
             <p class="badge badge-success"> Réussi </p>          
           <% end %>
         <% end %>
+        <p class="badge badge-secondary">since X days</p> 
       </div>
       <div class="col-sm-8 my-auto text-center">
         <h5 class="card-title" style="text-align: justify; text-justify: inter-word"><%= dare.title %></h5>
