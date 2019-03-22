@@ -8,8 +8,6 @@ class User < ApplicationRecord
     where(provider: auth['provider'], uid: auth['uid']).first_or_create do |user|
       user.email = auth['info']['email']
       user.password = (0...20).map { (65 + rand(26)).chr }.join
-      user.name = auth['info']['name']
-      user.avatar = auth['info']['image']
     end
   end
 
@@ -22,15 +20,15 @@ class User < ApplicationRecord
   has_many :created_dares, class_name: "Dare", foreign_key: "creator_id"
   has_many :participations
   has_many :participated_dares, through: :participations, source: :dare
-  
-  # Friend requests, Friends & Follows 
+
+  # Friend requests, Friends & Follows
   has_many :sent_friend_requests, class_name: "FriendRequest", foreign_key: "user_asking_id"
   has_many :received_friend_requests, class_name: "FriendRequest", foreign_key: "user_asked_id"
   has_many :follows
   has_many :followers, through: :follows
   has_many :reverse_follows, class_name: "Follow", foreign_key: "follower_id"
-  has_many :followed_users, through: :reverse_follows, source: :user 
-  
+  has_many :followed_users, through: :reverse_follows, source: :user
+
   # Sending and receiving Dares
   has_many :user_sent_dares, class_name: "UserSendDare", foreign_key: "sender_id"
   has_many :sent_dares, through: :user_sent_dares, source: :dare
@@ -44,7 +42,7 @@ class User < ApplicationRecord
   # Accomplishments
   has_many :user_accomplishments
   has_many :accomplishments, through: :user_accomplishments
-  
+
   # Miscellaneous
   has_many :news
   has_many :reactions

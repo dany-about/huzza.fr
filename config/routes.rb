@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, only: :omniauth_callbacks, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
 
   scope '/(:locale)', locale: /en|fr/ do
-      devise_for :users, skip: :omniauth_callbacks
+    devise_for :users, skip: :omniauth_callbacks
   end
 
   post '/sign_up_validation', to: 'users/omniauth_callbacks#sign_up_validation'
@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   end
 
   get 'home/team'
-  get 'home/index'
 
   # Home page
   root 'home#landing'
