@@ -1,9 +1,9 @@
 
 <div class="card border-0 hover-shadow-lg"  style="height: 300px">
 
-  <%if @user.avatar.attached?%>
-    <%= image_tag(@user.avatar, alt: 'avatar', class: "avatar rounded-circle avatar-lg shadow hover-shadow-lg mx-auto mt-2", style: "margin-bottom: -10px") %>
-  <%else%>
+  <%if user.avatar.attached?%>
+    <%= image_tag(user.avatar, alt: 'avatar', class: "avatar rounded-circle avatar-lg shadow hover-shadow-lg mx-auto mt-2", style: "margin-bottom: -10px") %>
+  <%elsif user == current_user %>
     <%= form_tag user_avatars_path(@user), multipart: true do %>
       <div class="col-md-12 text-center" style="margin-bottom: -20px">
           <div class="row mx-auto" style="justify-content: center">
@@ -19,6 +19,8 @@
           </div>
       </div>
     <% end %>
+  <% else %>
+    <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/12/4/1553168518-pngpic.png" class="avatar rounded-circle avatar-lg shadow hover-shadow-lg mx-auto">
   <% end %>
 
   <div class="card-body p-3 pt-0 text-center">
