@@ -68,15 +68,15 @@
   <%= render 'shared/card_elements/tab_btns' %>
 </div>
 
-<div class="card collapse descriptionElement_<%=dare.id%>">
+<div class="card collapse cardElementCanBeHidden descriptionElement_<%=dare.id%>">
   <%= render 'shared/card_elements/description', dare: dare %>
 </div>
 
-<div class="card collapse commentElement_<%=participation.id%>">
+<div class="card collapse cardElementCanBeHidden commentElement_<%=participation.id%>">
   <%= render 'shared/card_elements/comments', commentable_id: participation.id, type: participation.class.name %>
 </div>
 
-<div class="card collapse ratingElement_<%=dare.id%>">
+<div class="card collapse cardElementCanBeHidden ratingElement_<%=dare.id%>">
   <%= render 'shared/card_elements/rating', dare: dare %>
 </div>
 
@@ -85,7 +85,7 @@
 <% else proof_class = "card collapse" %>
 <% end %>
 
-<div class="<%= proof_class %> proofElement_<%=participation.class.name%>_<%=participation.id%>">
+<div class="<%= proof_class %> cardElementCanBeHidden proofElement_<%=participation.class.name%>_<%=participation.id%>">
   <%= render 'shared/card_elements/proof', event: participation %>
 </div>
 

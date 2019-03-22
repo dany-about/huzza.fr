@@ -44,8 +44,8 @@
     <div class="row row-grid justify-content-around align-items-center">
       <div class="col-lg-6">
         <div class="text-center text-lg-left" style="margin-left: -80px">
-          <h1 class="text-white mt-4 mb-3">Quand défier devient un jeu !</h1>
-          <p class="lead lh-180 text-white">Le premier réseau social qui te pousse à profiter de la vie réelle.</p>
+          <h1 class="text-white mt-4 mb-3">Quand le défi devient <br> un mode de vie.</h1>
+          <p class="lead lh-180 text-white">Le premier réseau social qui te met au défi de réaliser ta vie.</p>
           <div class="mt-6">
             <a href="#exampleCards" class="btn btn-white btn-icon rounded-pill hover-translate-y-n3">
               <span class="btn-inner--icon"><i class="fas fa-angle-down"></i>
@@ -141,29 +141,29 @@
 </div>
 
 <div class="container" id="exampleCards">
-  <div class="col-10 mx-auto" style="margin-top: 100px">
+  <div class="col-10 mx-auto eventCard" style="margin-top: 100px">
     <%= render "shared/dare_card", dare: Dare.first, friend: Dare.first.creator, occasion: nil, disclaimer: false %>
   </div>
 
-  <div class="col-10 mx-auto" style="margin-top: 200px">
+  <div class="col-10 mx-auto eventCard" style="margin-top: 170px">
     <%= render "shared/dare_card", dare: Dare.first, friend: Dare.first.creator, occasion: nil, disclaimer: false %>
   </div>
 
-  <div class="col-10 mx-auto" style="margin-top: 200px">
+  <div class="col-10 mx-auto eventCard" style="margin-top: 170px">
     <%= render "shared/dare_card", dare: Dare.first, friend: Dare.first.creator, occasion: nil, disclaimer: false %>
   </div>
 
-  <div class="col-10 mx-auto" style="margin-top: 200px">
+  <div class="col-10 mx-auto eventCard" style="margin-top: 170px">
     <%= render "shared/dare_card", dare: Dare.first, friend: Dare.first.creator, occasion: nil, disclaimer: false %>
   </div>
 
-  <div class="col-10 mx-auto" style="margin-top: 200px">
+  <div class="col-10 mx-auto eventCard" style="margin-top: 170px">
     <%= render "shared/dare_card", dare: Dare.first, friend: Dare.first.creator, occasion: nil, disclaimer: false %>
   </div>
 </div>
 
 <!-- Call to action -->
-<section class="slice delimiter-bottom" style="margin-top: 50px">
+<section class="slice delimiter-bottom" style="margin-top: 80px; margin-bottom: -150px">
   <div class="container">
     <div class="d-flex align-items-center justify-content-center">
       <div>
@@ -175,6 +175,5 @@
     </div>
   </div>
 </section>
-</div>
 
 <%= javascript_include_tag "user_cards_scripts" %>

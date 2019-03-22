@@ -76,12 +76,13 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   # User Mailer
-  #after_create :welcome_send
+  after_create :welcome_send
 
   # Welcome Email
-  #def welcome_send
-  #  UserMailer.welcome_email(self).deliver_now
-  #end
+
+  def welcome_send
+    UserMailer.welcome_email(self).deliver_now unless self.is_fake?
+  end
 
   # EXP FORMULA
   def self.exp_rank(i)
