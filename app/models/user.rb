@@ -8,20 +8,12 @@ class User < ApplicationRecord
     where(provider: auth['provider'], uid: auth['uid']).first_or_create do |user|
       user.email = auth['info']['email']
       user.password = (0...20).map { (65 + rand(26)).chr }.join
-      user.name = auth['info']['image']
-      #user.avatar = auth['info']['image']
+      user.name = auth['info']['name']
+      user.avatar = auth['info']['image']
     end
   end
 
   validates :terms_of_service, acceptance: true
-
-
-  # after_create :first_dare_participation
-
-  # def first_dare_participation
-   # firstparticipation = Participation.create!(user: self, dare: Dare.all.sample, deadline: Time.new(2020))
-   # puts firstparticipation
-  # end
 
   extend FriendlyId
   friendly_id :first_name, use: :slugged
@@ -84,12 +76,12 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   # User Mailer
-  after_create :welcome_send
+  #after_create :welcome_send
 
   # Welcome Email
-  def welcome_send
-    UserMailer.welcome_email(self).deliver_now
-  end
+  #def welcome_send
+  #  UserMailer.welcome_email(self).deliver_now
+  #end
 
   # EXP FORMULA
   def self.exp_rank(i)
