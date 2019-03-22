@@ -141,25 +141,11 @@
 </div>
 
 <div class="container" id="exampleCards">
+  <% 5.times do |i| %>
   <div class="col-10 mx-auto" style="margin-top: 100px">
-    <%= render "shared/dare_card", dare: Dare.first, friend: Dare.first.creator, occasion: nil, disclaimer: false %>
+    <%= render "shared/dare_card", dare: Dare.all[i], friend: Dare.all[i].creator, occasion: nil, disclaimer: false %>
   </div>
-
-  <div class="col-10 mx-auto" style="margin-top: 200px">
-    <%= render "shared/dare_card", dare: Dare.find(2), friend: Dare.find(2).creator, occasion: nil, disclaimer: false %>
-  </div>
-
-  <div class="col-10 mx-auto" style="margin-top: 200px">
-    <%= render "shared/dare_card", dare: Dare.find(3), friend: Dare.find(3).creator, occasion: nil, disclaimer: false %>
-  </div>
-
-  <div class="col-10 mx-auto" style="margin-top: 200px">
-    <%= render "shared/dare_card", dare: Dare.find(4), friend: Dare.find(4).creator, occasion: nil, disclaimer: false %>
-  </div>
-
-  <div class="col-10 mx-auto" style="margin-top: 200px">
-    <%= render "shared/dare_card", dare: Dare.find(5), friend: Dare.find(5).creator, occasion: nil, disclaimer: false %>
-  </div>
+  <% end %>
 </div>
 
 <!-- Call to action -->

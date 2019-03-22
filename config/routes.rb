@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   end
 
   get 'home/team'
-  get 'home/index'
 
   # Home page
   root 'home#landing'
