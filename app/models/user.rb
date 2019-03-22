@@ -84,7 +84,6 @@ class User < ApplicationRecord
     UserMailer.welcome_email(self).deliver_now unless self.is_fake?
   end
 
-
   # EXP FORMULA
   def self.exp_rank(i)
     f = 100

@@ -57,9 +57,8 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :terms_of_service]) 
   end
-=begin
-  def authenticate_user!
-    redirect_to new_user_registration_path unless user_signed_in?
+
+  def after_sign_in_path_for(resource)
+    request.env['omniauth.origin'] || stored_location_for(resource) || dares_path
   end
-=end
 end
