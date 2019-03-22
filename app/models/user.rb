@@ -88,7 +88,7 @@ class User < ApplicationRecord
 
   # Welcome Email
   def welcome_send
-    UserMailer.welcome_email(self).deliver_now
+    UserMailer.welcome_email(self).deliver_now unless self.is_fake?
   end
 
   # EXP FORMULA
