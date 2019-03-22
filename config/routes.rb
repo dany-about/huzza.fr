@@ -14,9 +14,10 @@ Rails.application.routes.draw do
   end
 
   get 'home/team'
+  get 'home/index'
 
   # Home page
-  root 'news#index'
+  root 'home#landing'
 
   resources :follows, only: [:create, :destroy]
   resources :friend_requests, only: [:create, :update, :destroy]
