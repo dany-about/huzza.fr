@@ -6,7 +6,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if @user.persisted?
       @user.remember_me = true
-      sign_in_and_redirect @user, event: :authentication
+      sign_in @user, event: :authentication
+      redirect_to dares_path
     else
       session['devise.auth'] = request.env['omniauth.auth']
       render :edit
