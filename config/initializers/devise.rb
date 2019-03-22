@@ -18,7 +18,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'noe@huzza.fr'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -260,7 +260,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :facebook, ENV['FACEBOOK_LOGIN'], ENV['FACEBOOK_PWD'], callback_url:'https://bucket-live.herokuapp.com/users/auth/facebook/callback', scope: 'email', info_fields: 'email,name'
+  config.omniauth :facebook, ENV['FACEBOOK_LOGIN'], ENV['FACEBOOK_PWD'], callback_url:'https://huzza-prod.herokuapp.com/users/auth/facebook/callback', scope: 'email', info_fields: 'email,name'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

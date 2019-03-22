@@ -93,5 +93,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # A DECOMMENTER POUR PASSER EN PROD ET MODIF NOM DE L APP
-  # config.action_mailer.default_url_options = { :host => 'YOURAPPNAME.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'huzza-prod.herokuapp.com' }
 end
