@@ -1,27 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+HUZZA - Quand défier devient un mode de vie !
 
-Things you may want to cover:
+Le premier réseau social qui te met au défi de réaliser ta vie.
 
-* Ruby version
+Login facebook test : zhrjwmbyvr_1553329478@tfbnw.net 
+Password : huzza123
 
-* System dependencies
+A ce jour nous attendons encore la validation de notre App par Facebook.
 
-* Configuration
+Lien de l'app : https://huzza-prod.herokuapp.com/
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# boilerplate-purpose
-
-test
