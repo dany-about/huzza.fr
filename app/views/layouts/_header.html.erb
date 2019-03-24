@@ -35,6 +35,14 @@
                         <%= link_to("Déconnexion", destroy_user_session_path, :method => :delete, class: "dropdown-item")%>
                     </div>
                 </li>
+
+                <!-- LINK TO ADMIN DASHBOARD -->
+                <% if current_user.is_admin %>
+                <li class="nav-item">
+                    <%= link_to "ADMIN DASHBOARD", admin_dares_path, class: 'nav-link danger'%>
+                </li>
+                <% end %>
+
             </ul>
 
         </div>

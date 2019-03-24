@@ -5,10 +5,11 @@ class Admin::DaresController < ApplicationController
   end
 
   def destroy
+    Dare.find(params[:id]).destroy
   end
 
   def is_admin?
-    redirect_to "/" unless current_user.is_admin
+    redirect_back fallback_location: "/" unless current_user.is_admin
   end
 
 end
