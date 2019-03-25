@@ -12,6 +12,7 @@ class User < ApplicationRecord
   end
 
   validates :terms_of_service, acceptance: true
+  validates :email, presence: true, format: {with: /.*@.*/}, uniqueness: {message: "This email address is already in use."}
 
   extend FriendlyId
   friendly_id :first_name, use: :slugged
