@@ -18,6 +18,12 @@ Rails.application.routes.draw do
   # Home page
   root 'home#landing'
 
+  namespace :admin do
+    resources :dares, only: [:index, :destroy]
+    resources :users, only: [:index, :destroy]
+    resources :participations, only: [:index, :destroy]
+  end
+
   resources :follows, only: [:create, :destroy]
   resources :friend_requests, only: [:create, :update, :destroy]
   
