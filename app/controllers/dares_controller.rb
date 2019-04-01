@@ -23,7 +23,9 @@ class DaresController < ApplicationController
       current_user.notify_followers(@dare, "dare_created")
       redirect_to user_path(current_user)
     else
-      render :new
+      respond_to do |format|
+        format.js { render :new }
+      end
     end
   end
 
