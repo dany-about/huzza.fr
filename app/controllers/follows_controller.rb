@@ -15,9 +15,7 @@ class FollowsController < ApplicationController
       end
       follow.destroy
     end
-    respond_to do |format|
-      format.js {render :create}
-    end
+    render :create
   end
 
 end
