@@ -1,4 +1,5 @@
 class DaresController < ApplicationController
+  respond_to :js, :html
 
   def index
   end
@@ -23,9 +24,7 @@ class DaresController < ApplicationController
       current_user.notify_followers(@dare, "dare_created")
       redirect_to user_path(current_user)
     else
-      respond_to do |format|
-        format.js { render :new }
-      end
+      render :new
     end
   end
 
