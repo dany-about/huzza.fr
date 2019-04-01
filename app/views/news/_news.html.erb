@@ -1,5 +1,5 @@
 <% case occasion %>
-<% when "all" then displayed_news =[]; current_user.news.each {|news| displayed_news << news unless news.event.is_a?(Dare) && (news.event.participants.include?(news.friend) || UserSendDare.find_by(dare: news.event, sender: news.friend) != nil) } %>
+<% when "all" then displayed_news =[]; current_user.news.each {|news| displayed_news << news unless ( news.event.is_a?(Dare) && (news.event.participants.include?(news.friend) || UserSendDare.find_by(dare: news.event, sender: news.friend) != nil) ) } %>
 <% when "all_unrated" %>
   <% displayed_news = []; current_user.news.each {|news| if news.is_unrated_by(current_user) then displayed_news << news end }%>
 <% else displayed_news = current_user.news.where(occasion: occasion) %>
