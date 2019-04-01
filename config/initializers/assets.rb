@@ -15,4 +15,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 Rails.application.config.assets.paths << Rails.root.join('lib')
 Rails.application.config.assets.paths << Rails.root.join('vendor')
-Rails.application.config.assets.precompile += %w( user_cards_scripts.js )
+Rails.application.config.assets.precompile += %w( cards_scripts.js )

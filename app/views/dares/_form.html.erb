@@ -1,0 +1,86 @@
+<%= form_for :dare, url: dares_path(mode: params[:mode]), method:"POST", remote: true do |f| %>
+
+  <% if @dare.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dare.errors.count, "erreur") %> ont empêché la création du défi:</h2>
+      <ul>
+      <% @dare.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-md-9 mx-auto" style="margin-top: 50px">
+    <h6 class="mb-1">Choisis la catégorie de ton défi...</h6>
+    <select class="custom-select" name="dare[category_id]">
+      <option selected>-</option>
+      <%= Category.all.each do |category| %>
+        <option value="<%= category.id %>"><%= category.name %></option>
+      <% end %>
+    </select>
+    <div class="card" style="margin-top: 80px; margin-bottom: -0.2px;border-width: 3px;border-color: #2b3442">
+
+      <div class="row row-grid" style="margin-top: -1rem">
+        <%= link_to user_path(current_user), class:"ml-0" do %>
+          <%if current_user.avatar.attached?%>
+            <%= image_tag(current_user.avatar, alt: 'avatar', :class => "avatar rounded-circle avatar-lg shadow hover-shadow-lg mx-auto") %>
+          <%else%>
+            <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/12/4/1553168518-pngpic.png" class="avatar rounded-circle avatar-lg shadow hover-shadow-lg" style="margin-left:-0.5rem;margin-top:-1rem">
+          <% end %>
+        <% end %>
+        <%= link_to user_path(current_user), class:"ml-4" do %>
+        <p class="badge badge-secondary"><%= current_user.full_name %> - a créé</p>
+        <% end %>
+      </div>
+
+      <div class="card-body pt-0">
+        <div class="row row-grid" style="margin-left:-0.5rem;">
+          <div class="col-sm-2 text-center">
+            <p class="card-text">Level <%= current_user.rank %></p>
+            <div class="<%= current_user.badge[:animation] %>">
+              <h4 style="margin-top: 11px"><%= current_user.badge[:emote] %></h4>
+            </div>
+          </div>
+          <div class="col-sm-8 my-auto text-center">
+            <div class="form-group">
+              <input type="text" id="titleInput" name="dare[title]" class="form-control form-control-flush" placeholder="Titre de ton défi, minimum 20 caractères..." maxlength="140" tabindex="1">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row row-grid mr-auto ml-auto">
+      <%= render 'shared/card_elements/tab_btns' %>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <div class="row row-grid mx-auto my-auto">
+          <div class="col-lg-12">
+            <div class="form-group">
+              <textarea type="text" id="descriptionInput" name="dare[description]" class="form-control form-control-flush" placeholder="Description de ton défi, minimum 30 caractères..." maxlength="1000" tabindex="1"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% if params[:mode] == "sent" %>
+      <h6 class="mb-1">Qui veux-tu challenger ?</h6>
+      <select class="custom-select" name="recipient_id">
+        <%= current_user.friends.each do |friend| %>
+          <option value="<%= friend.id %>"><%= friend.full_name %></option>
+        <% end %>
+      </select>
+    <% else %>
+      <input type = "checkbox" name = "participate" value = "yes" /> Je souhaite y participer
+    <% end %>
+    <br/>
+    <br/>
+    <div style="display: flex; justify-content: flex-end;">
+      <%= f.submit "Créer mon défi", class:"btn btn-danger", type:"submit" %>
+    </div>
+  </div>
+
+<% end %>

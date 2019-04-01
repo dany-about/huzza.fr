@@ -1,0 +1,1 @@
+$("#<%= params[:id] %>").replaceWith("<%= j (render 'comments/edit_form', comment: Comment.find(params[:id]), commentable_id: params[:commentable_id], type: params[:type]) %>")

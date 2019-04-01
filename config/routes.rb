@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   resources :star_dares, only: [:create, :destroy]
   resources :difficulty_ratings, only: [:create]
   resources :reactions, only: [:create, :destroy]
-  resources :comments, only: [:create, :destroy]
+  resources :comments, only: [:index, :create, :edit, :update, :destroy]
   resources :contestations, only: [:create]
 
 end

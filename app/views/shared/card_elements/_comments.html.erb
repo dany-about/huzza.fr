@@ -21,7 +21,7 @@
       <div class="list-group list-group-flush">
         <% type.constantize.find(commentable_id).comments.each do |comment| %>
           <div class="list-group-item list-group-item-action">
-            <div class="d-flex align-items-center" data-toggle="tooltip" data-placement="right">
+            <div class="d-flex align-items-center" data-toggle="tooltip" data-placement="right" id="<%= comment.id %>">
               <div>
                 <%= render "shared/user_avatar", user: comment.user %>
               </div>
@@ -34,6 +34,7 @@
               <div class="text-right">
                 <div class="actions">
                   <% if comment.user == current_user %>
+                    <%= link_to "edit", edit_comment_path(comment, commentable_id: commentable_id, type: type), class: "action-item", remote: true %>
                     <%= link_to comment_path(comment, commentable_id: commentable_id, type: type), class: "action-item", method: "DELETE", remote: true do %>
                       <i class="far fa-trash-alt"></i>
                     <% end %>
@@ -55,7 +56,7 @@
             <%= f.text_field :content, placeholder:"Poster un commentaire...", rows:"1", class:"form-control", toggle:"autosize", maxlength:"140" %>
             </div>
             <div class="col-4 col-md-3 text-right">
-              <%= f.submit "Commenter", class:"btn btn-sm btn-outline-success", type:"submit" %>
+              <%= f.submit "Commenter", class:"btn btn-sm btn-outline-success" %>
             </div>
             <% end %>
           </div>

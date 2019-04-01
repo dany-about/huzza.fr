@@ -1,4 +1,5 @@
 class DaresController < ApplicationController
+  respond_to :js, :html
 
   def index
   end

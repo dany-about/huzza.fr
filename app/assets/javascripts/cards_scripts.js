@@ -29,6 +29,16 @@ $(document).ready(function() {
     }) })
   })
 
+  // CARD: Toggle Description on click
+  Array.from($(".cardTitle")).forEach(function(element) { $(element).on("click", function() { 
+    let dad = this.parentNode.parentNode.parentNode.parentNode
+    console.log(dad)
+    let array = [5,7,9,11]
+    let answer = true
+    array.forEach( (nbr) => { if(!$(dad.childNodes[nbr]).hasClass('collapse')) { $(dad.childNodes[nbr]).addClass('collapse'); answer = false } })
+    if(answer) { $(dad.childNodes[5]).toggleClass("collapse") }
+  }) })
+
   // CLOSE TABS ON OUTSIDE CLICK
   function closeOnClickOutside(element){						
      $(window).on("click.Bst", function(event){		
