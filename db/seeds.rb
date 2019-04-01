@@ -54,8 +54,8 @@ Accomplishment.create!(title: "Mister Bucket", name: "A réussi 5 défis dans la
 Accomplishment.create!(title: "Geek 2.0", name: "A réussi 5 défis dans la catégorie Gaming.", icon_class:"fas fa-gamepad")
 Accomplishment.create!(title: "Jean Michel Blague", name: "A réussi 5 défis dans la catégorie WTF.", icon_class:"fas fa-spider")
 
-admin = User.create!(email: "noe@huzza.fr", password:"123456", password_confirmation: "123456", first_name: "Noé", last_name: "Marguillard")
-dany = User.create!(email: 'dany@huzza.fr', password: '123456', password_confirmation: '123456', first_name: "Dany", last_name: "About")
+admin = User.create!(email: "noe@huzza.fr", password:"123456", password_confirmation: "123456", first_name: "Noé", last_name: "Marguillard", is_admin: true)
+dany = User.create!(email: 'dany@huzza.fr', password: '123456', password_confirmation: '123456', first_name: "Dany", last_name: "About", is_admin: true)
 nans = User.create!(email: "nans@huzza.fr", password:"123456", password_confirmation: "123456", first_name: "Nans", last_name: "Noel")
 nikki = User.create!(email: "nikki@huzza.fr", password:"123456", password_confirmation: "123456", first_name: "Nicolas", last_name: "Stanojevic")
 aliya = User.create!(email: "akiya@huzza.fr", password:"123456", password_confirmation: "123456", first_name: "Aliyusha", last_name: "Gizatullina")
