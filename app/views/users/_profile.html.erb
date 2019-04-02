@@ -20,7 +20,7 @@
       </div>
     <% end %>
   <% else %>
-    <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/12/4/1553168518-pngpic.png" class="avatar rounded-circle avatar-lg shadow hover-shadow-lg mx-auto">
+    <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/12/4/1553168518-pngpic.png" class="avatar rounded-circle avatar-lg shadow hover-shadow-lg mx-auto mt-1">
   <% end %>
 
   <div class="card-body p-3 pt-0 text-center">
@@ -30,7 +30,7 @@
     <hr class="divider divider-fade" style="margin-top: -10px" />
 
     <div class="row" style="justify-content: center; margin-top: -20px">
-      <h5 class="mb-0" style="margin-right: 10px">Rang <%= user.rank %> | <div class="<%= user.badge[:animation] %>"><%= user.badge[:emote] %></div></h5>
+      <h5 class="mb-0">Niveau <%= user.rank %> | <div class="<%= user.badge[:animation] %>"><%= user.badge[:emote] %></div></h5>
     </div>
     <div class="spinner-border spinner-border-sm text-warning" role="status"></div>
      

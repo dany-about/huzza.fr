@@ -1,9 +1,9 @@
-<div class="card card-body border-0 hover-shadow-lg text-center"  style="height: 300px; overflow: scroll">
+<div class="card card-body border-0 hover-shadow-lg text-center" style="height: 300px; display: flex; flex-direction: column; justify-content: space-between">
 
   <div class="row" style="justify-content: center">
 
     <h6 class="text-capitalize"><%= user.friends.count %> amis</h6>
-    <div class="avatar-group hover-avatar-ungroup mb-3" style="margin-left: 8px">
+    <div class="avatar-group hover-avatar-ungroup mb-3 ml-1">
       <a href="#" class="avatar rounded-circle avatar-sm">
         <img alt="Image placeholder" src="http://sunrift.com/wp-content/uploads/2014/12/Blake-profile-photo-square.jpg" class="">
       </a>
@@ -20,26 +20,26 @@
   </div>
 
   <div class="row" style="justify-content: center">
-    <h6 class="text-capitalize"><%= user.created_dares.count %> défis créés</h6>
-  </div>
-
-  <div class="row" style="justify-content: center; margin-top: 15px">
-    <h6 class="text-capitalize"><%= user.achieved_participations.count %> défis réussis</h6>
-  </div>
-
-  <div class="row" style="justify-content: center; margin-top: 15px">
-    <h6 class="text-capitalize"><%= user.ongoing_participations.count %> participations en cours</h6>
-  </div>
-
-  <div class="row" style="justify-content: center; margin-top: 15px">
     <h6 class="text-capitalize"><%= user.followers.count %> followers</h6>
   </div>
 
-  <div class="row" style="justify-content: center; margin-top: 15px">
+  <div class="row" style="justify-content: center">
+    <h6 class="text-capitalize"><%= user.created_dares.count %> défis créés</h6>
+  </div>
+
+  <div class="row" style="justify-content: center">
+    <h6 class="text-capitalize"><%= user.achieved_participations.count %> défis réussis</h6>
+  </div>
+
+  <div class="row" style="justify-content: center">
+    <h6 class="text-capitalize"><%= user.ongoing_participations.count %> participations en cours</h6>
+  </div>
+
+  <div class="row" style="justify-content: center">
     <h6 class="text-capitalize"><%= user.starred_dares.count %> défis favoris</h6>
   </div>
 
-  <div class="row" style="margin-top: 15px; justify-content: center">
+  <div class="row" style="justify-content: center">
     <% if user != current_user %>
       <% if !user.friends.include?(current_user) %>
         <% if !current_user.followers.include?(user) %>
