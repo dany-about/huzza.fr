@@ -5,7 +5,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <div>
             <% if type.constantize.find(commentable_id).comments.count == 0 %>
-              <h7 class="mb-0">Sois le premier à commenter ce défi !</h7>
+              <h7 class="mb-0">Aucun commentaire pour le moment.</h7>
             <% else %>
               <h7 class="mb-0">Les derniers commentaires</h7>
             <% end %>
@@ -56,7 +56,7 @@
             <%= f.text_field :content, placeholder:"Poster un commentaire...", rows:"1", class:"form-control", toggle:"autosize", maxlength:"140" %>
             </div>
             <div class="col-4 col-md-3 text-right">
-              <%= f.submit "Commenter", class:"btn btn-sm btn-outline-success" %>
+              <%= f.submit "Commenter", class:"btn btn-sm btn-secondary" %>
             </div>
             <% end %>
           </div>

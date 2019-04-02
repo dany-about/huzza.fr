@@ -1,4 +1,4 @@
 Array.from($(".showProof_<%= params[:id] %>")).forEach( function(element) {
   $(element).html("<%= j (render 'shared/card_elements/proofs_list', event: Participation.find(params[:id])) %>")
-  $(element).append("Votre preuve est en ligne ! Vos points seront comptabilisés dans 72 heures, si votre preuve n'est pas contestée par la communauté.")
+  $(element).append("Vos points seront comptabilisés dans 72 heures, si votre preuve n'est pas contestée par la communauté d'ici là.")
 } )

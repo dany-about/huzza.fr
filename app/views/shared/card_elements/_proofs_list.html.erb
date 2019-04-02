@@ -1,14 +1,13 @@
 <% if current_user == event.user && event.is_achieved == nil %>
   <div style="margin-bottom: 20px">
-  Preuves à l'étude depuis <%= time_ago_in_words(event.updated_at) %> : <b><%= event.contestations.count %> personnes </b> ont contesté cette réalisation.
+  Preuve à l'étude depuis <%= time_ago_in_words(event.updated_at) %> : <b><%= event.contestations.count %> personnes </b> ont contesté cette réalisation.
   </div>
 <% end %>
 
 <!-- DISPLAY IMAGES PROOF -->
 <%if event.pictures.attached?%>
-  <h5>La preuve en image par <%= event.user.full_name %></h5>
   <% event.pictures.each do |picture| %> 
-      <div class="mt-4">
+      <div class="mt-3">
         <%= image_tag picture, class: 'img-fluid rounded', style: 'width: 450px' %>
       </div>
       <div class="mt-2">
@@ -19,44 +18,49 @@
 
 <!-- DISPLAY VIDEOS PROOF -->
 <%if event.videos.attached?%>
-  <h5>La preuve en vidéo par <%= event.user.full_name %></h5>
   <% event.videos.each do |video| %>
-
     <!-- Custom video.js -->
     <video id='my-video' class='video-js' controls preload='auto' width='640' height='264' data-setup='{}'>
       <source src='<%= url_for(video) %>' type='video/mp4'>
     </video>
-    postée <%= time_ago_in_words(video.created_at) %>
-
+    posté il y a <%= time_ago_in_words(video.created_at) %>
   <% end %>
 <% end %>
 
 <% if current_user == event.user && event.is_achieved == false %>
   <!-- Bouton pour upload sa preuve (attacher la photo) -->
   <div class="row row-grid">
-    <div class="col-6 order-lg-1 mt-0 text-center">
+    <div class="col-lg-6 order-lg-1 mt-0 text-center">
       <!-- Add picture proof -->
-      <h5>Ajouter une preuve photo</h5>
+      <h2>📸</h2>
       <%= form_tag participation_pictures_path(event), multipart: true do %>
-      <%= file_field_tag :pictures %>
-      <%= submit_tag "Upload", class: "btn btn-dark btn-sm" %>
+        <span class="btn btn-sm btn-soft-warning btn-file-up">
+          Choisir
+          <%= file_field_tag :pictures %>
+        </span>
+        <%= submit_tag "Upload", class: "btn btn-soft-dark btn-sm" %>
       <% end %>
     </div>
-    <div class="col-6 order-lg-2 mt-0 text-center">
+    <div class="col-lg-6 order-lg-2 mt-0 text-center">
       <!-- Add video proof -->
-      <h5>Ajouter une preuve vidéo</h5>
+      <h2>📹</h2>
       <%= form_tag participation_videos_path(event), multipart: true do %>
-      <%= file_field_tag :clip %>
-      <%= hidden_field_tag :participation_id %>
-      <%= submit_tag "Upload", class: "btn btn-dark btn-sm" %>
+        <span class="btn btn-sm btn-soft-warning btn-file-up">
+          Choisir
+          <%= file_field_tag :clip %>
+          <%= hidden_field_tag :participation_id %>
+        </span>
+        <%= submit_tag "Upload", class: "btn btn-soft-dark btn-sm" %>
       <% end %>
     </div>
   </div>
 
   <% if event.videos.attached? || event.pictures.attached? %>
-    <div class="row text-center">
+    <div class="row mt-5">
       <%= link_to "Poster ma preuve", participation_path(event), method: "PATCH", class: "btn btn-sm btn-soft-danger mx-auto", remote: true %>
-      Attention, vous ne pourrez plus poster de photos ou vidéos supplémentaires jusqu'à ce que la communauté juge votre réalisation.
+    </div>
+    <div class="row text-center">
+      <p class="mt-1 mx-auto">Attention, une fois validé, vous ne pourrez plus poster ni photos ni vidéos supplémentaires.</p>
     </div>
   <% end %>
 
@@ -65,10 +69,12 @@
   <% if Contestation.find_by(user: current_user, participation: event) == nil %>
     <%= link_to contestations_path(id: event), method: "POST", remote: true do %>
       <!-- Bouton pour contester la validité des preuves -->
-      ICONE DANGER  Contester ces preuves de réalisation
+      <button type="button" class="btn btn-soft-danger btn-sm mt-1">Contester la preuve</button>
     <% end %>
   <% else %>
-    Déjà contesté
+    <div class="row">
+        <h6 class="mt-2 mx-auto">Preuve déja contestée.</h6>
+    </div>
   <% end %>
 
 <% end %>

@@ -36,8 +36,11 @@
 
                     <div class="field text-center">
                       <%= form_tag user_avatars_path(@user), multipart: true do %>
-                      <%= file_field_tag :avatar %>
-                      <%= submit_tag "Upload une photo", class: 'btn btn-dark btn-sm', style: 'margin-top: 10px' %>
+                        <span class="btn btn-sm btn-soft-danger btn-file-up">
+                          Choisir
+                          <%= file_field_tag :avatar %>
+                        </span>
+                        <%= submit_tag "Upload", class: 'btn btn-sm btn-soft-dark'%>
                       <% end %>
                     </div><br>
                   </div>
@@ -81,8 +84,6 @@
 
                   <h3>Supprimer mon compte</h3>
                   <p>Huzza a été ravi de vous compter parmis ses utilisateurs... <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger'%></p>
-
-                  <%= link_to "Retourner en zone sûre", :back %>
 
                   <!-- FORM END -->
 
