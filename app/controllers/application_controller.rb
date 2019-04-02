@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :set_locale, :check_achievements, :check_accomplishments, :set_dummy_user
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :authenticate_user!, except: [:new, :create]
+  before_action :authenticate_user!
 
   def set_locale
     I18n.locale = extract_locale_from_tld || I18n.default_locale

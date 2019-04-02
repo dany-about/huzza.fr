@@ -1,0 +1,28 @@
+<section class="mt-5">
+  <div class="container mt-5">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Count</th>
+          <th>Columns</th>
+          <th></th>
+        </tr>
+      </thead>
+      <% ApplicationRecord.descendants.each do |model| %>
+      <tbody>
+        <tr>
+          <td><%= link_to "#{model.name}", admin_index_path(model: model.name) %></td>
+          <td><%= model.count %></td>
+          <td><%= model.column_names %></td>
+          <td></td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
+</section>
+  
+  
+  
+  

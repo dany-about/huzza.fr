@@ -1,0 +1,23 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>DELETE</th>
+      <% model.column_names.each do |attribute| %>
+      <th><%= attribute %></th>
+      <% end %>
+      <th></th>
+    </tr>
+  </thead>
+  <% if model.to_s == "User" then list = User.real_users else list = model.all end %>
+  <% list.each do |element| %>
+  <tbody>
+    <tr>
+      <td><%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, admin_path(model: model.to_s, id: element.id), method: "DELETE", remote: true %></td>
+      <% model.column_names.each do |attribute| %>
+      <td><%= element.send(attribute) %></td>
+      <% end %>
+      <td></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
