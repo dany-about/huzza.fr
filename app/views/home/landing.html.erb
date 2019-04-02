@@ -113,15 +113,7 @@
     </section>
   </div>
 
-  <div class="container" id="exampleCards">
-    <% 5.times do |i| %>
-    <div class="col-10 mx-auto" style="margin-top: 100px">
-      <%= render "shared/dare_card", dare: Dare.all[i], friend: Dare.all[i].creator, occasion: nil, disclaimer: false %>
-    </div>
-    <% end %>
-  </div>
-
-  <section class="slice slice-lg mt-3">
+ <section class="slice slice-lg">
     <div class="container">
       <div class="row no-gutters align-items-md-center text-center text-md-left">
         <div class="card hover-shadow-lg hover-scale-110 order-2 col-lg-7 ml--100">
@@ -138,41 +130,7 @@
     </div>
   </section>
 
-  <section class="slice slice-lg">
-    <div class="container">
-      <div class="row row-grid justify-content-around align-items-center">
-        <div class="col-lg-5">
-          <div class="">
-            <h5 class=" h3">We are 100% involved</h5>
-            <p class="lead my-4">With Purpose you get components and examples, including tons of variables that will help you customize this theme with ease.</p>
-            <a href="#" class="link link-underline-info font-weight-bold">Find out more</a>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <img alt="Image placeholder" src="https://images.pexels.com/photos/1619541/pexels-photo-1619541.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="img-fluid img-center ">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="slice slice-lg">
-    <div class="container">
-      <div class="row row-grid justify-content-around align-items-center">
-        <div class="col-lg-5 order-lg-2">
-          <div class=" pr-lg-4">
-            <h5 class=" h3">We never give up</h5>
-            <p class="lead my-4">With Purpose you get components and examples, including tons of variables that will help you customize this theme with ease.</p>
-            <a href="#" class="link link-underline-warning font-weight-bold">Find out more</a>
-          </div>
-        </div>
-        <div class="col-lg-6 order-lg-1">
-          <img alt="Image placeholder" src="https://images.pexels.com/photos/672358/pexels-photo-672358.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="img-fluid img-center ">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="slice slice-lg mt-3">
+  <section class="slice slice-lg mt-3" style="margin-bottom: -50px">
     <div class="container">
       <div class="row align-items-md-center">
         <div class="col-lg-3 col-6 mb-5 mb-lg-0">
@@ -181,7 +139,7 @@
               <i class="far fa-heart"></i>
             </div>
             <span class="d-block mt-4 h3 text-danger">97%</span>
-            <span class="d-block mt-2 h6">Utilisateurs heureux</span>
+            <span class="d-block mt-2 h6">D'utilisateurs heureux</span>
           </div>
         </div>
         <div class="col-lg-3 col-6 mb-5 mb-lg-0">
@@ -189,7 +147,7 @@
             <div class="icon icon-lg text-primary">
               <i class="far fa-clock"></i>
             </div>
-            <span class="d-block mt-4 h3 text-primary">Longtemps</span>
+            <span class="d-block mt-4 h3 text-primary">Trop longtemps</span>
             <span class="d-block mt-2 h6">Que vous l'attendiez</span>
           </div>
         </div>
@@ -215,77 +173,43 @@
     </div>
   </section>
 
+  <div class="container" id="exampleCards">
+    <% 5.times do |i| %>
+    <div class="col-10 mx-auto" style="margin-top: 100px">
+      <%= render "shared/dare_card", dare: Dare.all[i], friend: Dare.all[i].creator, occasion: nil, disclaimer: false %>
+    </div>
+    <% end %>
+  </div>
+
   <section class="slice slice-lg">
     <div class="container">
-      <div class="mb-5 text-center">
-        <h3 class="mt-4">Plusieurs raisons de nous faire confiance</h3>
-      </div>
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="card hover-shadow-lg hover-scale-110">
-            <div class="card-body py-4">
-              <div class="d-flex align-items-start">
-                <div class="icon text-primary rounded-circle">
-                  <i class="fas fa-terminal"></i>
-                </div>
-                <div class="icon-text pl-4">
-                  <h5 class="ma-0 ">Customizable with a few clicks</h5>
-                  <p class="mb-0">Purpose is a great free UI package based on
-                  Bootstrap 4 that includes the most important components and features.</p>
-                </div>
-              </div>
-            </div>
+      <div class="row row-grid justify-content-around align-items-center">
+        <div class="col-lg-5">
+          <div class="">
+            <h5 class=" h3">Un réseau social bienveillant</h5>
+            <p class="lead my-4">Nous croyons en un rapport sain possible entre online et offline, en faisant des réseaus sociaux un pont vers le réel, et une source d'inspiration sans limite.</p>
+            <a href="#" class="link link-underline-info font-weight-bold">Manifesto</a>
           </div>
         </div>
         <div class="col-lg-6">
-          <div class="card hover-shadow-lg hover-scale-110">
-            <div class="card-body py-4">
-              <div class="d-flex align-items-start">
-                <div class="icon text-primary rounded-circle">
-                  <i class="fas fa-expand"></i>
-                </div>
-                <div class="icon-text pl-4">
-                  <h5 class="ma-0 ">Fully responsive on any device</h5>
-                  <p class="mb-0">Purpose is a great free UI package
-                  based on Bootstrap 4 that includes the most important components and features.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <img alt="Image placeholder" src="https://images.pexels.com/photos/1619541/pexels-photo-1619541.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="img-fluid img-center ">
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-6">
-          <div class="card hover-shadow-lg hover-scale-110">
-            <div class="card-body py-4">
-              <div class="d-flex align-items-start">
-                <div class="icon text-primary rounded-circle">
-                  <i class="far fa-star"></i>
-                </div>
-                <div class="icon-text pl-4">
-                  <h5 class="ma-0 ">Brining new features constantly</h5>
-                  <p class="mb-0">Purpose is a great free UI package based on
-                  Bootstrap 4 that includes the most important components and features.</p>
-                </div>
-              </div>
-            </div>
+    </div>
+  </section>
+
+  <section class="slice slice-lg">
+    <div class="container">
+      <div class="row row-grid justify-content-around align-items-center">
+        <div class="col-lg-5 order-lg-2">
+          <div class=" pr-lg-4">
+            <h5 class=" h3">La caverne d'Ali Babaventure</h5>
+            <p class="lead my-4">Nous voulons combattre la procrastination et le voyeurisme issus des réseaux sociaux traditionnels, en permettant à des gens qui ont envie de faire d'être plus que jamais inspirés.</p>
+            <a href="#" class="link link-underline-warning font-weight-bold">Manifesto</a>
           </div>
         </div>
-        <div class="col-lg-6">
-          <div class="card hover-shadow-lg hover-scale-110">
-            <div class="card-body py-4">
-              <div class="d-flex align-items-start">
-                <div class="icon text-primary rounded-circle">
-                  <i class="far fa-smile-wink"></i>
-                </div>
-                <div class="icon-text pl-4">
-                  <h5 class="ma-0 ">Built around your suggestions</h5>
-                  <p class="mb-0">Purpose is a great free UI package based on
-                  Bootstrap 4 that includes the most important components and features.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="col-lg-6 order-lg-1">
+          <img alt="Image placeholder" src="https://images.pexels.com/photos/672358/pexels-photo-672358.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" class="img-fluid img-center ">
         </div>
       </div>
     </div>
@@ -299,9 +223,9 @@
       <div class="col-12">
         <h1 class="text-white">Catalyseur d'expériences de vie</h1>
         <div class="row justify-content-center mt-4">
-          <div class="col-lg-8">
-            <p class="lead text-white">
-              Huzza est un réseau social incitant les personnes avides de nouveauté et de challenges à passer à l’action en relevant des défis imaginés par la communauté.
+          <div class="col-lg-11 mt-2">
+            <p class="lead text-white" style="line-height: 3rem; margin-bottom: -30px">
+              Chez Huzza, on est convaincus que les réseaux sociaux peuvent être un moyen formidable pour donner du grain à moudre à des gens qui veulent croquer la vie à pleines dents. C'est pourquoi on fera tout notre possible pour favoriser la libre-circulation d'idées entre personnes qui ont envie de faire, et pour créer de l'émulation autour de contenu inspirant.
             </p>
           </div>
         </div>
@@ -521,139 +445,72 @@
   </div>
 </section>
 
-
-<section class="slice slice-lg">
-  <div class="container">
-    <div class="mb-5 text-center">
-      <h3 class=" mt-4">Ce qu'en disent nos utilisateurs</h3>
-      <div class="fluid-paragraph mt-3">
-        <p class="lead lh-180">Start building fast, beautiful and modern looking websites in no time using our theme.</p>
+  <section class="slice slice-lg">
+    <div class="container">
+      <div class="mb-5 text-center">
+        <h3 class="mt-4">Avec Huzza, tu pourras</h3>
       </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-lg-11">
-        <div class="swiper-js-container overflow-hidden">
-          <div class="swiper-container swiper-container-horizontal" data-swiper-items="1" data-swiper-space-between="0" data-swiper-sm-items="2" data-swiper-xl-items="3" style="cursor: grab;">
-            <div class="swiper-wrapper" style="transform: translate3d(-676.667px, 0px, 0px); transition-duration: 0ms;">
-              <div class="swiper-slide p-4" style="width: 338.333px;">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="d-flex align-items-center">
-                      <div>
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-1-800x800.jpg" class="avatar  rounded-circle">
-                      </div>
-                      <div class="pl-3">
-                        <h5 class="h6 mb-0">Heather Wright</h5>
-                        <small class="d-block text-muted">Google</small>
-                      </div>
-                    </div>
-                    <p class="mt-4 lh-180">Amazing template! All-in-one, clean code, beautiful design, and really not hard to work with.Highly recommended for any kind on website.</p>
-                    <span class="static-rating static-rating-sm">
-                      <i class="star fas fa-star voted"></i>
-                      <i class="star fas fa-star voted"></i>
-                      <i class="star fas fa-star voted"></i>
-                      <i class="star fas fa-star voted"></i>
-                      <i class="star fas fa-star voted"></i>
-                    </span>
-                  </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card hover-shadow-lg hover-scale-110">
+            <div class="card-body py-4">
+              <div class="d-flex align-items-start">
+                <div class="icon text-danger rounded-circle">
+                  <i class="fas fa-terminal"></i>
                 </div>
-              </div>
-              <div class="swiper-slide p-4 swiper-slide-prev" style="width: 338.333px;">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="d-flex align-items-center">
-                      <div>
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-2-800x800.jpg" class="avatar  rounded-circle">
-                      </div>
-                      <div class="pl-3">
-                        <h5 class="h6 mb-0">Monroe Parker</h5>
-                        <small class="d-block text-muted">Apple</small>
-                      </div>
-                    </div>
-                    <p class="mt-4 lh-180">Amazing template! All-in-one, clean code, beautiful design, and really not hard to work with.Highly recommended for any kind on website.</p>
-                    <span class="static-rating static-rating-sm">
-                      <i class="star fas fa-star voted"></i>
-                      <i class="star fas fa-star voted"></i>
-                      <i class="star fas fa-star voted"></i>
-                      <i class="star fas fa-star voted"></i>
-                      <i class="star fas fa-star voted"></i>
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide p-4 swiper-slide-active" style="width: 338.333px;">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="d-flex align-items-center">
-                      <div>
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-3-800x800.jpg" class="avatar  rounded-circle">
-                      </div>
-                      <div class="pl-3">
-                        <h5 class="h6 mb-0">John Sullivan</h5>
-                        <small class="d-block text-muted">Amazon</small>
-                      </div>
-                    </div>
-                    <p class="mt-4 lh-180">Amazing template! All-in-one, clean code, beautiful design, and really not hard to work with.Highly recommended for any kind on website.</p>
-                    <span class="static-rating static-rating-sm">
-                      <i class="star fas fa-star voted"></i>
-                      <i class="star fas fa-star voted"></i>
-                      <i class="star fas fa-star voted"></i>
-                      <i class="star fas fa-star voted"></i>
-                      <i class="star fas fa-star voted"></i>
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide p-4 swiper-slide-next" style="width: 338.333px;">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="d-flex align-items-center">
-                      <div>
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-4-800x800.jpg" class="avatar  rounded-circle">
-                      </div>
-                      <div class="pl-3">
-                        <h5 class="h6 mb-0">James Lewis</h5>
-                        <small class="d-block text-muted">Google</small>
-                      </div>
-                    </div>
-                    <p class="mt-4 lh-180">Amazing template! All-in-one, clean code, beautiful design, and really not hard to work with.Highly recommended for any kind on website.</p>
-                    <span class="static-rating static-rating-sm">
-                      <i class="star fas fa-star voted"></i>
-                      <i class="star fas fa-star voted"></i>
-                      <i class="star fas fa-star voted"></i>
-                      <i class="star fas fa-star voted"></i>
-                      <i class="star fas fa-star voted"></i>
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide p-4" style="width: 338.333px;">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="d-flex align-items-center">
-                      <div>
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-5-800x800.jpg" class="avatar  rounded-circle">
-                      </div>
-                      <div class="pl-3">
-                        <h5 class="h6 mb-0">Julia Howe</h5>
-                        <small class="d-block text-muted">Google</small>
-                      </div>
-                    </div>
-                    <p class="mt-4 lh-180">Amazing template! All-in-one, clean code, beautiful design, and really not hard to work with.Highly recommended for any kind on website.</p>
-                    <span class="static-rating static-rating-sm">
-                      <i class="star fas fa-star voted"></i>
-                      <i class="star fas fa-star voted"></i>
-                      <i class="star fas fa-star voted"></i>
-                      <i class="star fas fa-star voted"></i>
-                      <i class="star fas fa-star voted"></i>
-                    </span>
-                  </div>
+                <div class="icon-text pl-4">
+                  <h5 class="ma-0 ">Parcourir les défis proposés</h5>
+                  <p class="mb-0">Dans l'onglet Explorer, tu vas pouvoir accéder à l'intégralité des défis proposés et/ou réalisés par la communauté, y réagir, et potentiellement y participer.</p>
                 </div>
               </div>
             </div>
-            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination w-100 mt-4 d-flex align-items-center justify-content-center swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 3"></span></div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card hover-shadow-lg hover-scale-110">
+            <div class="card-body py-4">
+              <div class="d-flex align-items-start">
+                <div class="icon text-danger rounded-circle">
+                  <i class="far fa-smile-wink"></i>
+                </div>
+                <div class="icon-text pl-4">
+                  <h5 class="ma-0 ">Partager et défier à tout va</h5>
+                  <p class="mb-0">A tout moment tu pourras créer un défi, en choissant de te challenger toi même, de défier un ami, ou simplement de partager ton idée à la communauté.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card hover-shadow-lg hover-scale-110">
+            <div class="card-body py-4">
+              <div class="d-flex align-items-start">
+                <div class="icon text-danger rounded-circle">
+                  <i class="far fa-star"></i>
+                </div>
+                <div class="icon-text pl-4">
+                  <h5 class="ma-0 ">Côter la difficulté</h5>
+                  <p class="mb-0">A tout moment lorsque tu tomberas sur un défi en cours, tu seras invité à noter la difficulté / originalité du défi.La moyenne de tous ces votes déterminera les points gagnés à la réalisation.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card hover-shadow-lg hover-scale-110">
+            <div class="card-body py-4">
+              <div class="d-flex align-items-start">
+                <div class="icon text-danger rounded-circle">
+                  <i class="fas fa-expand"></i>
+                </div>
+                <div class="icon-text pl-4">
+                  <h5 class="ma-0 ">Partager tes réalisations</h5>
+                  <p class="mb-0">Une fois ton défi posté et réalisé, tu vas pouvoir publier une preuve photo et/ou vidéo pour montrer à toute la communauté comme c'était cool - ou pas cool - et gagner les points correspondant à la moyenne des notes.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
