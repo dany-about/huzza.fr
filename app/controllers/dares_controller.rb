@@ -1,5 +1,5 @@
 class DaresController < ApplicationController
-  respond_to :js, :html
+  respond_to :js, :html, :json
 
   def index
   end
@@ -22,7 +22,6 @@ class DaresController < ApplicationController
         current_user.notify_followers(participation, "participation_created")
       end
       current_user.notify_followers(@dare, "dare_created")
-      redirect_to user_path(current_user)
     else
       render :new
     end
