@@ -4,9 +4,9 @@ class UserSendDare < ApplicationRecord
   belongs_to :dare
 
   # Polymorphic associations
-  has_many :news, as: :event
-  has_many :comments, as: :commentable
-  has_many :reactions, as: :reactionable
+  has_many :news, as: :event, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :reactions, as: :reactionable, dependent: :destroy
 
   validate :sender_is_not_also_recipient
   validate :recipient_is_not_already_participating, on: :create
