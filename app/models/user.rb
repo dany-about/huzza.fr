@@ -19,37 +19,37 @@ class User < ApplicationRecord
 
   # Dares & Participations
   has_many :created_dares, class_name: "Dare", foreign_key: "creator_id"
-  has_many :participations
+  has_many :participations, dependent: :destroy
   has_many :participated_dares, through: :participations, source: :dare
 
   # Friend requests, Friends & Follows
-  has_many :sent_friend_requests, class_name: "FriendRequest", foreign_key: "user_asking_id"
-  has_many :received_friend_requests, class_name: "FriendRequest", foreign_key: "user_asked_id"
-  has_many :follows
+  has_many :sent_friend_requests, class_name: "FriendRequest", foreign_key: "user_asking_id", dependent: :destroy
+  has_many :received_friend_requests, class_name: "FriendRequest", foreign_key: "user_asked_id", dependent: :destroy
+  has_many :follows, dependent: :destroy
   has_many :followers, through: :follows
-  has_many :reverse_follows, class_name: "Follow", foreign_key: "follower_id"
+  has_many :reverse_follows, class_name: "Follow", foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :reverse_follows, source: :user
 
   # Sending and receiving Dares
-  has_many :user_sent_dares, class_name: "UserSendDare", foreign_key: "sender_id"
+  has_many :user_sent_dares, class_name: "UserSendDare", foreign_key: "sender_id", dependent: :destroy
   has_many :sent_dares, through: :user_sent_dares, source: :dare
-  has_many :user_received_dares, class_name: "UserSendDare", foreign_key: "recipient_id"
+  has_many :user_received_dares, class_name: "UserSendDare", foreign_key: "recipient_id", dependent: :destroy
   has_many :received_dares, through: :user_received_dares, source: :dare
 
   # Starring Dares
-  has_many :star_dares
+  has_many :star_dares, dependent: :destroy
   has_many :starred_dares, through: :star_dares, source: :dare
 
   # Accomplishments
-  has_many :user_accomplishments
+  has_many :user_accomplishments, dependent: :destroy
   has_many :accomplishments, through: :user_accomplishments
 
   # Miscellaneous
-  has_many :news
-  has_many :reactions
-  has_many :difficulty_ratings
-  has_many :comments
-  has_many :contestations
+  has_many :news, dependent: :destroy
+  has_many :reactions, dependent: :destroy
+  has_many :difficulty_ratings, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :contestations, dependent: :destroy
 
   def full_name
     self.first_name.to_s+" "+self.last_name.to_s
