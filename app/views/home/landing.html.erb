@@ -176,7 +176,7 @@
   <div class="container" id="exampleCards">
     <% 5.times do |i| %>
     <div class="col-10 mx-auto" style="margin-top: 100px">
-      <%= render "shared/dare_card", dare: Dare.all[i], friend: Dare.all[i].creator, occasion: nil, disclaimer: false %>
+      <%= render "shared/dare_card", event: Dare.all[i], friend: Dare.all[i].creator, occasion: nil, disclaimer: false %>
     </div>
     <% end %>
   </div>

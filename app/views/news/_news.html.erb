@@ -17,14 +17,7 @@
       <div style="margin-top: 80px">
         <div class="row row-grid mx-auto">
           <div class="col-lg-10 order-lg-1 mx-auto eventCard" id="<%=news.event.class.name%>_<%=news.event.id%>">
-            <% case news.event.class.name %>
-            <% when "Participation" %>
-            <%= render "shared/participation_card", participation: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
-            <% when "Dare" %>
-            <%= render "shared/dare_card", dare: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
-            <% when "UserSendDare" %>
-            <%= render "shared/sent_dare_card", sent_dare: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
-            <% end %>
+            <%= render "shared/dare_card", event: news.event, friend: news.friend, disclaimer: true, occasion: news.occasion, read: news.read %>
           </div>
           <div class="col-lg-2 order-lg-2 mx-auto mt-6">
             <small> Il y a <%= time_ago_in_words(news.created_at) %> </small>

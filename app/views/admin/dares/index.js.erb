@@ -1,8 +1,0 @@
-$("#adminExplorerIndex").html("<%= j (render 'admin/dares/dares', category: Category.find(params[:category_id]), is_admin: true) %>")
-
-function scrollToAnchor(aid){
-  var aTag = $(aid);
-  $('html,body').animate({scrollTop: aTag.offset().top},'slow');
-}
-
-scrollToAnchor($("body"))

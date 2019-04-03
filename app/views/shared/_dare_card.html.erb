@@ -1,4 +1,11 @@
-
+<% case event.class.name %>
+<% when "Dare" %>
+  <% dare = event %>
+<% when "Participation" %>
+  <% dare = event.dare %>
+<% when "UserSendDare" %>
+  <% dare = event.dare; sender = event.sender; recipient = event.recipient %>  
+<% end %>
 
 <div class="card cardBody" style="margin-bottom: -0.2px;border-width: 3px;border-color: #293443">
   
@@ -10,20 +17,61 @@
       <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/12/4/1553168518-pngpic.png" class="avatar rounded-circle avatar-lg shadow hover-shadow-lg" style="margin-left:-0.5rem;margin-top:-1rem">
       <% end %>
     <% end %>
-    <% if disclaimer %>
-      <%= link_to user_path(friend), class:"ml-4" do %>
-        <p class="badge badge-secondary"><%= friend.full_name %> - a créé</p>
+
+    <% case event.class.name %>
+    <% when "Dare" %>
+      <% if disclaimer %>
+        <%= link_to user_path(friend), class:"ml-4" do %>
+          <p class="badge badge-secondary"><%= friend.full_name %> - a créé</p>
+        <% end %>
       <% end %>
+    <% when "Participation" %>
+      <% if disclaimer %>
+        <%= link_to user_path(friend), class:"ml-4" do %>
+          <% case occasion %>
+          <% when "participation_created" %>
+            <p class="badge badge-secondary"><%= friend.full_name %> - participe</p>
+          <% when "participation_achieved" %>
+            <p class="badge badge-secondary"><%= friend.full_name %> - a réussi</p>
+          <% when "dare_accepted" %>
+            <p class="badge badge-secondary"><%= friend.full_name %> - relève le défi</p>
+          <% when "achievement_rejected" %>         
+            <p class="badge badge-secondary">La communauté remet en question la réalisation de <%= friend.full_name %> !</p>          
+          <% end %>
+        <% end %>
+      <% end %>
+    <% when "UserSendDare" %>
+      <div class="ml-4">
+        <% if friend == sender %>
+          <p class="badge badge-secondary"><%= link_to "#{sender.full_name}", user_path(sender) %> défie <%= link_to "#{recipient.full_name}", user_path(recipient) %> </p>
+        <% elsif friend == recipient %>
+          <p class="badge badge-secondary"><%= link_to "#{recipient.full_name}", user_path(recipient) %> est défié(e) par <%= link_to "#{sender.full_name}", user_path(sender) %> </p>
+        <% end %>
+      </div>
     <% end %>
   </div>
 
   <div class="card-body pt-0">
     <div class="row row-grid" style="margin-left:-0.5rem;">
       <div class="col-sm-2 text-center">
-        <p class="card-text">Level <%= friend.rank %></p>
-        <div class="<%= friend.badge[:animation] %>">
-          <h4 style="margin-top: 11px"><%= friend.badge[:emote] %></h4>
-        </div>
+        <% if disclaimer %>
+          <p class="card-text">Level <%= friend.rank %></p>
+          <div class="<%= friend.badge[:animation] %>">
+            <h4 style="margin-top: 11px"><%= friend.badge[:emote] %></h4>
+          </div>
+        <% elsif event.is_a?(Participation) %>
+          <% case event.is_achieved %>
+          <% when false %>
+            <p class="badge badge-primary"> En cours </p>
+            <p class="badge badge-primary"><i class="far fa-clock"></i> depuis <%= time_ago_in_words(event.created_at) %> </p> 
+          <% when nil %>
+            <p class="badge badge-secondary"><i class="fas fa-search"></i> À l'étude </p>
+            <p class="badge badge-secondary"><i class="far fa-clock"></i> depuis <%= time_ago_in_words(event.updated_at) %> </p> 
+          <% when true %>          
+            <p class="badge badge-success"><i class="fas fa-trophy"></i> Réussi </p>
+            <p class="badge badge-success"><i class="far fa-clock"></i> Il y a <%= time_ago_in_words(event.updated_at) %> </p> 
+          <% end %>
+        <% end %>
       </div>
       <div class="col-sm-8 my-auto text-center cardTitle">
         <h5 class="card-title" style="text-align: justify; text-justify: inter-word"><%= dare.title %></h5>
@@ -32,8 +80,8 @@
         <div class="starElement_<%=dare.id%>">
           <%= render 'shared/card_elements/star', dare: dare %>
         </div>
-        <div class="reactionElement_<%=dare.id%>">
-          <%= render 'shared/card_elements/reaction', event_id: dare.id, type: dare.class.name %>
+        <div class="reactionElement_<%=event.id%>">
+          <%= render 'shared/card_elements/reaction', event_id: event.id, type: event.class.name %>
         </div>
       </div>
     </div>
@@ -48,8 +96,8 @@
   <%= render 'shared/card_elements/description', dare: dare %>
 </div>
 
-<div class="card collapse cardElementCanBeHidden commentElement_<%=dare.id%>">
-  <%= render 'shared/card_elements/comments', commentable_id: dare.id, type: dare.class.name %>
+<div class="card collapse cardElementCanBeHidden commentElement_<%=event.id%>">
+  <%= render 'shared/card_elements/comments', commentable_id: event.id, type: event.class.name %>
 </div>
 
 <div class="card collapse cardElementCanBeHidden ratingElement_<%=dare.id%>">
@@ -61,7 +109,13 @@
 <% else proof_class = "card collapse" %>
 <% end %>
 
-<div class="<%= proof_class %> cardElementCanBeHidden proofElement_<%=dare.class.name%>_<%=dare.id%>">
-  <%= render 'shared/card_elements/proof', event: dare %>
-</div>
+<% if event.is_a?(UserSendDare) %>
+  <div class="<%= proof_class %> cardElementCanBeHidden proofElement_<%=dare.class.name%>_<%=dare.id%>">
+    <%= render 'shared/card_elements/proof', event: dare %>
+  </div>
+<% else %>
+  <div class="<%= proof_class %> cardElementCanBeHidden proofElement_<%=event.class.name%>_<%=event.id%>">
+    <%= render 'shared/card_elements/proof', event: event %>
+  </div>
+<% end %>
 
