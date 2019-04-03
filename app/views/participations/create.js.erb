@@ -1,1 +1,4 @@
-Array.from($(".descriptionElement_<%= params[:dare] %>")).forEach( function(element) {$(element).html("<%= j (render 'shared/card_elements/description', dare: Dare.find(params[:dare])) %>")} )
+Array.from($(".descriptionElement_<%= params[:dare] %>")).forEach( function(element) {$(element).html("<%= j (render 'shared/card_elements/description', dare: Dare.find(params[:dare_id]), random_id: params[:random_id]) %>")} );
+$("#participateBtn_<%= params[:dare_id] %>_<%= params[:random_id] %>").append(`<div id="participateNotice_<%= params[:dare_id] %>_<%= params[:random_id] %>" class="alert alert-success" style="z-index: 99999; position:absolute" role="alert">
+  <strong>Inscription prise en compte</strong></div>`);
+$("#participateNotice_<%= params[:dare_id] %>_<%= params[:random_id] %>").fadeOut(4000, $("#participateNotice_<%= params[:dare_id] %>_<%= params[:random_id] %>").remove);

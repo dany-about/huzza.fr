@@ -1,4 +1,4 @@
-<% random_id = rand(100000) %>
+<% random_id = rand(100000) unless random_id != nil %>
 
 <div class="card-body">
   <div class="row row-grid mx-auto my-auto">
@@ -23,27 +23,27 @@
       <div style="text-align: right; padding-right: 24px;">
         <% participation = Participation.find_by(dare: dare, user: current_user) %>
         <% if participation == nil %>
-        <%= link_to participations_path(dare: dare), method: "POST", remote: true do %>
-        <button type="button" class="btn btn-sm btn-soft-success">
-          Le réaliser
-        </button>
-        <% end %>
+            <%= link_to participations_path(dare_id: dare.id, random_id: random_id), method: "POST", id:"participateBtn_#{dare.id}_#{random_id}", remote: true do %>
+            <button type="button" class="btn btn-sm btn-soft-success">
+              Le réaliser
+            </button>
+            <% end %>
         <% elsif !participation.is_achieved %>
-        <%= link_to user_path(current_user) do %>
-        <button type="button" class="btn btn-sm btn-soft-primary">
-          En cours
-        </button>        
-        <% end %>
+          <%= link_to user_path(current_user) do %>
+          <button type="button" class="btn btn-sm btn-soft-primary">
+            En cours
+          </button>        
+          <% end %>
         <% elsif participation.is_achieved %>
-        <%= link_to user_path(current_user) do %>
-        <button type="button" class="btn btn-sm btn-soft-success">
-          Déjà réalisé
-        </button>        
+          <%= link_to user_path(current_user) do %>
+          <button type="button" class="btn btn-sm btn-soft-success">
+            Déjà réalisé
+          </button>        
+          <% end %>
         <% end %>
-        <% end %>
-        <button class="btn btn-sm btn-soft-warning" data-toggle="modal" data-target="#modalChallengeFriend_<%= dare.id %>_<%= random_id %>">
+        <button class="btn btn-sm btn-soft-warning" data-toggle="modal" data-target="#modalChallengeFriend_<%= dare.id %>_<%= random_id %>" id="challengeFriendBtn_<%=dare.id%>_<%=random_id%>">
           Défier un ami
-        </button>            
+        </button> 
       </div>
     </div>
   </div>
