@@ -20,10 +20,10 @@
           <i class="bg-primary"></i> Défi imaginé et créé par <%= link_to "#{dare.creator.full_name}", user_path(dare.creator) %>
         </span>
       </div>
-      <div style="text-align: right; padding-right: 24px;">
+      <div style="text-align: right; padding-right: 24px;" id="participateBtn_<%=dare.id%>_<%=random_id%>">
         <% participation = Participation.find_by(dare: dare, user: current_user) %>
         <% if participation == nil %>
-            <%= link_to participations_path(dare_id: dare.id, random_id: random_id), method: "POST", id:"participateBtn_#{dare.id}_#{random_id}", remote: true do %>
+            <%= link_to participations_path(dare_id: dare.id, random_id: random_id), method: "POST", remote: true do %>
             <button type="button" class="btn btn-sm btn-soft-success">
               Le réaliser
             </button>

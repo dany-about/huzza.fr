@@ -2,7 +2,7 @@ $(document).ready(function() {
   // SCROLL 
   function scrollToAnchor(aid){
     var aTag = $(aid);
-    $('html,body').animate({scrollTop: aTag.offset().top},'slow');
+    $('html,body').animate({scrollTop: aTag.offset().top-60},'slow');
   }
   
   // USER PAGE SCROLL
