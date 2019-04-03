@@ -34,7 +34,9 @@
               <div class="text-right">
                 <div class="actions">
                   <% if comment.user == current_user %>
-                    <%= link_to "edit", edit_comment_path(comment, commentable_id: commentable_id, type: type), class: "action-item", remote: true %>
+                    <%= link_to edit_comment_path(comment, commentable_id: commentable_id, type: type), class: "action-item", remote: true do %>
+                      <i class="fas fa-pen"></i>
+                    <% end %>
                     <%= link_to comment_path(comment, commentable_id: commentable_id, type: type), class: "action-item", method: "DELETE", remote: true do %>
                       <i class="far fa-trash-alt"></i>
                     <% end %>
