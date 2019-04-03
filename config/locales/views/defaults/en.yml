@@ -71,3 +71,45 @@ en:
       title: 'Welcome!'
     about:
       title: 'About us'
+
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: 1 heure
+        other: ~ %{count} heures
+      about_x_months:
+        one: 1 mois
+        other: ~ %{count} mois
+      about_x_years:
+        one: 1 an
+        other: ~ %{count} ans
+      almost_x_years:
+        one: presque 1 an
+        other: presque %{count} ans
+      half_a_minute: 1 demi-minute
+      less_than_x_minutes:
+        zero: 1 minute
+        one: 1 minute
+        other: ~ %{count} minutes
+      less_than_x_seconds:
+        zero: 1 seconde
+        one: 1 seconde
+        other: ~ %{count} secondes
+      over_x_years:
+        one: plus d'1 an
+        other: plus de %{count} ans
+      x_days:
+        one: 1 jour
+        other: "%{count} jours"
+      x_minutes:
+        one: 1 minute
+        other: "%{count} minutes"
+      x_months:
+        one: 1 mois
+        other: "%{count} mois"
+      x_years:
+        one: 1 an
+        other: "%{count} ans"
+      x_seconds:
+        one: 1 seconde
+        other: "%{count} secondes"

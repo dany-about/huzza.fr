@@ -36,7 +36,7 @@
           <% when "dare_accepted" %>
             <p class="badge badge-secondary"><%= friend.full_name %> - relève le défi</p>
           <% when "achievement_rejected" %>         
-            <p class="badge badge-secondary">La communauté remet en question la réalisation de <%= friend.full_name %> !</p>          
+            <p class="badge badge-secondary">La communauté remet en question la réalisation de <%= friend.full_name %></p>          
           <% end %>
         <% end %>
       <% end %>
@@ -52,24 +52,36 @@
   </div>
 
   <div class="card-body pt-0">
-    <div class="row row-grid" style="margin-left:-0.5rem;">
+    <div class="row row-grid">
       <div class="col-sm-2 text-center">
-        <% if disclaimer %>
-          <p class="card-text">Level <%= friend.rank %></p>
+        <% if !event.is_a?(Participation) %>
+          <p class="card-text">Niveau <%= friend.rank %></p>
           <div class="<%= friend.badge[:animation] %>">
             <h4 style="margin-top: 11px"><%= friend.badge[:emote] %></h4>
           </div>
-        <% elsif event.is_a?(Participation) %>
+        <% else %>
           <% case event.is_achieved %>
           <% when false %>
-            <p class="badge badge-primary"> En cours </p>
-            <p class="badge badge-primary"><i class="far fa-clock"></i> depuis <%= time_ago_in_words(event.created_at) %> </p> 
+            <div class="mt-2">
+              <p class="badge badge-warning"> En cours </p>
+              <div class="mt-4">
+                <p class="badge badge-secondary"><i class="far fa-clock"></i><small>depuis <%= time_ago_in_words(event.created_at) %> </small></p>
+              </div>
+            </div>
           <% when nil %>
-            <p class="badge badge-secondary"><i class="fas fa-search"></i> À l'étude </p>
-            <p class="badge badge-secondary"><i class="far fa-clock"></i> depuis <%= time_ago_in_words(event.updated_at) %> </p> 
-          <% when true %>          
-            <p class="badge badge-success"><i class="fas fa-trophy"></i> Réussi </p>
-            <p class="badge badge-success"><i class="far fa-clock"></i> Il y a <%= time_ago_in_words(event.updated_at) %> </p> 
+            <div class="mt-2">
+              <p class="badge badge-danger"><i class="fas fa-search"></i> À l'étude </p>
+              <div class="mt-4">
+                <p class="badge badge-secondary"><i class="far fa-clock"></i><small>depuis <%= time_ago_in_words(event.updated_at) %> </small></p> 
+              </div>
+            </div>
+          <% when true %>
+            <div class="mt-2">         
+              <p class="badge badge-success"><i class="fas fa-trophy"></i> Réussi </p>
+              <div class="mt-4">
+                <p class="badge badge-secondary"><i class="far fa-clock"></i><small>il y a <%= time_ago_in_words(event.updated_at) %> </small></p>
+              </div>
+            </div>
           <% end %>
         <% end %>
       </div>
@@ -118,4 +130,3 @@
     <%= render 'shared/card_elements/proof', event: event %>
   </div>
 <% end %>
-
