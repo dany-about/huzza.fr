@@ -14,7 +14,7 @@
       <%if friend.avatar.attached?%>
         <%= image_tag(friend.avatar, alt: 'avatar', :class => "avatar rounded-circle avatar-lg shadow hover-shadow-lg mx-auto") %>
       <%else%>
-      <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/12/4/1553168518-pngpic.png" class="avatar rounded-circle avatar-lg shadow hover-shadow-lg" style="margin-left:-0.5rem;margin-top:-1rem">
+      <img alt="Image placeholder" src="https://image.noelshack.com/fichiers/2019/14/2/1554196194-pp.jpg" class="avatar rounded-circle avatar-lg shadow hover-shadow-lg" style="margin-left:-0.5rem;margin-top:-1rem">
       <% end %>
     <% end %>
 
@@ -63,21 +63,21 @@
           <% case event.is_achieved %>
           <% when false %>
             <div class="mt-2">
-              <p class="badge badge-warning"> En cours </p>
+              <p class="badge badge-warning"><i class="fas fa-bolt"></i>En cours </p>
               <div class="mt-4">
-                <p class="badge badge-secondary"><i class="far fa-clock"></i><small>depuis <%= time_ago_in_words(event.created_at) %> </small></p>
+                <p class="badge badge-secondary"><small>depuis <%= time_ago_in_words(event.created_at) %> </small></p>
               </div>
             </div>
           <% when nil %>
             <div class="mt-2">
-              <p class="badge badge-danger"><i class="fas fa-search"></i> À l'étude </p>
+              <p class="badge badge-danger"><i class="fas fa-search"></i>À l'étude </p>
               <div class="mt-4">
-                <p class="badge badge-secondary"><i class="far fa-clock"></i><small>depuis <%= time_ago_in_words(event.updated_at) %> </small></p> 
+                <p class="badge badge-secondary"></i><small>depuis <%= time_ago_in_words(event.updated_at) %> </small></p> 
               </div>
             </div>
           <% when true %>
             <div class="mt-2">         
-              <p class="badge badge-success"><i class="fas fa-trophy"></i> Réussi </p>
+              <p class="badge badge-success"><i class="fas fa-trophy"></i>Réussi </p>
               <div class="mt-4">
                 <p class="badge badge-secondary"><i class="far fa-clock"></i><small>il y a <%= time_ago_in_words(event.updated_at) %> </small></p>
               </div>

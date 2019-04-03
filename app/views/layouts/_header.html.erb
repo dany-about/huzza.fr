@@ -39,10 +39,9 @@
                 <!-- LINK TO ADMIN DASHBOARD -->
                 <% if current_user.is_admin %>
                 <li class="nav-item">
-                    <%= link_to "ADMIN DASHBOARD", dashboard_admin_index_path, class: 'nav-link danger'%>
+                    <%= link_to '<i class="fas fa-tachometer-alt"></i>'.html_safe, dashboard_admin_index_path, class: 'nav-link danger'%>
                 </li>
                 <% end %>
-
             </ul>
 
         </div>

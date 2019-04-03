@@ -75,15 +75,14 @@ en:
   datetime:
     distance_in_words:
       about_x_hours:
-<<<<<<< HEAD
         one: 1 heure
-        other: ~ %{count} heures
+        other: '%{count} heures'
       about_x_months:
         one: 1 mois
-        other: ~ %{count} mois
+        other: '%{count} mois'
       about_x_years:
         one: 1 an
-        other: ~ %{count} ans
+        other: '%{count} ans'
       almost_x_years:
         one: presque 1 an
         other: presque %{count} ans
@@ -91,11 +90,11 @@ en:
       less_than_x_minutes:
         zero: 1 minute
         one: 1 minute
-        other: ~ %{count} minutes
+        other: '%{count} minutes'
       less_than_x_seconds:
         zero: 1 seconde
         one: 1 seconde
-        other: ~ %{count} secondes
+        other: '%{count} secondes'
       over_x_years:
         one: plus d'1 an
         other: plus de %{count} ans
