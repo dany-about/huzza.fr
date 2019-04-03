@@ -3,7 +3,7 @@ $(document).ready(function() {
   // SCROLLS
   function scrollToAnchor(aid){
     var aTag = $(aid);
-    $('html,body').animate({scrollTop: aTag.offset().top},'slow');
+    $('html,body').animate({scrollTop: aTag.offset().top-60},'slow');
   }
   function scrollToElementById(id) { 
     $(`a[href='${id}']`).on("click", function(event) { event.preventDefault(); scrollToAnchor(`${id}`) })
