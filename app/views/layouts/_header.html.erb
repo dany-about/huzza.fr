@@ -19,7 +19,7 @@
                     <% if current_user.received_friend_requests.count == 0 %>
                         <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-plus"></i></a>
                     <% else %>
-            <!-- REMPLIR ICI -->
+                      <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-plus text-danger"></i></a>
                     <% end %>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-white_dropdown_1" id="showFriendRequests">
                         <%= render "layouts/friend_requests" %>
@@ -29,7 +29,7 @@
                     <% if current_user.user_received_dares.where(accepted: nil).count == 0 %>
                         <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-satellite-dish"></i></a>
                     <% else %>
-            <!-- REMPLIR ICI -->
+                      <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-satellite-dish text-danger"></i></a>
                     <% end %>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-white_dropdown_1" id="showReceivedDares">
                         <%= render "layouts/received_dares" %>
