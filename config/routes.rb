@@ -18,22 +18,26 @@ Rails.application.routes.draw do
   # Home page
   root 'home#landing'
 
+  # Admin
   resources :admin, only: [:index, :destroy] do
     collection do 
       get 'dashboard'
     end
   end
 
-  resources :follows, only: [:create, :destroy]
-  resources :friend_requests, only: [:create, :update, :destroy]
-  
+  # Main Content
   resources :dares, except: [:show, :edit, :update, :destroy]
   resources :participations, only: [:create, :update] do 
     resources :pictures, only: [:create]
     resources :videos, only: [:create]
   end
   resources :news, only: [:index]
-
+  
+  # User-User Interactions
+  resources :follows, only: [:create, :destroy]
+  resources :friend_requests, only: [:create, :update, :destroy]
+  
+  # User-Content Interactions
   resources :user_send_dares, only: [:create, :update]
   resources :star_dares, only: [:create, :destroy]
   resources :difficulty_ratings, only: [:create]
