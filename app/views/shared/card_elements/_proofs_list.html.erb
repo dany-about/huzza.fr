@@ -57,7 +57,7 @@
 
   <% if event.videos.attached? || event.pictures.attached? %>
     <div class="row mt-5">
-      <%= link_to "Poster ma preuve", participation_path(event), method: "PATCH", class: "btn btn-sm btn-soft-danger mx-auto", remote: true %>
+      <%= link_to "Confirmer la réalisation et poster les preuves", participation_path(event), method: "PATCH", class: "btn btn-sm btn-soft-danger mx-auto", remote: true %>
     </div>
     <div class="row text-center">
       <p class="mt-1 mx-auto">Attention, une fois validé, vous ne pourrez plus poster ni photos ni vidéos supplémentaires.</p>
@@ -78,3 +78,5 @@
   <% end %>
 
 <% end %>
+
+<div id="proofConfirmBtn_<%= event.id %>"></div>

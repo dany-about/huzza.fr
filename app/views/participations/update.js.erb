@@ -1,4 +1,6 @@
 Array.from($(".showProof_<%= params[:id] %>")).forEach( function(element) {
   $(element).html("<%= j (render 'shared/card_elements/proofs_list', event: Participation.find(params[:id])) %>")
-  $(element).append("Vos points seront comptabilisés dans 72 heures, si votre preuve n'est pas contestée par la communauté d'ici là.")
+  $(element).append(`<div class="alert alert-success" style="z-index: 99999; position:absolute" role="alert">
+  <strong>Réalisation confirmée ! Vos points seront comptabilisés dans 72 heures, si votre preuve n'est pas contestée par la communauté d'ici là.</strong></div>`);
+  $(element).children().last().fadeOut(10000, $(this).remove)
 } )
