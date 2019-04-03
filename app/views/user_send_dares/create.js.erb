@@ -1,5 +1,8 @@
 <% if @success %>
-$('.modal').each(function(){$(this).modal('hide')})
+  $('.modal').each(function(){$(this).modal('hide')});
+  $("#challengeFriendBtn_<%= params[:dare_id] %>_<%= params[:random_id] %>").append(`<div id="challengeFriendNotice_<%= params[:dare_id] %>_<%= params[:random_id] %>" class="alert alert-success" style="z-index: 99999; position:absolute" role="alert">
+    <strong><%= User.find(params[:new_sent_dare][:recipient_id]).full_name %> défié !</strong></div>`);
+  $("#challengeFriendNotice_<%= params[:dare_id] %>_<%= params[:random_id] %>").fadeOut(4000, $("#challengeFriendNotice_<%= params[:dare_id] %>_<%= params[:random_id] %>").remove);
 <% else %>
-$("#friendSelection_<%= params[:dare_id] %>_<%= params[:random_id] %>").after("Déja défié sur ce défi !")
+  $("#friendSelection_<%= params[:dare_id] %>_<%= params[:random_id] %>").after("Déja défié sur ce défi !")
 <% end %>

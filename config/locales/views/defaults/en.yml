@@ -75,6 +75,7 @@ en:
   datetime:
     distance_in_words:
       about_x_hours:
+<<<<<<< HEAD
         one: 1 heure
         other: ~ %{count} heures
       about_x_months:
