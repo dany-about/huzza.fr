@@ -16,10 +16,13 @@ class DaresController < ApplicationController
         sent_dare = UserSendDare.create!(sender: current_user, recipient: User.find(params[:recipient_id]), dare: @dare)
         current_user.notify_followers(sent_dare, "dare_sent")
         User.find(params[:recipient_id]).notify_followers(sent_dare, "dare_received")
-      end
-      if params[:participate] == "yes"
+        flash[:success] = "Défi créé et envoyé !"
+      elsif params[:participate] == "yes"
         participation = Participation.create(user: current_user, dare: @dare)
         current_user.notify_followers(participation, "participation_created")
+        flash[:success] = "Défi créé et participation enregistrée !"
+      else
+        flash[:success] = "Défi créé !"        
       end
       current_user.notify_followers(@dare, "dare_created")
     else
