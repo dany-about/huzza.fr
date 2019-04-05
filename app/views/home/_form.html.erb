@@ -1,0 +1,65 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="form-group">
+    <div class="row">
+      <div class="col">
+        <label class="form-control-label" for="user_first_name">Prénom</label>
+        <%= f.text_field :first_name, class: 'form-control', placeholder: 'Mike', autofocus: true, autocomplete: "first name" %>
+      </div>
+      <div class="col">
+        <label class="form-control-label" for="user_last_name">Nom</label>
+        <%= f.text_field :last_name, class: 'form-control', placeholder: 'Horn', autofocus: true, autocomplete: "last name" %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="form-control-label" for="input-email">Email</label>
+    <div class="input-group input-group-transparent">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="fas fa-user"></i></span>
+      </div>
+      <%= f.email_field :email, class: 'form-control', id: 'input-email', placeholder: 'mike.horn@huzza.com', autofocus: true, autocomplete: "email" %>
+    </div>
+  </div>
+  <div class="form-group mb-4">
+    <label class="form-control-label" for="input-password">Mot de Passe</label>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> caractères minimum)</em>
+    <% end %><br />
+    <div class="input-group input-group-transparent">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="fas fa-key"></i></span>
+      </div>
+      <%= f.password_field :password, class:"form-control", id:"input-password", placeholder:"********", autocomplete: "new-password" %>
+      <div class="input-group-append">
+        <span class="input-group-text" onclick="showPassword('input-password')">
+          <i class="fas fa-eye"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="form-control-label" for="input-password-confirm">Confirmation</label>
+    <div class="input-group input-group-transparent">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="fas fa-key"></i></span>
+      </div>
+      <%= f.password_field :password_confirmation,class:"form-control", id:"input-password-confirm", placeholder:"********", autocomplete: "new-password" %>
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <div class="col-sm-7">
+      <%= f.submit "Rejoindre", class:"btn btn-dark mb-3 mb-sm-0" %>
+    </div>
+    <div class="col-sm-5 text-sm-right">
+      <div>
+        <span class="small d-sm-block d-md-inline">Déja un compte Huzza ?</span>
+        <%= link_to "Connexion",'/fr/users/sign_in', style:"small font-weight-bold"%>
+      </div>
+      <div>
+        <span class="small d-sm-block d-md-inline">ou</span><br>
+        <%= link_to "Facebook", user_facebook_omniauth_authorize_path, style:"small font-weight-bold"%>
+      </div>
+    </div>
+  </div>
+<% end %>
