@@ -174,5 +174,4 @@ class User < ApplicationRecord
     return array
   end
 
-
 end
